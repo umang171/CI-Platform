@@ -1,0 +1,179 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.logincontainer{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+.loginimage{
+    background-image: url("../images/Grow-Trees-On-the-path-to-environment-sustainability-login.png");
+    background-size: 70vw 100vh;
+    width: 70%;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 10vh;
+}
+.logincontent{
+    width: 30%;
+}
+.imgheading{
+    color: white;
+    width: 28vw;
+    margin: 1vh 3vw;
+}
+.imgcontent{
+    color: white;
+    width: 44vw;
+    margin: 0vh 3vw;
+}
+.imgheading >p{    
+    font-size: 4vh;
+}
+.imgcontent > p {
+    font-weight: lighter;
+    font-size: 1.8vh;
+}
+.logincontent{
+    display: flex;
+    flex-direction: column;
+    padding: 5vh;
+    justify-content: center;
+}
+.logincontent>form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 74vh;
+    justify-content: center;
+}
+.logincontent>form>*{
+    width: 100%;
+    color: #414141;
+    margin-bottom: 1vh;
+    padding: 1vh;
+}
+.logincontent>form>a{
+    width: auto;
+    width: auto;
+    text-decoration: none;
+    font-size: 1.5vh;
+}
+.logincontent>form>input{
+    box-shadow: 0.97px 0.26px 3px #0000000D;
+    border: 1px solid #D9D9D9;
+    border-radius: 1vh;
+}
+.logincontent>form>p>a{
+    color:#2B64B1;
+    text-decoration: none;
+}
+.logincontent>form>p{
+    width: auto;
+    font-size: 1.5vh;
+}
+.logincontent>form>input[type=submit]{
+    background: #F8863400 0% 0% no-repeat padding-box;
+    border: 2px solid #F88634;
+    color: #F88634;
+    margin-top: 1vh;
+    border-radius: 2.4vh;
+}
+#loginpolicy>p{
+    text-align: center;
+}
+
+/* responsive login */
+@media only screen and (max-width:900px){  
+    .logincontainer{
+        flex-direction: column;
+    }
+    .loginimage {
+        width: 100%;
+        height: 50vh;
+        padding: 2vh;
+        background-size: 100% 50vh;
+        padding: 1vh;
+    }
+    .logincontent{
+        align-items: center;
+        width: 100vw;
+        height: 50vh;
+        padding: 3vh;
+    }
+    .logincontent>form {
+        height: 45vh;
+        width: 60vw;
+    }
+    .imgcontent{
+        width: 88vw;
+    }
+    .imgheading {
+        width: 87vw;
+        margin: 0.5vh 3vw;
+    }
+    .imgheading>p {
+        font-size: 3vh;
+        margin-bottom: 0;
+    }
+    .logincontent>form>* {
+        margin-bottom: 0.3vh;
+    }
+}
+/* =========================================================================================================== */
+/* forgot password */
+/* =========================================================================================================== */
+#forgotheading{
+    text-align: center;
+    color: #414141;
+    font-size: 2vh;
+    margin-bottom: 0;
+}
+#forgotinfo{
+    text-align: center;
+    color: #414141;
+    font-size: 1.5vh;
+    padding-top: 0;
+    padding: 0vh 2vw;
+}
+/* =========================================================================================================== */
+/* register */
+/* =========================================================================================================== */
+#registerform{
+    height: 84vh;
+}
+#registerform>*{
+margin-bottom: 0.2vh;
+}
+/* responsive register */
+@media only screen and (max-width:900px){  
+    #registercontent>#loginpolicy{
+        font-size: 1vh;
+    }
+    #registerform>* {
+        margin-bottom: 0;
+        font-size: 1.3vh;
+        padding-bottom: 0;
+    }
+}
+
+/* =========================================================================================================== */
+/* newpassword.html */
+/* =========================================================================================================== */
+#newpassheading{
+    text-align: center;
+    color: #414141;
+    font-size: 2vh;
+    margin-bottom: 0;
+}
+#newpassinfo{
+    text-align: center;
+    color: #414141;
+    font-size: 1.5vh;
+    padding-top: 0;
+    padding: 0vh 2vw;
+}
