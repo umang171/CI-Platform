@@ -154,6 +154,9 @@ margin-bottom: 0.2vh;
     #registercontent>#loginpolicy{
         font-size: 1vh;
     }
+    #registerform{
+        padding-top: 3vh;
+    }
     #registerform>* {
         margin-bottom: 0;
         font-size: 1.3vh;
