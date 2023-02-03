@@ -1,1 +1,0 @@
-SELECT ProductID,ProductName,UnitPrice FROM Products WHERE UnitPrice<20 and Discontinued=0;
