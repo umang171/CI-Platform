@@ -2,20 +2,22 @@
     ViewData["Title"] = "Home Page";
 }
 
- <div class="logincontainer">
-        <partial name="_AccountImage"/>
-        <div class="logincontent">
-            <form action="#">
-                <label for="loginemail">Email Address</label>
-                <input type="email" name="loginemail" id="loginemail" placeholder="shichan@nohara.com">
-                <label for="loginpassword">Password</label>
-                <input type="password" name="loginpass" id="loginpass" placeholder="**********">
-                <input type="submit" value="Login">
-                <a href="lostpass">Lost your password?</a>
-                <p>Don’t have an account?<a asp-action="Register"> Create an account</a></p>
-            </form>
-            <div id="loginpolicy">
-                <p>Privacy Policy</p>
+    <div class="container-fluid">
+        <div class="row">
+             @Html.Partial("_AccountCarousel")  
+            <div id="logincontent" class="col-md-4 col-sm-12 logincontent">
+                <form action="#">
+                    <label for="loginemail">Email Address</label>
+                    <input type="email" name="loginemail" id="loginemail" placeholder="shichan@nohara.com">
+                    <label for="loginpassword">Password</label>
+                    <input type="password" name="loginpass" id="loginpass" placeholder="**********">
+                    <input type="submit" value="Login">
+                    <a asp-action="ForgotPassword">Lost your password?</a>
+                    <p>Don’t have an account?<a asp-action="Register"> Create an account</a></p>
+                </form>
+                <div id="loginpolicy">
+                    <p>Privacy Policy</p>
+                </div>
             </div>
         </div>
     </div>
