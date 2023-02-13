@@ -2,42 +2,35 @@
     margin: 0px;
     padding: 0px;
 }
-.logincontainer{
-    width: 100vw;
+.container-fluid>.row{
     height: 100vh;
-    display: flex;
+    width: 100vw;
 }
-.loginimage{
-    background-image: url("../images/Grow-Trees-On-the-path-to-environment-sustainability-login.png");
-    background-size: 70vw 100vh;
-    width: 70%;
-    opacity: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
-    padding: 10vh;
+#imagecontent{
+    margin: 0px;
+    padding: 0px;
 }
-.logincontent{
-    width: 30%;
-}
-.imgheading{
-    color: white;
-    width: 28vw;
-    margin: 1vh 3vw;
+#imagecontent img{
+    height: 100vh;
 }
 .imgcontent{
-    color: white;
-    width: 44vw;
-    margin: 0vh 3vw;
+    text-align: left;
+    left: 14%;
+    bottom: 4rem;
+    display: block !important;
 }
-.imgheading >p{    
-    font-size: 4vh;
+.imgcontent h1{
+    font-weight: normal;
+    line-height: 5vh;
+    width: 61%;
 }
-.imgcontent > p {
-    font-weight: lighter;
-    font-size: 1.8vh;
+.imgcontent p{   
+    width: 83%;
 }
+.logincontent{
+    height: 100vh;
+}
+
 .logincontent{
     display: flex;
     flex-direction: column;
@@ -56,6 +49,7 @@
     color: #414141;
     margin-bottom: 1vh;
     padding: 1vh;
+    font-size: 2vh;
 }
 .logincontent>form>a{
     width: auto;
@@ -87,41 +81,66 @@
     text-align: center;
 }
 
-/* responsive login */
-@media only screen and (max-width:900px){  
-    .logincontainer{
-        flex-direction: column;
+@media screen and (max-width:1200px){
+    .logincontent>form>*{
+        font-size: 1.5vh;
+    }    
+    .logincontent{
+        padding:1vh;
     }
-    .loginimage {
-        width: 100%;
-        height: 50vh;
-        padding: 2vh;
-        background-size: 100% 50vh;
-        padding: 1vh;
+}
+@media screen and (max-width:767px){
+    #imagecontent{
+        height: 45vh;
+    }
+    #imagecontent img{
+        height: 45vh;
     }
     .logincontent{
-        align-items: center;
-        width: 100vw;
-        height: 50vh;
-        padding: 3vh;
-    }
-    .logincontent>form {
-        height: 45vh;
-        width: 60vw;
+        height: 55vh;
     }
     .imgcontent{
-        width: 88vw;
+        bottom: 0;
+        display: block !important;
     }
-    .imgheading {
-        width: 87vw;
-        margin: 0.5vh 3vw;
+    .imgcontent p{
+        font-size: 1.5vh;
+        line-height: 2vh;
+        width: 100%;
     }
-    .imgheading>p {
-        font-size: 3vh;
+    .imgcontent h1 {
+        font-weight: normal;
+        line-height: 3vh;
+        width: 100%;
+    }
+    .logincontent>form>*{
+        font-size:1.9vh;
+    }    
+    .logincontent{
+        padding:4vh;
+    }
+}
+/* =========================================================================================================== */
+/* register */
+/* =========================================================================================================== */
+#registerform{
+    height: 84vh;
+}
+#registerform>*{
+margin-bottom: 0.2vh;
+}
+/* responsive register */
+@media only screen and (max-width:767px){  
+    #registercontent>#loginpolicy{
+        font-size: 1vh;
+    }
+    #registerform{
+        padding-top: 2vh;
+    }
+    #registerform>* {
         margin-bottom: 0;
-    }
-    .logincontent>form>* {
-        margin-bottom: 0.3vh;
+        font-size: 1.3vh;
+        padding-bottom: 0.2vh;
     }
 }
 /* =========================================================================================================== */
@@ -140,30 +159,6 @@
     padding-top: 0;
     padding: 0vh 2vw;
 }
-/* =========================================================================================================== */
-/* register */
-/* =========================================================================================================== */
-#registerform{
-    height: 84vh;
-}
-#registerform>*{
-margin-bottom: 0.2vh;
-}
-/* responsive register */
-@media only screen and (max-width:900px){  
-    #registercontent>#loginpolicy{
-        font-size: 1vh;
-    }
-    #registerform{
-        padding-top: 3vh;
-    }
-    #registerform>* {
-        margin-bottom: 0;
-        font-size: 1.3vh;
-        padding-bottom: 0;
-    }
-}
-
 /* =========================================================================================================== */
 /* newpassword.html */
 /* =========================================================================================================== */
