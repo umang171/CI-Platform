@@ -170,8 +170,105 @@ margin-bottom: 0.2vh;
 }
 #newpassinfo{
     text-align: center;
-    color: #414141;
+    color: #333333;
     font-size: 1.5vh;
     padding-top: 0;
     padding: 0vh 2vw;
+}
+/* ===================================================================================================================== */
+/* home.html */
+/* ===================================================================================================================== */
+#mainHeader{
+    background-color: white !important;
+    padding-bottom: 0;
+}
+#leftNavbarSupportedContent{
+    width: 60%;
+}
+#homeNavbarUI{
+    flex-direction: row;
+    justify-content: center;    
+}
+.home-nav-item{
+    padding: 1vh 1vw;
+}
+.nav-link-font{
+    color: #414141 !important;
+    font-size: 2.3vh;
+    font-weight: lighter;
+}
+#rightNavbarSupportedContent{
+    width: 40%;
+    display: flex;
+    align-items: center;
+    padding-left: 15vw;
+}   
+#profilePicture{
+    height: 6.6vh;
+    width: 4.5vw;
+    border-radius: 50%;
+}
+#profileDropdown{
+    width: 10vw;
+}
+#firstHr{
+    margin: 0;
+}
+.navbar-nav .dropdown-menu {
+    position: absolute;
+}
+/* ================================================================================================================================= */
+/* media query for home */
+/* ================================================================================================================================= */
+@media screen and (max-width:1440px){
+    #rightNavbarSupportedContent{        
+        padding-left: 10vw;
+    }
+}
+@media screen and (max-width:1024px){
+    #leftNavbarSupportedContent{
+        width: 50%;
+    }
+    #rightNavbarSupportedContent{
+        width: 50%;
+    }
+    .nav-link-font {
+        font-size: 2vh;
+    }
+    #homeNavbarUI{
+        justify-content: left;
+    }
+    #profilePicture{
+        height: 5vh;
+        width: 5vw;
+    }
+}
+@media screen and (max-width:1024px){
+    #rightNavbarSupportedContent{
+        width: 60%;
+        padding-left: 15vw;
+    }
+    #leftNavbarSupportedContent{
+        width: 40%;
+    }
+    .nav-link-font {
+        font-size:1.8vh;
+    }
+}
+@media screen and (max-width:768px){
+    #rightNavbarSupportedContent{
+        width: 50%;
+        text-align: center;
+        padding-left: 0;
+    }
+    #leftNavbarSupportedContent{
+        width: 50%;
+    }
+    #profilePicture{
+        height: 5vh;
+        width: 10vw;
+    }
+    #profileName{
+        font-size: 1.5vh;
+    }
 }
