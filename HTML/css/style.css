@@ -1,3 +1,6 @@
+:root{
+    --header-height:222px;
+}
 *{
     margin: 0px;
     padding: 0px;
@@ -238,6 +241,9 @@ margin-bottom: 0.2vh;
 #search-input{
     width: 100%;
 }
+.chip-item{
+    min-width: max-content;
+}
 #filter-image{
     width: 30px;
     height: 30px;
@@ -386,9 +392,140 @@ margin-bottom: 0.2vh;
 #mission-content
 {
     max-width: 1420px;
-    height: 20vh;
+    height: calc(100vh - var(--header-height));
 }
+#mission-content::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+#mission-header{
+    color: #414141;
+}
+#mission-header span{
+    font-weight: normal;
+}
+#no-mission-found{
+    height: 400px;
+}
+#no-mission-found>h1{
+    color: #757575;
+}   
 
+#chips::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+#dropdown-sort{
+    width: 171px;
+    height: 38px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0.97px 0.26px 3px #0000000D;
+    border: 1px solid #D9D9D9;
+    border-radius: 3px;
+    opacity: 1;
+}
+#mission-grid{
+    max-width:1420px;
+}
+.grid-item{
+    height: 140px;
+}
+.card-img{
+    height: 300px !important;
+}
+.card-theme-title{
+    position:absolute;
+    top: 280px;
+    left: 34%;
+    font-weight: lighter;
+}
+#card-image-content{
+    height: 300px;
+}
+#card-time-duration-title{
+    width: fit-content;
+font-weight: lighter;
+}
+#card-image-content{
+    position:absolute;
+    right: 0px;
+}
+.img-content{
+    background-color: black;
+    color: white;
+    opacity: 0.6;
+    max-width: max-content;
+}
+#mission-duration-div{
+    z-index: 1;
+}
+#seats-info-card{
+    top: -18px;
+    z-index: 0;
+}
+#seats-left-image{
+    height: 25px;
+    width: 25px;
+}
+#seats-left-text{
+    color: #757575;
+    min-width: max-content;
+}
+#deadline-image{
+    height: 35px;
+    width: 35px;
+}
+#deadline-text{
+    color: #757575;
+}
+#apply-btn{
+    color: #F88634;
+    border-color: #F88634;
+}
+#pagination a{
+    color: black;
+}
+.page-item:hover{
+    color: white !important;
+    background-color: #F88634 !important;
+}
+.list-image-part{
+    width: 30%;
+}
+.list-content-part{
+    width: 70%;
+}
+.list-img{
+    height: 300px;
+    width: 100%;
+}
+.list-card-theme-title{
+    position: absolute;
+    top: 270px;
+    left: 33%;
+    font-weight: lighter;
+}
+#list-card-image-content{
+    top: 0px;
+    right: 0px;
+}
+.list-img-content{
+    background-color: black;
+    color: white;
+    opacity: 0.6;
+    max-width: max-content;
+}
+#mission-footer{
+    position: fixed;
+    bottom: 0px;
+    left:0px;
+    height: 72px;
+}
+#mission-footer a{
+    text-decoration: none;
+    color: black;
+}
+#mission-footer> div{
+    max-width: 1420px;    
+}
 /* media query for mission page */
 @media screen and (min-width: 576px) {
     #filter-mission-navbar {

@@ -1,6 +1,23 @@
 // Search filter
 const filteMissionNavbar=document.getElementById("filter-mission-navbar");
 const searchButton = document.getElementById("search-button");
+const missionContent=document.getElementById("mission-content");
+let missionContentHeight=missionContent.style.height;
+
+console.log(missionContent);
+console.log(missionContentHeight);
+
+function getStyle(element) {
+  if (typeof getComputedStyle !== "undefined") {
+      return getComputedStyle(element);
+  }
+  return element.currentStyle; // Old IE
+}
+
+var heightStyle = getStyle(missionContent).height;
+heightStyle=+heightStyle.slice(0,-2)+78;
+console.log(heightStyle);
+
 
 let flag=0;
 let flagSideBar=0;
@@ -8,21 +25,26 @@ let flagSideBar=0;
 searchButton.addEventListener("click",(e)=>{
   e.preventDefault();
   if(flag%2==0){
-        filteMissionNavbar.setAttribute('style','display:block !important')
-    }
-    else{
-        filteMissionNavbar.setAttribute('style','display:none !important')
-
+        filteMissionNavbar.setAttribute('style','display:block !important');
+        missionContent.setAttribute('style','height:'+(heightStyle-79)+'px;');        
+      }
+      else{
+        filteMissionNavbar.setAttribute('style','display:none !important');
+        missionContent.setAttribute('style','height:'+heightStyle+'px;');
     }
     flag++;
 });
 
 function myFunction(x) {
   if (x.matches) { // If media query matches
-    filteMissionNavbar.setAttribute('style','display:block !important')
+    filteMissionNavbar.setAttribute('style','display:block !important');
+    missionContent.setAttribute('style','height:'+(heightStyle-79)+'px;');
+
     
   } else {
-    filteMissionNavbar.setAttribute('style','display:none !important')
+    filteMissionNavbar.setAttribute('style','display:none !important');
+    missionContent.setAttribute('style','height:'+heightStyle+'px;');
+
   }
 }
 
@@ -36,6 +58,7 @@ x.addListener(myFunction) // Attach listener function on state changes
 const menuImg=document.getElementById("menuimg");
 const sideBar=document.getElementById("menu-side-bar");
 const closeImg=document.getElementById("close-img");
+const filterSideBar = document.getElementById("filter-side-bar");
 
 menuImg.addEventListener("click",(e)=>{
   e.preventDefault();
@@ -68,7 +91,6 @@ y.addListener(myFunction2) // Attach listener function on state changes
 // filter - button
 // =====================================================================================================
 const filterImg = document.getElementById("filter-image");
-const filterSideBar = document.getElementById("filter-side-bar");
 const filtercloseImg = document.getElementById("filter-img-close");
 
 let flagFilter = 0;
@@ -91,5 +113,3 @@ filtercloseImg.addEventListener("click", (e) => {
 // ====================================================================
 // chips items
 // ====================================================================
-var myModal = new bootstrap.Modal(document.getElementById('myModal'), options);
-$('.example-class').ripple(options);
