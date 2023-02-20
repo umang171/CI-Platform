@@ -443,6 +443,7 @@ margin-bottom: 0.2vh;
 #card-time-duration-title{
     width: fit-content;
 font-weight: lighter;
+
 }
 #card-image-content{
     position:absolute;
@@ -494,12 +495,12 @@ font-weight: lighter;
     width: 70%;
 }
 .list-img{
-    height: 300px;
+    height: 250px;
     width: 100%;
 }
 .list-card-theme-title{
     position: absolute;
-    top: 270px;
+    top: 220px;
     left: 33%;
     font-weight: lighter;
 }
@@ -513,6 +514,43 @@ font-weight: lighter;
     opacity: 0.6;
     max-width: max-content;
 }
+#list-apply-btn {
+    color: #F88634;
+    border-color: #F88634;
+}
+#list-card-time-duration-title {
+    width: fit-content;
+    font-weight: lighter;
+
+}
+#list-mission-duration-div {
+    z-index: 1;
+    position: relative;
+}
+#list-seats-info-card {
+    top: -18px;
+    z-index: 0;
+}
+
+#list-seats-left-image {
+    height: 25px;
+    width: 25px;
+}
+
+#list-seats-left-text {
+    color: #757575;
+    min-width: max-content;
+}
+
+#list-deadline-image {
+    height: 35px;
+    width: 35px;
+}
+
+#list-deadline-text {
+    color: #757575;
+}
+
 #mission-footer{
     position: fixed;
     bottom: 0px;
