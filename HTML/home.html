@@ -10,90 +10,43 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400&display=swap" rel="stylesheet" />
-  <style>
-    .dropdown-toggle::after {
-      display: none;
-    }
-
-    #search-input {
-      background: url("images/search.png") no-repeat;
-      background-position: 10px center;
-    }
-
-    .filters {
-      border-left: 1px solid #e8e8e8;
-      border-right: 1px solid #e8e8e8;
-      min-width: max-content;
-      padding: 0px 5px !important;
-    }
-
-    #filter-mission-navbar {
-      border-color: #e8e8e8;
-      top: 72px;
-      left: 0px;
-      background-color: white;
-    }
-
-    #menu-side-bar {
-      top: 0px;
-      left: 0;
-      height: 100vh;
-      z-index: 3;
-      border: 1px solid;
-      background: white;
-      width: 45vw;
-      align-items: flex-start !important;
-      justify-content: flex-start !important;
-      opacity: 1;
-      transition: opacity 1s;
-      transition-timing-function: ease;
-    }
-
-    #menu-side-bar>#menu-heading {
-      flex-direction: column;
-    }
-
-    #menu-side-bar>#menu-heading>* {
-      margin: 10px 0px;
-      width: 67%;
-      margin-right: 0 !important;
-      font-size: 18px;
-    }
-
-    #menu-side-bar>* {
-      width: 100%;
-    }
-    #img-close {
-    text-align: right;
-    padding: 12px;
-    }
-    #img-close>img{
-      height: 20px;
-      width: 20px;
-    }
-    @media screen and (min-width: 576px) {
-      #filter-mission-navbar {
-        display: block !important;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-  <div id="main-parent" class="d-flex flex-row ">
+  <div id="main-header" class="d-flex flex-row">
 
-    <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="staticBackdropLabel"></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <div id="menu-side-bar" class="position-absolute ">
+      <div id="close-img" class="p-3 img-close">
+        <img src="images/cancel.png" alt="">
       </div>
-      <div class="offcanvas-body" id="sidebar-filters">
-        <div class="row d-flex flex-column" style="height: 100%">
-          <div class="filters col-12 p-0">
+      <div id="menu-heading" class="d-flex justify-content-center align-items-center">
+        <a href="#" class="side-menu-items text-decoration-none text-dark w-100 m-1 p-1 px-2">Stories</a>
+        <div class="side-menu-items dropdown w-100 m-1 p-1 px-2">
+          <button class="dropdown-toggle border-0 bg-white w-100 d-flex justify-content-between align-items-center"
+            type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Policy
+            <img src="images/drop-down.png" alt="" />
+          </button>
+          <ul class="dropdown-menu w-100">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="filter-side-bar" class="position-absolute img-close p-2">
+      <div id="filter-img-close" class="p-2 img-close">
+        <img src="images/cancel.png" alt="">
+      </div>
+      <div id="side-search-nav" class="d-block d-flex flex-column">
+        <div class="row d-flex flex-column mx-0" id="side-filter-dropdowns">
+          <div class="filters col-3 p-0 m-1 w-100 filter-side-items">
             <div class="dropdown w-100 h-100 p-0">
-              <button
-                class="w-100 h-100 dropdown-toggle border-0 bg-white d-flex justify-content-between align-items-center"
+              <button class="w-100 h-100 dropdown-toggle border-0 bg-white d-flex justify-content-between align-items-center"
                 type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Country
                 <img src="images/drop-down.png" alt="" />
@@ -113,7 +66,7 @@
               </ul>
             </div>
           </div>
-          <div class="filters col-12 p-0">
+          <div class="filters col-3 py-5 m-1 w-100 filter-side-items">
             <div class="dropdown w-100 h-100 p-0">
               <button
                 class="w-100 h-100 dropdown-toggle border-0 bg-transparent d-flex justify-content-between align-items-center"
@@ -136,7 +89,7 @@
               </ul>
             </div>
           </div>
-          <div class="filters col-12 p-0">
+          <div class="filters col-3 py-5 m-1 w-100 filter-side-items">
             <div class="dropdown w-100 h-100 p-0">
               <button
                 class="w-100 h-100 dropdown-toggle border-0 bg-transparent d-flex justify-content-between align-items-center"
@@ -160,10 +113,9 @@
               </ul>
             </div>
           </div>
-          <div class="filters col-12 p-0">
+          <div class="filters col-3 py-5 m-1 w-100 filter-side-items">
             <div class="dropdown w-100 h-100 p-0">
-              <button
-                class="w-100 h-100 dropdown-toggle border-0 bg-white d-flex justify-content-between align-items-center"
+              <button class="w-100 h-100 dropdown-toggle border-0 bg-white d-flex justify-content-between align-items-center"
                 type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Skills
                 <img src="images/drop-down.png" alt="" />
@@ -184,35 +136,13 @@
               </ul>
             </div>
           </div>
-      </div>
-      </div>
-    </div>
-
-    <div id="menu-side-bar" class="position-absolute d-none">
-      <div id="img-close">
-        <img src="images/cancel.png" id="close-img" alt="">
-      </div>
-      <div id="menu-heading" class="d-flex justify-content-center align-items-center">
-        <a href="#" class="text-decoration-none text-dark mx-3 ">Stories</a>
-        <div class="dropdown ">
-          <button class="dropdown-toggle border-0 bg-white m-1" type="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            Policy
-            <img src="images/drop-down.png" alt="" />
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
         </div>
       </div>
     </div>
 
-    <div id="main-container" class="border border-1 w-100">
-      <header style="min-width: max-content; top: 0; left: 0" class="w-100 bg-white position-sticky z-2">
-        <div class="d-flex justify-content-between align-items-center mx-auto"
-          style="max-width: 1420px; height: 72px; min-width: max-content">
+    <div id="main-container" class="w-100">
+      <header class="w-100 bg-white position-sticky z-2" >
+        <div id="main-first-header" class="d-flex justify-content-between align-items-center mx-auto">
           
           <div id="leftNavbar" class="d-flex align-items-center">
             <div id="menuimg" class="d-flex d-block d-md-none justify-content-center align-items-center p-2 m-1 mx-3">
@@ -244,8 +174,7 @@
             <button id="search-button" class="p-1 mx-3 border-0 bg-white d-sm-none">
               <img src="images/search.png" alt="" />
             </button>
-            <a href=""><img src="images/user-img.png" class="rounded-circle object-fit-cover"
-                style="height: 40px; width: 40px" alt="" /></a>
+            <a href=""><img id="user-profile-img" src="images/user-img.png" class="rounded-circle object-fit-cover" alt="" /></a>
             <div class="dropdown d-sm-block d-none">
               <button class="dropdown-toggle border-0 bg-white m-1" type="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
@@ -264,18 +193,18 @@
 
       <div>
         <div id="filter-mission-navbar" class="container-fluid border border-1 p-0 d-none d-sm-block position-sticky">
-          <div class="mx-auto row" style="height: 78px; max-width: 1420px">
+          <div class="mx-auto row" id="main-second-header">
             <div id="search-nav" class="col-md-6 col-10 d-flex align-items-center">
-              <input type="text" style="width: 100%" id="search-input" placeholder="Search mission..."
+              <input type="text" id="search-input" placeholder="Search mission..."
                 class="border-0 rounded-5 bg-white p-3 ps-5" />
             </div>
 
             <div id="search-nav" class="col-md-6 col-2 p-md-0 d-md-block d-flex justify-content-end align-items-center">
-              <button class="d-md-none border-0 bg-transparent"  type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
-                <img src="images/filter.png" style="width: 30px; height: 30px" alt="" />
+              <button class="d-md-none border-0 bg-transparent"  type="button" id="filter-button">
+                <img src="images/filter.png" id="filter-image" alt="" />
               </button>
-              <div class="row d-md-flex d-none" style="height: 100%">
-                <div class="filters col-3 p-0">
+              <div class="row d-md-flex d-none mx-0" id="filter-dropdowns">
+                <div class="filters col-3 p-0 ">
                   <div class="dropdown w-100 h-100 p-0">
                     <button
                       class="w-100 h-100 dropdown-toggle border-0 bg-white d-flex justify-content-between align-items-center"
@@ -374,18 +303,47 @@
           </div>
         </div>
     </div>
-
-    <div id="chips" class="border border-1 border-primary" style="max-width: 1420px;">
-            <div >
-                Tree Plantation
-                <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
-            </div>
-            
     </div>
-    </div>
-
   </div>
 
+  <div id="mission-content" class="border border-1 container-fluid">
+<!-- chips -->
+    <div id="filter-chips" class=" ">      
+      <div class="chips-test chips-initial">
+        <div id="chips" class="d-flex flex-wrap" style="max-width: 1420px;">
+          <div class="chip-item border border-1 border-seconday rounded-5 p-1 m-2">
+            Tree Plantation
+            <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+          </div>
+          <div class="chip-item border border-1 border-seconday rounded-5 p-1 m-2">
+            Tree Plantation
+            <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+          </div>
+          <div class="chip-item border border-1 border-seconday rounded-5 p-1 m-2">
+            Tree Plantation
+            <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+          </div>
+          <div class="chip-item border border-1 border-seconday rounded-5 p-1 m-2">
+            Tree Plantation
+            <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+          </div><div class="chip-item border border-1 border-seconday rounded-5 p-1 m-2">
+            Tree Plantation
+            <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+          </div>
+          <div class="chip-item border border-1 border-seconday rounded-5 p-1 m-2">
+            Tree Plantation
+            <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+          </div><div class="chip-item border border-1 border-seconday rounded-5 p-1 m-2">
+            Tree Plantation
+            <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+<!-- mission cards -->
+
+  </div>
 
 
   <script src="js/bootstrap.bundle.js"></script>
