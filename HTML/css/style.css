@@ -570,3 +570,43 @@ font-weight: lighter;
         display: block !important;
     }
 }
+/* media query for mission page list view*/
+@media screen and (max-width:768px){
+    .list-image-part {
+        width: 50%;
+    }
+    .list-content-part {
+        width: 50%;
+    }
+    #list-info-content {
+        flex-direction: column;
+    }
+    .list-card-button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .list-img{
+        height: 400px;
+        width: 100%;
+    }
+    .list-card-button-apply {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .list-card-theme-title {
+        top: 370px;
+    }
+}
+@media screen and (max-width:575px){
+    #list-card-parent{
+        flex-direction: column;
+    }
+    .list-image-part {
+        width: 100%;
+    }
+    .list-content-part {
+        width: 100%;
+    }
+}
