@@ -488,6 +488,7 @@ font-weight: lighter;
     color: white !important;
     background-color: #F88634 !important;
 }
+
 .list-image-part{
     width: 30%;
 }
@@ -609,4 +610,153 @@ font-weight: lighter;
     .list-content-part {
         width: 100%;
     }
+}
+/* =========================================================== */
+/* volunteering_mission_page */
+/* =========================================================== */
+.volunteer-main-image{
+height: 625px;
+}
+#volunteer-mission-title{
+    color: #414141;
+    font-weight: lighter;
+    width: 90%;
+}
+#volunteer-mission-description{
+    color: #414141;
+    font-weight: lighter;
+    width: 90%;
+}
+#volunteer-mission-tagline-div {
+    z-index: 1;
+    position: relative;
+}
+#volunteer-mission-tagline-title{
+    width: fit-content;
+font-weight: lighter;
+}
+#volunteer-seats-info-card{
+    top: -18px;
+    z-index: 0;
+}
+
+#vounteer-seats-left-image {
+    height: 25px;
+    width: 25px;
+}
+
+#vounteer-seats-left-text {
+    color: #757575;
+    min-width: max-content;
+}
+
+#vounteer-achieved-image {
+    height: 35px;
+    width: 35px;
+}
+
+#vounteer-achieved-text {
+    color: #757575;
+}
+.progress-bar{
+    background-color: #F88634;
+}
+.progress{
+    width: 130px;
+    height: 12px;
+}
+#mission-favourite-recomend-div span{
+    color: #757575 !important;
+}
+#mission-favourite-recomend-div button{
+    border-color: #757575;
+}
+#mission-related-information-div .caption-badge {
+    display: none;
+}
+#mission-related-information-div .krajee-icon-clear{
+    display: none;
+}
+.rating-stars{
+    background-color: white;
+}
+.mission-related-info{
+    width: 153px;
+    height: 130px;
+}
+.mission-related-item{
+    top: -17px;
+}
+.mission-related-info-title{
+    color: #757575;
+    font-size: 12px;
+}
+.mission-related-info-desc{
+    color: #757575;
+    font-size: 16px;
+}
+.volunteer-button-apply {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#volunteer-apply-btn {
+    color: #F88634;
+    border-color: #F88634;
+}
+/* volunteer information */
+#volunteer-information{
+    height: 770px;
+}
+#volunteer-info-tabs{
+    width: 60%;
+}
+
+#volunteer-recent-info{
+    width: 40%;
+}
+#volunteer-basic-info-div{
+    height: 35%;
+}
+#recent-volunteer-info-div{
+    height: 65%;
+}
+/* Related missions */
+#related-mission-heading{
+    color: #414141;
+    font-weight: lighter;
+}
+
+#related-mission-grid{
+    max-width:1420px;
+}
+.related-grid-item{
+    height: 140px;
+}
+.related-card-img{
+    height: 300px !important;
+}
+.related-card-theme-title{
+    position:absolute;
+    top: 280px;
+    left: 34%;
+    font-weight: lighter;
+}
+#card-image-content{
+    height: 300px;
+}
+#card-time-duration-title{
+    width: fit-content;
+font-weight: lighter;
+
+}
+#related-card-image-content{
+    position:absolute;
+    right: 0px;
+}
+.related-img-content{
+    background-color: black;
+    color: white;
+    opacity: 0.6;
+    max-width: max-content;
 }
