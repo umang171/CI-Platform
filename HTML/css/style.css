@@ -614,8 +614,26 @@ font-weight: lighter;
 /* =========================================================== */
 /* volunteering_mission_page */
 /* =========================================================== */
+.volunteer-content::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+.volunteer-content::-webkit-scrollbar {
+    display: none;
+  }
+  #volunteer-info-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .volunteer-content {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
 .volunteer-main-image{
 height: 625px;
+}
+#carouselExampleControls{
+    height: 120px;
 }
 #volunteer-mission-title{
     color: #414141;
@@ -651,8 +669,8 @@ font-weight: lighter;
 }
 
 #vounteer-achieved-image {
-    height: 35px;
-    width: 35px;
+    height: 25px;
+    width: 25px;
 }
 
 #vounteer-achieved-text {
@@ -706,14 +724,14 @@ font-weight: lighter;
 }
 /* volunteer information */
 #volunteer-information{
-    height: 770px;
+    height: 830px;
 }
 #volunteer-info-tabs{
-    width: 60%;
+    width: 58%;
 }
 
 #volunteer-recent-info{
-    width: 40%;
+    width: 38%;
 }
 #volunteer-basic-info-div{
     height: 35%;
@@ -721,6 +739,82 @@ font-weight: lighter;
 #recent-volunteer-info-div{
     height: 65%;
 }
+
+.tab {
+    overflow: hidden;
+    border-bottom: 1px solid #ccc;
+    background-color: white;
+    
+  }
+  
+  /* Style the buttons that are used to open the tab content */
+  .tab button {
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    background-color: white;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    border-bottom: 2px solid black;
+    
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    border-bottom: 2px solid black;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border-top: none;
+    overflow-y: scroll;
+    height: 730px;
+  }
+  .tabcontent h3{
+    font-weight:normal;
+  }
+  .tabcontent::-webkit-scrollbar {
+    display: none;
+  }
+  #volunteer-information-span{
+    text-decoration: underline;
+    text-underline-offset: 7px;
+  }
+  #volunteer-recent-info{
+    color: #414141;
+  }
+  .volunteer-info-div-items{
+    height: 33%;
+  }
+  #volunteer-recent-volunteer-span{
+    text-decoration: underline;
+    text-underline-offset: 7px;
+  }
+.volunteer-images-div{
+    width: 33%;
+}
+.volunteer-images{
+    width: 70px;
+    height: 70px;
+}
+.volunteer-names{
+    color:#414141;
+}
+.volunteer-scroll-bar-btn{
+    width: 10%;
+    height: 100%;
+}
+.volunteer-scroll-bar-span{
+    width: 80%;
+}
+
 /* Related missions */
 #related-mission-heading{
     color: #414141;
@@ -759,4 +853,57 @@ font-weight: lighter;
     color: white;
     opacity: 0.6;
     max-width: max-content;
+}
+/* ============================================== */
+/* media query for volunteer */
+/* ============================================== */
+@media screen and (max-width:767px) {
+    #volunteer-image-part{    
+        width: 60% !important;
+    }
+    #volunteer-content-part{    
+        width: 40% !important;
+    }
+    #volunteer-mission-title {  
+        width: 100%;
+        font-size: 25px !important;
+    }
+    #volunteer-mission-description {
+        width: 100%;
+        font-size: 12px !important;
+    }
+    .volunteer-favourite-button{
+        width: 100% !important;
+    }
+    .mission-related-info {
+        height: 100px;
+        width: 104px;
+        margin: 1px;
+    }
+    #volunteer-info-tabs {
+     width: 100%;
+     height: 50%;
+    }
+    #volunteer-recent-info{
+        width: 100%;
+        height: 50%;
+    }
+    .tabcontent {
+        height: calc(100% - 74px);
+    }
+    #volunteer-basic-info-div {
+        height:max-content;
+        width: 35%;
+    }
+    #recent-volunteer-info-div {
+        height: max-content;
+        width: 65%;
+    }
+    .volunteer-names {
+        font-size: 13px !important;
+    }
+    .volunteer-images {
+        width: 50px;
+        height: 55px;
+    }
 }
