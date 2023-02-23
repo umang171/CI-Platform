@@ -1,8 +1,8 @@
 const missionContent=document.getElementById("mission-content");
 let missionContentHeight=missionContent.style.height;
 
-console.log(missionContent);
-console.log(missionContentHeight);
+// console.log(missionContent);
+// console.log(missionContentHeight);
 
 function getStyle(element) {
   if (typeof getComputedStyle !== "undefined") {
@@ -13,7 +13,7 @@ function getStyle(element) {
 
 var heightStyle = getStyle(missionContent).height;
 heightStyle=+heightStyle.slice(0,-2)+78;
-console.log(heightStyle);
+// console.log(heightStyle);
 
 
 let flag=0;
@@ -69,7 +69,7 @@ y.addListener(myFunction2) // Attach listener function on state changes
 
 // tabs in volunteer
 function openCity(evt, cityName) {
-  console.log(evt);
+  // console.log(evt);
   // Declare all variables
   var i, tabcontent, tablinks;
 
@@ -95,3 +95,19 @@ let tabcontent = document.getElementsByClassName("tabcontent");
 let tablinks = document.getElementsByClassName("tablinks");
 document.getElementById("Mission").style.display = "block";
 tablinks[0].classList.add("active")
+
+// ========================================================================================
+// show image
+// ========================================================================================
+const carouselImages=document.querySelectorAll(".carousel-images");
+const previewImage=document.getElementById("preview-image");
+for (let i = 0; i < carouselImages.length; i++) {
+  console.log(carouselImages[i].src);  
+  carouselImages[i].addEventListener("click",(e)=>{
+      e.preventDefault();
+      previewImage.src=carouselImages[i].src;
+  });
+}
+
+// console.log(carouselImages);
+// console.log(previewImage.src);

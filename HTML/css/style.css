@@ -481,6 +481,10 @@ font-weight: lighter;
     color: #F88634;
     border-color: #F88634;
 }
+.orange-btn{
+    color: #F88634;
+    border-color: #F88634;
+}
 #pagination a{
     color: black;
 }
@@ -783,6 +787,19 @@ font-weight: lighter;
   .tabcontent::-webkit-scrollbar {
     display: none;
   }
+  #comment {
+    resize: none;
+    }
+    
+    .avtar {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    }
+    
+    #volunteer-comments-div {
+    background-color: #E8E8E8;
+    }
   #volunteer-information-span{
     text-decoration: underline;
     text-underline-offset: 7px;
@@ -906,4 +923,39 @@ font-weight: lighter;
         width: 50px;
         height: 55px;
     }
+}
+@media screen and (max-width:576px) {
+    #volunteer-image-part {
+        width: 100% !important;
+    }
+    #volunteer-content-part {
+        width: 100% !important;
+    }
+    #volunteer-seats-info-card {
+        flex-direction: row !important;
+    }
+    #volunteer-basic-info-div {
+        width: 100%;
+    }
+    #recent-volunteer-info-div {
+        width: 100%;
+    }
+    #volunteer-recent-info {
+        width: 100%;
+        height: 55% !important;
+    }
+    #volunteer-info-tabs {
+        width: 100%;
+        height: 45%;
+    }
+    #volunteer-information {
+        height: 1420px;
+    }
+}
+@media screen and (max-width:360px) {
+    
+    #volunteer-remain-seats-cards{
+        width: 40% !important;
+    }
+    
 }
