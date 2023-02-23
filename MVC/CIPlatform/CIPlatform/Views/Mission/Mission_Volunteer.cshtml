@@ -1,0 +1,887 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mission Volunteering</title>
+
+    <!-- default styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/css/star-rating.min.css" media="all"
+        rel="stylesheet" type="text/css" />
+
+    <!-- with v4.1.0 Krajee SVG theme is used as default (and must be loaded as below) - include any of the other theme CSS files as mentioned below (and change the theme property of the plugin) -->
+    <link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/themes/krajee-svg/theme.css"
+        media="all" rel="stylesheet" type="text/css" />
+
+    <!-- important mandatory libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/js/star-rating.min.js"
+        type="text/javascript"></script>
+
+    <!-- with v4.1.0 Krajee SVG theme is used as default (and must be loaded as below) - include any of the other theme JS files as mentioned below (and change the theme property of the plugin) -->
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/themes/krajee-svg/theme.js"></script>
+
+    <!-- optionally if you need translation for your language then include locale file as mentioned below (replace LANG.js with your own locale file) -->
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/js/locales/LANG.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        .carousel-control-prev {
+            all: unset;
+            position: absolute;
+            top: 0;
+            height: 100%;
+            opacity: 0.7;
+        }
+
+        .carousel-control-next {
+            all: unset;
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main-header" class="d-flex flex-row">
+        <div id="menu-side-bar" class="position-absolute">
+            <div id="close-img" class="p-3 img-close">
+                <img src="~/images/cancel.png" alt="" />
+            </div>
+            <div id="menu-heading" class="d-flex justify-content-center align-items-center">
+                <a href="#" class="side-menu-items text-decoration-none text-dark w-100 m-1 p-1 px-2">Stories</a>
+                <div class="side-menu-items dropdown w-100 m-1 p-1 px-2">
+                    <button
+                        class="dropdown-toggle border-0 bg-white w-100 d-flex justify-content-between align-items-center"
+                        type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Policy
+                        <img src="~/images/drop-down.png" alt="" />
+                    </button>
+                    <ul class="dropdown-menu w-100">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="main-container" class="w-100">
+            <header class="w-100 bg-white position-sticky z-2 border-bottom">
+                <div id="main-first-header" class="d-flex justify-content-between align-items-center mx-auto">
+                    <div id="leftNavbar" class="d-flex align-items-center">
+                        <div id="menuimg"
+                            class="d-flex d-block d-md-none justify-content-center align-items-center p-2 m-1 mx-3">
+                            <img src="~/images/list.png" alt="" />
+                        </div>
+
+                        <img src="~/images/logo.png" alt="" />
+
+                        <div id="menu-heading" class="d-none d-md-flex justify-content-center align-items-center">
+                            <a href="#" class="text-decoration-none text-dark mx-3">Stories</a>
+                            <div class="dropdown">
+                                <button class="dropdown-toggle border-0 bg-white m-1" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Policy
+                                    <img src="~/images/drop-down.png" alt="" />
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="rightNavbar" class="d-flex align-items-center">
+                        <a href=""><img id="user-profile-img" src="~/images/user-img.png"
+                                class="rounded-circle object-fit-cover" alt="" /></a>
+                        <div class="dropdown d-sm-block d-none">
+                            <button class="dropdown-toggle border-0 bg-white m-1" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Umang Gohel
+                                <img src="~/images/drop-down.png" alt="" />
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+    </div>
+
+    <div id="mission-content" class="container-fluid overflow-y-scroll p-0 volunteer-content">
+        <div id="volunteer-top-info" class="d-flex flex-column flex-sm-row">
+            <div id="volunteer-image-part" class="w-50">
+                <img id="preview-image" src="~/images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png"
+                    class="w-100 volunteer-main-image" alt="" />
+                <!-- carousel -->
+                <div id="carouselExampleControls" class="carousel slide w-100" data-bs-ride="carousel">
+                    <div class="carousel-inner h-100 w-100">
+                        <div class="carousel-item active h-100 w-100">
+                            <div class="d-flex h-100 w-100">
+                                <div class="h-100 w-100">
+                                    <img src="~/images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png"
+                                        class="carousel-images d-block w-100 h-100 p-1" alt="..." />
+                                </div>
+                                <div class="h-100 w-100">
+                                    <img src="~/images/img1.png" class="carousel-images d-block w-100 h-100 p-1"
+                                        alt="..." />
+                                </div>
+                                <div class="h-100 w-100">
+                                    <img src="~/images/Grow-Trees-On-the-path-to-environment-sustainability-login.png"
+                                        class="carousel-images d-block w-100 h-100 p-1" alt="..." />
+                                </div>
+                                <div class="h-100 w-100">
+                                    <img src="~/images/img11.png" class="carousel-images d-block w-100 h-100 p-1"
+                                        alt="..." />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item h-100 w-100">
+                            <div class="d-flex h-100 w-100">
+                                <div class="h-100 w-100">
+                                    <img src="~/images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png"
+                                        class="carousel-images d-block w-100 h-100 p-1" alt="..." />
+                                </div>
+                                <div class="h-100 w-100">
+                                    <img src="~/images/img1.png" class="carousel-images d-block w-100 h-100 p-1"
+                                        alt="..." />
+                                </div>
+                                <div class="h-100 w-100">
+                                    <img src="~/images/Grow-Trees-On-the-path-to-environment-sustainability-login.png"
+                                        class="carousel-images d-block w-100 h-100 p-1" alt="..." />
+                                </div>
+                                <div class="h-100 w-100">
+                                    <img src="~/images/img11.png" class="carousel-images d-block w-100 h-100 p-1"
+                                        alt="..." />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item h-100 w-100">
+                            <div class="d-flex h-100 w-100">
+                                <div class="h-100 w-100">
+                                    <img src="~/images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png"
+                                        class="carousel-images d-block w-100 h-100 p-1" alt="..." />
+                                </div>
+                                <div class="h-100 w-100">
+                                    <img src="~/images/img1.png" class="carousel-images d-block w-100 h-100 p-1"
+                                        alt="..." />
+                                </div>
+                                <div class="h-100 w-100">
+                                    <img src="~/images/Grow-Trees-On-the-path-to-environment-sustainability-login.png"
+                                        class="carousel-images d-block w-100 h-100 p-1" alt="..." />
+                                </div>
+                                <div class="h-100 w-100">
+                                    <img src="~/images/img11.png" class="carousel-images d-block w-100 h-100 p-1"
+                                        alt="..." />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev bg-black" type="button"
+                        data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next bg-black" type="button"
+                        data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div id="volunteer-content-part" class="w-50 p-2 d-flex flex-column justify-content-around">
+                <div id="volunteer-mission-title-div">
+                    <div id="volunteer-mission-title" class="fs-1">
+                        CSR initiative stands for Coffee & Farmer Equity
+                    </div>
+                    <div id="volunteer-mission-description" class="fs-6">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                        enim ad minim veniam.
+                    </div>
+                </div>
+                <div id="volunteer-mission-details-div">
+                    <div>
+                        <div id="volunteer-mission-tagline-div">
+                            <h5 id="volunteer-mission-tagline-title" class="border bg-white rounded-5 m-auto fs-6 p-2">
+                                Plant 10000 Trees
+                            </h5>
+                        </div>
+
+                        <div id="volunteer-seats-info-card"
+                            class="d-flex flex-row flex-sm-column border-bottom border-top border-1 position-relative pt-3 align-items-md-center justify-content-md-center flex-column flex-md-row">
+                            <div id="volunteer-remain-seats-cards"
+                                class="w-50 d-flex align-items-center justify-content-md-center p-1 px-lg-4 px-md-1">
+                                <img id="vounteer-seats-left-image" src="~/images/Seats-left.png" alt="" />
+                                <div class="d-flex flex-column p-2">
+                                    <p id="count" class="m-0 p-0">10</p>
+                                    <p id="vounteer-seats-left-text" class="m-0 p-0">
+                                        Seats left
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div id="vounteer-achieved-info-card"
+                                class="w-50 d-flex align-items-center justify-content-md-center p-1 px-lg-4 px-md-1">
+                                <img id="vounteer-achieved-image" src="~/images/achieved.png" alt="" />
+                                <div class="d-flex flex-column p-2">
+                                    <div class="progress">
+                                        <div class="progress-bar w-75" role="progressbar" aria-valuenow="75"
+                                            aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <p id="vounteer-achieved-text" class="m-0 p-0">
+                                        8000 achieved
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="mission-favourite-recomend-div" class="d-flex flex-column flex-md-row">
+                    <button
+                        class="w-50 volunteer-favourite-button border border-3 rounded-5 bg-white p-2 py-1 p-md-2 m-1 m-md-2">
+                        <img src="~/images/heart1.png" alt="" />
+                        <span>Add to Favourite</span>
+                    </button>
+                    <button
+                        class="w-50 volunteer-favourite-button border border-3 rounded-5 bg-white p-2 py-1 p-md-2 m-1 m-md-2">
+                        <img src="~/images/add1.png" alt="" />
+                        <span>Recommend to a Co-Worker</span>
+                    </button>
+                </div>
+                <div id="mission-related-information-div">
+                    <div class="d-flex justify-content-center align-items-center position-relative z-1">
+                        <input id="input-id" type="text" class="rating text-center d-none" data-size="sm" />
+                    </div>
+                    <div
+                        class="border-top border-1 d-flex justify-content-between justify-content-sm-around pt-3 pt-md-5 position-relative flex-wrap flex-md-nowrap mission-related-item">
+                        <div class="border border-1 mission-related-info d-flex flex-column justify-content-around">
+                            <div class="">
+                                <img src="~/images/pin1.png" class="p-1 p-md-2" alt="" />
+                            </div>
+                            <div class=" d-flex flex-column p-1 p-md-2">
+                                <div class=" mission-related-info-title">city</div>
+                                <div class=" mission-related-info-desc">London</div>
+                            </div>
+                        </div>
+                        <div class="border border-1 mission-related-info d-flex flex-column justify-content-around">
+                            <div class="">
+                                <img src="~/images/web.png" class="p-1 p-md-2" alt="" />
+                            </div>
+                            <div class=" d-flex flex-column p-1 p-md-2">
+                                <div class=" mission-related-info-title">Theme</div>
+                                <div class=" mission-related-info-desc">Environment</div>
+                            </div>
+                        </div>
+                        <div class="border border-1 mission-related-info d-flex flex-column justify-content-around">
+                            <div class="">
+                                <img src="~/images/calender.png" class="p-1 p-md-2" alt="" />
+                            </div>
+                            <div class=" d-flex flex-column p-1 p-md-2">
+                                <div class=" mission-related-info-title">Date</div>
+                                <div class=" mission-related-info-desc">
+                                    Ongoing Opportunity
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border border-1 mission-related-info d-flex flex-column justify-content-around">
+                            <div class="">
+                                <img src="~/images/organization.png" class="p-1 p-md-2" alt="" />
+                            </div>
+                            <div class=" d-flex flex-column p-1 p-md-2">
+                                <div class=" mission-related-info-title">
+                                    Organization
+                                </div>
+                                <div class=" mission-related-info-desc">CSE Network</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="volunteer-button-apply m-md-1 p-md-1 w-100">
+                    <button id="volunteer-apply-btn" class="btn rounded-5 py-2 px-4 fs-5">
+                        Apply Now
+                        <img src="~/images/right-arrow.png" class="mx-1 ms-3" alt="" />
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="volunteer-information" class="d-flex flex-column flex-md-row pt-3 justify-content-between">
+            <div id="volunteer-info-tabs" class="">
+                <!-- Tab links -->
+                <div class="tab">
+                    <button class="tablinks p-2 p-sm-4" onclick="openCity(event, 'Mission')">
+                        Mission
+                    </button>
+                    <button class="tablinks p-2 p-sm-4" onclick="openCity(event, 'Organization')">
+                        Organization
+                    </button>
+                    <button class="tablinks p-2 p-sm-4" onclick="openCity(event, 'Comments')">
+                        Comments
+                    </button>
+                </div>
+
+                <!-- Tab content -->
+                <div id="Mission" class="tabcontent">
+                    <h3>Introduction</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                        enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                        nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <p>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                        cupidatat non proident, sunt in culpa qui officia deserunt mollit
+                        anim id est laborum.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                        enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                        nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in
+                        reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                        nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                        sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                    <h3>Challenge</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                        enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                        reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                        nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                        sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                        enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                        nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat
+                        cupidatat non proident, sunt in culpa qui officia deserunt mollit
+                        anim id est laborum.
+                    </p>
+                    <h3>Documents</h3>
+                    <div class="">
+                        <button class="border border-1 rounded-5 px-3 py-2 bg-white mx-2">
+                            <a href="../../../../Umang/Candidate-System-Allocate all 23 - Rajkot.pdf" target="_blank"
+                                class="text-decoration-none text-dark" download>
+                                <img src="~/images/doc.png" class="px-2" alt="">lorem-ipsum.pdf
+                            </a>
+                        </button>
+                        <button class="border border-1 rounded-5 px-3 py-2 bg-white mx-2">
+                            <a href="Candidate-System-Allocate all 23 - Rajkot.pdf" target="_blank"
+                                class="text-decoration-none text-dark" >
+                                <img src="~/images/doc.png" class="px-2" alt="">lorem-ipsum.pdf
+                            </a>
+                        </button>
+                        <button class="border border-1 rounded-5 px-3 py-2 bg-white mx-2">
+                            <a href="Candidate-System-Allocate all 23 - Rajkot.pdf" target="_blank"
+                                class="text-decoration-none text-dark" >
+                                <img src="~/images/doc.png" class="px-2" alt="">lorem-ipsum.pdf
+                            </a>
+                        </button>
+                        
+                    </div>
+                </div>
+                <div id="Organization" class="tabcontent">
+                    <h3>Organization Introduction</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                        enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                        nisi ut aliquip ex ea commodo consequat.
+                    </p>
+                    <p>
+                        Duis aute irure dolor in reprehenderit in voluptate velit esse
+                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                        cupidatat non proident, sunt in culpa qui officia deserunt mollit
+                        anim id est laborum.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                        enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                        nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in
+                        reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                        nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                        sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+
+                </div>
+
+                <div id="Comments" class="tabcontent">
+                    <form class="mt-3" action="">
+                        <textarea id="comment" class="w-100 rounded-2 p-1" placeholder="Enter your comments.." rows="4"
+                            name="" id=""></textarea>
+                        <button class="orange-btn py-2 px-4 my-2 rounded-5 bg-transparent">
+                            Post comment
+                        </button>
+                    </form>
+                    <div id="volunteer-comments-div" class=" p-2 ">
+                        <div class="volunteer-comments-container bg-white d-flex align-items-center rounded-3 p-2 mb-2">
+                            <div class="me-3"><img class="avtar" src="~/images/volunteer1.png" alt=""></div>
+                            <div class="d-flex flex-column w-100 justify-content-between">
+                                <div class="p-0 mb-2">
+                                    <p class="p-0 m-0 lh-1 ">Volunteer's Name</p>
+                                    <p class="p-0 m-0">Monday,October 21,2019,4:57 PM</p>
+                                </div>
+                                <div class="volunteer-comment ">Volunteer's Comment</div>
+                            </div>
+                        </div>
+                        <div class="volunteer-comments-container bg-white d-flex align-items-center rounded-3 p-2 mb-2">
+                            <div class="me-3"><img class="avtar" src="~/images/volunteer2.png" alt=""></div>
+                            <div class="d-flex flex-column w-100 justify-content-between">
+                                <div class="p-0 mb-2">
+                                    <p class="p-0 m-0 lh-1 ">Volunteer's Name</p>
+                                    <p class="p-0 m-0">Monday,October 21,2019,4:57 PM</p>
+                                </div>
+                                <div class="volunteer-comment ">Volunteer's Comment</div>
+                            </div>
+                        </div>
+                        <div class="volunteer-comments-container bg-white d-flex align-items-center rounded-3 p-2 mb-2">
+                            <div class="me-3"><img class="avtar" src="~/images/volunteer3.png" alt=""></div>
+                            <div class="d-flex flex-column w-100 justify-content-between">
+                                <div class="p-0 mb-2">
+                                    <p class="p-0 m-0 lh-1 ">Volunteer's Name</p>
+                                    <p class="p-0 m-0">Monday,October 21,2019,4:57 PM</p>
+                                </div>
+                                <div class="volunteer-comment ">Volunteer's Comment</div>
+                            </div>
+                        </div>
+                        <div class="volunteer-comments-container bg-white d-flex align-items-center rounded-3 p-2 mb-2">
+                            <div class="me-3"><img class="avtar" src="~/images/volunteer4.png" alt=""></div>
+                            <div class="d-flex flex-column w-100 justify-content-between">
+                                <div class="p-0 mb-2">
+                                    <p class="p-0 m-0 lh-1 ">Volunteer's Name</p>
+                                    <p class="p-0 m-0">Monday,October 21,2019,4:57 PM</p>
+                                </div>
+                                <div class="volunteer-comment ">Volunteer's Comment</div>
+                            </div>
+                        </div>
+                        <div class="volunteer-comments-container bg-white d-flex align-items-center rounded-3 p-2 mb-2">
+                            <div class="me-3"><img class="avtar" src="~/images/volunteer5.png" alt=""></div>
+                            <div class="d-flex flex-column w-100 justify-content-between">
+                                <div class="p-0 mb-2">
+                                    <p class="p-0 m-0 lh-1 ">Volunteer's Name</p>
+                                    <p class="p-0 m-0">Monday,October 21,2019,4:57 PM</p>
+                                </div>
+                                <div class="volunteer-comment ">Volunteer's Comment</div>
+                            </div>
+                        </div>
+                        <div class="volunteer-comments-container bg-white d-flex align-items-center rounded-3 p-2 mb-2">
+                            <div class="me-3"><img class="avtar" src="~/images/volunteer6.png" alt=""></div>
+                            <div class="d-flex flex-column w-100 justify-content-between">
+                                <div class="p-0 mb-2">
+                                    <p class="p-0 m-0 lh-1 ">Volunteer's Name</p>
+                                    <p class="p-0 m-0">Monday,October 21,2019,4:57 PM</p>
+                                </div>
+                                <div class="volunteer-comment ">Volunteer's Comment</div>
+                            </div>
+                        </div>
+                        <div class="volunteer-comments-container bg-white d-flex align-items-center rounded-3 p-2 mb-2">
+                            <div class="me-3"><img class="avtar" src="~/images/volunteer7.png" alt=""></div>
+                            <div class="d-flex flex-column w-100 justify-content-between">
+                                <div class="p-0 mb-2">
+                                    <p class="p-0 m-0 lh-1 ">Volunteer's Name</p>
+                                    <p class="p-0 m-0">Monday,October 21,2019,4:57 PM</p>
+                                </div>
+                                <div class="volunteer-comment ">Volunteer's Comment</div>
+                            </div>
+                        </div>
+                        <div class="volunteer-comments-container bg-white d-flex align-items-center rounded-3 p-2 mb-2">
+                            <div class="me-3"><img class="avtar" src="~/images/volunteer8.png" alt=""></div>
+                            <div class="d-flex flex-column w-100 justify-content-between">
+                                <div class="p-0 mb-2">
+                                    <p class="p-0 m-0 lh-1 ">Volunteer's Name</p>
+                                    <p class="p-0 m-0">Monday,October 21,2019,4:57 PM</p>
+                                </div>
+                                <div class="volunteer-comment ">Volunteer's Comment</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div id="volunteer-recent-info" class="d-flex flex-sm-row flex-column flex-md-column h-100  ">
+                <div id="volunteer-basic-info-div"
+                    class="border border-1 bg-white my-1 my-md-2 mx-1 mx-md-0 py-3 px-1 px-md-0  py-md-1 px-2 px-md-4">
+
+                    <div class="border-bottom border-1 p-2 pb-0">
+                        <span id="volunteer-information-span" class="fs-4">
+                            Information
+                        </span>
+                    </div>
+                    <div class="">
+                        <div
+                            class="d-flex flex-column flex-md-row py-1 py-md-3 px-1 px-md-2 fs-6 border-top border-1 volunteer-info-div-items">
+                            <div class="w-25">Skills</div>
+                            <div class="w-75">Cool, Easy going, Math, Computer</div>
+                        </div>
+                        <div
+                            class="d-flex flex-column flex-md-row py-2 py-md-3 px-1 px-md-2 fs-6 border-top border-1 volunteer-info-div-items">
+                            <div class="w-25">Days</div>
+                            <div class="w-75"> Weekend only</div>
+                        </div>
+                        <div
+                            class="d-flex flex-column flex-md-row py-2 py-md-3 px-1 px-md-2 fs-6 border-top border-1 volunteer-info-div-items">
+                            <div class="w-25">Rating</div>
+                            <div class="w-75">
+                                <img src="~/images/selected-star.png" alt="selected-star">
+                                <img src="~/images/selected-star.png" alt="selected-star">
+                                <img src="~/images/selected-star.png" alt="selected-star">
+                                <img src="~/images/selected-star.png" alt="selected-star">
+                                <img src="~/images/selected-star.png" alt="selected-star">
+                                <span>(by 125 volunteers)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="recent-volunteer-info-div"
+                    class="border border-1 my-2 mx-1 mx-md-0 d-flex py-3 px-1 px-md-0 py-md-0 flex-column justify-content-md-between">
+                    <div class="border-bottom border-1 p-2 p-md-4 pb-0">
+                        <span id="volunteer-recent-volunteer-span" class="fs-4">
+                            Recent Volunteers
+                        </span>
+                    </div>
+                    <div class="d-flex flex-wrap p-1">
+                        <div
+                            class="d-flex justify-content-center align-items-center p-1 p-md-2 flex-column volunteer-images-div">
+                            <img src="~/images/volunteer1.png" class="rounded-circle volunteer-images" alt="">
+                            <span class="fs-6 volunteer-names">Umang Gohel</span>
+                        </div>
+                        <div
+                            class="d-flex justify-content-center align-items-center p-1 p-md-2 flex-column volunteer-images-div">
+                            <img src="~/images/volunteer2.png" class="rounded-circle volunteer-images" alt="">
+                            <span class="fs-6 volunteer-names">Sizuka</span>
+                        </div>
+                        <div
+                            class="d-flex justify-content-center align-items-center p-1 p-md-2 flex-column volunteer-images-div">
+                            <img src="~/images/volunteer3.png" class="rounded-circle volunteer-images" alt="">
+                            <span class="fs-6 volunteer-names">Shinchen Nohara</span>
+                        </div>
+                        <div
+                            class="d-flex justify-content-center align-items-center p-1 p-md-2 flex-column volunteer-images-div">
+                            <img src="~/images/volunteer4.png" class="rounded-circle volunteer-images" alt="">
+                            <span class="fs-6 volunteer-names">Naini</span>
+                        </div>
+                        <div
+                            class="d-flex justify-content-center align-items-center p-1 p-md-2 flex-column volunteer-images-div">
+                            <img src="~/images/volunteer5.png" class="rounded-circle volunteer-images" alt="">
+                            <span class="fs-6 volunteer-names">Nobita nobie</span>
+                        </div>
+                        <div
+                            class="d-flex justify-content-center align-items-center p-1 p-md-2 flex-column volunteer-images-div">
+                            <img src="~/images/volunteer6.png" class="rounded-circle volunteer-images" alt="">
+                            <span class="fs-6 volunteer-names">Mixie Nohara</span>
+                        </div>
+                        <div
+                            class="d-flex justify-content-center align-items-center p-1 p-md-2 flex-column volunteer-images-div">
+                            <img src="~/images/volunteer7.png" class="rounded-circle volunteer-images" alt="">
+                            <span class="fs-6 volunteer-names">Doraemon</span>
+                        </div>
+                        <div
+                            class="d-flex justify-content-center align-items-center p-1 p-md-2 flex-column volunteer-images-div">
+                            <img src="~/images/volunteer8.png" class="rounded-circle volunteer-images" alt="">
+                            <span class="fs-6 volunteer-names">Wonder woman</span>
+                        </div>
+                        <div
+                            class="d-flex justify-content-center align-items-center p-1 p-md-2 flex-column volunteer-images-div">
+                            <img src="~/images/volunteer9.png" class="rounded-circle volunteer-images" alt="">
+                            <span class="fs-6 volunteer-names">Smriti Mandhana</span>
+                        </div>
+
+                    </div>
+                    <div id="volunteer-scroll-bar"
+                        class="d-flex justify-content-center align-items-center border border-1 m-0 w-100">
+                        <button class="volunteer-scroll-bar-btn p-2 border border-1 bg-white">
+                            <img src="~/images/left.png" alt="left">
+                        </button>
+                        <p class="volunteer-scroll-bar-span m-0 text-center p-2">1 - 9 of 25 Recent Volunteers</p>
+                        <button class="volunteer-scroll-bar-btn p-2 border border-1 bg-white">
+                            <img src="~/images/right-arrow1.png" alt="right">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related missions -->
+        <div id="volunteer-related-missions" class="border-0 border-top mt-4 pt-1 pt-md-4">
+            <h1 id="related-mission-heading" class="text-center fs-1">
+                Related Missions
+            </h1>
+
+            <div id="related-mission-grid" class="container p-0">
+                <div class="row h-auto">
+                    <div id="related-card-parent"
+                        class="col-lg-4 col-md-6 col-sm-6 col-12 related-grid-item h-auto mb-4">
+                        <div class="card">
+                            <img class="related-card-img-top w-100 related-card-img"
+                                src="~/images/Grow-Trees-On-the-path-to-environment-sustainability-login.png"
+                                alt="Card image cap" />
+                            <div id="related-card-image-content" class="d-flex flex-column justify-content-between p-2">
+                                <div id="location-image" class="related-img-content p-2 rounded-5">
+                                    <img src="~/images/pin.png" alt="" />
+                                    Torrento
+                                </div>
+                                <div class="d-flex flex-column align-items-end">
+                                    <div id="img-heart" class="related-img-content p-2 rounded-5 m-1">
+                                        <img src="~/images/heart.png" alt="" />
+                                    </div>
+                                    <div id="user-img" class="related-img-content p-2 rounded-5 m-1">
+                                        <img src="~/images/user.png" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <h5 class="related-card-theme-title bg-white rounded-5 p-2">
+                                Environment
+                            </h5>
+                            <div class="card-body">
+                                <h5 class="card-title fs-3">
+                                    Grow Trees-On the path to environment sustainability
+                                </h5>
+                                <p class="card-text">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Aperiam nulla blanditiis laboriosam inventore ...
+                                </p>
+
+                                <div id="star-content" class="d-flex align-items-center justify-content-between">
+                                    <p class="my-auto">Tree Canada</p>
+                                    <div class="d-flex align-items-center">
+                                        <img src="~/images/selected-star.png" alt="" />
+                                        <img src="~/images/selected-star.png" alt="" />
+                                        <img src="~/images/selected-star.png" alt="" />
+                                        <img src="~/images/star.png" alt="" />
+                                        <img src="~/images/star.png" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="mission-duration-div">
+                                <h5 id="card-time-duration-title" class="border bg-white rounded-5 m-auto fs-6 p-2">
+                                    From 10/01/2020 until 11/02/2020
+                                </h5>
+                            </div>
+
+                            <div id="seats-info-card"
+                                class="d-flex border border-1 position-relative pt-3 align-items-center justify-content-around">
+                                <div id="remain-seats-cards" class="w-50 d-flex align-items-center p-1 px-lg-4 px-md-1">
+                                    <img id="seats-left-image" src="~/images/Seats-left.png" alt="" />
+                                    <div class="d-flex flex-column p-2">
+                                        <p id="count" class="m-0 p-0 fs-5">10</p>
+                                        <p id="seats-left-text" class="m-0 p-0">Seats left</p>
+                                    </div>
+                                </div>
+
+                                <div id="deadline-info-card" class="w-40 d-flex align-items-center p-1 px-lg-4 px-md-1">
+                                    <img id="deadline-image" src="~/images/deadline.png" alt="" />
+                                    <div class="d-flex flex-column p-2">
+                                        <p id="deadline-date" class="m-0 p-0 fs-5">19/11/2022</p>
+                                        <p id="deadline-text" class="m-0 p-0">Deadline</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-button-apply m-1 p-1 w-100 text-center">
+                                <button id="apply-btn" class="btn btn-outline-warning rounded-5 py-2 px-4 fs-5">
+                                    Apply
+                                    <img src="~/images/right-arrow.png" class="mx-1 ms-3" alt="" />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="related-card-parent"
+                        class="col-lg-4 col-md-6 col-sm-6 col-12 related-grid-item h-auto mb-4">
+                        <div class="card">
+                            <img class="related-card-img-top w-100 related-card-img"
+                                src="~/images/Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png"
+                                alt="Card image cap" />
+                            <div id="related-card-image-content" class="d-flex flex-column justify-content-between p-2">
+                                <div id="location-image" class="related-img-content p-2 rounded-5">
+                                    <img src="~/images/pin.png" alt="" />
+                                    Torrento
+                                </div>
+                                <div class="d-flex flex-column align-items-end">
+                                    <div id="img-heart" class="related-img-content p-2 rounded-5 m-1">
+                                        <img src="~/images/heart.png" alt="" />
+                                    </div>
+                                    <div id="user-img" class="related-img-content p-2 rounded-5 m-1">
+                                        <img src="~/images/user.png" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <h5 class="related-card-theme-title bg-white rounded-5 p-2">
+                                Environment
+                            </h5>
+                            <div class="card-body">
+                                <h5 class="card-title fs-3">
+                                    Education Supplies for Every Pair of Shoes Sold
+                                </h5>
+                                <p class="card-text">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Aperiam nulla blanditiis laboriosam inventore ...
+                                </p>
+
+                                <div id="star-content" class="d-flex align-items-center justify-content-between">
+                                    <p class="my-auto">Australian Paradise</p>
+                                    <div class="d-flex align-items-center">
+                                        <img src="~/images/selected-star.png" alt="" />
+                                        <img src="~/images/selected-star.png" alt="" />
+                                        <img src="~/images/selected-star.png" alt="" />
+                                        <img src="~/images/star.png" alt="" />
+                                        <img src="~/images/star.png" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="mission-duration-div">
+                                <h5 id="card-time-duration-title" class="border bg-white rounded-5 m-auto fs-6 p-2">
+                                    From 10/01/2019 until 25/02/2019
+                                </h5>
+                            </div>
+
+                            <div id="seats-info-card"
+                                class="d-flex border border-1 position-relative pt-3 align-items-center justify-content-around">
+                                <div id="remain-seats-cards" class="w-50 d-flex align-items-center p-1 px-lg-4 px-md-1">
+                                    <img id="seats-left-image" src="~/images/Seats-left.png" alt="" />
+                                    <div class="d-flex flex-column p-2">
+                                        <p id="count" class="m-0 p-0 fs-5">10</p>
+                                        <p id="seats-left-text" class="m-0 p-0">Seats left</p>
+                                    </div>
+                                </div>
+
+                                <div id="deadline-info-card" class="w-40 d-flex align-items-center p-1 px-lg-4 px-md-1">
+                                    <img id="deadline-image" src="~/images/deadline.png" alt="" />
+                                    <div class="d-flex flex-column p-2">
+                                        <p id="deadline-date" class="m-0 p-0 fs-5">19/11/2022</p>
+                                        <p id="deadline-text" class="m-0 p-0">Deadline</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-button-apply m-1 p-1 w-100 text-center">
+                                <button id="apply-btn" class="btn btn-outline-warning rounded-5 py-2 px-4 fs-5">
+                                    Apply
+                                    <img src="~/images/right-arrow.png" class="mx-1 ms-3" alt="" />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="related-card-parent"
+                        class="col-lg-4 col-md-6 col-sm-6 col-12 related-grid-item h-auto mb-4">
+                        <div class="card">
+                            <img class="related-card-img-top w-100 related-card-img"
+                                src="~/images/Nourish-the-Children-in--African-country.png" alt="Card image cap" />
+                            <div id="related-card-image-content" class="d-flex flex-column justify-content-between p-2">
+                                <div id="location-image" class="related-img-content p-2 rounded-5">
+                                    <img src="~/images/pin.png" alt="" />
+                                    Torrento
+                                </div>
+                                <div class="d-flex flex-column align-items-end">
+                                    <div id="img-heart" class="related-img-content p-2 rounded-5 m-1">
+                                        <img src="~/images/heart.png" alt="" />
+                                    </div>
+                                    <div id="user-img" class="related-img-content p-2 rounded-5 m-1">
+                                        <img src="~/images/user.png" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <h5 class="related-card-theme-title bg-white rounded-5 p-2">
+                                Environment
+                            </h5>
+                            <div class="card-body">
+                                <h5 class="card-title fs-3">
+                                    Nourish the Children in African country
+                                </h5>
+                                <p class="card-text">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                    Aperiam nulla blanditiis laboriosam inventore ...
+                                </p>
+
+                                <div id="star-content" class="d-flex align-items-center justify-content-between">
+                                    <p class="my-auto">The Hunger</p>
+                                    <div class="d-flex align-items-center">
+                                        <img src="~/images/selected-star.png" alt="" />
+                                        <img src="~/images/selected-star.png" alt="" />
+                                        <img src="~/images/selected-star.png" alt="" />
+                                        <img src="~/images/star.png" alt="" />
+                                        <img src="~/images/star.png" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="mission-duration-div">
+                                <h5 id="card-time-duration-title" class="border bg-white rounded-5 m-auto fs-6 p-2">
+                                    From 10/01/2020 until 11/02/2020
+                                </h5>
+                            </div>
+
+                            <div id="seats-info-card"
+                                class="d-flex border border-1 position-relative pt-3 align-items-center justify-content-around">
+                                <div id="remain-seats-cards" class="w-50 d-flex align-items-center p-1 px-lg-4 px-md-1">
+                                    <img id="seats-left-image" src="~/images/Seats-left.png" alt="" />
+                                    <div class="d-flex flex-column p-2">
+                                        <p id="count" class="m-0 p-0 fs-5">10</p>
+                                        <p id="seats-left-text" class="m-0 p-0">Seats left</p>
+                                    </div>
+                                </div>
+
+                                <div id="deadline-info-card" class="w-40 d-flex align-items-center p-1 px-lg-4 px-md-1">
+                                    <img id="deadline-image" src="~/images/deadline.png" alt="" />
+                                    <div class="d-flex flex-column p-2">
+                                        <p id="deadline-date" class="m-0 p-0 fs-5">19/11/2022</p>
+                                        <p id="deadline-text" class="m-0 p-0">Deadline</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-button-apply m-1 p-1 w-100 text-center">
+                                <button id="apply-btn" class="btn btn-outline-warning rounded-5 py-2 px-4 fs-5">
+                                    Apply
+                                    <img src="~/images/right-arrow.png" class="mx-1 ms-3" alt="" />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer id="mission-footer" class="container-fluid border-top">
+        <div class="py-4 mx-auto">
+            <a href="#">Privacy Policy</a>
+        </div>
+    </footer>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="~/js/volunteer_mission.js"></script>
+</body>
+
+</html>
