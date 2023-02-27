@@ -425,6 +425,10 @@ margin-bottom: 0.2vh;
 #mission-grid{
     max-width:1420px;
 }
+#mission-grid .card{
+    position: relative;
+    z-index: -1;
+}
 .grid-item{
     height: 140px;
 }

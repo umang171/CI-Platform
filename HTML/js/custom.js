@@ -4,8 +4,6 @@ const searchButton = document.getElementById("search-button");
 const missionContent=document.getElementById("mission-content");
 let missionContentHeight=missionContent.style.height;
 
-console.log(missionContent);
-console.log(missionContentHeight);
 
 function getStyle(element) {
   if (typeof getComputedStyle !== "undefined") {
@@ -16,7 +14,6 @@ function getStyle(element) {
 
 var heightStyle = getStyle(missionContent).height;
 heightStyle=+heightStyle.slice(0,-2)+78;
-console.log(heightStyle);
 
 
 let flag=0;
@@ -113,6 +110,19 @@ filtercloseImg.addEventListener("click", (e) => {
 // ====================================================================
 // chips items
 // ====================================================================
+let filterCheckItems=document.querySelectorAll(".filter-check-item");
+
+for (let i = 0; i < filterCheckItems.length; i++) {
+  filterCheckItems[i].addEventListener("click",(e)=>{
+    e.preventDefault();
+  });
+  
+}
+
+function demo(){
+  console.log("hello");
+}
+
 // ====================================================================
 // Toggle List and Grid view
 // ====================================================================
@@ -136,3 +146,14 @@ gridViewBtn.addEventListener("click",(e)=>{
   missionGridView.setAttribute("style","display:block !important;");
 });
 
+
+// ====================================================================
+// Change Heart color
+// ====================================================================
+const imgHearts=document.querySelectorAll(".img-heart");
+for (let i = 0; i < imgHearts.length; i++) {
+  imgHearts[i].setAttribute("style","backgrond-color:black");
+  imgHearts[i].addEventListener("click",(e)=>{
+    e.preventDefault();
+  });
+}
