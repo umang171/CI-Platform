@@ -23,5 +23,5 @@ public partial class MissionApplication
 
     public virtual Mission? Mission { get; set; }
 
-    public virtual User2? User { get; set; }
+    public virtual User? User { get; set; }
 }

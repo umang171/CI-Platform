@@ -21,5 +21,5 @@ public partial class Country
 
     public virtual ICollection<Mission> Missions { get; } = new List<Mission>();
 
-    public virtual ICollection<User2> User2s { get; } = new List<User2>();
+    public virtual ICollection<User> Users { get; } = new List<User>();
 }

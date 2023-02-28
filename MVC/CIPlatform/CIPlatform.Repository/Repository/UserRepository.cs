@@ -21,6 +21,27 @@ namespace CIPlatform.Repository.Repository
             return Users;
         }
 
+        void IUserRepository.addUser(User user)
+        {
+            _ciPlatformDbContext.Users.Add(user);
+            _ciPlatformDbContext.SaveChanges();
+        }
+
+        User IUserRepository.findUser(string email)
+        {
+            return _ciPlatformDbContext.Users.Where(u => u.Email.Equals(email)).First();
+        }
+        User IUserRepository.findUser(int? id)
+        {
+            return _ciPlatformDbContext.Users.Where(u=> u.UserId == id).First();
+        }
+
+        void IUserRepository.updatePassword(User user)
+        {
+            _ciPlatformDbContext.Update(user);
+            _ciPlatformDbContext.SaveChanges();
+        }
+
         bool IUserRepository.validateEmail(string email)
         {
             return _ciPlatformDbContext.Users.Any(u => u.Email == email);
