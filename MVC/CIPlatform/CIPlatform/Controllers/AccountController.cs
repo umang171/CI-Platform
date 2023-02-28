@@ -3,6 +3,9 @@ using CIPlatform.Repository.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
 using CIPlatform.Entities.ViewModels;
 using CIPlatform.Entities.DataModels;
+using MailKit.Net.Smtp;
+using MimeKit;
+using CIPlatform.Helpers;
 
 namespace CIPlatform.Controllers
 {
@@ -10,9 +13,13 @@ namespace CIPlatform.Controllers
     {
         private int? tempId;
         private readonly IUserRepository _userRepository;
-        public AccountController(IUserRepository userRepository)
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IConfiguration configuration;
+        public AccountController(IUserRepository userRepository, IHttpContextAccessor httpContextAccessor, IConfiguration _configuration)
         {
             _userRepository = userRepository;
+            _httpContextAccessor = httpContextAccessor;
+            configuration = _configuration;
         }
         public IActionResult Login()
         {
@@ -59,6 +66,29 @@ namespace CIPlatform.Controllers
             if (ModelState.IsValid)
             {
                 var userObj=_userRepository.findUser(obj.EmailId);
+                int UserID = (int)userObj.UserId;
+                string welcomeMessage = "Welcome to CI platform, <br/> You can Reset your password using below link. </br>";
+                string path = "<a href=\"" + " https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/Account/NewPassword/" + UserID.ToString() + " \"  style=\"font-weight:500;color:blue;\" > Reset Password </a>";
+                MailHelper mailHelper = new MailHelper(configuration);
+                ViewBag.sendMail = mailHelper.Send(obj.EmailId, welcomeMessage + path);
+                
+
+                //var message = new MimeMessage();
+                //message.From.Add(new MailboxAddress("Manthan", "patelmanthan2000@gmail.com"));
+                //message.To.Add(new MailboxAddress("Umang", "gohelumang12@gmail.com"));
+                //message.Subject = "CI platform test message";
+                //message.Body = new TextPart("plain")
+                //{
+                //    Text = "Puppy"
+                //};
+                //using (var client=new SmtpClient())
+                //{
+                //    client.Connect("smtp.gmail.com",587,false);
+                //    client.Authenticate("patelmanthan2000@gmail.com", "Deeku@2631975");
+                //    client.Send(message);
+                //    client.Disconnect(true);
+                //}
+
                 return RedirectToAction("NewPassword",new {id=userObj.UserId});
             }
             return View();

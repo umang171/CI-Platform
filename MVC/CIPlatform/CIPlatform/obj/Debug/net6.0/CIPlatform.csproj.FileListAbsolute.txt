@@ -110,3 +110,6 @@ D:\Projects\CI platform\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\CIPlatform.Re
 D:\Projects\CI platform\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\CIPlatform.Entities.pdb
 D:\Projects\CI platform\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\CIPlatform.Repository.pdb
 D:\Projects\CI platform\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatform.csproj.CopyComplete
+D:\Projects\CI platform\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\MailKit.dll
+D:\Projects\CI platform\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\MimeKit.dll
+D:\Projects\CI platform\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\BouncyCastle.Crypto.dll
