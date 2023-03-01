@@ -49,6 +49,8 @@ public partial class CIPlatformDbContext : DbContext
 
     public virtual DbSet<PasswordReset> PasswordResets { get; set; }
 
+    public virtual DbSet<ResetPassword> ResetPasswords { get; set; }
+
     public virtual DbSet<Skill> Skills { get; set; }
 
     public virtual DbSet<Story> Stories { get; set; }
@@ -604,6 +606,23 @@ public partial class CIPlatformDbContext : DbContext
                 .HasMaxLength(191)
                 .IsUnicode(false)
                 .HasColumnName("email");
+            entity.Property(e => e.Token)
+                .HasMaxLength(191)
+                .IsUnicode(false)
+                .HasColumnName("token");
+        });
+
+        modelBuilder.Entity<ResetPassword>(entity =>
+        {
+            entity.HasKey(e => e.Email).HasName("PK__reset_pa__AB6E6165E411AB8F");
+
+            entity.ToTable("reset_password");
+
+            entity.Property(e => e.Email)
+                .HasMaxLength(191)
+                .IsUnicode(false)
+                .HasColumnName("email");
+            entity.Property(e => e.CreatedAt).HasColumnName("created_at");
             entity.Property(e => e.Token)
                 .HasMaxLength(191)
                 .IsUnicode(false)

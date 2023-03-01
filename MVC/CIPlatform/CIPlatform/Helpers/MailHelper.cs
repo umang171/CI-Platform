@@ -32,7 +32,7 @@ namespace CIPlatform.Helpers
                     Credentials = new NetworkCredential(username, password)
                 };
 
-                var mailMessage = new MailMessage("patelmanthan2000@gmail.com", to);
+                var mailMessage = new MailMessage("gohelumang12@gmail.com", to);
                 mailMessage.Subject = "Forget Password";
                 mailMessage.Body = content;
                 mailMessage.IsBodyHtml = true;
@@ -63,7 +63,7 @@ namespace CIPlatform.Helpers
                     Credentials = new NetworkCredential(username, password)
                 };
 
-                var mailMessage = new MailMessage("patelmanthan2000@gmail.com", to);
+                var mailMessage = new MailMessage("gohelumang12@gmail.com", to);
                 mailMessage.Subject = tital;
                 mailMessage.Body = content;
                 mailMessage.IsBodyHtml = true;

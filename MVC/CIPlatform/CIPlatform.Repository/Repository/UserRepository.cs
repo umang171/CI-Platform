@@ -21,6 +21,21 @@ namespace CIPlatform.Repository.Repository
             return Users;
         }
 
+        void IUserRepository.addResetPasswordToken(ResetPassword passwordResetObj)
+        {
+            bool isAlreadyGenerated=_ciPlatformDbContext.ResetPasswords.Any(u => u.Email.Equals(passwordResetObj.Email));
+            if (isAlreadyGenerated)
+            {
+                _ciPlatformDbContext.Update(passwordResetObj);
+
+            }
+            else
+            {
+                _ciPlatformDbContext.Add(passwordResetObj);
+            }
+            _ciPlatformDbContext.SaveChanges();
+        }
+
         void IUserRepository.addUser(User user)
         {
             _ciPlatformDbContext.Users.Add(user);
@@ -34,6 +49,17 @@ namespace CIPlatform.Repository.Repository
         User IUserRepository.findUser(int? id)
         {
             return _ciPlatformDbContext.Users.Where(u=> u.UserId == id).First();
+        }
+
+        ResetPassword IUserRepository.findUserByToken(string token)
+        {
+            return _ciPlatformDbContext.ResetPasswords.Where(u => u.Token == token).First();
+        }
+
+        void IUserRepository.removeResetPasswordToekn(ResetPassword obj)
+        {
+            _ciPlatformDbContext.Remove(obj);
+            _ciPlatformDbContext.SaveChanges();
         }
 
         void IUserRepository.updatePassword(User user)

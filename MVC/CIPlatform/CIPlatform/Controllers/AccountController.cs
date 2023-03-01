@@ -11,7 +11,6 @@ namespace CIPlatform.Controllers
 {
     public class AccountController : Controller
     {
-        private int? tempId;
         private readonly IUserRepository _userRepository;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IConfiguration configuration;
@@ -23,6 +22,7 @@ namespace CIPlatform.Controllers
         }
         public IActionResult Login()
         {
+
             return View();
         }
         [HttpPost]
@@ -46,7 +46,7 @@ namespace CIPlatform.Controllers
             }
             if (ModelState.IsValid)
             {
-                return RedirectToAction("Mission_Volunteer", "Mission");
+                return RedirectToAction("Index", "Mission");
             }
             return Login();
         }
@@ -65,31 +65,24 @@ namespace CIPlatform.Controllers
             }
             if (ModelState.IsValid)
             {
-                var userObj=_userRepository.findUser(obj.EmailId);
+
+                string uuid=Guid.NewGuid().ToString();
+                ResetPassword resetPasswordObj=new ResetPassword();
+                resetPasswordObj.Email = obj.EmailId;
+                resetPasswordObj.Token = uuid;
+                resetPasswordObj.CreatedAt = DateTime.Now;
+
+                _userRepository.addResetPasswordToken(resetPasswordObj);
+
+                var userObj = _userRepository.findUser(obj.EmailId);
                 int UserID = (int)userObj.UserId;
                 string welcomeMessage = "Welcome to CI platform, <br/> You can Reset your password using below link. </br>";
-                string path = "<a href=\"" + " https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/Account/NewPassword/" + UserID.ToString() + " \"  style=\"font-weight:500;color:blue;\" > Reset Password </a>";
+                string path = "<a href=\"" + " https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/Account/NewPassword?token=" + uuid + " \"  style=\"font-weight:500;color:blue;\" > Reset Password </a>";
                 MailHelper mailHelper = new MailHelper(configuration);
                 ViewBag.sendMail = mailHelper.Send(obj.EmailId, welcomeMessage + path);
-                
+        
 
-                //var message = new MimeMessage();
-                //message.From.Add(new MailboxAddress("Manthan", "patelmanthan2000@gmail.com"));
-                //message.To.Add(new MailboxAddress("Umang", "gohelumang12@gmail.com"));
-                //message.Subject = "CI platform test message";
-                //message.Body = new TextPart("plain")
-                //{
-                //    Text = "Puppy"
-                //};
-                //using (var client=new SmtpClient())
-                //{
-                //    client.Connect("smtp.gmail.com",587,false);
-                //    client.Authenticate("patelmanthan2000@gmail.com", "Deeku@2631975");
-                //    client.Send(message);
-                //    client.Disconnect(true);
-                //}
-
-                return RedirectToAction("NewPassword",new {id=userObj.UserId});
+                return View();
             }
             return View();
         }
@@ -126,21 +119,35 @@ namespace CIPlatform.Controllers
             return View();
         }
 
-        public IActionResult NewPassword(int? id)
+        public IActionResult NewPassword(string? token)
         {
-            tempId = id;
-            return View();
+
+            var resetObj = _userRepository.findUserByToken(token);
+            TimeSpan remainingTime = DateTime.Now-resetObj.CreatedAt;
+
+            int hour=remainingTime.Hours;
+
+            if (hour>=4)
+            {
+                _userRepository.removeResetPasswordToekn(resetObj);
+                return RedirectToAction("Login");
+            }
+            NewPasswordModel newPasswordModel=new NewPasswordModel();
+            newPasswordModel.token=token;
+            return View(newPasswordModel);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult NewPassword(NewPasswordModel obj,int? id)
+        public IActionResult NewPassword(NewPasswordModel obj)
         {
-            if (id != null)
+            string token = obj.token;
+            if (token != null)
             {
                 if (obj.NewPassword.Equals(obj.ConfirmPassword))
                 {
-                    var userObj = _userRepository.findUser(id);
+
+                    var resetObj = _userRepository.findUserByToken(token);
+                    var userObj = _userRepository.findUser(resetObj.Email);
                     if (!obj.NewPassword.Equals(userObj.Password))
                     {
                         userObj.Password = obj.NewPassword;

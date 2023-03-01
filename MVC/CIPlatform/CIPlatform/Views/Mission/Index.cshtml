@@ -1,23 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home</title>
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
-</head>
 
-<body>
   <div id="main-header" class="d-flex flex-row">
     <div id="menu-side-bar" class="position-absolute">
       <div id="close-img" class="p-3 img-close">
-        <img src="images/cancel.png" alt="" />
+        <img src="~/images/cancel.png" alt="" />
       </div>
       <div id="menu-heading" class="d-flex justify-content-center align-items-center">
         <a href="#" class="side-menu-items text-decoration-none text-dark w-100 m-1 p-1 px-2">Stories</a>
@@ -25,7 +16,7 @@
           <button class="dropdown-toggle border-0 bg-white w-100 d-flex justify-content-between align-items-center"
             type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Policy
-            <img src="images/drop-down.png" alt="" />
+            <img src="~/images/drop-down.png" alt="" />
           </button>
           <ul class="dropdown-menu w-100">
             <li><a class="dropdown-item" href="#">Action</a></li>
@@ -38,7 +29,7 @@
 
     <div id="filter-side-bar" class="position-absolute img-close p-2">
       <div id="filter-img-close" class="p-2 img-close">
-        <img src="images/cancel.png" alt="" />
+        <img src="~/images/cancel.png" alt="" />
       </div>
       <div id="side-search-nav" class="d-block d-flex flex-column">
         <div class="row d-flex flex-column mx-0" id="side-filter-dropdowns">
@@ -48,11 +39,11 @@
                 class="w-100 h-100 dropdown-toggle border-0 bg-white d-flex justify-content-between align-items-center"
                 type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Country
-                <img src="images/drop-down.png" alt="" />
+                <img src="~/images/drop-down.png" alt="" />
               </button>
               <ul class="dropdown-menu">
                 <li class="p-1">
-                  <input class="filter-check-item" type="checkbox" name="country" id="" value="India"/> India
+                  <input class="filter-check-item" onclick="demo()" type="checkbox" name="country" id="" value="India"/> India
                 </li>
                 <li class="p-1">
                   <input class="filter-check-item"  type="checkbox" name="country" id="" /> Bharat
@@ -66,11 +57,11 @@
           </div>
           <div class="filters col-3 py-5 m-1 w-100 filter-side-items">
             <div class="dropdown w-100 h-100 p-0">
-              <button  
+              <button
                 class="w-100 h-100 dropdown-toggle border-0 bg-transparent d-flex justify-content-between align-items-center"
                 type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 City
-                <img src="images/drop-down.png" alt="" />
+                <img src="~/images/drop-down.png" alt="" />
               </button>
               <ul class="dropdown-menu">
                 <li class="p-1">
@@ -88,11 +79,11 @@
           </div>
           <div class="filters col-3 py-5 m-1 w-100 filter-side-items">
             <div class="dropdown w-100 h-100 p-0">
-              <button 
+              <button
                 class="w-100 h-100 dropdown-toggle border-0 bg-transparent d-flex justify-content-between align-items-center"
                 type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Theme
-                <img src="images/drop-down.png" alt="" />
+                <img src="~/images/drop-down.png" alt="" />
               </button>
               <ul class="dropdown-menu">
                 <li class="p-1">
@@ -111,10 +102,11 @@
           </div>
           <div class="filters col-3 py-5 m-1 w-100 filter-side-items">
             <div class="dropdown w-100 h-100 p-0">
-              <button  class="w-100 h-100 dropdown-toggle border-0 bg-white d-flex justify-content-between align-items-center"
+              <button
+                class="w-100 h-100 dropdown-toggle border-0 bg-white d-flex justify-content-between align-items-center"
                 type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Skills
-                <img src="images/drop-down.png" alt="" />
+                <img src="~/images/drop-down.png" alt="" />
               </button>
               <ul class="dropdown-menu">
                 <li class="p-1">
@@ -139,10 +131,10 @@
         <div id="main-first-header" class="d-flex justify-content-between align-items-center mx-auto">
           <div id="leftNavbar" class="d-flex align-items-center">
             <div id="menuimg" class="d-flex d-block d-md-none justify-content-center align-items-center p-2 m-1 mx-3">
-              <img src="images/list.png" alt="" />
+              <img src="~/images/list.png" alt="" />
             </div>
 
-            <img src="images/logo.png" alt="" />
+            <img src="~/images/logo.png" alt="" />
 
             <div id="menu-heading" class="d-none d-md-flex justify-content-center align-items-center">
               <a href="#" class="text-decoration-none text-dark mx-3">Stories</a>
@@ -150,7 +142,7 @@
                 <button class="dropdown-toggle border-0 bg-white m-1" type="button" data-bs-toggle="dropdown"
                   aria-expanded="false">
                   Policy
-                  <img src="images/drop-down.png" alt="" />
+                  <img src="~/images/drop-down.png" alt="" />
                 </button>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="#">Action</a></li>
@@ -167,15 +159,15 @@
 
           <div id="rightNavbar" class="d-flex align-items-center">
             <button id="search-button" class="p-1 mx-3 border-0 bg-white d-sm-none">
-              <img src="images/search.png" alt="" />
+              <img src="~/images/search.png" alt="" />
             </button>
-            <a href=""><img id="user-profile-img" src="images/user-img.png" class="rounded-circle object-fit-cover"
+            <a href=""><img id="user-profile-img" src="~/images/user-img.png" class="rounded-circle object-fit-cover"
                 alt="" /></a>
             <div class="dropdown d-sm-block d-none">
               <button class="dropdown-toggle border-0 bg-white m-1" type="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 Umang Gohel
-                <img src="images/drop-down.png" alt="" />
+                <img src="~/images/drop-down.png" alt="" />
               </button>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">Action</a></li>
@@ -199,16 +191,16 @@
 
             <div id="search-nav" class="col-md-6 col-2 p-md-0 d-md-block d-flex justify-content-end align-items-center">
               <button class="d-md-none border-0 bg-transparent" type="button" id="filter-button">
-                <img src="images/filter.png" id="filter-image" alt="" />
+                <img src="~/images/filter.png" id="filter-image" alt="" />
               </button>
               <div class="row d-md-flex d-none mx-0" id="filter-dropdowns">
                 <div class="filters col-3 p-0">
                   <div class="dropdown w-100 h-100 p-0">
-                    <button 
+                    <button
                       class="w-100 h-100 dropdown-toggle border-0 bg-white d-flex justify-content-between align-items-center"
                       type="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Country
-                      <img src="images/drop-down.png" alt="" />
+                      <img src="~/images/drop-down.png" alt="" />
                     </button>
                     <ul class="dropdown-menu">
                       <li class="p-1">
@@ -232,7 +224,7 @@
                       class="w-100 h-100 dropdown-toggle border-0 bg-transparent d-flex justify-content-between align-items-center"
                       type="button" data-bs-toggle="dropdown" aria-expanded="false">
                       City
-                      <img src="images/drop-down.png" alt="" />
+                      <img src="~/images/drop-down.png" alt="" />
                     </button>
                     <ul class="dropdown-menu">
                       <li class="p-1">
@@ -256,7 +248,7 @@
                       class="w-100 h-100 dropdown-toggle border-0 bg-transparent d-flex justify-content-between align-items-center"
                       type="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Theme
-                      <img src="images/drop-down.png" alt="" />
+                      <img src="~/images/drop-down.png" alt="" />
                     </button>
                     <ul class="dropdown-menu">
                       <li class="p-1">
@@ -280,7 +272,7 @@
                       class="w-100 h-100 dropdown-toggle border-0 bg-white d-flex justify-content-between align-items-center"
                       type="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Skills
-                      <img src="images/drop-down.png" alt="" />
+                      <img src="~/images/drop-down.png" alt="" />
                     </button>
                     <ul class="dropdown-menu">
                       <li class="p-1">
@@ -312,18 +304,27 @@
 
   <div id="mission-content" class="container-fluid overflow-y-scroll">
     <!-- chips -->
-    <div class="home-chips border border-1 d-flex py-2 px-1 flex-wrap">
-      <div class="chips d-flex flex-wrap" style="gap:1vw;">
-        <div class="chip">
-          Tree Plantation
-          <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
-        </div>
-        <div class="chip">
-          Canada
-          <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+    <div id="filter-chips" class="my-1">
+      <div class="chips-test chips-initial overflow-hidden">
+        <div id="chips" class="d-flex overflow-scroll" style="max-width: 1420px">
+          <div class="chip-item border border-1 border-seconday rounded-5 p-1 m-2">
+            Tree Plantation
+            <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+          </div>
+          <div class="chip-item border border-1 border-seconday rounded-5 p-1 m-2">
+            Tree Plantation
+            <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+          </div>
+          <div class="chip-item border border-1 border-seconday rounded-5 p-1 m-2">
+            Tree Plantation
+            <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+          </div>
+          <div class="chip-item border border-1 border-seconday rounded-5 p-1 m-2">
+            Tree Plantation
+            <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+          </div>
         </div>
       </div>
-      <a class="close-chips" href="#">Clear All</a>
     </div>
 
     <!-- mission heading -->
@@ -338,10 +339,10 @@
           </select>
         </div>
         <button id="grid-view-btn" class="bg-transparent me-3 border-0">
-          <img src="images/grid.png" id="grid-logo" alt="" />
+          <img src="~/images/grid.png" id="grid-logo" alt="" />
         </button>
         <button id="list-view-btn" class="bg-transparent me-3 border-0">
-          <img src="images/list.png" id="list-logo" alt="" />
+          <img src="~/images/list.png" id="list-logo" alt="" />
         </button>
       </div>
 
@@ -356,18 +357,18 @@
         <div id="card-parent" class="col-lg-4 col-md-6 col-sm-6 col-12 grid-item h-auto mb-4">
           <div class="card">
             <img class="card-img-top w-100 card-img"
-              src="images/Grow-Trees-On-the-path-to-environment-sustainability-login.png" alt="Card image cap" />
+              src="~/images/Grow-Trees-On-the-path-to-environment-sustainability-login.png" alt="Card image cap" />
             <div id="card-image-content" class="d-flex flex-column justify-content-between  p-2">
               <div id="location-image" class="img-content p-2 rounded-5">
-                <img src="images/pin.png" alt="">
+                <img src="~/images/pin.png" alt="">
                 Torrento
               </div>
               <div class="d-flex flex-column align-items-end">
                 <div class="img-heart img-content p-2 rounded-5 m-1">
-                  <img src="images/heart.png" alt="">
+                  <img src="~/images/heart.png" alt="">
                 </div>
                 <div id="user-img" class="img-content p-2 rounded-5 m-1">
-                  <img src="images/user.png" alt="">
+                  <img src="~/images/user.png" alt="">
                 </div>
               </div>
             </div>
@@ -382,11 +383,11 @@
               <div id="star-content" class="d-flex align-items-center justify-content-between">
                 <p class="my-auto">Tree Canada</p>
                 <div class="d-flex align-items-center">
-                  <img src="images/selected-star.png" alt="">
-                  <img src="images/selected-star.png" alt="">
-                  <img src="images/selected-star.png" alt="">
-                  <img src="images/star.png" alt="">
-                  <img src="images/star.png" alt="">
+                  <img src="~/images/selected-star.png" alt="">
+                  <img src="~/images/selected-star.png" alt="">
+                  <img src="~/images/selected-star.png" alt="">
+                  <img src="~/images/star.png" alt="">
+                  <img src="~/images/star.png" alt="">
                 </div>
               </div>
             </div>
@@ -398,7 +399,7 @@
 
             <div id="seats-info-card" class="d-flex border border-1 position-relative pt-3 align-items-center justify-content-around">
               <div id="remain-seats-cards" class=" w-50 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                <img id="seats-left-image" src="images/Seats-left.png" alt="">
+                <img id="seats-left-image" src="~/images/Seats-left.png" alt="">
                 <div class="d-flex flex-column p-2 ">
                   <p id="count" class="m-0 p-0 fs-5">10</p>
                   <p id="seats-left-text" class="m-0 p-0">Seats left</p>
@@ -406,7 +407,7 @@
               </div>
 
               <div id="deadline-info-card" class=" w-40 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                <img id="deadline-image" src="images/deadline.png" alt="">
+                <img id="deadline-image" src="~/images/deadline.png" alt="">
                 <div class="d-flex flex-column p-2 ">
                   <p id="deadline-date" class="m-0 p-0 fs-5">19/11/2022</p>
                   <p id="deadline-text" class="m-0 p-0">Deadline</p>
@@ -416,7 +417,7 @@
             <div class="card-button-apply m-1 p-1 w-100 text-center">
               <button id="apply-btn" class="btn btn-outline-warning rounded-5 py-2 px-4 fs-5 ">
                 Apply
-                <img src="images/right-arrow.png" class="mx-1 ms-3" alt="">
+                <img src="~/images/right-arrow.png" class="mx-1 ms-3" alt="">
               </button>
             </div>
           </div>
@@ -425,18 +426,18 @@
         <div id="card-parent" class="col-lg-4 col-md-6 col-sm-6 col-12 grid-item h-auto mb-4">
           <div class="card">
             <img class="card-img-top w-100 card-img"
-              src="images/Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png" alt="Card image cap" />
+              src="~/images/Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png" alt="Card image cap" />
             <div id="card-image-content" class="d-flex flex-column justify-content-between  p-2">
               <div id="location-image" class="img-content p-2 rounded-5">
-                <img src="images/pin.png" alt="">
+                <img src="~/images/pin.png" alt="">
                 Torrento
               </div>
               <div class="d-flex flex-column align-items-end">
                 <div class="img-heart img-content p-2 rounded-5 m-1">
-                  <img src="images/heart.png" alt="">
+                  <img src="~/images/heart.png" alt="">
                 </div>
                 <div id="user-img" class="img-content p-2 rounded-5 m-1">
-                  <img src="images/user.png" alt="">
+                  <img src="~/images/user.png" alt="">
                 </div>
               </div>
             </div>
@@ -451,11 +452,11 @@
               <div id="star-content" class="d-flex align-items-center justify-content-between">
                 <p class="my-auto">Australian Paradise</p>
                 <div class="d-flex align-items-center">
-                  <img src="images/selected-star.png" alt="">
-                  <img src="images/selected-star.png" alt="">
-                  <img src="images/selected-star.png" alt="">
-                  <img src="images/star.png" alt="">
-                  <img src="images/star.png" alt="">
+                  <img src="~/images/selected-star.png" alt="">
+                  <img src="~/images/selected-star.png" alt="">
+                  <img src="~/images/selected-star.png" alt="">
+                  <img src="~/images/star.png" alt="">
+                  <img src="~/images/star.png" alt="">
                 </div>
               </div>
             </div>
@@ -466,7 +467,7 @@
 
             <div id="seats-info-card" class="d-flex border border-1 position-relative pt-3 align-items-center justify-content-around">
               <div id="remain-seats-cards" class=" w-50 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                <img id="seats-left-image" src="images/Seats-left.png" alt="">
+                <img id="seats-left-image" src="~/images/Seats-left.png" alt="">
                 <div class="d-flex flex-column p-2 ">
                   <p id="count" class="m-0 p-0 fs-5">10</p>
                   <p id="seats-left-text" class="m-0 p-0">Seats left</p>
@@ -474,7 +475,7 @@
               </div>
 
               <div id="deadline-info-card" class=" w-40 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                <img id="deadline-image" src="images/deadline.png" alt="">
+                <img id="deadline-image" src="~/images/deadline.png" alt="">
                 <div class="d-flex flex-column p-2 ">
                   <p id="deadline-date" class="m-0 p-0 fs-5">19/11/2022</p>
                   <p id="deadline-text" class="m-0 p-0">Deadline</p>
@@ -484,7 +485,7 @@
             <div class="card-button-apply m-1 p-1 w-100 text-center">
               <button id="apply-btn" class="btn btn-outline-warning rounded-5 py-2 px-4 fs-5 ">
                 Apply
-                <img src="images/right-arrow.png" class="mx-1 ms-3" alt="">
+                <img src="~/images/right-arrow.png" class="mx-1 ms-3" alt="">
               </button>
             </div>
           </div>
@@ -493,18 +494,18 @@
         <div id="card-parent" class="col-lg-4 col-md-6 col-sm-6 col-12 grid-item h-auto mb-4">
           <div class="card">
             <img class="card-img-top w-100 card-img"
-              src="images/Nourish-the-Children-in--African-country.png" alt="Card image cap" />
+              src="~/images/Nourish-the-Children-in--African-country.png" alt="Card image cap" />
             <div id="card-image-content" class="d-flex flex-column justify-content-between  p-2">
               <div id="location-image" class="img-content p-2 rounded-5">
-                <img src="images/pin.png" alt="">
+                <img src="~/images/pin.png" alt="">
                 Torrento
               </div>
               <div class="d-flex flex-column align-items-end">
                 <div class="img-heart img-content p-2 rounded-5 m-1">
-                  <img src="images/heart.png" alt="">
+                  <img src="~/images/heart.png" alt="">
                 </div>
                 <div id="user-img" class="img-content p-2 rounded-5 m-1">
-                  <img src="images/user.png" alt="">
+                  <img src="~/images/user.png" alt="">
                 </div>
               </div>
             </div>
@@ -519,11 +520,11 @@
               <div id="star-content" class="d-flex align-items-center justify-content-between">
                 <p class="my-auto">The Hunger</p>
                 <div class="d-flex align-items-center">
-                  <img src="images/selected-star.png" alt="">
-                  <img src="images/selected-star.png" alt="">
-                  <img src="images/selected-star.png" alt="">
-                  <img src="images/star.png" alt="">
-                  <img src="images/star.png" alt="">
+                  <img src="~/images/selected-star.png" alt="">
+                  <img src="~/images/selected-star.png" alt="">
+                  <img src="~/images/selected-star.png" alt="">
+                  <img src="~/images/star.png" alt="">
+                  <img src="~/images/star.png" alt="">
                 </div>
               </div>
             </div>
@@ -535,7 +536,7 @@
 
             <div id="seats-info-card" class="d-flex border border-1 position-relative pt-3 align-items-center justify-content-around">
               <div id="remain-seats-cards" class=" w-50 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                <img id="seats-left-image" src="images/Seats-left.png" alt="">
+                <img id="seats-left-image" src="~/images/Seats-left.png" alt="">
                 <div class="d-flex flex-column p-2 ">
                   <p id="count" class="m-0 p-0 fs-5">10</p>
                   <p id="seats-left-text" class="m-0 p-0">Seats left</p>
@@ -543,7 +544,7 @@
               </div>
 
               <div id="deadline-info-card" class=" w-40 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                <img id="deadline-image" src="images/deadline.png" alt="">
+                <img id="deadline-image" src="~/images/deadline.png" alt="">
                 <div class="d-flex flex-column p-2 ">
                   <p id="deadline-date" class="m-0 p-0 fs-5">19/11/2022</p>
                   <p id="deadline-text" class="m-0 p-0">Deadline</p>
@@ -553,7 +554,7 @@
             <div class="card-button-apply m-1 p-1 w-100 text-center">
               <button id="apply-btn" class="btn btn-outline-warning rounded-5 py-2 px-4 fs-5 ">
                 Apply
-                <img src="images/right-arrow.png" class="mx-1 ms-3" alt="">
+                <img src="~/images/right-arrow.png" class="mx-1 ms-3" alt="">
               </button>
             </div>
           </div>
@@ -561,18 +562,18 @@
         <div id="card-parent" class="col-lg-4 col-md-6 col-sm-6 col-12 grid-item h-auto mb-4">
           <div class="card">
             <img class="card-img-top w-100 card-img"
-              src="images/Grow-Trees-On-the-path-to-environment-sustainability-login.png" alt="Card image cap" />
+              src="~/images/Grow-Trees-On-the-path-to-environment-sustainability-login.png" alt="Card image cap" />
             <div id="card-image-content" class="d-flex flex-column justify-content-between  p-2">
               <div id="location-image" class="img-content p-2 rounded-5">
-                <img src="images/pin.png" alt="">
+                <img src="~/images/pin.png" alt="">
                 Torrento
               </div>
               <div class="d-flex flex-column align-items-end">
                 <div class="img-heart img-content p-2 rounded-5 m-1">
-                  <img src="images/heart.png" alt="">
+                  <img src="~/images/heart.png" alt="">
                 </div>
                 <div id="user-img" class="img-content p-2 rounded-5 m-1">
-                  <img src="images/user.png" alt="">
+                  <img src="~/images/user.png" alt="">
                 </div>
               </div>
             </div>
@@ -587,11 +588,11 @@
               <div id="star-content" class="d-flex align-items-center justify-content-between">
                 <p class="my-auto">Tree Canada</p>
                 <div class="d-flex align-items-center">
-                  <img src="images/selected-star.png" alt="">
-                  <img src="images/selected-star.png" alt="">
-                  <img src="images/selected-star.png" alt="">
-                  <img src="images/star.png" alt="">
-                  <img src="images/star.png" alt="">
+                  <img src="~/images/selected-star.png" alt="">
+                  <img src="~/images/selected-star.png" alt="">
+                  <img src="~/images/selected-star.png" alt="">
+                  <img src="~/images/star.png" alt="">
+                  <img src="~/images/star.png" alt="">
                 </div>
               </div>
             </div>
@@ -603,7 +604,7 @@
 
             <div id="seats-info-card" class="d-flex border border-1 position-relative pt-3 align-items-center justify-content-around">
               <div id="remain-seats-cards" class=" w-50 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                <img id="seats-left-image" src="images/Seats-left.png" alt="">
+                <img id="seats-left-image" src="~/images/Seats-left.png" alt="">
                 <div class="d-flex flex-column p-2 ">
                   <p id="count" class="m-0 p-0 fs-5">10</p>
                   <p id="seats-left-text" class="m-0 p-0">Seats left</p>
@@ -611,7 +612,7 @@
               </div>
 
               <div id="deadline-info-card" class=" w-40 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                <img id="deadline-image" src="images/deadline.png" alt="">
+                <img id="deadline-image" src="~/images/deadline.png" alt="">
                 <div class="d-flex flex-column p-2 ">
                   <p id="deadline-date" class="m-0 p-0 fs-5">19/11/2022</p>
                   <p id="deadline-text" class="m-0 p-0">Deadline</p>
@@ -621,7 +622,7 @@
             <div class="card-button-apply m-1 p-1 w-100 text-center">
               <button id="apply-btn" class="btn btn-outline-warning rounded-5 py-2 px-4 fs-5 ">
                 Apply
-                <img src="images/right-arrow.png" class="mx-1 ms-3" alt="">
+                <img src="~/images/right-arrow.png" class="mx-1 ms-3" alt="">
               </button>
             </div>
           </div>
@@ -630,18 +631,18 @@
         <div id="card-parent" class="col-lg-4 col-md-6 col-sm-6 col-12 grid-item h-auto mb-4">
           <div class="card">
             <img class="card-img-top w-100 card-img"
-              src="images/Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png" alt="Card image cap" />
+              src="~/images/Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png" alt="Card image cap" />
             <div id="card-image-content" class="d-flex flex-column justify-content-between  p-2">
               <div id="location-image" class="img-content p-2 rounded-5">
-                <img src="images/pin.png" alt="">
+                <img src="~/images/pin.png" alt="">
                 Torrento
               </div>
               <div class="d-flex flex-column align-items-end">
                 <div class="img-heart img-content p-2 rounded-5 m-1">
-                  <img src="images/heart.png" alt="">
+                  <img src="~/images/heart.png" alt="">
                 </div>
                 <div id="user-img" class="img-content p-2 rounded-5 m-1">
-                  <img src="images/user.png" alt="">
+                  <img src="~/images/user.png" alt="">
                 </div>
               </div>
             </div>
@@ -656,11 +657,11 @@
               <div id="star-content" class="d-flex align-items-center justify-content-between">
                 <p class="my-auto">Australian Paradise</p>
                 <div class="d-flex align-items-center">
-                  <img src="images/selected-star.png" alt="">
-                  <img src="images/selected-star.png" alt="">
-                  <img src="images/selected-star.png" alt="">
-                  <img src="images/star.png" alt="">
-                  <img src="images/star.png" alt="">
+                  <img src="~/images/selected-star.png" alt="">
+                  <img src="~/images/selected-star.png" alt="">
+                  <img src="~/images/selected-star.png" alt="">
+                  <img src="~/images/star.png" alt="">
+                  <img src="~/images/star.png" alt="">
                 </div>
               </div>
             </div>
@@ -671,7 +672,7 @@
 
             <div id="seats-info-card" class="d-flex border border-1 position-relative pt-3 align-items-center justify-content-around">
               <div id="remain-seats-cards" class=" w-50 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                <img id="seats-left-image" src="images/Seats-left.png" alt="">
+                <img id="seats-left-image" src="~/images/Seats-left.png" alt="">
                 <div class="d-flex flex-column p-2 ">
                   <p id="count" class="m-0 p-0 fs-5">10</p>
                   <p id="seats-left-text" class="m-0 p-0">Seats left</p>
@@ -679,7 +680,7 @@
               </div>
 
               <div id="deadline-info-card" class=" w-40 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                <img id="deadline-image" src="images/deadline.png" alt="">
+                <img id="deadline-image" src="~/images/deadline.png" alt="">
                 <div class="d-flex flex-column p-2 ">
                   <p id="deadline-date" class="m-0 p-0 fs-5">19/11/2022</p>
                   <p id="deadline-text" class="m-0 p-0">Deadline</p>
@@ -689,7 +690,7 @@
             <div class="card-button-apply m-1 p-1 w-100 text-center">
               <button id="apply-btn" class="btn btn-outline-warning rounded-5 py-2 px-4 fs-5 ">
                 Apply
-                <img src="images/right-arrow.png" class="mx-1 ms-3" alt="">
+                <img src="~/images/right-arrow.png" class="mx-1 ms-3" alt="">
               </button>
             </div>
           </div>
@@ -698,18 +699,18 @@
         <div id="card-parent" class="col-lg-4 col-md-6 col-sm-6 col-12 grid-item h-auto mb-4">
           <div class="card">
             <img class="card-img-top w-100 card-img"
-              src="images/Nourish-the-Children-in--African-country.png" alt="Card image cap" />
+              src="~/images/Nourish-the-Children-in--African-country.png" alt="Card image cap" />
             <div id="card-image-content" class="d-flex flex-column justify-content-between  p-2">
               <div id="location-image" class="img-content p-2 rounded-5">
-                <img src="images/pin.png" alt="">
+                <img src="~/images/pin.png" alt="">
                 Torrento
               </div>
               <div class="d-flex flex-column align-items-end">
                 <div class="img-heart img-content p-2 rounded-5 m-1">
-                  <img src="images/heart.png" alt="">
+                  <img src="~/images/heart.png" alt="">
                 </div>
                 <div id="user-img" class="img-content p-2 rounded-5 m-1">
-                  <img src="images/user.png" alt="">
+                  <img src="~/images/user.png" alt="">
                 </div>
               </div>
             </div>
@@ -724,11 +725,11 @@
               <div id="star-content" class="d-flex align-items-center justify-content-between">
                 <p class="my-auto">The Hunger</p>
                 <div class="d-flex align-items-center">
-                  <img src="images/selected-star.png" alt="">
-                  <img src="images/selected-star.png" alt="">
-                  <img src="images/selected-star.png" alt="">
-                  <img src="images/star.png" alt="">
-                  <img src="images/star.png" alt="">
+                  <img src="~/images/selected-star.png" alt="">
+                  <img src="~/images/selected-star.png" alt="">
+                  <img src="~/images/selected-star.png" alt="">
+                  <img src="~/images/star.png" alt="">
+                  <img src="~/images/star.png" alt="">
                 </div>
               </div>
             </div>
@@ -740,7 +741,7 @@
 
             <div id="seats-info-card" class="d-flex border border-1 position-relative pt-3 align-items-center justify-content-around">
               <div id="remain-seats-cards" class=" w-50 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                <img id="seats-left-image" src="images/Seats-left.png" alt="">
+                <img id="seats-left-image" src="~/images/Seats-left.png" alt="">
                 <div class="d-flex flex-column p-2 ">
                   <p id="count" class="m-0 p-0 fs-5">10</p>
                   <p id="seats-left-text" class="m-0 p-0">Seats left</p>
@@ -748,7 +749,7 @@
               </div>
 
               <div id="deadline-info-card" class=" w-40 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                <img id="deadline-image" src="images/deadline.png" alt="">
+                <img id="deadline-image" src="~/images/deadline.png" alt="">
                 <div class="d-flex flex-column p-2 ">
                   <p id="deadline-date" class="m-0 p-0 fs-5">19/11/2022</p>
                   <p id="deadline-text" class="m-0 p-0">Deadline</p>
@@ -758,7 +759,7 @@
             <div class="card-button-apply m-1 p-1 w-100 text-center">
               <button id="apply-btn" class="btn btn-outline-warning rounded-5 py-2 px-4 fs-5 ">
                 Apply
-                <img src="images/right-arrow.png" class="mx-1 ms-3" alt="">
+                <img src="~/images/right-arrow.png" class="mx-1 ms-3" alt="">
               </button>
             </div>
           </div>
@@ -766,18 +767,18 @@
         <div id="card-parent" class="col-lg-4 col-md-6 col-sm-6 col-12 grid-item h-auto mb-4">
           <div class="card">
             <img class="card-img-top w-100 card-img"
-              src="images/Grow-Trees-On-the-path-to-environment-sustainability-login.png" alt="Card image cap" />
+              src="~/images/Grow-Trees-On-the-path-to-environment-sustainability-login.png" alt="Card image cap" />
             <div id="card-image-content" class="d-flex flex-column justify-content-between  p-2">
               <div id="location-image" class="img-content p-2 rounded-5">
-                <img src="images/pin.png" alt="">
+                <img src="~/images/pin.png" alt="">
                 Torrento
               </div>
               <div class="d-flex flex-column align-items-end">
                 <div class="img-heart img-content p-2 rounded-5 m-1">
-                  <img src="images/heart.png" alt="">
+                  <img src="~/images/heart.png" alt="">
                 </div>
                 <div id="user-img" class="img-content p-2 rounded-5 m-1">
-                  <img src="images/user.png" alt="">
+                  <img src="~/images/user.png" alt="">
                 </div>
               </div>
             </div>
@@ -792,11 +793,11 @@
               <div id="star-content" class="d-flex align-items-center justify-content-between">
                 <p class="my-auto">Tree Canada</p>
                 <div class="d-flex align-items-center">
-                  <img src="images/selected-star.png" alt="">
-                  <img src="images/selected-star.png" alt="">
-                  <img src="images/selected-star.png" alt="">
-                  <img src="images/star.png" alt="">
-                  <img src="images/star.png" alt="">
+                  <img src="~/images/selected-star.png" alt="">
+                  <img src="~/images/selected-star.png" alt="">
+                  <img src="~/images/selected-star.png" alt="">
+                  <img src="~/images/star.png" alt="">
+                  <img src="~/images/star.png" alt="">
                 </div>
               </div>
             </div>
@@ -808,7 +809,7 @@
 
             <div id="seats-info-card" class="d-flex border border-1 position-relative pt-3 align-items-center justify-content-around">
               <div id="remain-seats-cards" class=" w-50 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                <img id="seats-left-image" src="images/Seats-left.png" alt="">
+                <img id="seats-left-image" src="~/images/Seats-left.png" alt="">
                 <div class="d-flex flex-column p-2 ">
                   <p id="count" class="m-0 p-0 fs-5">10</p>
                   <p id="seats-left-text" class="m-0 p-0">Seats left</p>
@@ -816,7 +817,7 @@
               </div>
 
               <div id="deadline-info-card" class=" w-40 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                <img id="deadline-image" src="images/deadline.png" alt="">
+                <img id="deadline-image" src="~/images/deadline.png" alt="">
                 <div class="d-flex flex-column p-2 ">
                   <p id="deadline-date" class="m-0 p-0 fs-5">19/11/2022</p>
                   <p id="deadline-text" class="m-0 p-0">Deadline</p>
@@ -826,7 +827,7 @@
             <div class="card-button-apply m-1 p-1 w-100 text-center">
               <button id="apply-btn" class="btn btn-outline-warning rounded-5 py-2 px-4 fs-5 ">
                 Apply
-                <img src="images/right-arrow.png" class="mx-1 ms-3" alt="">
+                <img src="~/images/right-arrow.png" class="mx-1 ms-3" alt="">
               </button>
             </div>
           </div>
@@ -835,18 +836,18 @@
         <div id="card-parent" class="col-lg-4 col-md-6 col-sm-6 col-12 grid-item h-auto mb-4">
           <div class="card">
             <img class="card-img-top w-100 card-img"
-              src="images/Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png" alt="Card image cap" />
+              src="~/images/Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png" alt="Card image cap" />
             <div id="card-image-content" class="d-flex flex-column justify-content-between  p-2">
               <div id="location-image" class="img-content p-2 rounded-5">
-                <img src="images/pin.png" alt="">
+                <img src="~/images/pin.png" alt="">
                 Torrento
               </div>
               <div class="d-flex flex-column align-items-end">
                 <div class="img-heart img-content p-2 rounded-5 m-1">
-                  <img src="images/heart.png" alt="">
+                  <img src="~/images/heart.png" alt="">
                 </div>
                 <div id="user-img" class="img-content p-2 rounded-5 m-1">
-                  <img src="images/user.png" alt="">
+                  <img src="~/images/user.png" alt="">
                 </div>
               </div>
             </div>
@@ -861,11 +862,11 @@
               <div id="star-content" class="d-flex align-items-center justify-content-between">
                 <p class="my-auto">Australian Paradise</p>
                 <div class="d-flex align-items-center">
-                  <img src="images/selected-star.png" alt="">
-                  <img src="images/selected-star.png" alt="">
-                  <img src="images/selected-star.png" alt="">
-                  <img src="images/star.png" alt="">
-                  <img src="images/star.png" alt="">
+                  <img src="~/images/selected-star.png" alt="">
+                  <img src="~/images/selected-star.png" alt="">
+                  <img src="~/images/selected-star.png" alt="">
+                  <img src="~/images/star.png" alt="">
+                  <img src="~/images/star.png" alt="">
                 </div>
               </div>
             </div>
@@ -876,7 +877,7 @@
 
             <div id="seats-info-card" class="d-flex border border-1 position-relative pt-3 align-items-center justify-content-around">
               <div id="remain-seats-cards" class=" w-50 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                <img id="seats-left-image" src="images/Seats-left.png" alt="">
+                <img id="seats-left-image" src="~/images/Seats-left.png" alt="">
                 <div class="d-flex flex-column p-2 ">
                   <p id="count" class="m-0 p-0 fs-5">10</p>
                   <p id="seats-left-text" class="m-0 p-0">Seats left</p>
@@ -884,7 +885,7 @@
               </div>
 
               <div id="deadline-info-card" class=" w-40 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                <img id="deadline-image" src="images/deadline.png" alt="">
+                <img id="deadline-image" src="~/images/deadline.png" alt="">
                 <div class="d-flex flex-column p-2 ">
                   <p id="deadline-date" class="m-0 p-0 fs-5">19/11/2022</p>
                   <p id="deadline-text" class="m-0 p-0">Deadline</p>
@@ -894,7 +895,7 @@
             <div class="card-button-apply m-1 p-1 w-100 text-center">
               <button id="apply-btn" class="btn btn-outline-warning rounded-5 py-2 px-4 fs-5 ">
                 Apply
-                <img src="images/right-arrow.png" class="mx-1 ms-3" alt="">
+                <img src="~/images/right-arrow.png" class="mx-1 ms-3" alt="">
               </button>
             </div>
           </div>
@@ -903,18 +904,18 @@
         <div id="card-parent" class="col-lg-4 col-md-6 col-sm-6 col-12 grid-item h-auto mb-4">
           <div class="card">
             <img class="card-img-top w-100 card-img"
-              src="images/Nourish-the-Children-in--African-country.png" alt="Card image cap" />
+              src="~/images/Nourish-the-Children-in--African-country.png" alt="Card image cap" />
             <div id="card-image-content" class="d-flex flex-column justify-content-between  p-2">
               <div id="location-image" class="img-content p-2 rounded-5">
-                <img src="images/pin.png" alt="">
+                <img src="~/images/pin.png" alt="">
                 Torrento
               </div>
               <div class="d-flex flex-column align-items-end">
                 <div class="img-heart img-content p-2 rounded-5 m-1">
-                  <img src="images/heart.png" alt="">
+                  <img src="~/images/heart.png" alt="">
                 </div>
                 <div id="user-img" class="img-content p-2 rounded-5 m-1">
-                  <img src="images/user.png" alt="">
+                  <img src="~/images/user.png" alt="">
                 </div>
               </div>
             </div>
@@ -929,11 +930,11 @@
               <div id="star-content" class="d-flex align-items-center justify-content-between">
                 <p class="my-auto">The Hunger</p>
                 <div class="d-flex align-items-center">
-                  <img src="images/selected-star.png" alt="">
-                  <img src="images/selected-star.png" alt="">
-                  <img src="images/selected-star.png" alt="">
-                  <img src="images/star.png" alt="">
-                  <img src="images/star.png" alt="">
+                  <img src="~/images/selected-star.png" alt="">
+                  <img src="~/images/selected-star.png" alt="">
+                  <img src="~/images/selected-star.png" alt="">
+                  <img src="~/images/star.png" alt="">
+                  <img src="~/images/star.png" alt="">
                 </div>
               </div>
             </div>
@@ -945,7 +946,7 @@
 
             <div id="seats-info-card" class="d-flex border border-1 position-relative pt-3 align-items-center justify-content-around">
               <div id="remain-seats-cards" class=" w-50 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                <img id="seats-left-image" src="images/Seats-left.png" alt="">
+                <img id="seats-left-image" src="~/images/Seats-left.png" alt="">
                 <div class="d-flex flex-column p-2 ">
                   <p id="count" class="m-0 p-0 fs-5">10</p>
                   <p id="seats-left-text" class="m-0 p-0">Seats left</p>
@@ -953,7 +954,7 @@
               </div>
 
               <div id="deadline-info-card" class=" w-40 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                <img id="deadline-image" src="images/deadline.png" alt="">
+                <img id="deadline-image" src="~/images/deadline.png" alt="">
                 <div class="d-flex flex-column p-2 ">
                   <p id="deadline-date" class="m-0 p-0 fs-5">19/11/2022</p>
                   <p id="deadline-text" class="m-0 p-0">Deadline</p>
@@ -963,7 +964,7 @@
             <div class="card-button-apply m-1 p-1 w-100 text-center">
               <button id="apply-btn" class="btn btn-outline-warning rounded-5 py-2 px-4 fs-5 ">
                 Apply
-                <img src="images/right-arrow.png" class="mx-1 ms-3" alt="">
+                <img src="~/images/right-arrow.png" class="mx-1 ms-3" alt="">
               </button>
             </div>
           </div>
@@ -980,20 +981,20 @@
         <div id="list-card-parent" class="col-12 d-flex p-0 mb-4 border shadow">
 
           <div class="list-image-part position-relative">
-            <img src="images/Grow-Trees-On-the-path-to-environment-sustainability-login.png" class="list-img" alt="" />
+            <img src="~/images/Grow-Trees-On-the-path-to-environment-sustainability-login.png" class="list-img" alt="" />
             <h5 class="list-card-theme-title bg-white rounded-5 p-2">Environment</h5>
             <div id="list-card-image-content"
               class="h-100 d-flex flex-column position-absolute  p-2">
               <div id="list-location-image" class="list-img-content p-2 rounded-5">
-                <img src="images/pin.png" alt="">
+                <img src="~/images/pin.png" alt="">
                 Torrento
               </div>
               <div class="d-flex flex-column align-items-end">
                 <div class="img-heart list-img-content p-2 rounded-5 m-1">
-                  <img src="images/heart.png" alt="">
+                  <img src="~/images/heart.png" alt="">
                 </div>
                 <div id="list-user-img" class="list-img-content p-2 rounded-5 m-1">
-                  <img src="images/user.png" alt="">
+                  <img src="~/images/user.png" alt="">
                 </div>
               </div>
             </div>
@@ -1011,17 +1012,17 @@
                 <div id="list-star-content" class="d-flex align-items-center justify-content-between">
                   <p class="my-auto">Tree Canada</p>
                   <div class="d-flex align-items-center">
-                    <img src="images/selected-star.png" alt="">
-                    <img src="images/selected-star.png" alt="">
-                    <img src="images/selected-star.png" alt="">
-                    <img src="images/star.png" alt="">
-                    <img src="images/star.png" alt="">
+                    <img src="~/images/selected-star.png" alt="">
+                    <img src="~/images/selected-star.png" alt="">
+                    <img src="~/images/selected-star.png" alt="">
+                    <img src="~/images/star.png" alt="">
+                    <img src="~/images/star.png" alt="">
                   </div>
                 </div>
                 <div class="list-card-button-apply m-1 p-1 w-100 ">
                   <button id="list-apply-btn" class="btn btn-outline-warning rounded-5 py-2 px-4 fs-5 ">
                     Apply
-                    <img src="images/right-arrow.png" class="mx-1 ms-3" alt="">
+                    <img src="~/images/right-arrow.png" class="mx-1 ms-3" alt="">
                   </button>
               </div>
 
@@ -1036,7 +1037,7 @@
               <div id="list-seats-info-card"
                 class="d-flex border-top border-1 position-relative pt-3 align-items-center justify-content-around">
                 <div id="remain-seats-cards" class=" w-50 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                  <img id="list-seats-left-image" src="images/Seats-left.png" alt="">
+                  <img id="list-seats-left-image" src="~/images/Seats-left.png" alt="">
                   <div class="d-flex flex-column p-2 ">
                     <p id="count" class="m-0 p-0 fs-5">10</p>
                     <p id="list-seats-left-text" class="m-0 p-0">Seats left</p>
@@ -1044,7 +1045,7 @@
                 </div>
               
                 <div id="list-deadline-info-card" class=" w-40 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                  <img id="list-deadline-image" src="images/deadline.png" alt="">
+                  <img id="list-deadline-image" src="~/images/deadline.png" alt="">
                   <div class="d-flex flex-column p-2 ">
                     <p id="list-deadline-date" class="m-0 p-0 fs-5">19/11/2022</p>
                     <p id="list-deadline-text" class="m-0 p-0">Deadline</p>
@@ -1060,20 +1061,20 @@
         <div id="list-card-parent" class="col-12 d-flex p-0 mb-4 border shadow">
 
           <div class="list-image-part position-relative">
-            <img src="images/Education-Supplies-for-Every--Pair-of-Shoes-Sold.png" class="list-img" alt="" />
+            <img src="~/images/Education-Supplies-for-Every--Pair-of-Shoes-Sold.png" class="list-img" alt="" />
             <h5 class="list-card-theme-title bg-white rounded-5 p-2">Environment</h5>
             <div id="list-card-image-content"
               class="h-100 d-flex flex-column position-absolute  p-2">
               <div id="list-location-image" class="list-img-content p-2 rounded-5">
-                <img src="images/pin.png" alt="">
+                <img src="~/images/pin.png" alt="">
                 Torrento
               </div>
               <div class="d-flex flex-column align-items-end">
                 <div class="img-heart list-img-content p-2 rounded-5 m-1">
-                  <img src="images/heart.png" alt="">
+                  <img src="~/images/heart.png" alt="">
                 </div>
                 <div id="list-user-img" class="list-img-content p-2 rounded-5 m-1">
-                  <img src="images/user.png" alt="">
+                  <img src="~/images/user.png" alt="">
                 </div>
               </div>
             </div>
@@ -1091,17 +1092,17 @@
                 <div id="list-star-content" class="d-flex align-items-center justify-content-between">
                   <p class="my-auto">Tree Canada</p>
                   <div class="d-flex align-items-center">
-                    <img src="images/selected-star.png" alt="">
-                    <img src="images/selected-star.png" alt="">
-                    <img src="images/selected-star.png" alt="">
-                    <img src="images/star.png" alt="">
-                    <img src="images/star.png" alt="">
+                    <img src="~/images/selected-star.png" alt="">
+                    <img src="~/images/selected-star.png" alt="">
+                    <img src="~/images/selected-star.png" alt="">
+                    <img src="~/images/star.png" alt="">
+                    <img src="~/images/star.png" alt="">
                   </div>
                 </div>
                 <div class="list-card-button-apply m-1 p-1 w-100 ">
                   <button id="list-apply-btn" class="btn btn-outline-warning rounded-5 py-2 px-4 fs-5 ">
                     Apply
-                    <img src="images/right-arrow.png" class="mx-1 ms-3" alt="">
+                    <img src="~/images/right-arrow.png" class="mx-1 ms-3" alt="">
                   </button>
               </div>
 
@@ -1116,7 +1117,7 @@
               <div id="list-seats-info-card"
                 class="d-flex border-top border-1 position-relative pt-3 align-items-center justify-content-around">
                 <div id="remain-seats-cards" class=" w-50 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                  <img id="list-seats-left-image" src="images/Seats-left.png" alt="">
+                  <img id="list-seats-left-image" src="~/images/Seats-left.png" alt="">
                   <div class="d-flex flex-column p-2 ">
                     <p id="count" class="m-0 p-0 fs-5">10</p>
                     <p id="list-seats-left-text" class="m-0 p-0">Seats left</p>
@@ -1124,7 +1125,7 @@
                 </div>
               
                 <div id="list-deadline-info-card" class=" w-40 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                  <img id="list-deadline-image" src="images/deadline.png" alt="">
+                  <img id="list-deadline-image" src="~/images/deadline.png" alt="">
                   <div class="d-flex flex-column p-2 ">
                     <p id="list-deadline-date" class="m-0 p-0 fs-5">19/11/2022</p>
                     <p id="list-deadline-text" class="m-0 p-0">Deadline</p>
@@ -1140,20 +1141,20 @@
         <div id="list-card-parent" class="col-12 d-flex p-0 mb-4 border shadow">
 
           <div class="list-image-part position-relative">
-            <img src="images/Nourish-the-Children-in--African-country.png" class="list-img" alt="" />
+            <img src="~/images/Nourish-the-Children-in--African-country.png" class="list-img" alt="" />
             <h5 class="list-card-theme-title bg-white rounded-5 p-2">Environment</h5>
             <div id="list-card-image-content"
               class="h-100 d-flex flex-column position-absolute  p-2">
               <div id="list-location-image" class="list-img-content p-2 rounded-5">
-                <img src="images/pin.png" alt="">
+                <img src="~/images/pin.png" alt="">
                 Torrento
               </div>
               <div class="d-flex flex-column align-items-end">
                 <div class="img-heart list-img-content p-2 rounded-5 m-1">
-                  <img src="images/heart.png" alt="">
+                  <img src="~/images/heart.png" alt="">
                 </div>
                 <div id="list-user-img" class="list-img-content p-2 rounded-5 m-1">
-                  <img src="images/user.png" alt="">
+                  <img src="~/images/user.png" alt="">
                 </div>
               </div>
             </div>
@@ -1171,17 +1172,17 @@
                 <div id="list-star-content" class="d-flex align-items-center justify-content-between">
                   <p class="my-auto">Tree Canada</p>
                   <div class="d-flex align-items-center">
-                    <img src="images/selected-star.png" alt="">
-                    <img src="images/selected-star.png" alt="">
-                    <img src="images/selected-star.png" alt="">
-                    <img src="images/star.png" alt="">
-                    <img src="images/star.png" alt="">
+                    <img src="~/images/selected-star.png" alt="">
+                    <img src="~/images/selected-star.png" alt="">
+                    <img src="~/images/selected-star.png" alt="">
+                    <img src="~/images/star.png" alt="">
+                    <img src="~/images/star.png" alt="">
                   </div>
                 </div>
                 <div class="list-card-button-apply m-1 p-1 w-100 ">
                   <button id="list-apply-btn" class="btn btn-outline-warning rounded-5 py-2 px-4 fs-5 ">
                     Apply
-                    <img src="images/right-arrow.png" class="mx-1 ms-3" alt="">
+                    <img src="~/images/right-arrow.png" class="mx-1 ms-3" alt="">
                   </button>
               </div>
 
@@ -1196,7 +1197,7 @@
               <div id="list-seats-info-card"
                 class="d-flex border-top border-1 position-relative pt-3 align-items-center justify-content-around">
                 <div id="remain-seats-cards" class=" w-50 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                  <img id="list-seats-left-image" src="images/Seats-left.png" alt="">
+                  <img id="list-seats-left-image" src="~/images/Seats-left.png" alt="">
                   <div class="d-flex flex-column p-2 ">
                     <p id="count" class="m-0 p-0 fs-5">10</p>
                     <p id="list-seats-left-text" class="m-0 p-0">Seats left</p>
@@ -1204,7 +1205,7 @@
                 </div>
               
                 <div id="list-deadline-info-card" class=" w-40 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                  <img id="list-deadline-image" src="images/deadline.png" alt="">
+                  <img id="list-deadline-image" src="~/images/deadline.png" alt="">
                   <div class="d-flex flex-column p-2 ">
                     <p id="list-deadline-date" class="m-0 p-0 fs-5">19/11/2022</p>
                     <p id="list-deadline-text" class="m-0 p-0">Deadline</p>
@@ -1255,13 +1256,7 @@
       <a href="#">Privacy Policy</a>
     </div>
   </footer>
-  <script src="js/bootstrap.bundle.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-  <script>
-   
-    </script>
-
-  <script src="js/custom.js"></script>
-</body>
-
-</html>
+ @section JavaScript
+{
+   <script type="text/javascript" src="~/js/custom.js"></script>
+}

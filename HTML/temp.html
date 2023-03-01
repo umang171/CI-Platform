@@ -1,23 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <input type="checkbox" name="a" class="checks" id="a">a
-    <input type="checkbox" name="b" class="checks" id="b">b
-    <input type="checkbox" name="c" class="checks" id="c">c
-    <script>
-        let checkItem=document.querySelectorAll(".checks");
-        console.log(checkItem[0]);
-        for (let i = 0; i < checkItem.length; i++) {
-             checkItem[i].addEventListener("click",(e)=>{
-                console.log("click");
-             });
-        }
+<script>
+    $(".close-chips").on("click", function (e) {
+    $(".home-chips .chip").remove();
+    $(this).hide();
+    });
+    // $(".close-chips").on("click", function(e){
+    // $(".close-chips").remove();
+    // });
+    $(".selection .dropdown-menu li a").on("click", function (e) {
+    $(".home-chips .chips").append(
+    '<div class="chip">' +
+    $(this).text() +
+    '<span class="closebtn" onclick="this.parentElement.style.display=\'none\'">&times;</span>'
+    );
+    $(".close-chips").show();
+    });
     </script>
-</body>
-</html>
+
+
+<div class="home-chips">
+    <div class="chips d-flex flex-wrap" style="gap:1vw;">
+    <div class="chip">
+    Tree Plantation
+    <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+    </div>
+    <div class="chip">
+    Canada
+    <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+    </div>
+    </div>
+    <a class="close-chips" href="#">Clear All</a>
+    </div>
+
+
+    
+.home-chips{
+    margin-left: 10vw;
+    width: 80vw;
+    margin-top: 2vh;
+    display: flex;
+    align-items: center;
+    }
+    .chip{
+    display: inline-block;
+    padding: 0 20px;
+    height: 40px;
+    font-size: 18px;
+    line-height: 40px;
+    border: 1px solid #333333;
+    border-radius: 25px;
+    margin-right: 1vw;
+    }
+    .closebtn{
+    padding-left: 7px;
+    color: #888;
+    font-weight: bold;
+    float: right;
+    font-size: 23px;
+    cursor: pointer;
+    }
+    .closebtn:hover{
+    color: #000;
+    }
+    .home-chips a{
+    text-decoration: none;
+    color: #333333;
+    font-size: 1.1rem;
+    }
+    @media only screen and (max-width: 500px){
+    .home-chips{
+    margin-top: 9vh;
+    margin-left: 3vw;
+    width: 100vw;
+    }
+    .chip{
+    font-size: 15px;
+    height: 30px;
+    line-height: 28px;
+    padding: 0 12px;
+    }
+    .closebtn{
+    font-size: 18px;
+    padding-left: 5px;
+    }
+    }

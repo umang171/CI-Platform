@@ -16,6 +16,6 @@ namespace CIPlatform.Entities.ViewModels
 
         [MinLength(8, ErrorMessage = "Please enter more than 8 characters")]
         public string ConfirmPassword { get; set; }
-        public string userId;
+        public string token { get; set; }
     }
 }

@@ -12,5 +12,6 @@ namespace CIPlatform.Entities.ViewModels
         [Required]
         [RegularExpression("^[a-z]{1}[a-z0-9]+@[a-z]+\\.+[a-z]{2,3}$", ErrorMessage = "Please enter valid e-mail address")]
         public string EmailId { get; set; }
+
     }
 }

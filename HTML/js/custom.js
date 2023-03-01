@@ -110,18 +110,19 @@ filtercloseImg.addEventListener("click", (e) => {
 // ====================================================================
 // chips items
 // ====================================================================
-let filterCheckItems=document.querySelectorAll(".filter-check-item");
-
-for (let i = 0; i < filterCheckItems.length; i++) {
-  filterCheckItems[i].addEventListener("click",(e)=>{
-    e.preventDefault();
+$(".close-chips").on("click", function (e) {
+  $(".home-chips .chip").remove();
+  $(this).hide();
   });
-  
-}
-
-function demo(){
-  console.log("hello");
-}
+  $(".selection .dropdown-menu li a").on("click", function (e) {
+    console.log("ckuckjhsfjk");
+  $(".home-chips .chips").append(
+  '<div class="chip">' +
+  $(this).text() +
+  '<span class="closebtn" onclick="this.parentElement.style.display=\'none\'">&times;</span>'
+  );
+  $(".close-chips").show();
+  });
 
 // ====================================================================
 // Toggle List and Grid view
@@ -157,3 +158,18 @@ for (let i = 0; i < imgHearts.length; i++) {
     e.preventDefault();
   });
 }
+
+// =============================================================================
+// display dropdown
+// =============================================================================
+
+
+function myFunctionDropDown(z) {
+  if (z.matches) { // If media query matches
+   console.log("wordijlsjf");
+  }
+}
+
+let z = window.matchMedia("(min-width: 768px)")
+myFunctionDropDown(y) // Call listener function at run time
+z.addListener(myFunction2) // Attach listener function on state changes
