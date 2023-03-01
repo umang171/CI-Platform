@@ -152,6 +152,7 @@ namespace CIPlatform.Controllers
                     {
                         userObj.Password = obj.NewPassword;
                         _userRepository.updatePassword(userObj);
+                        _userRepository.removeResetPasswordToekn(resetObj);
                         return RedirectToAction("Login");
                     }
                     else
