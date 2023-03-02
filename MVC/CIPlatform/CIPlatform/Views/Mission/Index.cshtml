@@ -1,4 +1,6 @@
-﻿@*
+﻿@model CIPlatform.Entities.ViewModels.MissionHomeModel
+
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
@@ -19,9 +21,8 @@
             <img src="~/images/drop-down.png" alt="" />
           </button>
           <ul class="dropdown-menu w-100">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="#">Volunteering</a></li>
+            <li><a class="dropdown-item" href="#">Sponsored</a></li>
           </ul>
         </div>
       </div>
@@ -42,17 +43,15 @@
                 <img src="~/images/drop-down.png" alt="" />
               </button>
               <ul class="dropdown-menu">
-                <li class="p-1">
-                  <input class="filter-check-item" onclick="demo()" type="checkbox" name="country" id="" value="India"/> India
-                </li>
-                <li class="p-1">
-                  <input class="filter-check-item"  type="checkbox" name="country" id="" /> Bharat
-                </li>
-                <li class="p-1">
-                  <input class="filter-check-item"  type="checkbox" name="country" id="" />
-                    Hindustan
-                </li>
-              </ul>
+                  @foreach (var country in Model.countryList)
+                  {
+                      <li class="p-1">
+                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
+                          @country.Name
+                          </a>
+                      </li>
+                  }                      
+                </ul>
             </div>
           </div>
           <div class="filters col-3 py-5 m-1 w-100 filter-side-items">
@@ -64,17 +63,14 @@
                 <img src="~/images/drop-down.png" alt="" />
               </button>
               <ul class="dropdown-menu">
-                <li class="p-1">
-                  <a class="dropdown-item " href="#"><input class="filter-check-item"  type="checkbox" name="country" id="" /> Rajkot</a>
-                </li>
-                <li class="p-1">
-                  <a class="dropdown-item " href="#"><input class="filter-check-item"  type="checkbox" name="country" id="" />
-                    Ahemdabad</a>
-                </li>
-                <li class="p-1">
-                  <a class="dropdown-item " href="#"><input class="filter-check-item"  type="checkbox" name="country" id="" /> Surat</a>
-                </li>
-              </ul>
+                     @foreach(var cities in Model.cityList){
+                        <li class="p-1">
+                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
+                          @cities.Name
+                          </a>
+                      </li>
+                     }
+                    </ul>
             </div>
           </div>
           <div class="filters col-3 py-5 m-1 w-100 filter-side-items">
@@ -86,18 +82,14 @@
                 <img src="~/images/drop-down.png" alt="" />
               </button>
               <ul class="dropdown-menu">
-                <li class="p-1">
-                  <a class="dropdown-item " href="#"><input class="filter-check-item"  type="checkbox" name="country" id="" />
-                    Environment</a>
-                </li>
-                <li class="p-1">
-                  <a class="dropdown-item " href="#"><input class="filter-check-item"  type="checkbox" name="country" id="" /> Social</a>
-                </li>
-                <li class="p-1">
-                  <a class="dropdown-item " href="#"><input class="filter-check-item"  type="checkbox" name="country" id="" />
-                    Community</a>
-                </li>
-              </ul>
+                     @foreach(var theme in Model.themeList){
+                        <li class="p-1">
+                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
+                        @theme.Title  
+                        </a>
+                      </li>
+                     }
+                    </ul>
             </div>
           </div>
           <div class="filters col-3 py-5 m-1 w-100 filter-side-items">
@@ -109,17 +101,14 @@
                 <img src="~/images/drop-down.png" alt="" />
               </button>
               <ul class="dropdown-menu">
-                <li class="p-1">
-                  <a class="dropdown-item " href="#"><input class="filter-check-item" type="checkbox" name="country" id="" /> Sports</a>
-                </li>
-                <li class="p-1">
-                  <a class="dropdown-item " href="#"><input class="filter-check-item"  type="checkbox" name="country" id="" /> Comedy</a>
-                </li>
-                <li class="p-1">
-                  <a class="dropdown-item " href="#"><input class="filter-check-item"  type="checkbox" name="country" id="" />
-                    Entertainment</a>
-                </li>
-              </ul>
+                     @foreach(var skill in @Model.skillList){
+                        <li class="p-1">
+                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
+                        @skill.SkillName
+                        </a>
+                      </li>
+                     }
+               </ul>
             </div>
           </div>
         </div>
@@ -166,15 +155,12 @@
             <div class="dropdown d-sm-block d-none">
               <button class="dropdown-toggle border-0 bg-white m-1" type="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                Umang Gohel
+                @Model.username
                 <img src="~/images/drop-down.png" alt="" />
               </button>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
-                </li>
+                <li><a class="dropdown-item" href="#">My Profile</a></li>
+                <li><a class="dropdown-item" href="#">Logout</a></li>                
               </ul>
             </div>
           </div>
@@ -202,19 +188,15 @@
                       Country
                       <img src="~/images/drop-down.png" alt="" />
                     </button>
-                    <ul class="dropdown-menu">
-                      <li class="p-1">
-                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                          India</a>
-                      </li>
-                      <li class="p-1">
-                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                          Bharat</a>
-                      </li>
-                      <li class="p-1">
-                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                          Hindustan</a>
-                      </li>
+                     <ul class="dropdown-menu">
+                      @foreach (var country in Model.countryList)
+                      {
+                          <li class="p-1">
+                            <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
+                              @country.Name
+                              </a>
+                          </li>
+                      }                      
                     </ul>
                   </div>
                 </div>
@@ -227,18 +209,13 @@
                       <img src="~/images/drop-down.png" alt="" />
                     </button>
                     <ul class="dropdown-menu">
-                      <li class="p-1">
+                     @foreach(var cities in Model.cityList){
+                        <li class="p-1">
                         <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                          Rajkot</a>
+                          @cities.Name
+                          </a>
                       </li>
-                      <li class="p-1">
-                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                          Ahemdabad</a>
-                      </li>
-                      <li class="p-1">
-                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                          Surat</a>
-                      </li>
+                     }
                     </ul>
                   </div>
                 </div>
@@ -251,18 +228,13 @@
                       <img src="~/images/drop-down.png" alt="" />
                     </button>
                     <ul class="dropdown-menu">
-                      <li class="p-1">
+                     @foreach(var theme in Model.themeList){
+                        <li class="p-1">
                         <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                          Environment</a>
+                        @theme.Title  
+                        </a>
                       </li>
-                      <li class="p-1">
-                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                          Social</a>
-                      </li>
-                      <li class="p-1">
-                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                          Community</a>
-                      </li>
+                     }
                     </ul>
                   </div>
                 </div>
@@ -275,18 +247,13 @@
                       <img src="~/images/drop-down.png" alt="" />
                     </button>
                     <ul class="dropdown-menu">
-                      <li class="p-1">
+                     @foreach(var skill in @Model.skillList){
+                        <li class="p-1">
                         <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                          Sports</a>
+                        @skill.SkillName
+                        </a>
                       </li>
-                      <li class="p-1">
-                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                          Comedy</a>
-                      </li>
-                      <li class="p-1">
-                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                          Entertainment</a>
-                      </li>
+                     }
                     </ul>
                   </div>
                 </div>
@@ -303,28 +270,14 @@
   </div>
 
   <div id="mission-content" class="container-fluid overflow-y-scroll">
-    <!-- chips -->
-    <div id="filter-chips" class="my-1">
-      <div class="chips-test chips-initial overflow-hidden">
-        <div id="chips" class="d-flex overflow-scroll" style="max-width: 1420px">
-          <div class="chip-item border border-1 border-seconday rounded-5 p-1 m-2">
-            Tree Plantation
-            <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
-          </div>
-          <div class="chip-item border border-1 border-seconday rounded-5 p-1 m-2">
-            Tree Plantation
-            <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
-          </div>
-          <div class="chip-item border border-1 border-seconday rounded-5 p-1 m-2">
-            Tree Plantation
-            <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
-          </div>
-          <div class="chip-item border border-1 border-seconday rounded-5 p-1 m-2">
-            Tree Plantation
-            <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
-          </div>
-        </div>
+   <!-- chips -->
+    <div class="home-chips border border-1 d-flex py-2 px-1 align-items-center flex-wrap">
+      <div class="chips d-flex flex-wrap mr-2">
+        
+        
       </div>
+      <p class="no-filter-text">No filters applied</p>
+      <a class="close-chips" style="display:none;" href="#">Clear All</a>
     </div>
 
     <!-- mission heading -->

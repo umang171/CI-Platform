@@ -111,18 +111,22 @@ filtercloseImg.addEventListener("click", (e) => {
 // ====================================================================
 // chips items
 // ====================================================================
-let filterCheckItems = document.querySelectorAll(".filter-check-item");
+$(".close-chips").on("click", function (e) {
+    $(".home-chips .chip").remove();
+    $(this).hide();
+    $(".no-filter-text").show();
+});
+$(".filters .dropdown-menu li a").on("click", function (e) {
+    $(".home-chips .chips").append(
+        '<div class="chip">' +
+        $(this).text() +
+        '<span class="closebtn" onclick="this.parentElement.style.display=\'none\'">&times;</span>'
+    );
+    $(".close-chips").show();
+    $(".no-filter-text").hide();
+    $(".close-chips").show();
+});
 
-for (let i = 0; i < filterCheckItems.length; i++) {
-    filterCheckItems[i].addEventListener("click", (e) => {
-        e.preventDefault();
-    });
-
-}
-
-function demo() {
-    console.log("hello");
-}
 
 // ====================================================================
 // Toggle List and Grid view

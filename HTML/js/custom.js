@@ -114,7 +114,7 @@ $(".close-chips").on("click", function (e) {
   $(".home-chips .chip").remove();
   $(this).hide();
   });
-  $(".selection .dropdown-menu li a").on("click", function (e) {
+  $(".filters .dropdown-menu li a").on("click", function (e) {
     console.log("ckuckjhsfjk");
   $(".home-chips .chips").append(
   '<div class="chip">' +

@@ -11,7 +11,19 @@ builder.Services.AddDbContext<CIPlatformDbContext>(options => options.UseSqlServ
     builder.Configuration.GetConnectionString("CIPlatform")
    )); 
 builder.Services.AddScoped<IUserRepository,UserRepository>();
+builder.Services.AddScoped<IMissionRepository, MissionRepository>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(100);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -28,7 +40,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
+app.UseSession();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Account}/{action=Login}/{id?}");

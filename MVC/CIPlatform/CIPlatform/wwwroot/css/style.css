@@ -490,6 +490,34 @@
     display: none; /* Safari and Chrome */
 }
 
+.chip {
+    padding: 8px 10px;
+    font-size: 18px;
+    border: 1px solid #333333;
+    border-radius: 25px;
+    margin:2px
+}
+
+.closebtn:hover {
+    color: #000;
+}
+
+.closebtn {
+    color: #888;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.no-filter-text {
+    font-size: 1.1rem;
+    margin: 0 10px;
+}
+.home-chips a {
+    text-decoration: none;
+    color: #333333;
+    font-size: 1.1rem;
+}
+
 #dropdown-sort {
     width: 171px;
     height: 38px;
@@ -1186,3 +1214,12 @@
         font-size: 12px !important;
     }
 }
+/*
+=======================================================================
+Remove this*/
+#mission-grid .card{
+    position:relative;
+    z-index:-1;
+}
+
+

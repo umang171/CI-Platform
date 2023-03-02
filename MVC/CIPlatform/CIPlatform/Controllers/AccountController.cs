@@ -46,6 +46,7 @@ namespace CIPlatform.Controllers
             }
             if (ModelState.IsValid)
             {
+                HttpContext.Session.SetString("useremail",emailId);
                 return RedirectToAction("Index", "Mission");
             }
             return Login();
@@ -121,8 +122,20 @@ namespace CIPlatform.Controllers
 
         public IActionResult NewPassword(string? token)
         {
+            ResetPassword resetObj;
+            try
+            {
+                resetObj = _userRepository.findUserByToken(token);
 
-            var resetObj = _userRepository.findUserByToken(token);
+                if (resetObj == null)
+                {
+                    throw new Exception("token not found");
+                }
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Login");
+            }
             TimeSpan remainingTime = DateTime.Now-resetObj.CreatedAt;
 
             int hour=remainingTime.Hours;
@@ -135,6 +148,8 @@ namespace CIPlatform.Controllers
             NewPasswordModel newPasswordModel=new NewPasswordModel();
             newPasswordModel.token=token;
             return View(newPasswordModel);
+        
+        
         }
 
         [HttpPost]
@@ -147,6 +162,10 @@ namespace CIPlatform.Controllers
                 {
 
                     var resetObj = _userRepository.findUserByToken(token);
+                    if (resetObj.Token == null)
+                    {
+                        return RedirectToAction("Login");
+                    }
                     var userObj = _userRepository.findUser(resetObj.Email);
                     if (!obj.NewPassword.Equals(userObj.Password))
                     {
@@ -165,7 +184,7 @@ namespace CIPlatform.Controllers
                     ModelState.AddModelError("ConfirmPassword", "Confirm password does not match to new password");
                 }
             }
-            return View();
+            return View(obj);
         }
 
 
