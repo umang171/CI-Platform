@@ -108,24 +108,6 @@ filtercloseImg.addEventListener("click", (e) => {
     }
     flagFilter++;
 });
-// ====================================================================
-// chips items
-// ====================================================================
-$(".close-chips").on("click", function (e) {
-    $(".home-chips .chip").remove();
-    $(this).hide();
-    $(".no-filter-text").show();
-});
-$(".filters .dropdown-menu li a").on("click", function (e) {
-    $(".home-chips .chips").append(
-        '<div class="chip">' +
-        $(this).text() +
-        '<span class="closebtn" onclick="this.parentElement.style.display=\'none\'">&times;</span>'
-    );
-    $(".close-chips").show();
-    $(".no-filter-text").hide();
-    $(".close-chips").show();
-});
 
 
 // ====================================================================
@@ -160,5 +142,154 @@ for (let i = 0; i < imgHearts.length; i++) {
     imgHearts[i].setAttribute("style", "backgrond-color:black");
     imgHearts[i].addEventListener("click", (e) => {
         e.preventDefault();
+    });
+}
+
+//==============================================================================
+//Ajax calls
+//==============================================================================
+$(document).ready(function () {
+    loadCountry();
+    loadCity();
+    loadTheme();
+    loadSkill();
+});
+function loadCountry() {
+    $.ajax({
+        type: "GET",
+        url: "/Mission/GetCountries",
+        data: "{}",
+        success: function (data) {
+            var str = "";
+            var countryDropDown = $(".countryDropDownList");
+            for (var j = 0; j < data["data"].length; j++) {
+                str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country"/> ' + data["data"][j].name + '</a></li>';
+            }
+            countryDropDown.append(str);
+            intializeChips();
+            
+        },
+        failure: function (response) {
+            alert("failure");
+        },
+        error: function (response) {
+            alert("Something went Worng");
+        }
+
+    });
+}
+function loadCity() {
+    $.ajax({
+        type: "GET",
+        url: "/Mission/GetCites",
+        data: "{}",
+        success: function (data) {
+            var str = "";
+            var cityDropDown = $(".cityDropDownList");
+            for (var j = 0; j < data["data"].length; j++) {
+                str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country"/> ' + data["data"][j].name + '</a></li>';
+            }
+            cityDropDown.append(str);
+            intializeChips();
+
+        },
+        failure: function (response) {
+            alert("failure");
+        },
+        error: function (response) {
+            alert("Something went Worng");
+        }
+
+    });
+}
+function loadTheme() {
+    $.ajax({
+        type: "GET",
+        url: "/Mission/GetThemes",
+        data: "{}",
+        success: function (data) {
+            var str = "";
+            var themeDropDown = $(".themeDropDownList");
+            for (var j = 0; j < data["data"].length; j++) {
+                str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country"/> ' + data["data"][j].title + '</a></li>';
+            }
+            themeDropDown.append(str);
+            intializeChips();
+
+        },
+        failure: function (response) {
+            alert("failure");
+        },
+        error: function (response) {
+            alert("Something went Worng");
+        }
+
+    });
+}
+
+function loadSkill() {
+    $.ajax({
+        type: "GET",
+        url: "/Mission/GetSkills",
+        data: "{}",
+        success: function (data) {
+            var str = "";
+            console.log(data);
+            var skillDropDown = $(".skillDropDownList");
+            for (var j = 0; j < data["data"].length; j++) {
+                str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country"/> ' + data["data"][j].skillName + '</a></li>';
+            }
+            skillDropDown.append(str);
+            intializeChips();
+
+        },
+        failure: function (response) {
+            alert("failure");
+        },
+        error: function (response) {
+            alert("Something went Worng");
+        }
+
+    });
+}
+
+
+
+
+
+
+
+
+// ====================================================================
+// chips items
+// ====================================================================
+$(".close-chips").on("click", function (e) {
+    $(".home-chips .chip").remove();
+    $(this).hide();
+    $(".no-filter-text").show();
+});
+$(".filters .dropdown-menu li a").on("click", function (e) {
+    console.log("hi");
+    $(".home-chips .chips").append(
+        '<div class="chip">' +
+        $(this).text() +
+        '<span class="closebtn" onclick="this.parentElement.style.display=\'none\'">&times;</span>'
+    );
+    $(".close-chips").show();
+    $(".no-filter-text").hide();
+    $(".close-chips").show();
+});
+
+function intializeChips() {
+    $(".filters .dropdown-menu li a").on("click", function (e) {
+        console.log("hi");
+        $(".home-chips .chips").append(
+            '<div class="chip">' +
+            $(this).text() +
+            '<span class="closebtn" onclick="this.parentElement.style.display=\'none\'">&times;</span>'
+        );
+        $(".close-chips").show();
+        $(".no-filter-text").hide();
+        $(".close-chips").show();
     });
 }

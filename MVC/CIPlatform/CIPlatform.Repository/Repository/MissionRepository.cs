@@ -40,7 +40,7 @@ namespace CIPlatform.Repository.Repository
 
         IEnumerable<Mission> IMissionRepository.GetMissions()
         {
-            return _ciPlatformDbContext.Missions.Include(mission=>mission.City).Include(city=>city.Country);
+            return _ciPlatformDbContext.Missions.Include(mission=>mission.City).Include(city=>city.Country).Include(mission=>mission.Theme);
         }
     }
 }

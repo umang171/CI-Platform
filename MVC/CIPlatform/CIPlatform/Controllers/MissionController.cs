@@ -46,5 +46,25 @@ namespace CIPlatform.Controllers
         {
             return View();
         }
+        public IActionResult GetCountries()
+        {
+            IEnumerable<Country> countries = _missionRepository.getCountries();
+            return Json(new { data = countries });
+        }
+        public IActionResult GetCites()
+        {
+            IEnumerable<City> cities = _missionRepository.getCities();
+            return Json(new { data = cities });
+        }
+        public IActionResult GetThemes()
+        {
+            IEnumerable<MissionTheme> missionThemes = _missionRepository.getThemes();
+            return Json(new { data = missionThemes });
+        }
+        public IActionResult GetSkills()
+        {
+            IEnumerable<Skill> missionSkills= _missionRepository.getSkills();
+            return Json(new { data = missionSkills });
+        }
     }
 }
