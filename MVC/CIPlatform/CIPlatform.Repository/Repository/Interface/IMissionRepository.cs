@@ -14,6 +14,6 @@ namespace CIPlatform.Repository.Repository.Interface
         public IEnumerable<MissionTheme> getThemes();
         public IEnumerable<Skill> getSkills();
 
-        public IEnumerable<Mission> GetMissions();
+        public IEnumerable<Mission> getMissions();
     }
 }

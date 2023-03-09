@@ -2,6 +2,9 @@
 using CIPlatform.Entities.ViewModels;
 using CIPlatform.Repository.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 
 namespace CIPlatform.Controllers
 {
@@ -19,10 +22,9 @@ namespace CIPlatform.Controllers
             string userSessionEmailId=HttpContext.Session.GetString("useremail");
             if ( userSessionEmailId == null)
             {
-                return RedirectToAction("Login","Account");
+                return RedirectToAction("Login", "Account");
             }
 
-            var missions = _missionRepository.GetMissions();
 
             MissionHomeModel missionHomeModel = new MissionHomeModel();
             User userObj = _userRepository.findUser(userSessionEmailId);
@@ -65,6 +67,19 @@ namespace CIPlatform.Controllers
         {
             IEnumerable<Skill> missionSkills= _missionRepository.getSkills();
             return Json(new { data = missionSkills });
+        }
+        public IActionResult getMissions()
+        {
+            IEnumerable<Mission> missions = _missionRepository.getMissions();
+
+            JsonSerializerOptions options = new()
+            {
+                ReferenceHandler = ReferenceHandler.IgnoreCycles,
+                WriteIndented = true
+            };
+
+            string mission = System.Text.Json.JsonSerializer.Serialize(missions, options);
+            return Json(new { data = mission });
         }
     }
 }

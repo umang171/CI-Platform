@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "MB0X1B/HLPHFk81W9Ossi49jjajCr7X2zsfA6VzNyK0=",
+  "Hash": "94m0rshbkvwkQodU9palTz6rlYWq8VG6/73Z3va4JCQ=",
   "Source": "CIPlatform",
   "BasePath": "_content/CIPlatform",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "CIPlatform\\wwwroot",
       "Source": "CIPlatform",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\bundle\\CIPlatform.styles.css",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\bundle\\CIPlatform.styles.css",
       "SourceId": "CIPlatform",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "CIPlatform.styles.css",
       "AssetKind": "All",
@@ -31,13 +31,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\bundle\\CIPlatform.styles.css"
+      "OriginalItemSpec": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\bundle\\CIPlatform.styles.css"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\CIPlatform.bundle.scp.css",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\CIPlatform.bundle.scp.css",
       "SourceId": "CIPlatform",
       "SourceType": "Computed",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "CIPlatform.bundle.scp.css",
       "AssetKind": "All",
@@ -48,13 +48,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\CIPlatform.bundle.scp.css"
+      "OriginalItemSpec": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\CIPlatform.bundle.scp.css"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\bootstrap.min.css",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\bootstrap.min.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "css/bootstrap.min.css",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap.min.css"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\site.css",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\site.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -85,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\style.css",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\css\\style.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "css/style.css",
       "AssetKind": "All",
@@ -102,10 +102,10 @@
       "OriginalItemSpec": "wwwroot\\css\\style.css"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\favicon.ico",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\favicon.ico",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -119,10 +119,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\404-Page-image.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\404-Page-image.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/404-Page-image.png",
       "AssetKind": "All",
@@ -136,10 +136,10 @@
       "OriginalItemSpec": "wwwroot\\images\\404-Page-image.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\achieved.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\achieved.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/achieved.png",
       "AssetKind": "All",
@@ -153,10 +153,10 @@
       "OriginalItemSpec": "wwwroot\\images\\achieved.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\add.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\add.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/add.png",
       "AssetKind": "All",
@@ -170,10 +170,10 @@
       "OriginalItemSpec": "wwwroot\\images\\add.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\add1.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\add1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/add1.png",
       "AssetKind": "All",
@@ -187,10 +187,10 @@
       "OriginalItemSpec": "wwwroot\\images\\add1.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Already-volunteered.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Already-volunteered.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/Already-volunteered.png",
       "AssetKind": "All",
@@ -204,10 +204,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Already-volunteered.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Animal-welfare-_-save-birds-campaign.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Animal-welfare-_-save-birds-campaign.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/Animal-welfare-_-save-birds-campaign.png",
       "AssetKind": "All",
@@ -221,10 +221,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Animal-welfare-_-save-birds-campaign.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Animal-welfare-_-save-birds-campaign-1.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Animal-welfare-_-save-birds-campaign-1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/Animal-welfare-_-save-birds-campaign-1.png",
       "AssetKind": "All",
@@ -238,10 +238,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Animal-welfare-_-save-birds-campaign-1.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\arrow.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\arrow.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/arrow.png",
       "AssetKind": "All",
@@ -255,10 +255,10 @@
       "OriginalItemSpec": "wwwroot\\images\\arrow.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\bell.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\bell.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/bell.png",
       "AssetKind": "All",
@@ -272,10 +272,10 @@
       "OriginalItemSpec": "wwwroot\\images\\bell.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\bell-big.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\bell-big.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/bell-big.png",
       "AssetKind": "All",
@@ -289,10 +289,10 @@
       "OriginalItemSpec": "wwwroot\\images\\bell-big.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\bin.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\bin.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/bin.png",
       "AssetKind": "All",
@@ -306,10 +306,10 @@
       "OriginalItemSpec": "wwwroot\\images\\bin.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\calender.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\calender.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/calender.png",
       "AssetKind": "All",
@@ -323,10 +323,10 @@
       "OriginalItemSpec": "wwwroot\\images\\calender.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\cancel.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\cancel.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/cancel.png",
       "AssetKind": "All",
@@ -340,10 +340,10 @@
       "OriginalItemSpec": "wwwroot\\images\\cancel.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\cancel1.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\cancel1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/cancel1.png",
       "AssetKind": "All",
@@ -357,10 +357,10 @@
       "OriginalItemSpec": "wwwroot\\images\\cancel1.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\checked.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\checked.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/checked.png",
       "AssetKind": "All",
@@ -374,10 +374,10 @@
       "OriginalItemSpec": "wwwroot\\images\\checked.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\cross.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\cross.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/cross.png",
       "AssetKind": "All",
@@ -391,10 +391,10 @@
       "OriginalItemSpec": "wwwroot\\images\\cross.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png",
       "AssetKind": "All",
@@ -408,10 +408,10 @@
       "OriginalItemSpec": "wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png",
       "AssetKind": "All",
@@ -425,10 +425,10 @@
       "OriginalItemSpec": "wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png",
       "AssetKind": "All",
@@ -442,10 +442,10 @@
       "OriginalItemSpec": "wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png",
       "AssetKind": "All",
@@ -459,10 +459,10 @@
       "OriginalItemSpec": "wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png",
       "AssetKind": "All",
@@ -476,10 +476,10 @@
       "OriginalItemSpec": "wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-5.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-5.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-5.png",
       "AssetKind": "All",
@@ -493,10 +493,10 @@
       "OriginalItemSpec": "wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-5.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-6.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-6.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-6.png",
       "AssetKind": "All",
@@ -510,10 +510,10 @@
       "OriginalItemSpec": "wwwroot\\images\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-6.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\deadline.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\deadline.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/deadline.png",
       "AssetKind": "All",
@@ -527,10 +527,10 @@
       "OriginalItemSpec": "wwwroot\\images\\deadline.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\doc.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\doc.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/doc.png",
       "AssetKind": "All",
@@ -544,10 +544,10 @@
       "OriginalItemSpec": "wwwroot\\images\\doc.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\down.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\down.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/down.png",
       "AssetKind": "All",
@@ -561,10 +561,10 @@
       "OriginalItemSpec": "wwwroot\\images\\down.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\drag-and-drop.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\drag-and-drop.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/drag-and-drop.png",
       "AssetKind": "All",
@@ -578,10 +578,10 @@
       "OriginalItemSpec": "wwwroot\\images\\drag-and-drop.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\drop-down.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\drop-down.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/drop-down.png",
       "AssetKind": "All",
@@ -595,10 +595,10 @@
       "OriginalItemSpec": "wwwroot\\images\\drop-down.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/Education-Supplies-for-Every--Pair-of-Shoes-Sold.png",
       "AssetKind": "All",
@@ -612,10 +612,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png",
       "AssetKind": "All",
@@ -629,10 +629,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-2.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-2.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/Education-Supplies-for-Every--Pair-of-Shoes-Sold-2.png",
       "AssetKind": "All",
@@ -646,10 +646,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-2.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\eye.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\eye.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/eye.png",
       "AssetKind": "All",
@@ -663,10 +663,10 @@
       "OriginalItemSpec": "wwwroot\\images\\eye.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\facebook.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\facebook.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/facebook.png",
       "AssetKind": "All",
@@ -680,10 +680,10 @@
       "OriginalItemSpec": "wwwroot\\images\\facebook.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\filter.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\filter.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/filter.png",
       "AssetKind": "All",
@@ -697,10 +697,10 @@
       "OriginalItemSpec": "wwwroot\\images\\filter.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\gift.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\gift.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/gift.png",
       "AssetKind": "All",
@@ -714,10 +714,10 @@
       "OriginalItemSpec": "wwwroot\\images\\gift.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\graph.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\graph.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/graph.png",
       "AssetKind": "All",
@@ -731,10 +731,10 @@
       "OriginalItemSpec": "wwwroot\\images\\graph.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\grid.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\grid.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/grid.png",
       "AssetKind": "All",
@@ -748,10 +748,10 @@
       "OriginalItemSpec": "wwwroot\\images\\grid.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/Grow-Trees-On-the-path-to-environment-sustainability.png",
       "AssetKind": "All",
@@ -765,10 +765,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-1.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/Grow-Trees-On-the-path-to-environment-sustainability-1.png",
       "AssetKind": "All",
@@ -782,10 +782,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-1.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-2.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-2.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/Grow-Trees-On-the-path-to-environment-sustainability-2.png",
       "AssetKind": "All",
@@ -799,10 +799,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-2.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-3.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-3.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/Grow-Trees-On-the-path-to-environment-sustainability-3.png",
       "AssetKind": "All",
@@ -816,10 +816,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-3.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-4.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-4.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/Grow-Trees-On-the-path-to-environment-sustainability-4.png",
       "AssetKind": "All",
@@ -833,10 +833,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-4.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-5.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-5.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/Grow-Trees-On-the-path-to-environment-sustainability-5.png",
       "AssetKind": "All",
@@ -850,10 +850,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-5.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-login.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-login.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/Grow-Trees-On-the-path-to-environment-sustainability-login.png",
       "AssetKind": "All",
@@ -867,10 +867,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Grow-Trees-On-the-path-to-environment-sustainability-login.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\heart.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\heart.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/heart.png",
       "AssetKind": "All",
@@ -884,10 +884,10 @@
       "OriginalItemSpec": "wwwroot\\images\\heart.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\heart1.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\heart1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/heart1.png",
       "AssetKind": "All",
@@ -901,10 +901,10 @@
       "OriginalItemSpec": "wwwroot\\images\\heart1.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\hours.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\hours.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/hours.png",
       "AssetKind": "All",
@@ -918,10 +918,10 @@
       "OriginalItemSpec": "wwwroot\\images\\hours.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\image.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\image.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/image.png",
       "AssetKind": "All",
@@ -935,10 +935,10 @@
       "OriginalItemSpec": "wwwroot\\images\\image.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\image1.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\image1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/image1.png",
       "AssetKind": "All",
@@ -952,10 +952,10 @@
       "OriginalItemSpec": "wwwroot\\images\\image1.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\image2.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\image2.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/image2.png",
       "AssetKind": "All",
@@ -969,10 +969,10 @@
       "OriginalItemSpec": "wwwroot\\images\\image2.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\img.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\img.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/img.png",
       "AssetKind": "All",
@@ -986,10 +986,10 @@
       "OriginalItemSpec": "wwwroot\\images\\img.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\img1.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\img1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/img1.png",
       "AssetKind": "All",
@@ -1003,10 +1003,10 @@
       "OriginalItemSpec": "wwwroot\\images\\img1.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\img11.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\img11.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/img11.png",
       "AssetKind": "All",
@@ -1020,10 +1020,10 @@
       "OriginalItemSpec": "wwwroot\\images\\img11.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\img2.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\img2.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/img2.png",
       "AssetKind": "All",
@@ -1037,10 +1037,10 @@
       "OriginalItemSpec": "wwwroot\\images\\img2.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\img22.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\img22.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/img22.png",
       "AssetKind": "All",
@@ -1054,10 +1054,10 @@
       "OriginalItemSpec": "wwwroot\\images\\img22.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\img3.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\img3.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/img3.png",
       "AssetKind": "All",
@@ -1071,10 +1071,10 @@
       "OriginalItemSpec": "wwwroot\\images\\img3.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\img33.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\img33.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/img33.png",
       "AssetKind": "All",
@@ -1088,10 +1088,10 @@
       "OriginalItemSpec": "wwwroot\\images\\img33.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\info.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\info.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/info.png",
       "AssetKind": "All",
@@ -1105,10 +1105,10 @@
       "OriginalItemSpec": "wwwroot\\images\\info.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\left.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\left.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/left.png",
       "AssetKind": "All",
@@ -1122,10 +1122,10 @@
       "OriginalItemSpec": "wwwroot\\images\\left.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\left1.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\left1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/left1.png",
       "AssetKind": "All",
@@ -1139,10 +1139,10 @@
       "OriginalItemSpec": "wwwroot\\images\\left1.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\linkedin.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\linkedin.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/linkedin.png",
       "AssetKind": "All",
@@ -1156,10 +1156,10 @@
       "OriginalItemSpec": "wwwroot\\images\\linkedin.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\list.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\list.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/list.png",
       "AssetKind": "All",
@@ -1173,10 +1173,10 @@
       "OriginalItemSpec": "wwwroot\\images\\list.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\logo.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\logo.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/logo.png",
       "AssetKind": "All",
@@ -1190,10 +1190,10 @@
       "OriginalItemSpec": "wwwroot\\images\\logo.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\mission.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\mission.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/mission.png",
       "AssetKind": "All",
@@ -1207,10 +1207,10 @@
       "OriginalItemSpec": "wwwroot\\images\\mission.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\my-story.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\my-story.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/my-story.png",
       "AssetKind": "All",
@@ -1224,10 +1224,10 @@
       "OriginalItemSpec": "wwwroot\\images\\my-story.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\new-message.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\new-message.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/new-message.png",
       "AssetKind": "All",
@@ -1241,10 +1241,10 @@
       "OriginalItemSpec": "wwwroot\\images\\new-message.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\next.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\next.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/next.png",
       "AssetKind": "All",
@@ -1258,10 +1258,10 @@
       "OriginalItemSpec": "wwwroot\\images\\next.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Nourish-the-Children-in--African-country.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Nourish-the-Children-in--African-country.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/Nourish-the-Children-in--African-country.png",
       "AssetKind": "All",
@@ -1275,10 +1275,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Nourish-the-Children-in--African-country.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Nourish-the-Children-in--African-country-1.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Nourish-the-Children-in--African-country-1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/Nourish-the-Children-in--African-country-1.png",
       "AssetKind": "All",
@@ -1292,10 +1292,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Nourish-the-Children-in--African-country-1.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Open-Volunteering-Requests.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Open-Volunteering-Requests.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/Open-Volunteering-Requests.png",
       "AssetKind": "All",
@@ -1309,10 +1309,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Open-Volunteering-Requests.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\organization.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\organization.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/organization.png",
       "AssetKind": "All",
@@ -1326,10 +1326,10 @@
       "OriginalItemSpec": "wwwroot\\images\\organization.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\pdf.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\pdf.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/pdf.png",
       "AssetKind": "All",
@@ -1343,10 +1343,10 @@
       "OriginalItemSpec": "wwwroot\\images\\pdf.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\pin.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\pin.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/pin.png",
       "AssetKind": "All",
@@ -1360,10 +1360,10 @@
       "OriginalItemSpec": "wwwroot\\images\\pin.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\pin1.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\pin1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/pin1.png",
       "AssetKind": "All",
@@ -1377,10 +1377,10 @@
       "OriginalItemSpec": "wwwroot\\images\\pin1.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Plantation-and-Afforestation-programme.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Plantation-and-Afforestation-programme.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/Plantation-and-Afforestation-programme.png",
       "AssetKind": "All",
@@ -1394,10 +1394,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Plantation-and-Afforestation-programme.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Plantation-and-Afforestation-programme-1.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Plantation-and-Afforestation-programme-1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/Plantation-and-Afforestation-programme-1.png",
       "AssetKind": "All",
@@ -1411,10 +1411,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Plantation-and-Afforestation-programme-1.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\previous.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\previous.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/previous.png",
       "AssetKind": "All",
@@ -1428,10 +1428,10 @@
       "OriginalItemSpec": "wwwroot\\images\\previous.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\right.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\right.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/right.png",
       "AssetKind": "All",
@@ -1445,10 +1445,10 @@
       "OriginalItemSpec": "wwwroot\\images\\right.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\right-arrow.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\right-arrow.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/right-arrow.png",
       "AssetKind": "All",
@@ -1462,10 +1462,10 @@
       "OriginalItemSpec": "wwwroot\\images\\right-arrow.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\right-arrow1.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\right-arrow1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/right-arrow1.png",
       "AssetKind": "All",
@@ -1479,10 +1479,10 @@
       "OriginalItemSpec": "wwwroot\\images\\right-arrow1.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\right-arrow2.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\right-arrow2.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/right-arrow2.png",
       "AssetKind": "All",
@@ -1496,10 +1496,10 @@
       "OriginalItemSpec": "wwwroot\\images\\right-arrow2.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\right-white.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\right-white.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/right-white.png",
       "AssetKind": "All",
@@ -1513,10 +1513,10 @@
       "OriginalItemSpec": "wwwroot\\images\\right-white.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\search.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\search.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/search.png",
       "AssetKind": "All",
@@ -1530,10 +1530,10 @@
       "OriginalItemSpec": "wwwroot\\images\\search.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Seats-left.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Seats-left.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/Seats-left.png",
       "AssetKind": "All",
@@ -1547,10 +1547,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Seats-left.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\selected-star.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\selected-star.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/selected-star.png",
       "AssetKind": "All",
@@ -1564,10 +1564,10 @@
       "OriginalItemSpec": "wwwroot\\images\\selected-star.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\settings.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\settings.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/settings.png",
       "AssetKind": "All",
@@ -1581,10 +1581,10 @@
       "OriginalItemSpec": "wwwroot\\images\\settings.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\star.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\star.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/star.png",
       "AssetKind": "All",
@@ -1598,10 +1598,10 @@
       "OriginalItemSpec": "wwwroot\\images\\star.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\star-empty.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\star-empty.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/star-empty.png",
       "AssetKind": "All",
@@ -1615,10 +1615,10 @@
       "OriginalItemSpec": "wwwroot\\images\\star-empty.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Thumbs.db",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Thumbs.db",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/Thumbs.db",
       "AssetKind": "All",
@@ -1632,10 +1632,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Thumbs.db"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\twitter.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\twitter.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/twitter.png",
       "AssetKind": "All",
@@ -1649,10 +1649,10 @@
       "OriginalItemSpec": "wwwroot\\images\\twitter.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\up.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\up.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/up.png",
       "AssetKind": "All",
@@ -1666,10 +1666,10 @@
       "OriginalItemSpec": "wwwroot\\images\\up.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\user.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\user.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/user.png",
       "AssetKind": "All",
@@ -1683,10 +1683,10 @@
       "OriginalItemSpec": "wwwroot\\images\\user.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\user1.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\user1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/user1.png",
       "AssetKind": "All",
@@ -1700,10 +1700,10 @@
       "OriginalItemSpec": "wwwroot\\images\\user1.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\user-img.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\user-img.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/user-img.png",
       "AssetKind": "All",
@@ -1717,10 +1717,10 @@
       "OriginalItemSpec": "wwwroot\\images\\user-img.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\user-img-large.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\user-img-large.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/user-img-large.png",
       "AssetKind": "All",
@@ -1734,10 +1734,10 @@
       "OriginalItemSpec": "wwwroot\\images\\user-img-large.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\volunteer1.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\volunteer1.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/volunteer1.png",
       "AssetKind": "All",
@@ -1751,10 +1751,10 @@
       "OriginalItemSpec": "wwwroot\\images\\volunteer1.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\volunteer2.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\volunteer2.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/volunteer2.png",
       "AssetKind": "All",
@@ -1768,10 +1768,10 @@
       "OriginalItemSpec": "wwwroot\\images\\volunteer2.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\volunteer3.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\volunteer3.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/volunteer3.png",
       "AssetKind": "All",
@@ -1785,10 +1785,10 @@
       "OriginalItemSpec": "wwwroot\\images\\volunteer3.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\volunteer4.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\volunteer4.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/volunteer4.png",
       "AssetKind": "All",
@@ -1802,10 +1802,10 @@
       "OriginalItemSpec": "wwwroot\\images\\volunteer4.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\volunteer5.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\volunteer5.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/volunteer5.png",
       "AssetKind": "All",
@@ -1819,10 +1819,10 @@
       "OriginalItemSpec": "wwwroot\\images\\volunteer5.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\volunteer6.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\volunteer6.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/volunteer6.png",
       "AssetKind": "All",
@@ -1836,10 +1836,10 @@
       "OriginalItemSpec": "wwwroot\\images\\volunteer6.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\volunteer7.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\volunteer7.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/volunteer7.png",
       "AssetKind": "All",
@@ -1853,10 +1853,10 @@
       "OriginalItemSpec": "wwwroot\\images\\volunteer7.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\volunteer8.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\volunteer8.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/volunteer8.png",
       "AssetKind": "All",
@@ -1870,10 +1870,10 @@
       "OriginalItemSpec": "wwwroot\\images\\volunteer8.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\volunteer9.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\volunteer9.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/volunteer9.png",
       "AssetKind": "All",
@@ -1887,10 +1887,10 @@
       "OriginalItemSpec": "wwwroot\\images\\volunteer9.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Volunteering-Rank.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Volunteering-Rank.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/Volunteering-Rank.png",
       "AssetKind": "All",
@@ -1904,10 +1904,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Volunteering-Rank.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Voted-Missions.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\Voted-Missions.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/Voted-Missions.png",
       "AssetKind": "All",
@@ -1921,10 +1921,10 @@
       "OriginalItemSpec": "wwwroot\\images\\Voted-Missions.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\web.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\web.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/web.png",
       "AssetKind": "All",
@@ -1938,10 +1938,10 @@
       "OriginalItemSpec": "wwwroot\\images\\web.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\xlsx.png",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\xlsx.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "images/xlsx.png",
       "AssetKind": "All",
@@ -1955,10 +1955,10 @@
       "OriginalItemSpec": "wwwroot\\images\\xlsx.png"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\custom.js",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\custom.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "js/custom.js",
       "AssetKind": "All",
@@ -1972,10 +1972,10 @@
       "OriginalItemSpec": "wwwroot\\js\\custom.js"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\site.js",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\site.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "js/site.js",
       "AssetKind": "All",
@@ -1989,10 +1989,10 @@
       "OriginalItemSpec": "wwwroot\\js\\site.js"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\volunteer_mission.js",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\volunteer_mission.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "js/volunteer_mission.js",
       "AssetKind": "All",
@@ -2006,10 +2006,10 @@
       "OriginalItemSpec": "wwwroot\\js\\volunteer_mission.js"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css",
       "AssetKind": "All",
@@ -2023,10 +2023,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.css.map",
       "AssetKind": "All",
@@ -2040,10 +2040,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css",
       "AssetKind": "All",
@@ -2057,10 +2057,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -2074,10 +2074,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css",
       "AssetKind": "All",
@@ -2091,10 +2091,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.css.map",
       "AssetKind": "All",
@@ -2108,10 +2108,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css",
       "AssetKind": "All",
@@ -2125,10 +2125,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
       "AssetKind": "All",
@@ -2142,10 +2142,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css",
       "AssetKind": "All",
@@ -2159,10 +2159,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.css.map",
       "AssetKind": "All",
@@ -2176,10 +2176,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css",
       "AssetKind": "All",
@@ -2193,10 +2193,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
       "AssetKind": "All",
@@ -2210,10 +2210,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
       "AssetKind": "All",
@@ -2227,10 +2227,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
       "AssetKind": "All",
@@ -2244,10 +2244,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
       "AssetKind": "All",
@@ -2261,10 +2261,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
       "AssetKind": "All",
@@ -2278,10 +2278,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css",
       "AssetKind": "All",
@@ -2295,10 +2295,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.css.map",
       "AssetKind": "All",
@@ -2312,10 +2312,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css",
       "AssetKind": "All",
@@ -2329,10 +2329,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
       "AssetKind": "All",
@@ -2346,10 +2346,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
       "AssetKind": "All",
@@ -2363,10 +2363,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
       "AssetKind": "All",
@@ -2380,10 +2380,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
       "AssetKind": "All",
@@ -2397,10 +2397,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
       "AssetKind": "All",
@@ -2414,10 +2414,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css",
       "AssetKind": "All",
@@ -2431,10 +2431,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.css.map",
       "AssetKind": "All",
@@ -2448,10 +2448,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css",
       "AssetKind": "All",
@@ -2465,10 +2465,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
       "AssetKind": "All",
@@ -2482,10 +2482,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
       "AssetKind": "All",
@@ -2499,10 +2499,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
       "AssetKind": "All",
@@ -2516,10 +2516,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
       "AssetKind": "All",
@@ -2533,10 +2533,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
       "AssetKind": "All",
@@ -2550,10 +2550,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js",
       "AssetKind": "All",
@@ -2567,10 +2567,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.js.map",
       "AssetKind": "All",
@@ -2584,10 +2584,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js",
       "AssetKind": "All",
@@ -2601,10 +2601,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
       "AssetKind": "All",
@@ -2618,10 +2618,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js",
       "AssetKind": "All",
@@ -2635,10 +2635,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.js.map",
       "AssetKind": "All",
@@ -2652,10 +2652,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js",
       "AssetKind": "All",
@@ -2669,10 +2669,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
       "AssetKind": "All",
@@ -2686,10 +2686,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js",
       "AssetKind": "All",
@@ -2703,10 +2703,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.js.map",
       "AssetKind": "All",
@@ -2720,10 +2720,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js",
       "AssetKind": "All",
@@ -2737,10 +2737,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/dist/js/bootstrap.min.js.map",
       "AssetKind": "All",
@@ -2754,10 +2754,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\bootstrap\\LICENSE",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/bootstrap/LICENSE",
       "AssetKind": "All",
@@ -2771,10 +2771,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap\\LICENSE"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery/dist/jquery.js",
       "AssetKind": "All",
@@ -2788,10 +2788,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery/dist/jquery.min.js",
       "AssetKind": "All",
@@ -2805,10 +2805,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery/dist/jquery.min.map",
       "AssetKind": "All",
@@ -2822,10 +2822,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery/LICENSE.txt",
       "AssetKind": "All",
@@ -2839,10 +2839,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.js",
       "AssetKind": "All",
@@ -2856,10 +2856,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery-validation/dist/additional-methods.min.js",
       "AssetKind": "All",
@@ -2873,10 +2873,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.js",
       "AssetKind": "All",
@@ -2890,10 +2890,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery-validation/dist/jquery.validate.min.js",
       "AssetKind": "All",
@@ -2907,10 +2907,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery-validation/LICENSE.md",
       "AssetKind": "All",
@@ -2924,10 +2924,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
       "AssetKind": "All",
@@ -2941,10 +2941,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
       "AssetKind": "All",
@@ -2958,10 +2958,10 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Identity": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "ContentRoot": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
       "BasePath": "_content/CIPlatform",
       "RelativePath": "lib/jquery-validation-unobtrusive/LICENSE.txt",
       "AssetKind": "All",

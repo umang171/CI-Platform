@@ -2,6 +2,7 @@ using CIPlatform.Entities.DataModels;
 using CIPlatform.Repository.Repository;
 using CIPlatform.Repository.Repository.Interface;
 using Microsoft.EntityFrameworkCore;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 

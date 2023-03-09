@@ -38,9 +38,9 @@ namespace CIPlatform.Repository.Repository
             return _ciPlatformDbContext.MissionThemes;
         }
 
-        IEnumerable<Mission> IMissionRepository.GetMissions()
+        IEnumerable<Mission> IMissionRepository.getMissions()
         {
-            return _ciPlatformDbContext.Missions.Include(mission=>mission.City).Include(city=>city.Country).Include(mission=>mission.Theme);
+            return _ciPlatformDbContext.Missions.Include(mission=>mission.Country).ThenInclude(mission=>mission.Cities).Include(mission=>mission.Theme);
         }
     }
 }
