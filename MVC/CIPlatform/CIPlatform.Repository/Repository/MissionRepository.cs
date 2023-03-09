@@ -46,5 +46,6 @@ namespace CIPlatform.Repository.Repository
         {
             return _ciPlatformDbContext.Missions.Where(mission => mission.Title.Contains(searchText)).Include(mission => mission.Country).ThenInclude(mission => mission.Cities).Include(mission => mission.Theme).Include(mission => mission.MissionMedia);
         }
+
     }
 }

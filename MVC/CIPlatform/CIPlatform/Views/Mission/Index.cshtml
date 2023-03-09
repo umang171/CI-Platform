@@ -1174,33 +1174,18 @@
     </div>
   </div>
 
-  <div id="pagination" class="container-fluid d-flex align-items-center justify-content-center p-5">
-    <nav aria-label="Page navigation example">
-      <ul class="pagination ">
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&lt;&lt;</span>
-          </a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&lt;</span>
-          </a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&gt;</span>
-          </a>
-        </li><li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&gt;&gt;</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+  <div id="pagination" class="pagination-container container-fluid d-flex align-items-center justify-content-center p-5">
+    <button class="pagination-button" id="prev-button" aria-label="Previous page" title="Previous page">
+      &lt;
+    </button>
+
+    <div id="pagination-numbers">
+
+    </div>
+
+    <button class="pagination-button" id="next-button" aria-label="Next page" title="Next page">
+      &gt;
+    </button>
   </div>
   
   </div>

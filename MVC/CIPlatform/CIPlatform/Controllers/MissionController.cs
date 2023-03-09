@@ -94,5 +94,11 @@ namespace CIPlatform.Controllers
             string mission = System.Text.Json.JsonSerializer.Serialize(missions, options);
             return Json(new { data = mission });
         }
+        //public IActionResult gridSP()
+        //{
+        //    return _ciPlatformDbContext.missionViewModel.FromSqlInterpolated($"exec GetMissionData"));
+
+        //    return Json(_ciPlatformContext.MissionList.FromSqlInterpolated($"exec GetMissionData"));
+        //}
     }
 }
