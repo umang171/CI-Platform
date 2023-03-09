@@ -81,5 +81,18 @@ namespace CIPlatform.Controllers
             string mission = System.Text.Json.JsonSerializer.Serialize(missions, options);
             return Json(new { data = mission });
         }
+        public IActionResult searchMissions(string searchText)
+        {
+            IEnumerable<Mission> missions = _missionRepository.searchMissions(searchText);
+
+            JsonSerializerOptions options = new()
+            {
+                ReferenceHandler = ReferenceHandler.IgnoreCycles,
+                WriteIndented = true
+            };
+
+            string mission = System.Text.Json.JsonSerializer.Serialize(missions, options);
+            return Json(new { data = mission });
+        }
     }
 }

@@ -15,5 +15,6 @@ namespace CIPlatform.Repository.Repository.Interface
         public IEnumerable<Skill> getSkills();
 
         public IEnumerable<Mission> getMissions();
+        public IEnumerable<Mission> searchMissions(string searchText);
     }
 }

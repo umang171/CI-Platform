@@ -209,3 +209,5 @@ E:\tatavasoft\ci\CI-Platform\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\CIPlatfo
 E:\tatavasoft\ci\CI-Platform\MVC\CIPlatform\CIPlatform\obj\Debug\net6.0\ref\CIPlatform.dll
 E:\tatavasoft\ci\CI-Platform\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\Newtonsoft.Json.dll
 E:\tatavasoft\ci\CI-Platform\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+D:\Projects\CI platform\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\Projects\CI platform\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
