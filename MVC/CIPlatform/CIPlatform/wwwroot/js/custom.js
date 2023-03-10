@@ -113,9 +113,9 @@ filtercloseImg.addEventListener("click", (e) => {
 // Toggle List and Grid view
 // ====================================================================
 function toggleListGrid() {
-    console.log("toggle");
+    //console.log("toggle");
     const missionListView = document.getElementById("mission-list");
-    console.log(missionListView);
+    //console.log(missionListView);
     const missionGridView = document.getElementById("mission-grid");
     const gridViewBtn = document.getElementById("grid-view-btn");
     const listViewBtn = document.getElementById("list-view-btn");
@@ -160,17 +160,21 @@ $(document).ready(function () {
     //loadMissions();
     loadCard();
 });
-
+var selectedCountries = "";
+var selectedCities = "";
+var selectedThemes = "";
+var selectedSkills = "";
 function loadCard() {
     $.ajax({
-        type: "GET",
+        type: "POST",
         url: '/Mission/getmissionfromsp',
         dataType: "html",
-        data: {},
+        data: { countryNames: selectedCountries, cityNames: selectedCities, themeNames: selectedThemes, skillNames:selectedSkills },
         success: function (data) {
             $("#mission-card-views").html("");
             $('#mission-card-views').html(data);
-            toggleListGrid();   
+            toggleListGrid();
+            pagination();
         },
         error: function (xhr, status, error) {
             // Handle error
@@ -192,7 +196,7 @@ function loadMissions() {
             listCards.empty();
             data=JSON.parse(data["data"]);
             for (var j = 0; j < data.length; j++) {
-                str += ' <div id="card-parent" class="list-card-parent col-lg-4 col-md-6 col-sm-6 col-12 grid-item h-auto mb-4"><div class="card"><img class="card-img-top w-100 card-img" src="' + "/" + data[j].MissionMedia[0].MediaPath + "/" + data[j].MissionMedia[0].MediaName + "" + data[j].MissionMedia[0].MediaType + '" alt="Card image cap" /><div id="card-image-content" class="d-flex flex-column justify-content-between  p-2"><div id="location-image" class="img-content p-2 rounded-5"><img src="/images/pin.png" alt="">' + data[j].City.Name + '</div><div class="d-flex flex-column align-items-end"><div class="img-heart img-content p-2 rounded-5 m-1"><img src="/images/heart.png" alt=""></div><div id="user-img" class="img-content p-2 rounded-5 m-1"><img src="/images/user.png" alt=""></div></div></div><h5 class="card-theme-title bg-white rounded-5 p-2">' + data[j].Theme.Title + '</h5><div class="card-body"><h5 class="card-title fs-3">' + data[j].Title + '</h5><p class="card-text">' + data[j].ShortDescription + '...</p><div id="star-content" class="d-flex align-items-center justify-content-between"><p class="my-auto">' + data[j].OrganizationName + '</p><div class="d-flex align-items-center"><img src="/images/selected-star.png" alt=""><img src="/images/selected-star.png" alt=""><img src="/images/selected-star.png" alt=""><img src="/images/star.png" alt=""><img src="/images/star.png" alt=""></div></div></div><div id="mission-duration-div"><h5 id = "card-time-duration-title" class="border bg-white rounded-5 m-auto fs-6 p-2" > From ' + data[j].StartDate.substring(0, 10) + ' until ' + data[j].EndDate.substring(0, 10) + '</h5 ></div><div id="seats-info-card" class="d-flex border border-1 position-relative pt-3 align-items-center justify-content-around"><div id="remain-seats-cards" class=" w-50 d-flex align-items-center p-1 px-lg-4 px-md-1"><img id="seats-left-image" src="/images/Seats-left.png" alt=""><div class="d-flex flex-column p-2 "><p id="count" class="m-0 p-0 fs-5">10</p><p id="seats-left-text" class="m-0 p-0">Seats left</p></div></div><div id="deadline-info-card" class=" w-40 d-flex align-items-center p-1 px-lg-4 px-md-1"><img id="deadline-image" src="/images/deadline.png" alt=""><div class="d-flex flex-column p-2 "><p id="deadline-date" class="m-0 p-0 fs-5">19/11/2022</p><p id="deadline-text" class="m-0 p-0">Deadline</p></div></div></div><div class="card-button-apply m-1 p-1 w-100 text-center"><button id="apply-btn" class="btn btn-outline-warning rounded-5 py-2 px-4 fs-5 ">Apply<img src="/images/right-arrow.png" class="mx-1 ms-3" alt=""></button></div></div ></div > ';
+                str += ' <div id="card-parent" class="card-parent list-card-parent col-lg-4 col-md-6 col-sm-6 col-12 grid-item h-auto mb-4"><div class="card"><img class="card-img-top w-100 card-img" src="' + "/" + data[j].MissionMedia[0].MediaPath + "/" + data[j].MissionMedia[0].MediaName + "" + data[j].MissionMedia[0].MediaType + '" alt="Card image cap" /><div id="card-image-content" class="d-flex flex-column justify-content-between  p-2"><div id="location-image" class="img-content p-2 rounded-5"><img src="/images/pin.png" alt="">' + data[j].City.Name + '</div><div class="d-flex flex-column align-items-end"><div class="img-heart img-content p-2 rounded-5 m-1"><img src="/images/heart.png" alt=""></div><div id="user-img" class="img-content p-2 rounded-5 m-1"><img src="/images/user.png" alt=""></div></div></div><h5 class="card-theme-title bg-white rounded-5 p-2">' + data[j].Theme.Title + '</h5><div class="card-body"><h5 class="card-title fs-3">' + data[j].Title + '</h5><p class="card-text">' + data[j].ShortDescription + '...</p><div id="star-content" class="d-flex align-items-center justify-content-between"><p class="my-auto">' + data[j].OrganizationName + '</p><div class="d-flex align-items-center"><img src="/images/selected-star.png" alt=""><img src="/images/selected-star.png" alt=""><img src="/images/selected-star.png" alt=""><img src="/images/star.png" alt=""><img src="/images/star.png" alt=""></div></div></div><div id="mission-duration-div"><h5 id = "card-time-duration-title" class="border bg-white rounded-5 m-auto fs-6 p-2" > From ' + data[j].StartDate.substring(0, 10) + ' until ' + data[j].EndDate.substring(0, 10) + '</h5 ></div><div id="seats-info-card" class="d-flex border border-1 position-relative pt-3 align-items-center justify-content-around"><div id="remain-seats-cards" class=" w-50 d-flex align-items-center p-1 px-lg-4 px-md-1"><img id="seats-left-image" src="/images/Seats-left.png" alt=""><div class="d-flex flex-column p-2 "><p id="count" class="m-0 p-0 fs-5">10</p><p id="seats-left-text" class="m-0 p-0">Seats left</p></div></div><div id="deadline-info-card" class=" w-40 d-flex align-items-center p-1 px-lg-4 px-md-1"><img id="deadline-image" src="/images/deadline.png" alt=""><div class="d-flex flex-column p-2 "><p id="deadline-date" class="m-0 p-0 fs-5">19/11/2022</p><p id="deadline-text" class="m-0 p-0">Deadline</p></div></div></div><div class="card-button-apply m-1 p-1 w-100 text-center"><button id="apply-btn" class="btn btn-outline-warning rounded-5 py-2 px-4 fs-5 ">Apply<img src="/images/right-arrow.png" class="mx-1 ms-3" alt=""></button></div></div ></div > ';
 
                 str2 += '<div id="list-card-parent" class="col-12 d-flex p-0 mb-4 border shadow"><div class="list-image-part position-relative"> <img src="'+"/"+data[j].MissionMedia[0].MediaPath+"/"+data[j].MissionMedia[0].MediaName+""+data[j].MissionMedia[0].MediaType+'" class="list-img" alt = "" /><h5 class="list-card-theme-title bg-white rounded-5 p-2">' + data[j].Theme.Title + '</h5><div id="list-card-image-content" class="h-100 d-flex flex-column position-absolute  p-2"><div id="list-location-image" class="list-img-content p-2 rounded-5"><img src="/images/pin.png" alt="">' + data[j].City.Name + '</div><div class="d-flex flex-column align-items-end"><div class="img-heart list-img-content p-2 rounded-5 m-1"><img src="/images/heart.png" alt=""></div><div id="list-user-img" class="list-img-content p-2 rounded-5 m-1"><img src="/images/user.png" alt=""></div></div></div></div><div class="list-content-part d-flex flex-column justify-content-around p-2"><h5 class="card-title fs-3">' + data[j].Title + '</h5><p class="card-text">' + data[j].ShortDescription + '...</p><div id="list-info-content" class="d-flex justify-content-between"><div><div id="list-star-content" class="d-flex align-items-center justify-content-between"><p class="my-auto">' + data[j].OrganizationName + '</p><div class="d-flex align-items-center"><img src="/images/selected-star.png" alt=""><img src="/images/selected-star.png" alt=""><img src="/images/selected-star.png" alt=""><img src="/images/star.png" alt=""><img src="/images/star.png" alt=""></div></div><div class="list-card-button-apply m-1 p-1 w-100 "><button id="list-apply-btn" class="btn btn-outline-warning rounded-5 py-2 px-4 fs-5 ">Apply<img src="/images/right-arrow.png" class="mx-1 ms-3" alt=""></button></div></div><div><div id="list-mission-duration-div"><h5 id="list-card-time-duration-title" class="border bg-white rounded-5 m-auto fs-6 p-2">From ' + data[j].StartDate.substring(0, 10) + ' until ' + data[j].EndDate.substring(0, 10) + '</h5></div><div id="list-seats-info-card" class="d-flex border-top border-1 position-relative pt-3 align-items-center justify-content-around"><div id="remain-seats-cards" class=" w-50 d-flex align-items-center p-1 px-lg-4 px-md-1"><img id="list-seats-left-image" src="/images/Seats-left.png" alt=""><div class="d-flex flex-column p-2 "><p id="count" class="m-0 p-0 fs-5">10</p><p id="list-seats-left-text" class="m-0 p-0">Seats left</p></div></div><div id="list-deadline-info-card" class=" w-40 d-flex align-items-center p-1 px-lg-4 px-md-1"><img id="list-deadline-image" src="/images/deadline.png" alt=""><div class="d-flex flex-column p-2 "><p id="list-deadline-date" class="m-0 p-0 fs-5">19/11/2022</p><p id="list-deadline-text" class="m-0 p-0">Deadline</p></div></div></div></div></div></div></div>';
                 //console.log(data[j]);
@@ -220,7 +224,7 @@ var ajaxRequest1 =
             var str = "";
             var countryDropDown = $(".countryDropDownList");
             for (var j = 0; j < data["data"].length; j++) {
-                str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country"/> ' + data["data"][j].name + '</a></li>';
+                str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country" value="' + data["data"][j].name+'"/> ' + data["data"][j].name + '</a></li>';
             }
             countryDropDown.append(str);
 
@@ -243,7 +247,7 @@ var ajaxRequest2
             var str = "";
             var cityDropDown = $(".cityDropDownList");
             for (var j = 0; j < data["data"].length; j++) {
-                str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country"/> ' + data["data"][j].name + '</a></li>';
+                str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country" value="' + data["data"][j].name +'"/> ' + data["data"][j].name + '</a></li>';
             }
             cityDropDown.append(str);
 
@@ -266,7 +270,7 @@ var ajaxRequest3
             var str = "";
             var themeDropDown = $(".themeDropDownList");
             for (var j = 0; j < data["data"].length; j++) {
-                str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country"/> ' + data["data"][j].title + '</a></li>';
+                str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country" value="' + data["data"][j].title +'"/> ' + data["data"][j].title + '</a></li>';
             }
             themeDropDown.append(str);
 
@@ -290,7 +294,7 @@ var ajaxRequest4 =
             var str = "";
             var skillDropDown = $(".skillDropDownList");
             for (var j = 0; j < data["data"].length; j++) {
-                str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country"/> ' + data["data"][j].skillName + '</a></li>';
+                str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country" value="' + data["data"][j].skillName+'"/> ' + data["data"][j].skillName + '</a></li>';
             }
             skillDropDown.append(str);
 
@@ -314,6 +318,7 @@ $(".close-chips").on("click", function (e) {
     $(".home-chips .chip").remove();
     $(this).hide();
     $(".no-filter-text").show();
+    
 });
 
 function intializeChips() {
@@ -326,6 +331,37 @@ function intializeChips() {
         $(".close-chips").show();
         $(".no-filter-text").hide();
         $(".close-chips").show();
+
+        //========================
+        //filters
+        //========================
+                
+        //country filters
+        selectedCountries = "";
+        $.each($(".countryDropDownList li a input:checkbox:checked"), function () {
+            selectedCountries += $(this).val() + ",";
+        });
+
+        //city filters
+        selectedCities = "";
+        $.each($(".cityDropDownList li a input:checkbox:checked"), function () {
+            selectedCities += $(this).val() + ",";
+        });
+
+        //theme filters
+        selectedThemes = "";
+        $.each($(".themeDropDownList li a input:checkbox:checked"), function () {
+            selectedThemes += $(this).val() + ",";
+        });
+
+        //theme filters
+        selectedSkills = "";
+        $.each($(".skillDropDownList li a input:checkbox:checked"), function () {
+            selectedSkills += $(this).val() + ",";
+            console.log($(this).val());
+        });
+        console.log(selectedSkills);
+        loadCard();
     });
 }
 
@@ -379,11 +415,118 @@ $("#search-input").on("keyup", function (e) {
 // Pagination
 // ====================================================================
 function pagination() {
-
+    //console.log("Pagination calling");
     const paginationNumbers = document.getElementById("pagination-numbers");
+    const paginatedList = document.querySelector("#mission-grid .row");
+    const paginatedList2 = document.querySelector("#mission-list .row");
+    const listItems = paginatedList.querySelectorAll("#mission-grid .row .card-parent");
+    const listItems2 = document.querySelectorAll("#mission-list .row .card-parent-list");
+    //console.log(listItems2);
+    const nextButton = document.getElementById("next-button");
+    const prevButton = document.getElementById("prev-button");
+    const paginationLimit = 6;
+    const pageCount = Math.ceil(listItems.length / paginationLimit)
+    const pageCountList = Math.ceil(listItems2.length / paginationLimit)
+    let currentPage = 1;
 
-    var paginatedList = document.querySelector("#mission-grid .row");
-    var listCards = document.querySelector("#mission-list .row");
-    const listItems = paginatedList.querySelectorAll(".list-card-parent")
-    console.log(listItems);
+    const disableButton = (button) => {
+        button.classList.add("disabled");
+        button.setAttribute("disabled", true);
+    };
+
+    const enableButton = (button) => {
+        button.classList.remove("disabled");
+        button.removeAttribute("disabled");
+    };
+    const handlePageButtonsStatus = () => {
+        if (currentPage === 1) {
+            disableButton(prevButton);
+        } else {
+            enableButton(prevButton);
+        }
+
+        if (pageCount === currentPage) {
+            disableButton(nextButton);
+        } else {
+            enableButton(nextButton);
+        }
+        if (pageCountList === currentPage) {
+            disableButton(nextButton);
+        } else {
+            enableButton(nextButton);
+        }
+    };
+
+    const handleActivePageNumber = () => {
+        document.querySelectorAll(".pagination-number").forEach((button) => {
+            button.classList.remove("active");
+            const pageIndex = Number(button.getAttribute("page-index"));
+            if (pageIndex == currentPage) {
+                button.classList.add("active");
+            }
+        });
+    };
+
+    const appendPageNumber = (index) => {
+        const pageNumber = document.createElement("button");
+        pageNumber.className = "pagination-number";
+        pageNumber.innerHTML = index;
+        pageNumber.setAttribute("page-index", index);
+        pageNumber.setAttribute("aria-label", "Page " + index);
+
+        paginationNumbers.appendChild(pageNumber);
+    };
+
+
+    const getPaginationNumbers = () => {
+        paginationNumbers.innerHTML = "";
+        for (let i = 1; i <= pageCount; i++) {
+            appendPageNumber(i);
+        }
+    };
+
+    const setCurrentPage = (pageNum) => {
+        currentPage = pageNum;
+
+        handleActivePageNumber();
+        handlePageButtonsStatus();
+
+        const prevRange = (pageNum - 1) * paginationLimit;
+        const currRange = pageNum * paginationLimit;
+
+        listItems.forEach((item, index) => {
+
+            item.classList.add("hidden");
+            if (index >= prevRange && index < currRange) {
+                item.classList.remove("hidden");
+            }
+        });
+        listItems2.forEach((item, index) => {
+
+            item.classList.add("hidden");
+            if (index >= prevRange && index < currRange) {
+                item.classList.remove("hidden");
+            }
+        });
+    };
+
+        getPaginationNumbers();
+        setCurrentPage(1);
+        prevButton.addEventListener("click", () => {
+            setCurrentPage(currentPage - 1);
+        });
+
+        nextButton.addEventListener("click", () => {
+            setCurrentPage(currentPage + 1);
+        });
+
+        document.querySelectorAll(".pagination-number").forEach((button) => {
+            const pageIndex = Number(button.getAttribute("page-index"));
+
+            if (pageIndex) {
+                button.addEventListener("click", () => {
+                    setCurrentPage(pageIndex);
+                });
+            }
+        });
 }

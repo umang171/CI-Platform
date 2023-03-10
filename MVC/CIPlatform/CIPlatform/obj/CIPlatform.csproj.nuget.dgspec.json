@@ -1,20 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\CIPlatform.csproj": {}
+    "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\CIPlatform.csproj": {}
   },
   "projects": {
-    "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj": {
+    "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj",
+        "projectUniqueName": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj",
         "projectName": "CIPlatform.Entities",
-        "projectPath": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj",
-        "packagesPath": "C:\\Users\\UMANG\\.nuget\\packages\\",
-        "outputPath": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform.Entities\\obj\\",
+        "projectPath": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj",
+        "packagesPath": "C:\\Users\\tatva\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform.Entities\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\UMANG\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tatva\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -67,8 +72,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -77,21 +81,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform.Repository\\CIPlatform.Repository.csproj": {
+    "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform.Repository\\CIPlatform.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform.Repository\\CIPlatform.Repository.csproj",
+        "projectUniqueName": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform.Repository\\CIPlatform.Repository.csproj",
         "projectName": "CIPlatform.Repository",
-        "projectPath": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform.Repository\\CIPlatform.Repository.csproj",
-        "packagesPath": "C:\\Users\\UMANG\\.nuget\\packages\\",
-        "outputPath": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform.Repository\\obj\\",
+        "projectPath": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform.Repository\\CIPlatform.Repository.csproj",
+        "packagesPath": "C:\\Users\\tatva\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform.Repository\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\UMANG\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tatva\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -105,8 +114,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj": {
-                "projectPath": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj"
+              "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj": {
+                "projectPath": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj"
               }
             }
           }
@@ -148,8 +157,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -158,21 +166,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\CIPlatform.csproj": {
+    "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\CIPlatform.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\CIPlatform.csproj",
+        "projectUniqueName": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\CIPlatform.csproj",
         "projectName": "CIPlatform",
-        "projectPath": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\CIPlatform.csproj",
-        "packagesPath": "C:\\Users\\UMANG\\.nuget\\packages\\",
-        "outputPath": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform\\obj\\",
+        "projectPath": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\CIPlatform.csproj",
+        "packagesPath": "C:\\Users\\tatva\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\UMANG\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\tatva\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -186,11 +199,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj": {
-                "projectPath": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj"
+              "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj": {
+                "projectPath": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform.Entities\\CIPlatform.Entities.csproj"
               },
-              "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform.Repository\\CIPlatform.Repository.csproj": {
-                "projectPath": "E:\\tatavasoft\\ci\\CI-Platform\\MVC\\CIPlatform\\CIPlatform.Repository\\CIPlatform.Repository.csproj"
+              "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform.Repository\\CIPlatform.Repository.csproj": {
+                "projectPath": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform.Repository\\CIPlatform.Repository.csproj"
               }
             }
           }
@@ -236,8 +249,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -249,7 +261,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

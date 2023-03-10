@@ -631,6 +631,10 @@
     background: #0085b6;
 }
 
+.hidden {
+    display: none;
+}
+
 
 .list-image-part {
     width: 30%;

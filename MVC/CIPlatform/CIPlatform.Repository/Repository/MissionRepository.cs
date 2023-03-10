@@ -47,9 +47,9 @@ namespace CIPlatform.Repository.Repository
         {
             return _ciPlatformDbContext.Missions.Where(mission => mission.Title.Contains(searchText)).Include(mission => mission.Country).ThenInclude(mission => mission.Cities).Include(mission => mission.Theme).Include(mission => mission.MissionMedia);
         }
-        public IEnumerable<MissionViewModel> getMissionsFromSP()
+        public IEnumerable<MissionViewModel> getMissionsFromSP(string countryNames,string cityNames,string themeNames,string skillNames)
         {
-            IEnumerable<MissionViewModel> missionViewModelObj = _ciPlatformDbContext.MissionViewModel.FromSqlInterpolated($"exec sp_get_mission_data");
+            IEnumerable<MissionViewModel> missionViewModelObj = _ciPlatformDbContext.MissionViewModel.FromSqlInterpolated($"exec sp_get_mission_data @countryNames={countryNames},@cityNames={cityNames},@themeNames={themeNames},@skillNames={skillNames}");
             return missionViewModelObj;
         }
     

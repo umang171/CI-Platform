@@ -17,7 +17,7 @@ namespace CIPlatform.Repository.Repository.Interface
 
         public IEnumerable<Mission> getMissions();
         public IEnumerable<Mission> searchMissions(string searchText);
-        public IEnumerable<MissionViewModel> getMissionsFromSP();
+        public IEnumerable<MissionViewModel> getMissionsFromSP(string countryNames,string cityNames,string themeNames,string skillNames);
 
     }
 }

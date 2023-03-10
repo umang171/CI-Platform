@@ -42,7 +42,7 @@ namespace CIPlatform.Controllers
             IEnumerable<Skill> skills= _missionRepository.getSkills();
             missionHomeModel.skillList = skills; 
 
-            return View();
+            return View(missionHomeModel);
         }
         public IActionResult Mission_Volunteer()
         {
@@ -94,9 +94,9 @@ namespace CIPlatform.Controllers
             string mission = System.Text.Json.JsonSerializer.Serialize(missions, options);
             return Json(new { data = mission });
         }
-        public IActionResult getMissionFromSP()
+        public IActionResult getMissionFromSP(string countryNames,string cityNames,string themeNames,string skillNames)
         {
-            IEnumerable<MissionViewModel> missionViewModelObj=_missionRepository.getMissionsFromSP();
+            IEnumerable<MissionViewModel> missionViewModelObj=_missionRepository.getMissionsFromSP(countryNames,cityNames, themeNames, skillNames);
             return PartialView("_MissionList", missionViewModelObj);
         }
     }
