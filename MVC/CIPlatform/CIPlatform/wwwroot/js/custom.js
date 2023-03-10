@@ -112,25 +112,30 @@ filtercloseImg.addEventListener("click", (e) => {
 // ====================================================================
 // Toggle List and Grid view
 // ====================================================================
-const missionListView = document.getElementById("mission-list");
-const missionGridView = document.getElementById("mission-grid");
-const gridViewBtn = document.getElementById("grid-view-btn");
-const listViewBtn = document.getElementById("list-view-btn");
+function toggleListGrid() {
+    console.log("toggle");
+    const missionListView = document.getElementById("mission-list");
+    console.log(missionListView);
+    const missionGridView = document.getElementById("mission-grid");
+    const gridViewBtn = document.getElementById("grid-view-btn");
+    const listViewBtn = document.getElementById("list-view-btn");
 
-listViewBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    listViewBtn.setAttribute("style", "background-color:#dee2e6 !important;");
-    gridViewBtn.setAttribute("style", "background-color:white !important;");
-    missionListView.setAttribute("style", "display:block !important;");
-    missionGridView.setAttribute("style", "display:none !important;");
-});
-gridViewBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    listViewBtn.setAttribute("style", "background-color:white !important;");
-    gridViewBtn.setAttribute("style", "background-color:#dee2e6 !important;");
-    missionListView.setAttribute("style", "display:none !important;");
-    missionGridView.setAttribute("style", "display:block !important;");
-});
+    listViewBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        listViewBtn.setAttribute("style", "background-color:#dee2e6 !important;");
+        gridViewBtn.setAttribute("style", "background-color:white !important;");
+        missionListView.setAttribute("style", "display:block !important;");
+        missionGridView.setAttribute("style", "display:none !important;");
+    });
+    gridViewBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        listViewBtn.setAttribute("style", "background-color:white !important;");
+        gridViewBtn.setAttribute("style", "background-color:#dee2e6 !important;");
+        missionListView.setAttribute("style", "display:none !important;");
+        missionGridView.setAttribute("style", "display:block !important;");
+    });
+}
+
 
 
 // ====================================================================
@@ -152,9 +157,27 @@ $(document).ready(function () {
     //loadCity();
     //loadTheme();
     //loadSkill();
-    loadMissions();
+    //loadMissions();
+    loadCard();
 });
 
+function loadCard() {
+    $.ajax({
+        type: "GET",
+        url: '/Mission/getmissionfromsp',
+        dataType: "html",
+        data: {},
+        success: function (data) {
+            $("#mission-card-views").html("");
+            $('#mission-card-views').html(data);
+            toggleListGrid();   
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    });
+}
 function loadMissions() {
     $.ajax({
         type: "GET",

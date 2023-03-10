@@ -1,4 +1,5 @@
 ﻿using CIPlatform.Entities.DataModels;
+using CIPlatform.Entities.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,7 @@ namespace CIPlatform.Repository.Repository.Interface
 
         public IEnumerable<Mission> getMissions();
         public IEnumerable<Mission> searchMissions(string searchText);
+        public IEnumerable<MissionViewModel> getMissionsFromSP();
+
     }
 }
