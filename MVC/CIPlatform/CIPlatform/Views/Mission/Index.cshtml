@@ -153,7 +153,7 @@
             <a href=""><img id="user-profile-img" src="~/images/user-img.png" class="rounded-circle object-fit-cover"
                 alt="" /></a>
             <div class="dropdown d-sm-block d-none">
-              <button class="dropdown-toggle border-0 bg-white m-1" type="button" data-bs-toggle="dropdown"
+              <button class="dropdown-toggle border-0 bg-white m-1 user-btn" id="user-btn-@Model.userid" type="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 @Model.username
                 <img src="~/images/drop-down.png" alt="" />
@@ -168,7 +168,7 @@
       </header>
 
       <div>
-        <div id="filter-mission-navbar" class="container-fluid border border-1 p-0 d-none d-sm-block position-sticky">
+        <div id="filter-mission-navbar" class="container-fluid border border-1 p-0 d-none d-sm-block position-static">
           <div class="mx-auto row" id="main-second-header">
             <div id="search-nav" class="col-md-6 col-10 d-flex align-items-center">
               <input type="text" id="search-input" placeholder="Search mission..."

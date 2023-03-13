@@ -15,9 +15,9 @@ namespace CIPlatform.Repository.Repository.Interface
         public IEnumerable<MissionTheme> getThemes();
         public IEnumerable<Skill> getSkills();
 
-        public IEnumerable<Mission> getMissions();
-        public IEnumerable<Mission> searchMissions(string searchText);
-        public IEnumerable<MissionViewModel> getMissionsFromSP(string countryNames,string cityNames,string themeNames,string skillNames);
-
+        public IEnumerable<MissionViewModel> getMissionsFromSP(string countryNames,string cityNames,string themeNames,string skillNames,string searchText);
+        public void addFavouriteMissions(FavouriteMission favouriteMissionObj);
+        public void removeFavouriteMissions(FavouriteMission favouriteMissionObj);
+        public MissionVolunteerViewModel getMissionFromMissionId(int missionId);
     }
 }

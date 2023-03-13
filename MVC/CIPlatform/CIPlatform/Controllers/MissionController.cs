@@ -2,10 +2,6 @@
 using CIPlatform.Entities.ViewModels;
 using CIPlatform.Repository.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using System.Text.Json.Serialization;
-using System.Text.Json;
-
 namespace CIPlatform.Controllers
 {
     public class MissionController : Controller
@@ -24,29 +20,26 @@ namespace CIPlatform.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-
-
             MissionHomeModel missionHomeModel = new MissionHomeModel();
             User userObj = _userRepository.findUser(userSessionEmailId);
             missionHomeModel.username = userObj.FirstName+" "+userObj.LastName;
-
-            IEnumerable<Country> countries = _missionRepository.getCountries();
-            missionHomeModel.countryList = countries;
-
-            IEnumerable<City> cities=_missionRepository.getCities();
-            missionHomeModel.cityList = cities;
-
-            IEnumerable<MissionTheme>   themes=_missionRepository.getThemes();
-            missionHomeModel.themeList= themes;
-
-            IEnumerable<Skill> skills= _missionRepository.getSkills();
-            missionHomeModel.skillList = skills; 
+            missionHomeModel.userid=userObj.UserId;
 
             return View(missionHomeModel);
         }
-        public IActionResult Mission_Volunteer()
+        public IActionResult Mission_Volunteer(int? missionId)
         {
-            return View();
+            string userSessionEmailId = HttpContext.Session.GetString("useremail");
+            if (userSessionEmailId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            MissionVolunteerViewModel missionVolunteerViewModelObj= new MissionVolunteerViewModel();
+            missionVolunteerViewModelObj= _missionRepository.getMissionFromMissionId((int)missionId);
+            User userObj = _userRepository.findUser(userSessionEmailId);
+            missionVolunteerViewModelObj.username = userObj.FirstName + " " + userObj.LastName;
+
+            return View(missionVolunteerViewModelObj);
         }
         public IActionResult GetCountries()
         {
@@ -68,36 +61,24 @@ namespace CIPlatform.Controllers
             IEnumerable<Skill> missionSkills= _missionRepository.getSkills();
             return Json(new { data = missionSkills });
         }
-        public IActionResult getMissions()
+        public IActionResult getMissionFromSP(string countryNames,string cityNames,string themeNames,string skillNames,string searchText)
         {
-            IEnumerable<Mission> missions = _missionRepository.getMissions();
-
-            JsonSerializerOptions options = new()
-            {
-                ReferenceHandler = ReferenceHandler.IgnoreCycles,
-                WriteIndented = true
-            };
-
-            string mission = System.Text.Json.JsonSerializer.Serialize(missions, options);
-            return Json(new { data = mission });
-        }
-        public IActionResult searchMissions(string searchText)
-        {
-            IEnumerable<Mission> missions = _missionRepository.searchMissions(searchText);
-
-            JsonSerializerOptions options = new()
-            {
-                ReferenceHandler = ReferenceHandler.IgnoreCycles,
-                WriteIndented = true
-            };
-
-            string mission = System.Text.Json.JsonSerializer.Serialize(missions, options);
-            return Json(new { data = mission });
-        }
-        public IActionResult getMissionFromSP(string countryNames,string cityNames,string themeNames,string skillNames)
-        {
-            IEnumerable<MissionViewModel> missionViewModelObj=_missionRepository.getMissionsFromSP(countryNames,cityNames, themeNames, skillNames);
+            IEnumerable<MissionViewModel> missionViewModelObj=_missionRepository.getMissionsFromSP(countryNames,cityNames, themeNames, skillNames,searchText);
             return PartialView("_MissionList", missionViewModelObj);
+        }
+        public void addFavouriteMissions(string userId,string missionId)
+        {
+            FavouriteMission favouriteMissionObj=new FavouriteMission();
+            favouriteMissionObj.UserId =Int64.Parse(userId);
+            favouriteMissionObj.MissionId=Int64.Parse(missionId);
+            _missionRepository.addFavouriteMissions(favouriteMissionObj);
+        }
+        public void removeFavouriteMissions(string userId,string missionId)
+        {
+            FavouriteMission favouriteMissionObj = new FavouriteMission();
+            favouriteMissionObj.UserId = Int64.Parse(userId);
+            favouriteMissionObj.MissionId = Int64.Parse(missionId);
+            _missionRepository.removeFavouriteMissions(favouriteMissionObj);
         }
     }
 }

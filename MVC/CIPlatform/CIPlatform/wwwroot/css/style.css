@@ -567,6 +567,9 @@
     opacity: 0.6;
     max-width: max-content;
 }
+.favourite-mission-div:hover{
+    cursor:pointer;
+}
 
 #mission-duration-div {
     z-index: 1;
@@ -1235,13 +1238,6 @@
     #story-top-image-div > div {
         font-size: 12px !important;
     }
-}
-/*
-=======================================================================
-Remove this*/
-#mission-grid .card{
-    position:relative;
-    z-index:-1;
 }
 
 
