@@ -15,7 +15,6 @@ public partial class CIPlatformDbContext : DbContext
         : base(options)
     {
     }
-
     public virtual DbSet<MissionViewModel> MissionViewModel { get; set; }
     public virtual DbSet<Admin> Admins { get; set; }
 
@@ -494,7 +493,7 @@ public partial class CIPlatformDbContext : DbContext
                 .HasColumnType("datetime")
                 .HasColumnName("deleted_at");
             entity.Property(e => e.MediaName)
-                .HasMaxLength(64)
+                .HasMaxLength(1000)
                 .IsUnicode(false)
                 .HasColumnName("media_name");
             entity.Property(e => e.MediaPath)

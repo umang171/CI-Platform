@@ -1,5 +1,38 @@
 ﻿@model IEnumerable<CIPlatform.Entities.ViewModels.MissionViewModel>
+@{
+    int counter = Model.Count();
+}
 
+<div id="mission-header" class="my-2 d-flex align-items-center justify-content-between">
+      <h2><span>Explore</span> @counter Missions</h2>
+
+      <div class="h-100 mx-1 d-none align-items-center d-sm-flex">
+        <div id="dropdown-sort" class="me-3">
+          <select name="sort" id="sort-dropdown" class="h-100 w-100">
+            <option value="Select">Select</option>
+            <option value="DateASC">Date Ascending</option>
+            <option value="DateDESC">Date Descending</option>
+          </select>
+        </div>
+        <button id="grid-view-btn" class="bg-transparent me-3 border-0">
+          <img src="~/images/grid.png" id="grid-logo" alt="" />
+        </button>
+        <button id="list-view-btn" class="bg-transparent me-3 border-0">
+          <img src="~/images/list.png" id="list-logo" alt="" />
+        </button>
+      </div>
+
+      <!-- mission cards -->
+    </div>
+
+@{
+    if(counter == 0)
+    {                
+        <div id="no-mission-found">
+        <h1 class="text-center my-3">No mission found</h1>
+        </div>
+    }
+}
 <div id="mission-grid" class="container p-0">
     <div class="row h-auto" data-current-page="1" aria-live="polite">
         
@@ -8,7 +41,7 @@
             
         <div id="card-parent" class="card-parent col-lg-4 col-md-6 col-sm-6 col-12 grid-item h-auto mb-4">
         <div class="card">
-        <img class="card-img-top w-100 card-img" src=~/@data.MediaPath/@data.MediaName@data.MediaType alt="Card image cap" />
+        <img class="card-img-top w-100 card-img" src=~/@data.MediaPath/@data.MediaName.ToString().Split(",")[0]@data.MediaType alt="Card image cap" />
         <div id="card-image-content" class="d-flex flex-column justify-content-between  p-2">
         <div id="location-image" class="img-content p-2 rounded-5">
         <img src="~/images/pin.png" alt="">
@@ -639,7 +672,7 @@
         <div id="list-card-parent" class="card-parent-list col-12 d-flex p-0 mb-4 border shadow">
 
         <div class="list-image-part position-relative">
-                    <img src=~/@data.MediaPath/@data.MediaName@data.MediaType class="list-img" alt="" />
+                    <img src=~/@data.MediaPath/@data.MediaName.ToString().Split(",")[0]@data.MediaType class="list-img" alt="" />
         <h5 class="list-card-theme-title bg-white rounded-5 p-2">@data.ThemeTitle</h5>
         <div id="list-card-image-content"
         class="h-100 d-flex flex-column position-absolute  p-2">

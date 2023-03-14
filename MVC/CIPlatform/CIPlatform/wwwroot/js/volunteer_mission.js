@@ -102,7 +102,6 @@ tablinks[0].classList.add("active")
 const carouselImages = document.querySelectorAll(".carousel-images");
 const previewImage = document.getElementById("preview-image");
 for (let i = 0; i < carouselImages.length; i++) {
-    console.log(carouselImages[i].src);
     carouselImages[i].addEventListener("click", (e) => {
         e.preventDefault();
         previewImage.src = carouselImages[i].src;

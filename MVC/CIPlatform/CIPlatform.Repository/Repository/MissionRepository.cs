@@ -41,22 +41,28 @@ namespace CIPlatform.Repository.Repository
             return _ciPlatformDbContext.MissionThemes;
         }
 
-        public IEnumerable<MissionViewModel> getMissionsFromSP(string countryNames,string cityNames,string themeNames,string skillNames,string searchText)
+        public IEnumerable<MissionViewModel> getMissionsFromSP(string countryNames,string cityNames,string themeNames,string skillNames,string searchText, string sortValue)
         {
-            IEnumerable<MissionViewModel> missionViewModelObj = _ciPlatformDbContext.MissionViewModel.FromSqlInterpolated($"exec sp_get_mission_data @countryNames={countryNames},@cityNames={cityNames},@themeNames={themeNames},@skillNames={skillNames},@searchText={searchText}");
+            IEnumerable<MissionViewModel> missionViewModelObj = _ciPlatformDbContext.MissionViewModel.FromSqlInterpolated($"exec sp_get_mission_data @countryNames={countryNames},@cityNames={cityNames},@themeNames={themeNames},@skillNames={skillNames},@searchText={searchText},@sortValue={sortValue}");
             return missionViewModelObj;
         }
 
-        void IMissionRepository.addFavouriteMissions(FavouriteMission favouriteMissionObj)
+        void IMissionRepository.addFavouriteMission(FavouriteMission favouriteMissionObj)
         {
             _ciPlatformDbContext.FavouriteMissions.Add(favouriteMissionObj);
             _ciPlatformDbContext.SaveChanges();
         }
 
-        void IMissionRepository.removeFavouriteMissions(FavouriteMission favouriteMissionObj)
+        void IMissionRepository.removeFavouriteMission(FavouriteMission favouriteMissionObj)
         {
             _ciPlatformDbContext.FavouriteMissions.Remove(favouriteMissionObj);
             _ciPlatformDbContext.SaveChanges();
+        }
+        FavouriteMission IMissionRepository.getFavouriteMission(FavouriteMission favouriteMissionObj)
+        {
+            FavouriteMission favouriteMission= _ciPlatformDbContext.FavouriteMissions.Where(u=>u.UserId==favouriteMissionObj.UserId && u.MissionId==favouriteMissionObj.MissionId).First();
+            
+            return favouriteMission;
         }
 
         MissionVolunteerViewModel IMissionRepository.getMissionFromMissionId(int missionId)
@@ -95,6 +101,11 @@ namespace CIPlatform.Repository.Repository
 
 
             return missionVolunteerViewModelObj;
+        }
+
+        IEnumerable<FavouriteMission> IMissionRepository.getFavouriteMissionsOfUser(int userid)
+        {
+            return _ciPlatformDbContext.FavouriteMissions.Where(u=>u.UserId==userid);
         }
     }
 }

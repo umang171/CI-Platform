@@ -15,9 +15,11 @@ namespace CIPlatform.Repository.Repository.Interface
         public IEnumerable<MissionTheme> getThemes();
         public IEnumerable<Skill> getSkills();
 
-        public IEnumerable<MissionViewModel> getMissionsFromSP(string countryNames,string cityNames,string themeNames,string skillNames,string searchText);
-        public void addFavouriteMissions(FavouriteMission favouriteMissionObj);
-        public void removeFavouriteMissions(FavouriteMission favouriteMissionObj);
+        public IEnumerable<MissionViewModel> getMissionsFromSP(string countryNames,string cityNames,string themeNames,string skillNames,string searchText,string sortValue);
+        public void addFavouriteMission(FavouriteMission favouriteMissionObj);
+        public void removeFavouriteMission(FavouriteMission favouriteMissionObj);
+        public FavouriteMission getFavouriteMission(FavouriteMission favouriteMissionObj);
+        public IEnumerable<FavouriteMission> getFavouriteMissionsOfUser(int userid);
         public MissionVolunteerViewModel getMissionFromMissionId(int missionId);
     }
 }

@@ -148,20 +148,22 @@ var selectedCountries = "";
 var selectedCities = "";
 var selectedThemes = "";
 var selectedSkills = "";
-var searchText="";
+var searchText = "";
+var sortMissionFilterVal = "";
 function loadCard() {
-    console.log("card", searchText);
     $.ajax({
         type: "POST",
         url: '/Mission/getmissionfromsp',
         dataType: "html",
-        data: { countryNames: selectedCountries, cityNames: selectedCities, themeNames: selectedThemes, skillNames:selectedSkills,searchText:searchText },
+        data: { countryNames: selectedCountries, cityNames: selectedCities, themeNames: selectedThemes, skillNames: selectedSkills, searchText: searchText, sortValue: sortMissionFilterVal },
         success: function (data) {
             $("#mission-card-views").html("");
             $('#mission-card-views').html(data);
             toggleListGrid();
             pagination();
             favouriteMissions();
+            getFavouriteMissions();
+            sortMissionFilter();
         },
         error: function (xhr, status, error) {
             // Handle error
@@ -339,13 +341,21 @@ function intializeChips() {
         selectedSkills = "";
         $.each($(".skillDropDownList li a input:checkbox:checked"), function () {
             selectedSkills += $(this).val() + ",";
-            console.log($(this).val());
         });
         loadCard();
     });
 }
 
+// ====================================================================
+// sort filter
+// ====================================================================
 
+function sortMissionFilter() {
+    $("#sort-dropdown").change(function () {
+        sortMissionFilterVal = $("#sort-dropdown").find(":selected").val();
+        loadCard();
+    });
+}
 
 // ====================================================================
 // search 
@@ -487,7 +497,6 @@ function favouriteMissions() {
     $("#mission-card-views .favourite-mission-div").on("click", function (event) {
         event.preventDefault();
         if (this.style.backgroundColor == "black") {
-            this.style.backgroundColor = "red";
             this.style.opacity = 1;
             var missionId =this.id.slice(18,);
             var userId =$("#rightNavbar .user-btn")[0].id.slice(9,);
@@ -496,17 +505,18 @@ function favouriteMissions() {
                 url: '/Mission/addFavouriteMissions',
                 data: { userId: userId, missionId: missionId },
                 success: function (data) {
-                    console.log("data added successfully");
+                    getFavouriteMissions();
+
                 },
                 error: function (xhr, status, error) {
                     // Handle error
                     console.log(error);
                 }
             });
+
         }
         else {
-            this.style.backgroundColor = "black";
-            this.style.opacity = 0.4;
+           
             var missionId = this.id.slice(18,);
             var userId = $("#rightNavbar .user-btn")[0].id.slice(9,);
             $.ajax({
@@ -514,14 +524,42 @@ function favouriteMissions() {
                 url: '/Mission/removeFavouriteMissions',
                 data: { userId: userId, missionId: missionId },
                 success: function (data) {
-                    console.log("data removed successfully");
+                    getFavouriteMissions();
                 },
                 error: function (xhr, status, error) {
                     // Handle error
                     console.log(error);
                 }
             });
-        }
 
+        }
+    });
+}
+function getFavouriteMissions() {
+    var userId = $("#rightNavbar .user-btn")[0].id.slice(9,);
+    $.ajax({
+        type: "GET",
+        url: '/Mission/getFavouriteMissionsOfUser',
+        data: { userid: userId },
+        success: function (data) {
+            var dataArr = data["data"].split(",");
+
+            $("#mission-card-views .favourite-mission-div").each(function (index) {
+                var id = this.id.slice(18);
+                for (var i = 0; i < dataArr.length - 1; i++) {
+                    if (dataArr[i] == id) {
+                        this.style.backgroundColor = "red";
+                        this.style.opacity = 1;
+                        break;
+                    }
+                    this.style.backgroundColor = "black";
+                    this.style.opacity = 0.4;
+                }
+            });
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
     });
 }

@@ -61,9 +61,9 @@ namespace CIPlatform.Controllers
             IEnumerable<Skill> missionSkills= _missionRepository.getSkills();
             return Json(new { data = missionSkills });
         }
-        public IActionResult getMissionFromSP(string countryNames,string cityNames,string themeNames,string skillNames,string searchText)
+        public IActionResult getMissionFromSP(string countryNames,string cityNames,string themeNames,string skillNames,string searchText,string sortValue)
         {
-            IEnumerable<MissionViewModel> missionViewModelObj=_missionRepository.getMissionsFromSP(countryNames,cityNames, themeNames, skillNames,searchText);
+            IEnumerable<MissionViewModel> missionViewModelObj=_missionRepository.getMissionsFromSP(countryNames,cityNames, themeNames, skillNames,searchText, sortValue);
             return PartialView("_MissionList", missionViewModelObj);
         }
         public void addFavouriteMissions(string userId,string missionId)
@@ -71,14 +71,25 @@ namespace CIPlatform.Controllers
             FavouriteMission favouriteMissionObj=new FavouriteMission();
             favouriteMissionObj.UserId =Int64.Parse(userId);
             favouriteMissionObj.MissionId=Int64.Parse(missionId);
-            _missionRepository.addFavouriteMissions(favouriteMissionObj);
+            _missionRepository.addFavouriteMission(favouriteMissionObj);
         }
         public void removeFavouriteMissions(string userId,string missionId)
         {
             FavouriteMission favouriteMissionObj = new FavouriteMission();
             favouriteMissionObj.UserId = Int64.Parse(userId);
             favouriteMissionObj.MissionId = Int64.Parse(missionId);
-            _missionRepository.removeFavouriteMissions(favouriteMissionObj);
+            FavouriteMission favouriteMission=_missionRepository.getFavouriteMission(favouriteMissionObj);
+            _missionRepository.removeFavouriteMission(favouriteMission);
+        }
+        public IActionResult getFavouriteMissionsOfUser(int userid)
+        {
+            IEnumerable<FavouriteMission> favouriteMissions=_missionRepository.getFavouriteMissionsOfUser(userid);
+            string arr = "";
+            foreach(FavouriteMission favouriteMission in favouriteMissions)
+            {
+                arr += favouriteMission.MissionId+",";
+            }
+            return Json(new { data=arr });
         }
     }
 }

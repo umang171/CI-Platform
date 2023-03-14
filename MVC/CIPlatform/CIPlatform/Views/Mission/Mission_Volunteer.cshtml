@@ -89,71 +89,33 @@
     <div id="mission-content" class="container-fluid overflow-y-scroll p-0 volunteer-content">
         <div id="volunteer-top-info" class="d-flex flex-column flex-sm-row">
             <div id="volunteer-image-part" class="w-50">
-                <img id="preview-image" src="~/@Model.MediaPath/@Model.MediaName@Model.MediaType"
+                <img id="preview-image" src="~/@Model.MediaPath/@Model.MediaName.ToString().Split(",")[0]@Model.MediaType"
                     class="w-100 volunteer-main-image" alt="" />
                 <!-- carousel -->
                 <div id="carouselExampleControls" class="carousel slide w-100" data-bs-ride="carousel">
                     <div class="carousel-inner h-100 w-100">
                         <div class="carousel-item active h-100 w-100">
                             <div class="d-flex h-100 w-100">
-                                <div class="h-100 w-100">
-                                    <img src="~/images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png"
+                                @{
+                                string[] mediaNames = Model.MediaName.ToString().Split(",");
+                                int mediaLength = mediaNames.Length;
+                            }
+                            @for(int i=0;i<mediaLength;i++)
+                            {
+                            <div class="h-100 w-25">
+                                    <img src="~/@Model.MediaPath/@mediaNames[i]@Model.MediaType"
                                         class="carousel-images d-block w-100 h-100 p-1" alt="..." />
-                                </div>
-                                <div class="h-100 w-100">
-                                    <img src="~/images/img1.png" class="carousel-images d-block w-100 h-100 p-1"
-                                        alt="..." />
-                                </div>
-                                <div class="h-100 w-100">
-                                    <img src="~/images/Grow-Trees-On-the-path-to-environment-sustainability-login.png"
-                                        class="carousel-images d-block w-100 h-100 p-1" alt="..." />
-                                </div>
-                                <div class="h-100 w-100">
-                                    <img src="~/images/img11.png" class="carousel-images d-block w-100 h-100 p-1"
-                                        alt="..." />
-                                </div>
+                                </div>     
+                                @if ((i+1)%4==0 && i!=0 && (i+1)!=mediaLength)
+                                {                                    
+                            @:</div>
+                            @:</div>
+                            @:<div class="carousel-item h-100 w-100">
+                                @:<div class="d-flex h-100 w-100">
+                                }
+                            }
                             </div>
-                        </div>
-                        <div class="carousel-item h-100 w-100">
-                            <div class="d-flex h-100 w-100">
-                                <div class="h-100 w-100">
-                                    <img src="~/images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png"
-                                        class="carousel-images d-block w-100 h-100 p-1" alt="..." />
-                                </div>
-                                <div class="h-100 w-100">
-                                    <img src="~/images/img1.png" class="carousel-images d-block w-100 h-100 p-1"
-                                        alt="..." />
-                                </div>
-                                <div class="h-100 w-100">
-                                    <img src="~/images/Grow-Trees-On-the-path-to-environment-sustainability-login.png"
-                                        class="carousel-images d-block w-100 h-100 p-1" alt="..." />
-                                </div>
-                                <div class="h-100 w-100">
-                                    <img src="~/images/img11.png" class="carousel-images d-block w-100 h-100 p-1"
-                                        alt="..." />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item h-100 w-100">
-                            <div class="d-flex h-100 w-100">
-                                <div class="h-100 w-100">
-                                    <img src="~/images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png"
-                                        class="carousel-images d-block w-100 h-100 p-1" alt="..." />
-                                </div>
-                                <div class="h-100 w-100">
-                                    <img src="~/images/img1.png" class="carousel-images d-block w-100 h-100 p-1"
-                                        alt="..." />
-                                </div>
-                                <div class="h-100 w-100">
-                                    <img src="~/images/Grow-Trees-On-the-path-to-environment-sustainability-login.png"
-                                        class="carousel-images d-block w-100 h-100 p-1" alt="..." />
-                                </div>
-                                <div class="h-100 w-100">
-                                    <img src="~/images/img11.png" class="carousel-images d-block w-100 h-100 p-1"
-                                        alt="..." />
-                                </div>
-                            </div>
-                        </div>
+                        </div>                     
                     </div>
                     <button class="carousel-control-prev bg-black" type="button"
                         data-bs-target="#carouselExampleControls" data-bs-slide="prev">
