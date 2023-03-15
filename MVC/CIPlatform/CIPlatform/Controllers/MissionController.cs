@@ -2,6 +2,9 @@
 using CIPlatform.Entities.ViewModels;
 using CIPlatform.Repository.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
+using System.Data;
+
 namespace CIPlatform.Controllers
 {
     public class MissionController : Controller
@@ -66,6 +69,15 @@ namespace CIPlatform.Controllers
             IEnumerable<MissionViewModel> missionViewModelObj=_missionRepository.getMissionsFromSP(countryNames,cityNames, themeNames, skillNames,searchText, sortValue);
             return PartialView("_MissionList", missionViewModelObj);
         }
+        [HttpPost]
+        public IActionResult gridSP(string countryNames, string cityNames, string themeNames, string skillNames, string searchText, string sortValue,int pageNumber)
+        {
+            // make explicit SQL Parameter
+            PaginationMission pagination =_missionRepository.gridSP(countryNames, cityNames,themeNames,skillNames,searchText,sortValue, pageNumber) ;
+           
+            return PartialView("_MissionList", pagination);
+        }
+
         public void addFavouriteMissions(string userId,string missionId)
         {
             FavouriteMission favouriteMissionObj=new FavouriteMission();

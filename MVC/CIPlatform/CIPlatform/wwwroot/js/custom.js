@@ -112,7 +112,9 @@ filtercloseImg.addEventListener("click", (e) => {
 // ====================================================================
 // Toggle List and Grid view
 // ====================================================================
+var toggleGrid = true;
 function toggleListGrid() {
+    
     //console.log("toggle");
     const missionListView = document.getElementById("mission-list");
     //console.log(missionListView);
@@ -122,18 +124,28 @@ function toggleListGrid() {
 
     listViewBtn.addEventListener("click", (e) => {
         e.preventDefault();
+        toggleGrid = false;
         listViewBtn.setAttribute("style", "background-color:#dee2e6 !important;");
         gridViewBtn.setAttribute("style", "background-color:white !important;");
-        missionListView.setAttribute("style", "display:block !important;");
-        missionGridView.setAttribute("style", "display:none !important;");
+        toggleListGrid();
     });
     gridViewBtn.addEventListener("click", (e) => {
         e.preventDefault();
+        toggleGrid = true;
         listViewBtn.setAttribute("style", "background-color:white !important;");
         gridViewBtn.setAttribute("style", "background-color:#dee2e6 !important;");
+        toggleListGrid();
+    });
+    if (!(toggleGrid ==true)) {
+        
+        missionListView.setAttribute("style", "display:block !important;");
+        missionGridView.setAttribute("style", "display:none !important;");
+    }
+    else {
+        
         missionListView.setAttribute("style", "display:none !important;");
         missionGridView.setAttribute("style", "display:block !important;");
-    });
+    }
 }
 
 
@@ -150,19 +162,24 @@ var selectedThemes = "";
 var selectedSkills = "";
 var searchText = "";
 var sortMissionFilterVal = "";
-function loadCard() {
+function loadCard(paging) {
+    if (!paging)
+        paging = 1;
     $.ajax({
+        
         type: "POST",
-        url: '/Mission/getmissionfromsp',
+        url: "https://localhost:7165/Mission/gridSP",
         dataType: "html",
-        data: { countryNames: selectedCountries, cityNames: selectedCities, themeNames: selectedThemes, skillNames: selectedSkills, searchText: searchText, sortValue: sortMissionFilterVal },
+        cache:false,
+        data: { countryNames: selectedCountries, cityNames: selectedCities, themeNames: selectedThemes, skillNames: selectedSkills, searchText: searchText, sortValue: sortMissionFilterVal,pageNumber: paging  },
         success: function (data) {
             $("#mission-card-views").html("");
             $('#mission-card-views').html(data);
             toggleListGrid();
-            pagination();
             favouriteMissions();
             getFavouriteMissions();
+            loadPagination();
+
             sortMissionFilter();
         },
         error: function (xhr, status, error) {
@@ -346,6 +363,8 @@ function intializeChips() {
     });
 }
 
+
+
 // ====================================================================
 // sort filter
 // ====================================================================
@@ -371,125 +390,19 @@ $("#search-input").on("keyup", function (e) {
     }
 });
 // ====================================================================
-// Pagination
-// ====================================================================
-function pagination() {
-    //console.log("Pagination calling");
-    const paginationNumbers = document.getElementById("pagination-numbers");
-    const paginatedList = document.querySelector("#mission-grid .row");
-    const paginatedList2 = document.querySelector("#mission-list .row");
-    const listItems = paginatedList.querySelectorAll("#mission-grid .row .card-parent");
-    const listItems2 = document.querySelectorAll("#mission-list .row .card-parent-list");
-    //console.log(listItems2);
-    const nextButton = document.getElementById("next-button");
-    const prevButton = document.getElementById("prev-button");
-    const paginationLimit = 6;
-    const pageCount = Math.ceil(listItems.length / paginationLimit)
-    const pageCountList = Math.ceil(listItems2.length / paginationLimit)
-    let currentPage = 1;
 
-    const disableButton = (button) => {
-        button.classList.add("disabled");
-        button.setAttribute("disabled", true);
-    };
-
-    const enableButton = (button) => {
-        button.classList.remove("disabled");
-        button.removeAttribute("disabled");
-    };
-    const handlePageButtonsStatus = () => {
-        if (currentPage === 1) {
-            disableButton(prevButton);
-        } else {
-            enableButton(prevButton);
-        }
-
-        if (pageCount === currentPage) {
-            disableButton(nextButton);
-        } else {
-            enableButton(nextButton);
-        }
-        if (pageCountList === currentPage) {
-            disableButton(nextButton);
-        } else {
-            enableButton(nextButton);
-        }
-    };
-
-    const handleActivePageNumber = () => {
-        document.querySelectorAll(".pagination-number").forEach((button) => {
-            button.classList.remove("active");
-            const pageIndex = Number(button.getAttribute("page-index"));
-            if (pageIndex == currentPage) {
-                button.classList.add("active");
-            }
-        });
-    };
-
-    const appendPageNumber = (index) => {
-        const pageNumber = document.createElement("button");
-        pageNumber.className = "pagination-number";
-        pageNumber.innerHTML = index;
-        pageNumber.setAttribute("page-index", index);
-        pageNumber.setAttribute("aria-label", "Page " + index);
-
-        paginationNumbers.appendChild(pageNumber);
-    };
-
-
-    const getPaginationNumbers = () => {
-        paginationNumbers.innerHTML = "";
-        for (let i = 1; i <= pageCount; i++) {
-            appendPageNumber(i);
-        }
-    };
-
-    const setCurrentPage = (pageNum) => {
-        currentPage = pageNum;
-
-        handleActivePageNumber();
-        handlePageButtonsStatus();
-
-        const prevRange = (pageNum - 1) * paginationLimit;
-        const currRange = pageNum * paginationLimit;
-
-        listItems.forEach((item, index) => {
-
-            item.classList.add("hidden");
-            if (index >= prevRange && index < currRange) {
-                item.classList.remove("hidden");
-            }
-        });
-        listItems2.forEach((item, index) => {
-
-            item.classList.add("hidden");
-            if (index >= prevRange && index < currRange) {
-                item.classList.remove("hidden");
-            }
-        });
-    };
-
-        getPaginationNumbers();
-        setCurrentPage(1);
-        prevButton.addEventListener("click", () => {
-            setCurrentPage(currentPage - 1);
-        });
-
-        nextButton.addEventListener("click", () => {
-            setCurrentPage(currentPage + 1);
-        });
-
-        document.querySelectorAll(".pagination-number").forEach((button) => {
-            const pageIndex = Number(button.getAttribute("page-index"));
-
-            if (pageIndex) {
-                button.addEventListener("click", () => {
-                    setCurrentPage(pageIndex);
-                });
-            }
-        });
+//pagination
+console.log("in grid");
+function loadPagination() {
+    var paging = "";
+    $("#pagination li a").on("click", function (e) {
+        console.log("in page");
+        e.preventDefault();
+        paging = $(this).text();
+        console.log(paging);
+        loadCard(paging);
+    })
 }
-
 //=================================================================================================
 //Favourite mission
 //=================================================================================================

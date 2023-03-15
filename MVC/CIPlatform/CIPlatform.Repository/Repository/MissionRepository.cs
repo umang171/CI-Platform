@@ -47,6 +47,22 @@ namespace CIPlatform.Repository.Repository
             return missionViewModelObj;
         }
 
+
+        public PaginationMission gridSP(string countryNames, string cityNames, string themeNames, string skillNames, string searchText, string sortValue, int pageNumber)
+        {
+            // make explicit SQL Parameter
+            var output = new SqlParameter("@TotalCount", SqlDbType.BigInt) { Direction = ParameterDirection.Output };
+            var output1 = new SqlParameter("@MissionCount", SqlDbType.BigInt) { Direction = ParameterDirection.Output };
+            PaginationMission pagination = new PaginationMission();
+            List<MissionViewModel> test = _ciPlatformDbContext.MissionViewModel.FromSqlInterpolated($"exec sp_get_mission_data @countryNames = {countryNames}, @cityNames = {cityNames}, @themeNames = {themeNames}, @skillNames = {skillNames}, @searchText = {searchText}, @sortValue = {sortValue}, @pageNumber = {pageNumber}, @TotalCount = {output} out,@MissionCount={output1} out").ToList();
+            pagination.missions = test;
+            pagination.pageSize = 6;
+            pagination.pageCount = long.Parse(output.Value.ToString());
+            pagination.missionCount = long.Parse(output1.Value.ToString());
+            pagination.activePage = pageNumber;
+            return  pagination;
+        }
+
         void IMissionRepository.addFavouriteMission(FavouriteMission favouriteMissionObj)
         {
             _ciPlatformDbContext.FavouriteMissions.Add(favouriteMissionObj);
