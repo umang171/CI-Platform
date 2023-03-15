@@ -21,5 +21,6 @@ namespace CIPlatform.Entities.ViewModels
         public string? MediaPath { get; set; }
         public string? ThemeTitle { get; set; }
         public string CityName { get; set; }
+        public int? Rating { get; set; }
     }
 }

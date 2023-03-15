@@ -64,16 +64,12 @@ namespace CIPlatform.Controllers
             IEnumerable<Skill> missionSkills= _missionRepository.getSkills();
             return Json(new { data = missionSkills });
         }
-        public IActionResult getMissionFromSP(string countryNames,string cityNames,string themeNames,string skillNames,string searchText,string sortValue)
-        {
-            IEnumerable<MissionViewModel> missionViewModelObj=_missionRepository.getMissionsFromSP(countryNames,cityNames, themeNames, skillNames,searchText, sortValue);
-            return PartialView("_MissionList", missionViewModelObj);
-        }
+        
         [HttpPost]
-        public IActionResult gridSP(string countryNames, string cityNames, string themeNames, string skillNames, string searchText, string sortValue,int pageNumber)
+        public IActionResult getMissionsFromSP(string countryNames, string cityNames, string themeNames, string skillNames, string searchText, string sortValue,int pageNumber)
         {
             // make explicit SQL Parameter
-            PaginationMission pagination =_missionRepository.gridSP(countryNames, cityNames,themeNames,skillNames,searchText,sortValue, pageNumber) ;
+            PaginationMission pagination =_missionRepository.getMissionsFromSP(countryNames, cityNames,themeNames,skillNames,searchText,sortValue, pageNumber) ;
            
             return PartialView("_MissionList", pagination);
         }

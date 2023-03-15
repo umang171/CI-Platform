@@ -41,14 +41,10 @@ namespace CIPlatform.Repository.Repository
             return _ciPlatformDbContext.MissionThemes;
         }
 
-        public IEnumerable<MissionViewModel> getMissionsFromSP(string countryNames,string cityNames,string themeNames,string skillNames,string searchText, string sortValue)
-        {
-            IEnumerable<MissionViewModel> missionViewModelObj = _ciPlatformDbContext.MissionViewModel.FromSqlInterpolated($"exec sp_get_mission_data @countryNames={countryNames},@cityNames={cityNames},@themeNames={themeNames},@skillNames={skillNames},@searchText={searchText},@sortValue={sortValue}");
-            return missionViewModelObj;
-        }
+        
 
 
-        public PaginationMission gridSP(string countryNames, string cityNames, string themeNames, string skillNames, string searchText, string sortValue, int pageNumber)
+        public PaginationMission getMissionsFromSP(string countryNames, string cityNames, string themeNames, string skillNames, string searchText, string sortValue, int pageNumber)
         {
             // make explicit SQL Parameter
             var output = new SqlParameter("@TotalCount", SqlDbType.BigInt) { Direction = ParameterDirection.Output };

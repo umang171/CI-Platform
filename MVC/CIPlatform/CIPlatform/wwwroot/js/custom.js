@@ -168,7 +168,7 @@ function loadCard(paging) {
     $.ajax({
         
         type: "POST",
-        url: "https://localhost:7165/Mission/gridSP",
+        url: "/Mission/getMissionsFromSP",
         dataType: "html",
         cache:false,
         data: { countryNames: selectedCountries, cityNames: selectedCities, themeNames: selectedThemes, skillNames: selectedSkills, searchText: searchText, sortValue: sortMissionFilterVal,pageNumber: paging  },
