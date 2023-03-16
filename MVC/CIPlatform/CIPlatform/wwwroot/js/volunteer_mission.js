@@ -1,4 +1,5 @@
-﻿const missionContent = document.getElementById("mission-content");
+﻿
+const missionContent = document.getElementById("mission-content");
 let missionContentHeight = missionContent.style.height;
 
 // console.log(missionContent);
@@ -110,3 +111,99 @@ for (let i = 0; i < carouselImages.length; i++) {
 
 // console.log(carouselImages);
 // console.log(previewImage.src);
+$(document).ready(function () {
+    favouriteMissions();
+    getFavouriteMissions();
+    starRatings();
+});
+
+// ======================================================================================================
+// Favourite Mission
+// ======================================================================================================
+
+function favouriteMissions() {
+    $("#favourite-btn").on("click", function (event) {
+        event.preventDefault();
+        if (this.style.backgroundColor == "white") {
+            var missionId = $(".volunteer-button-apply")[0].id.slice(18);
+            var userId = $("#rightNavbar .user-btn")[0].id.slice(9,);
+
+            $.ajax({
+                type: "POST",
+                url: '/Mission/addFavouriteMissions',
+                data: { userId: userId, missionId: missionId },
+                success: function (data) {
+                    getFavouriteMissions();
+                },
+                error: function (xhr, status, error) {
+                    // Handle error
+                    console.log(error);
+                }
+            });
+
+        }
+        else {
+            var missionId = $(".volunteer-button-apply")[0].id.slice(18);
+            var userId = $("#rightNavbar .user-btn")[0].id.slice(9,);
+
+            $.ajax({
+                type: "POST",
+                url: '/Mission/removeFavouriteMissions',
+                data: { userId: userId, missionId: missionId },
+                success: function (data) {
+                    getFavouriteMissions();
+                },
+                error: function (xhr, status, error) {
+                    // Handle error
+                    console.log(error);
+                }
+            });
+
+        }
+    });
+}
+function getFavouriteMissions() {
+    var userId = $("#rightNavbar .user-btn")[0].id.slice(9,);
+    $.ajax({
+        type: "GET",
+        url: '/Mission/getFavouriteMissionsOfUser',
+        data: { userid: userId },
+        success: function (data) {
+            var dataArr = data["data"].split(",");
+            var id = $(".volunteer-button-apply")[0].id.slice(18);
+            for (var i = 0; i < dataArr.length; i++) {
+                if (dataArr[i] == id) {
+                    document.getElementById("favourite-btn").style.backgroundColor = "red";
+                    document.querySelector("#favourite-btn span").style.color = 'white';
+                    $("#favourite-img-heart").attr("src", "/images/heart.png");
+                    break;
+                }
+                document.getElementById("favourite-btn").style.backgroundColor = "white";
+                document.querySelector("#favourite-btn span").style.color = '#757575';
+                $("#favourite-img-heart").attr("src", "/images/heart1.png");
+            }
+            //});
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    });
+}
+//====================================================================================================
+//Star rating
+//====================================================================================================
+function starRatings() {
+    $("#stars-rating .rating-stars").on("click", function (event) {
+        var userId = $("#rightNavbar .user-btn")[0].id.slice(9,);
+        var missionId = $(".volunteer-button-apply")[0].id.slice(18);
+        var starRating = Math.ceil(parseFloat($("#star-input-id").rating().val()));
+        $.ajax({
+            type: "POST",
+            url: '/Mission/addRatingStars',
+            data: { userId: userId, missionId: missionId, ratingStars:starRating },
+            success: function (data) {
+            }
+        });
+    });
+}

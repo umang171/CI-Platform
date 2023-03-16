@@ -85,15 +85,11 @@ namespace CIPlatform.Repository.Repository
             SqlDataReader rdr = null;
             conn = new SqlConnection("Server=PCTR29\\SQL2017;User Id=sa;Password=tatva123;Database=CI;Trusted_Connection=true;TrustServerCertificate=true;");
             conn.Open();
-
             SqlCommand cmd = new SqlCommand("sp_get_mission_data_from_id", conn);
-
             // 2. set the command object so it knows to execute a stored procedure
             cmd.CommandType = CommandType.StoredProcedure;
-
             // 3. add parameter to command, which will be passed to the stored procedure
             cmd.Parameters.Add(new SqlParameter("@missionId", missionId));
-
             rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
@@ -108,10 +104,9 @@ namespace CIPlatform.Repository.Repository
                 missionVolunteerViewModelObj.MediaPath= rdr.GetString("MediaPath");
                 missionVolunteerViewModelObj.ThemeTitle= rdr.GetString("ThemeTitle");
                 missionVolunteerViewModelObj.CityName= rdr.GetString("cityName");
+                missionVolunteerViewModelObj.Skill = !rdr.IsDBNull("Skill") ? rdr.GetString("Skill") : null;
             }
-            
-
-
+            conn.Close();
             return missionVolunteerViewModelObj;
         }
 
@@ -119,5 +114,34 @@ namespace CIPlatform.Repository.Repository
         {
             return _ciPlatformDbContext.FavouriteMissions.Where(u=>u.UserId==userid);
         }
+
+        public MissionRating getRatingOfUser(int userId, int missionId)
+        {
+            return _ciPlatformDbContext.MissionRatings.Where(r => r.UserId == userId && r.MissionId == missionId).First();
+        }
+        void IMissionRepository.addRatingStars(int userId, int missionId, int ratingStars)
+        {
+            MissionRating missionRating = new MissionRating();
+            missionRating.UserId = userId;
+            missionRating.MissionId = missionId;
+            missionRating.Rating = (byte)ratingStars;
+            bool hasAlreadyRating=_ciPlatformDbContext.MissionRatings.Any(u => u.UserId == userId && u.MissionId == missionId);
+            if (hasAlreadyRating)
+            {
+                    MissionRating missionRatingObj = _ciPlatformDbContext.MissionRatings.Where(r => r.UserId == userId && r.MissionId == missionId).First();
+                    missionRatingObj.Rating = (byte)ratingStars;
+                    _ciPlatformDbContext.MissionRatings.Update(missionRatingObj);
+                    _ciPlatformDbContext.SaveChanges();
+                
+                
+            }
+            else
+            {
+                _ciPlatformDbContext.MissionRatings.Add(missionRating);
+                _ciPlatformDbContext.SaveChanges();
+            }
+        }
+
+        
     }
 }

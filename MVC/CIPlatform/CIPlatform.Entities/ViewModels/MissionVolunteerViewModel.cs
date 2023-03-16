@@ -10,6 +10,7 @@ namespace CIPlatform.Entities.ViewModels
     {
         public long MissionId { get; set; }
         public string username { get; set; }
+        public int userid{ get; set; }
         public string? Title { get; set; }
         public string? ShortDescription { get; set; }
         public DateTime? StartDate { get; set; }
@@ -20,5 +21,6 @@ namespace CIPlatform.Entities.ViewModels
         public string? MediaPath { get; set; }
         public string? ThemeTitle { get; set; }
         public string CityName { get; set; }
+        public string? Skill { get; set; } = null;
     }
 }

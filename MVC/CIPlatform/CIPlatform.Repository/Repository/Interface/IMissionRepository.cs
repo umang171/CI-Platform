@@ -22,5 +22,7 @@ namespace CIPlatform.Repository.Repository.Interface
         public FavouriteMission getFavouriteMission(FavouriteMission favouriteMissionObj);
         public IEnumerable<FavouriteMission> getFavouriteMissionsOfUser(int userid);
         public MissionVolunteerViewModel getMissionFromMissionId(int missionId);
+        public MissionRating getRatingOfUser(int userId,int missionId);
+        public void addRatingStars(int userId,int missionId,int ratingStars);
     }
 }

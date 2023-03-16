@@ -459,7 +459,7 @@ function getFavouriteMissions() {
 
             $("#mission-card-views .favourite-mission-div").each(function (index) {
                 var id = this.id.slice(18);
-                for (var i = 0; i < dataArr.length - 1; i++) {
+                for (var i = 0; i <dataArr.length; i++) {
                     if (dataArr[i] == id) {
                         this.style.backgroundColor = "red";
                         this.style.opacity = 1;

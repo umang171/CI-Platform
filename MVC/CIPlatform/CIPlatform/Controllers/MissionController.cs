@@ -41,6 +41,7 @@ namespace CIPlatform.Controllers
             missionVolunteerViewModelObj= _missionRepository.getMissionFromMissionId((int)missionId);
             User userObj = _userRepository.findUser(userSessionEmailId);
             missionVolunteerViewModelObj.username = userObj.FirstName + " " + userObj.LastName;
+            missionVolunteerViewModelObj.userid= (int)userObj.UserId;
 
             return View(missionVolunteerViewModelObj);
         }
@@ -98,6 +99,11 @@ namespace CIPlatform.Controllers
                 arr += favouriteMission.MissionId+",";
             }
             return Json(new { data=arr });
+        }
+        [HttpPost]
+        public void addRatingStars(int userId, int missionId, int ratingStars)
+        {
+            _missionRepository.addRatingStars(userId, missionId, ratingStars);
         }
     }
 }
