@@ -112,6 +112,7 @@ for (let i = 0; i < carouselImages.length; i++) {
 // console.log(carouselImages);
 // console.log(previewImage.src);
 $(document).ready(function () {
+    loadRelatedMissions();
     favouriteMissions();
     getFavouriteMissions();
     starRatings();
@@ -205,5 +206,28 @@ function starRatings() {
             success: function (data) {
             }
         });
+    });
+}
+
+function loadRelatedMissions() {
+    var themeName = $("#mission-theme").text();
+    console.log(themeName);
+    console.log("related");
+    $.ajax({
+
+        type: "POST",
+        url: "/Mission/getRelatedMissions",
+        dataType: "html",
+        cache: false,
+        data: { themeName: themeName },
+        success: function (data) {
+            $("#related-mission-grid").html("");
+            $('#related-mission-grid').html(data);
+            
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
     });
 }

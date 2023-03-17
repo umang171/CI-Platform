@@ -105,5 +105,10 @@ namespace CIPlatform.Controllers
         {
             _missionRepository.addRatingStars(userId, missionId, ratingStars);
         }
+        public IActionResult getRelatedMissions(string themeName)
+        {
+            IEnumerable<Mission> relatedMissions=_missionRepository.getRelatedMissions(themeName);
+            return PartialView("_relatedMission",relatedMissions);
+        }
     }
 }

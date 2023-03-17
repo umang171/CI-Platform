@@ -99,12 +99,20 @@ namespace CIPlatform.Repository.Repository
                 missionVolunteerViewModelObj.StartDate= rdr.GetDateTime("StartDate");
                 missionVolunteerViewModelObj.EndDate= rdr.GetDateTime("EndDate");
                 missionVolunteerViewModelObj.OrganizationName= rdr.GetString("OrganizationName");
-                missionVolunteerViewModelObj.MediaName= rdr.GetString("MediaName");
-                missionVolunteerViewModelObj.MediaType= rdr.GetString("MediaType");
-                missionVolunteerViewModelObj.MediaPath= rdr.GetString("MediaPath");
+                missionVolunteerViewModelObj.OrganizationDetail= rdr.GetString("OrganizationDetail");
+                missionVolunteerViewModelObj.MediaName = rdr.GetString("MediaName");
+                missionVolunteerViewModelObj.MediaType = rdr.GetString("MediaType");
+                missionVolunteerViewModelObj.MediaPath = rdr.GetString("MediaPath"); 
+                missionVolunteerViewModelObj.DocumentName =!rdr.IsDBNull("DocumentName")? rdr.GetString("DocumentName"):null;
+                missionVolunteerViewModelObj.DocumentType = !rdr.IsDBNull("DocumentPath")? rdr.GetString("DocumentType"):null;
+                missionVolunteerViewModelObj.DocumentPath = !rdr.IsDBNull("DocumentPath") ? rdr.GetString("DocumentPath") : null;
                 missionVolunteerViewModelObj.ThemeTitle= rdr.GetString("ThemeTitle");
                 missionVolunteerViewModelObj.CityName= rdr.GetString("cityName");
                 missionVolunteerViewModelObj.Skill = !rdr.IsDBNull("Skill") ? rdr.GetString("Skill") : null;
+                missionVolunteerViewModelObj.Availability = rdr.GetString("Availability");
+                missionVolunteerViewModelObj.Rating = rdr.GetInt32("Rating");
+                missionVolunteerViewModelObj.TotalVoulunteerRating = rdr.GetInt32("TotalVoulunteerRating");
+                missionVolunteerViewModelObj.Description = rdr.GetString("Description");
             }
             conn.Close();
             return missionVolunteerViewModelObj;
@@ -142,6 +150,9 @@ namespace CIPlatform.Repository.Repository
             }
         }
 
-        
+        IEnumerable<Mission> IMissionRepository.getRelatedMissions(string themeName)
+        {
+            return _ciPlatformDbContext.Missions.Include(mission => mission.Country).ThenInclude(mission => mission.Cities).Include(mission => mission.Theme).Include(mission=>mission.MissionSkills).Include(mission => mission.MissionMedia).Where(u=>u.Theme.Title == themeName);
+        }
     }
 }

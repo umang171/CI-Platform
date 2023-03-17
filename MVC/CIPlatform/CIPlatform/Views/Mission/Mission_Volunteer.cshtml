@@ -208,7 +208,7 @@
                             </div>
                             <div class=" d-flex flex-column p-1 p-md-2">
                                 <div class=" mission-related-info-title">Theme</div>
-                                <div class=" mission-related-info-desc">@Model.ThemeTitle</div>
+                                <div class=" mission-related-info-desc" id="mission-theme">@Model.ThemeTitle</div>
                             </div>
                         </div>
                         <div class="border border-1 mission-related-info d-flex flex-column justify-content-around">
@@ -262,66 +262,28 @@
                 <!-- Tab content -->
                 <div id="Mission" class="tabcontent">
                     <h3>Introduction</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                        enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                        nisi ut aliquip ex ea commodo consequat.
-                    </p>
-                    <p>
-                        Duis aute irure dolor in reprehenderit in voluptate velit esse
-                        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                        cupidatat non proident, sunt in culpa qui officia deserunt mollit
-                        anim id est laborum.
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                        enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                        nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in
-                        reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                        nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                        sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                    <h3>Challenge</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                        enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                        reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                        nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                        sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                        enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                        nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat
-                        cupidatat non proident, sunt in culpa qui officia deserunt mollit
-                        anim id est laborum.
-                    </p>
+                    <p>@Model.Description</p>
                     <h3>Documents</h3>
                     <div class="">
-                        <button class="border border-1 rounded-5 px-3 py-2 bg-white mx-2">
-                            <a href="../../../../Umang/Candidate-System-Allocate all 23 - Rajkot.pdf" target="_blank"
-                                class="text-decoration-none text-dark" download>
-                                <img src="~/images/doc.png" class="px-2" alt="">lorem-ipsum.pdf
-                            </a>
-                        </button>
-                        <button class="border border-1 rounded-5 px-3 py-2 bg-white mx-2">
-                            <a href="Candidate-System-Allocate all 23 - Rajkot.pdf" target="_blank"
-                                class="text-decoration-none text-dark" >
-                                <img src="~/images/doc.png" class="px-2" alt="">lorem-ipsum.pdf
-                            </a>
-                        </button>
-                        <button class="border border-1 rounded-5 px-3 py-2 bg-white mx-2">
-                            <a href="Candidate-System-Allocate all 23 - Rajkot.pdf" target="_blank"
-                                class="text-decoration-none text-dark" >
-                                <img src="~/images/doc.png" class="px-2" alt="">lorem-ipsum.pdf
-                            </a>
-                        </button>
+                    @if (@Model.DocumentName==null)                    
+                    {
+                        <p>No documents found</p>
+                    }
+                    else
+                    {
+                    string[] documentNames = Model.DocumentName.ToString().Split(",");
+                    int docuemntLength = documentNames.Length;
                         
+                    @for(int i=0;i<docuemntLength;i++)
+                            {
+                        <button class="border border-1 rounded-5 px-3 py-2 bg-white mx-2">
+                            <a href="~/@Model.DocumentPath/@documentNames[i]@Model.DocumentType" target="_blank"
+                                class="text-decoration-none text-dark">
+                                <img src="~/images/doc.png" class="px-2" alt="">@documentNames[i]@Model.DocumentType
+                            </a>
+                        </button>
+                            }
+                    }
                     </div>
                 </div>
                 <div id="Organization" class="tabcontent">
@@ -468,18 +430,38 @@
                         <div
                             class="d-flex flex-column flex-md-row py-2 py-md-3 px-1 px-md-2 fs-6 border-top border-1 volunteer-info-div-items">
                             <div class="w-25">Days</div>
-                            <div class="w-75"> Weekend only</div>
+                            <div class="w-75"> @Model.Availability</div>
                         </div>
                         <div
                             class="d-flex flex-column flex-md-row py-2 py-md-3 px-1 px-md-2 fs-6 border-top border-1 volunteer-info-div-items">
+
                             <div class="w-25">Rating</div>
                             <div class="w-75">
-                                <img src="~/images/selected-star.png" alt="selected-star">
-                                <img src="~/images/selected-star.png" alt="selected-star">
-                                <img src="~/images/selected-star.png" alt="selected-star">
-                                <img src="~/images/selected-star.png" alt="selected-star">
-                                <img src="~/images/selected-star.png" alt="selected-star">
-                                <span>(by 125 volunteers)</span>
+                            @{
+                                int noOfStars;
+                            }
+                            @if(Model.Rating !=null)
+                            {                           
+                                noOfStars=(int)Model.Rating;
+                            }
+                            else
+                            {
+                                noOfStars = 0;                            
+                            }
+                            @{
+                                int totalStars = 5;
+                                int notSelectedStars = totalStars - noOfStars;
+                            }
+                                @for(int i = 0; i<noOfStars; i++)
+                            {
+                            <img src="~/images/selected-star.png" alt="">
+                            }
+                            @for(int i = 0; i<notSelectedStars; i++)
+                            {
+                            <img src="~/images/star.png" alt="">
+                            }
+
+                                <span>(by @Model.TotalVoulunteerRating volunteers)</span>
                             </div>
                         </div>
                     </div>
@@ -561,237 +543,7 @@
             </h1>
 
             <div id="related-mission-grid" class="container p-0">
-                <div class="row h-auto">
-                    <div id="related-card-parent"
-                        class="col-lg-4 col-md-6 col-sm-6 col-12 related-grid-item h-auto mb-4">
-                        <div class="card">
-                            <img class="related-card-img-top w-100 related-card-img"
-                                src="~/images/Grow-Trees-On-the-path-to-environment-sustainability-login.png"
-                                alt="Card image cap" />
-                            <div id="related-card-image-content" class="d-flex flex-column justify-content-between p-2">
-                                <div id="location-image" class="related-img-content p-2 rounded-5">
-                                    <img src="~/images/pin.png" alt="" />
-                                    Torrento
-                                </div>
-                                <div class="d-flex flex-column align-items-end">
-                                    <div id="img-heart" class="related-img-content p-2 rounded-5 m-1">
-                                        <img src="~/images/heart.png" alt="" />
-                                    </div>
-                                    <div id="user-img" class="related-img-content p-2 rounded-5 m-1">
-                                        <img src="~/images/user.png" alt="" />
-                                    </div>
-                                </div>
-                            </div>
-                            <h5 class="related-card-theme-title bg-white rounded-5 p-2">
-                                Environment
-                            </h5>
-                            <div class="card-body">
-                                <h5 class="card-title fs-3">
-                                    Grow Trees-On the path to environment sustainability
-                                </h5>
-                                <p class="card-text">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Aperiam nulla blanditiis laboriosam inventore ...
-                                </p>
-
-                                <div id="star-content" class="d-flex align-items-center justify-content-between">
-                                    <p class="my-auto">Tree Canada</p>
-                                    <div class="d-flex align-items-center">
-                                        <img src="~/images/selected-star.png" alt="" />
-                                        <img src="~/images/selected-star.png" alt="" />
-                                        <img src="~/images/selected-star.png" alt="" />
-                                        <img src="~/images/star.png" alt="" />
-                                        <img src="~/images/star.png" alt="" />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div id="mission-duration-div">
-                                <h5 id="card-time-duration-title" class="border bg-white rounded-5 m-auto fs-6 p-2">
-                                    From 10/01/2020 until 11/02/2020
-                                </h5>
-                            </div>
-
-                            <div id="seats-info-card"
-                                class="d-flex border border-1 position-relative pt-3 align-items-center justify-content-around">
-                                <div id="remain-seats-cards" class="w-50 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                                    <img id="seats-left-image" src="~/images/Seats-left.png" alt="" />
-                                    <div class="d-flex flex-column p-2">
-                                        <p id="count" class="m-0 p-0 fs-5">10</p>
-                                        <p id="seats-left-text" class="m-0 p-0">Seats left</p>
-                                    </div>
-                                </div>
-
-                                <div id="deadline-info-card" class="w-40 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                                    <img id="deadline-image" src="~/images/deadline.png" alt="" />
-                                    <div class="d-flex flex-column p-2">
-                                        <p id="deadline-date" class="m-0 p-0 fs-5">19/11/2022</p>
-                                        <p id="deadline-text" class="m-0 p-0">Deadline</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-button-apply m-1 p-1 w-100 text-center">
-                                <button id="apply-btn" class="btn btn-outline-warning rounded-5 py-2 px-4 fs-5">
-                                    Apply
-                                    <img src="~/images/right-arrow.png" class="mx-1 ms-3" alt="" />
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="related-card-parent"
-                        class="col-lg-4 col-md-6 col-sm-6 col-12 related-grid-item h-auto mb-4">
-                        <div class="card">
-                            <img class="related-card-img-top w-100 related-card-img"
-                                src="~/images/Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png"
-                                alt="Card image cap" />
-                            <div id="related-card-image-content" class="d-flex flex-column justify-content-between p-2">
-                                <div id="location-image" class="related-img-content p-2 rounded-5">
-                                    <img src="~/images/pin.png" alt="" />
-                                    Torrento
-                                </div>
-                                <div class="d-flex flex-column align-items-end">
-                                    <div id="img-heart" class="related-img-content p-2 rounded-5 m-1">
-                                        <img src="~/images/heart.png" alt="" />
-                                    </div>
-                                    <div id="user-img" class="related-img-content p-2 rounded-5 m-1">
-                                        <img src="~/images/user.png" alt="" />
-                                    </div>
-                                </div>
-                            </div>
-                            <h5 class="related-card-theme-title bg-white rounded-5 p-2">
-                                Environment
-                            </h5>
-                            <div class="card-body">
-                                <h5 class="card-title fs-3">
-                                    Education Supplies for Every Pair of Shoes Sold
-                                </h5>
-                                <p class="card-text">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Aperiam nulla blanditiis laboriosam inventore ...
-                                </p>
-
-                                <div id="star-content" class="d-flex align-items-center justify-content-between">
-                                    <p class="my-auto">Australian Paradise</p>
-                                    <div class="d-flex align-items-center">
-                                        <img src="~/images/selected-star.png" alt="" />
-                                        <img src="~/images/selected-star.png" alt="" />
-                                        <img src="~/images/selected-star.png" alt="" />
-                                        <img src="~/images/star.png" alt="" />
-                                        <img src="~/images/star.png" alt="" />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div id="mission-duration-div">
-                                <h5 id="card-time-duration-title" class="border bg-white rounded-5 m-auto fs-6 p-2">
-                                    From 10/01/2019 until 25/02/2019
-                                </h5>
-                            </div>
-
-                            <div id="seats-info-card"
-                                class="d-flex border border-1 position-relative pt-3 align-items-center justify-content-around">
-                                <div id="remain-seats-cards" class="w-50 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                                    <img id="seats-left-image" src="~/images/Seats-left.png" alt="" />
-                                    <div class="d-flex flex-column p-2">
-                                        <p id="count" class="m-0 p-0 fs-5">10</p>
-                                        <p id="seats-left-text" class="m-0 p-0">Seats left</p>
-                                    </div>
-                                </div>
-
-                                <div id="deadline-info-card" class="w-40 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                                    <img id="deadline-image" src="~/images/deadline.png" alt="" />
-                                    <div class="d-flex flex-column p-2">
-                                        <p id="deadline-date" class="m-0 p-0 fs-5">19/11/2022</p>
-                                        <p id="deadline-text" class="m-0 p-0">Deadline</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-button-apply m-1 p-1 w-100 text-center">
-                                <button id="apply-btn" class="btn btn-outline-warning rounded-5 py-2 px-4 fs-5">
-                                    Apply
-                                    <img src="~/images/right-arrow.png" class="mx-1 ms-3" alt="" />
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="related-card-parent"
-                        class="col-lg-4 col-md-6 col-sm-6 col-12 related-grid-item h-auto mb-4">
-                        <div class="card">
-                            <img class="related-card-img-top w-100 related-card-img"
-                                src="~/images/Nourish-the-Children-in--African-country.png" alt="Card image cap" />
-                            <div id="related-card-image-content" class="d-flex flex-column justify-content-between p-2">
-                                <div id="location-image" class="related-img-content p-2 rounded-5">
-                                    <img src="~/images/pin.png" alt="" />
-                                    Torrento
-                                </div>
-                                <div class="d-flex flex-column align-items-end">
-                                    <div id="img-heart" class="related-img-content p-2 rounded-5 m-1">
-                                        <img src="~/images/heart.png" alt="" />
-                                    </div>
-                                    <div id="user-img" class="related-img-content p-2 rounded-5 m-1">
-                                        <img src="~/images/user.png" alt="" />
-                                    </div>
-                                </div>
-                            </div>
-                            <h5 class="related-card-theme-title bg-white rounded-5 p-2">
-                                Environment
-                            </h5>
-                            <div class="card-body">
-                                <h5 class="card-title fs-3">
-                                    Nourish the Children in African country
-                                </h5>
-                                <p class="card-text">
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Aperiam nulla blanditiis laboriosam inventore ...
-                                </p>
-
-                                <div id="star-content" class="d-flex align-items-center justify-content-between">
-                                    <p class="my-auto">The Hunger</p>
-                                    <div class="d-flex align-items-center">
-                                        <img src="~/images/selected-star.png" alt="" />
-                                        <img src="~/images/selected-star.png" alt="" />
-                                        <img src="~/images/selected-star.png" alt="" />
-                                        <img src="~/images/star.png" alt="" />
-                                        <img src="~/images/star.png" alt="" />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div id="mission-duration-div">
-                                <h5 id="card-time-duration-title" class="border bg-white rounded-5 m-auto fs-6 p-2">
-                                    From 10/01/2020 until 11/02/2020
-                                </h5>
-                            </div>
-
-                            <div id="seats-info-card"
-                                class="d-flex border border-1 position-relative pt-3 align-items-center justify-content-around">
-                                <div id="remain-seats-cards" class="w-50 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                                    <img id="seats-left-image" src="~/images/Seats-left.png" alt="" />
-                                    <div class="d-flex flex-column p-2">
-                                        <p id="count" class="m-0 p-0 fs-5">10</p>
-                                        <p id="seats-left-text" class="m-0 p-0">Seats left</p>
-                                    </div>
-                                </div>
-
-                                <div id="deadline-info-card" class="w-40 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                                    <img id="deadline-image" src="~/images/deadline.png" alt="" />
-                                    <div class="d-flex flex-column p-2">
-                                        <p id="deadline-date" class="m-0 p-0 fs-5">19/11/2022</p>
-                                        <p id="deadline-text" class="m-0 p-0">Deadline</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card-button-apply m-1 p-1 w-100 text-center">
-                                <button id="apply-btn" class="btn btn-outline-warning rounded-5 py-2 px-4 fs-5">
-                                    Apply
-                                    <img src="~/images/right-arrow.png" class="mx-1 ms-3" alt="" />
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              
             </div>
         </div>
     </div>
