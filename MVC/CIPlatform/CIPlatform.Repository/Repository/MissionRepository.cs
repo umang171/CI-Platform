@@ -179,5 +179,15 @@ namespace CIPlatform.Repository.Repository
             IEnumerable<Comment>  comments=_ciPlatformDbContext.Comments.Include(u => u.User).Where(u=>u.MissionId==missionId);
             return comments;
         }
+
+        void IMissionRepository.recommendToCoworker(int fromUserId, int toUserId, int missionId)
+        {
+            MissionInvite missionInviteObj=new MissionInvite();
+            missionInviteObj.FromUserId=fromUserId;
+            missionInviteObj.ToUserId=toUserId;
+            missionInviteObj.MissionId = missionId;
+            _ciPlatformDbContext.MissionInvites.Add(missionInviteObj);
+            _ciPlatformDbContext.SaveChanges();
+        }
     }
 }

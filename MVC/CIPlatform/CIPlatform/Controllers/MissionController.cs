@@ -1,5 +1,6 @@
 ﻿using CIPlatform.Entities.DataModels;
 using CIPlatform.Entities.ViewModels;
+using CIPlatform.Helpers;
 using CIPlatform.Repository.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
@@ -11,10 +12,15 @@ namespace CIPlatform.Controllers
     {
         private readonly IUserRepository _userRepository;
         private readonly IMissionRepository _missionRepository;
-        public MissionController(IUserRepository userRepository,IMissionRepository missionRepository)
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IConfiguration configuration;
+
+        public MissionController(IUserRepository userRepository, IHttpContextAccessor httpContextAccessor, IMissionRepository missionRepository, IConfiguration _configuration)
         {
             _userRepository = userRepository;
             _missionRepository = missionRepository;
+            _httpContextAccessor = httpContextAccessor;
+            configuration = _configuration;
         }
         public IActionResult Index()
         {
@@ -119,6 +125,26 @@ namespace CIPlatform.Controllers
         {
             IEnumerable<Comment> commentsObj=_missionRepository.getComments(missionId);
             return PartialView("_Comments", commentsObj);
+        }
+        public IActionResult recommendToCoworker(int fromUserId,int missinoId,string toUserEmail)
+        {
+            User userObj;
+            try
+            {
+                userObj = _userRepository.findUser(toUserEmail);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { data = "Email not found",status=0 });    
+            }
+            _missionRepository.recommendToCoworker(fromUserId,(int)userObj.UserId, missinoId);
+            string welcomeMessage = "Welcome to CI platform, <br/> You are recommended to </br>";
+            string path = "<a href=\"" + " https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/Mission/Mission_Volunteer?missionId="+missinoId + " \"   style=\"font-weight:500;color:blue;\" > Recommended mission </a>";
+        
+            MailHelper mailHelper = new MailHelper(configuration);
+            ViewBag.sendMail = mailHelper.Send(toUserEmail, welcomeMessage + path);
+
+            return Json(new { data = "Email sent successfully",status=1 });
         }
     }
 }

@@ -27,5 +27,6 @@ namespace CIPlatform.Repository.Repository.Interface
         public IEnumerable<Mission> getRelatedMissions(string themeName, string cityName,int missionId);
         public void addComment(int userId,int missionId,string comment);
         public IEnumerable<Comment> getComments(int missionId);
+        public void recommendToCoworker(int fromUserId,int toUserId,int missionId);
     }
 }

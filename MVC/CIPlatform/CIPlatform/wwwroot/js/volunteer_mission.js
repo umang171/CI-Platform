@@ -201,7 +201,6 @@ function getFavouriteMissions() {
 function relatedfavouriteMissions() {
     $("#related-mission-grid .favourite-mission-div").on("click", function (event) {
         event.preventDefault();
-        console.log("clicked cheking by me");
         if (this.style.backgroundColor == "black") {
             var missionId = this.id.slice(18,);
             var userId = $("#rightNavbar .user-btn")[0].id.slice(9,);
@@ -285,6 +284,9 @@ function starRatings() {
     });
 }
 
+//====================================================================================================
+//related missions
+//====================================================================================================
 function loadRelatedMissions() {
     var themeName = $("#mission-theme").text();
     var cityName = $("#mission-city-name").text();
@@ -337,7 +339,6 @@ $("#mission-comment-btn").on("click", function (e) {
 });
 function getComments() {
     var missionId = $(".volunteer-button-apply")[0].id.slice(18);
-    console.log("get comments");
     $.ajax({
         type: "GET",
         url: '/Mission/getComments',
@@ -354,3 +355,25 @@ function getComments() {
         }
     });
 }
+//========================================================================================
+//Recommend to coworker
+//========================================================================================
+$("#send-email-btn").on("click", function (e) {
+    e.preventDefault();
+    var missionId = $(".volunteer-button-apply")[0].id.slice(18);
+    var userId = $("#rightNavbar .user-btn")[0].id.slice(9,);
+    var userEmail = $("#recommend-input").val();
+    $.ajax({
+        type: "POST",
+        url: '/Mission/recommendToCoworker',
+        data: { fromUserId: userId, missinoId: missionId, toUserEmail: userEmail},
+        success: function (data) {
+            console.log(data["data"]);
+
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    });
+});
