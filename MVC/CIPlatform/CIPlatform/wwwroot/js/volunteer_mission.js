@@ -115,7 +115,10 @@ $(document).ready(function () {
     loadRelatedMissions();
     favouriteMissions();
     getFavouriteMissions();
+    relatedfavouriteMissions();
+    relatedgetFavouriteMissions();
     starRatings();
+    getComments();
 });
 
 // ======================================================================================================
@@ -191,6 +194,79 @@ function getFavouriteMissions() {
         }
     });
 }
+//=====================================================================================================
+//related favourite Missions
+//=====================================================================================================
+
+function relatedfavouriteMissions() {
+    $("#related-mission-grid .favourite-mission-div").on("click", function (event) {
+        event.preventDefault();
+        console.log("clicked cheking by me");
+        if (this.style.backgroundColor == "black") {
+            var missionId = this.id.slice(18,);
+            var userId = $("#rightNavbar .user-btn")[0].id.slice(9,);
+            $.ajax({
+                type: "POST",
+                url: '/Mission/addFavouriteMissions',
+                data: { userId: userId, missionId: missionId },
+                success: function (data) {
+                    relatedgetFavouriteMissions();
+                },
+                error: function (xhr, status, error) {
+                    // Handle error
+                    console.log(error);
+                }
+            });
+
+        }
+        else {
+
+            var missionId = this.id.slice(18,);
+            var userId = $("#rightNavbar .user-btn")[0].id.slice(9,);
+            $.ajax({
+                type: "POST",
+                url: '/Mission/removeFavouriteMissions',
+                data: { userId: userId, missionId: missionId },
+                success: function (data) {
+                    relatedgetFavouriteMissions();
+                },
+                error: function (xhr, status, error) {
+                    // Handle error
+                    console.log(error);
+                }
+            });
+
+        }
+    });
+}
+function relatedgetFavouriteMissions() {
+    var userId = $("#rightNavbar .user-btn")[0].id.slice(9,);
+    $.ajax({
+        type: "GET",
+        url: '/Mission/getFavouriteMissionsOfUser',
+        data: { userid: userId },
+        success: function (data) {
+            var dataArr = data["data"].split(",");
+
+            $("#related-mission-grid .favourite-mission-div").each(function (index) {
+                var id = this.id.slice(18);
+                for (var i = 0; i < dataArr.length; i++) {
+                    if (dataArr[i] == id) {
+                        this.style.backgroundColor = "red";
+                        this.style.opacity = 1;
+                        break;
+                    }
+                    this.style.backgroundColor = "black";
+                    this.style.opacity = 0.4;
+                }
+            });
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    });
+}
 //====================================================================================================
 //Star rating
 //====================================================================================================
@@ -211,18 +287,65 @@ function starRatings() {
 
 function loadRelatedMissions() {
     var themeName = $("#mission-theme").text();
-    console.log(themeName);
-    console.log("related");
+    var cityName = $("#mission-city-name").text();
+    var missionId = $(".volunteer-button-apply")[0].id.slice(18);
+   
     $.ajax({
 
         type: "POST",
         url: "/Mission/getRelatedMissions",
         dataType: "html",
         cache: false,
-        data: { themeName: themeName },
+        data: { themeName: themeName, cityName: cityName, missionId:missionId },
         success: function (data) {
             $("#related-mission-grid").html("");
             $('#related-mission-grid').html(data);
+
+            relatedfavouriteMissions();
+            relatedgetFavouriteMissions();
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    });
+}
+
+//====================================================================================================
+//Add comment
+//====================================================================================================
+$("#mission-comment-btn").on("click", function (e) {
+    e.preventDefault();
+    var comment=$("#comment").val();
+    $("#comment").val("");
+
+    var missionId = $(".volunteer-button-apply")[0].id.slice(18);
+    var userId = $("#rightNavbar .user-btn")[0].id.slice(9,);
+
+    $.ajax({
+        type: "POST",
+        url: '/Mission/addComment',
+        data: { userId: userId, missionId: missionId, comment: comment },
+        success: function (data) {
+            getComments();
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    });
+});
+function getComments() {
+    var missionId = $(".volunteer-button-apply")[0].id.slice(18);
+    console.log("get comments");
+    $.ajax({
+        type: "GET",
+        url: '/Mission/getComments',
+        dataType: "html",
+        data: { missionId: missionId },
+        success: function (data) {
+            $("#volunteer-comments-div").html("");
+            $("#volunteer-comments-div").html(data);
             
         },
         error: function (xhr, status, error) {

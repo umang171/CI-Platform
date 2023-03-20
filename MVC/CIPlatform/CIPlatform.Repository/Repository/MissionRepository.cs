@@ -150,9 +150,34 @@ namespace CIPlatform.Repository.Repository
             }
         }
 
-        IEnumerable<Mission> IMissionRepository.getRelatedMissions(string themeName)
+        IEnumerable<Mission> IMissionRepository.getRelatedMissions(string themeName,string cityName, int missionId)
         {
-            return _ciPlatformDbContext.Missions.Include(mission => mission.Country).ThenInclude(mission => mission.Cities).Include(mission => mission.Theme).Include(mission=>mission.MissionSkills).Include(mission => mission.MissionMedia).Where(u=>u.Theme.Title == themeName);
+            IEnumerable <Mission> cityRelatedMissions= _ciPlatformDbContext.Missions.Include(mission => mission.Country).ThenInclude(mission => mission.Cities).Include(mission => mission.Theme).Include(mission => mission.MissionSkills).Include(mission => mission.MissionMedia).Include(mission=>mission.MissionRatings).Where(u=>u.MissionId!=missionId).Where(u => u.City.Name == cityName).Take(3);
+
+            if(cityRelatedMissions.Count()==3)
+            {
+                return cityRelatedMissions;
+            }
+            int remainingRelatedMissions = 3-cityRelatedMissions.Count();
+            IEnumerable<Mission> themeRelatedMissions=_ciPlatformDbContext.Missions.Include(mission => mission.Country).ThenInclude(mission => mission.Cities).Include(mission => mission.Theme).Include(mission=>mission.MissionSkills).Include(mission => mission.MissionMedia).Include(mission => mission.MissionRatings).Where(u => u.City.Name != cityName).Where(u => u.MissionId != missionId).Where(u =>u.Theme.Title == themeName).Take(remainingRelatedMissions);
+            IEnumerable<Mission> relatedMissions=cityRelatedMissions.Concat(themeRelatedMissions);
+            return relatedMissions;
+        }
+
+        void IMissionRepository.addComment(int userId, int missionId, string comment)
+        {
+            Comment commentObj=new Comment();
+            commentObj.UserId=userId;
+            commentObj.MissionId=missionId;
+            commentObj.Comment1 = comment;
+            _ciPlatformDbContext.Comments.Add(commentObj);
+            _ciPlatformDbContext.SaveChanges();
+        }
+
+        IEnumerable<Comment> IMissionRepository.getComments(int missionId)
+        {
+            IEnumerable<Comment>  comments=_ciPlatformDbContext.Comments.Include(u => u.User).Where(u=>u.MissionId==missionId);
+            return comments;
         }
     }
 }

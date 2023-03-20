@@ -15,6 +15,7 @@ public partial class CIPlatformDbContext : DbContext
         : base(options)
     {
     }
+
     public virtual DbSet<MissionViewModel> MissionViewModel { get; set; }
     public virtual DbSet<Admin> Admins { get; set; }
 
@@ -194,6 +195,9 @@ public partial class CIPlatformDbContext : DbContext
                 .IsUnicode(false)
                 .HasDefaultValueSql("('PENDING')")
                 .HasColumnName("approval_status");
+            entity.Property(e => e.Comment1)
+                .HasColumnType("text")
+                .HasColumnName("comment");
             entity.Property(e => e.CreatedAt)
                 .HasDefaultValueSql("(getdate())")
                 .HasColumnType("datetime")

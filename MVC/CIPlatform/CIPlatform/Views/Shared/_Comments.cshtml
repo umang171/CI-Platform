@@ -1,0 +1,23 @@
+﻿@model IEnumerable<CIPlatform.Entities.DataModels.Comment>
+
+@if (Model.Count() == 0)
+{
+    <h1>No comments yet</h1>
+}
+else{
+@foreach(var comment in Model)
+{
+
+<div class="volunteer-comments-container bg-white d-flex align-items-center rounded-3 p-2 mb-2">
+                            <div class="me-3"><img class="avtar" src="~/images/user-img.png" alt=""></div>
+                            <div class="d-flex flex-column w-100 justify-content-between">
+                                <div class="p-0 mb-2">
+                                    <p class="p-0 m-0 lh-1 ">@comment.User.FirstName @comment.User.LastName</p>
+                                    @*<p class="p-0 m-0">Monday,October 21,2019,4:57 PM</p>*@
+                                    <p class="p-0 m-0">@comment.CreatedAt</p>
+                                </div>
+                                <div class="volunteer-comment ">@comment.Comment1</div>
+                            </div>
+                        </div>
+}
+}

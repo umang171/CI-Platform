@@ -105,10 +105,20 @@ namespace CIPlatform.Controllers
         {
             _missionRepository.addRatingStars(userId, missionId, ratingStars);
         }
-        public IActionResult getRelatedMissions(string themeName)
+        public IActionResult getRelatedMissions(string themeName,string cityName, int missionId)
         {
-            IEnumerable<Mission> relatedMissions=_missionRepository.getRelatedMissions(themeName);
+            IEnumerable<Mission> relatedMissions=_missionRepository.getRelatedMissions(themeName, cityName,missionId);
             return PartialView("_relatedMission",relatedMissions);
+        }
+        [HttpPost]
+        public void addComment(int userId, int missionId, string comment)
+        {
+            _missionRepository.addComment(userId, missionId, comment);           
+        }
+        public IActionResult getComments(int missionId)
+        {
+            IEnumerable<Comment> commentsObj=_missionRepository.getComments(missionId);
+            return PartialView("_Comments", commentsObj);
         }
     }
 }

@@ -24,6 +24,8 @@ namespace CIPlatform.Repository.Repository.Interface
         public MissionVolunteerViewModel getMissionFromMissionId(int missionId);
         public MissionRating getRatingOfUser(int userId,int missionId);
         public void addRatingStars(int userId,int missionId,int ratingStars);
-        public IEnumerable<Mission> getRelatedMissions(string themeName);
+        public IEnumerable<Mission> getRelatedMissions(string themeName, string cityName,int missionId);
+        public void addComment(int userId,int missionId,string comment);
+        public IEnumerable<Comment> getComments(int missionId);
     }
 }
