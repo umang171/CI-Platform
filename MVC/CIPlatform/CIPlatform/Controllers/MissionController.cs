@@ -56,20 +56,21 @@ namespace CIPlatform.Controllers
             IEnumerable<Country> countries = _missionRepository.getCountries();
             return Json(new { data = countries });
         }
-        public IActionResult GetCites()
+        public IActionResult GetCites(string country)
         {
-            IEnumerable<City> cities = _missionRepository.getCities();
+            IEnumerable<City> cities = _missionRepository.getCities(country);
             return Json(new { data = cities });
         }
         public IActionResult GetThemes()
         {
             IEnumerable<MissionTheme> missionThemes = _missionRepository.getThemes();
-            return Json(new { data = missionThemes });
+            string[] themeArr = missionThemes.Select(u => u.Title).ToArray();
+            return Json(new { data = themeArr });
         }
         public IActionResult GetSkills()
         {
             IEnumerable<Skill> missionSkills= _missionRepository.getSkills();
-            return Json(new { data = missionSkills });
+            return Json(new { data = missionSkills.AsEnumerable() });
         }
         
         [HttpPost]

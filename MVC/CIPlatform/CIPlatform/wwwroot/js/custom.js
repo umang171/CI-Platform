@@ -193,7 +193,7 @@ var ajaxRequest1 =
     $.ajax({
         type: "GET",
         url: "/Mission/GetCountries",
-        data: "{}",
+        data: {},
         success: function (data) {
             var str = "";
             var countryDropDown = $(".countryDropDownList");
@@ -207,22 +207,24 @@ var ajaxRequest1 =
             alert("failure");
         },
         error: function (response) {
-            alert("Something went Worng");
+            alert("Something went Worng country");
         }
 
     });
 
-var ajaxRequest2
+var ajaxRequest2=
     $.ajax({
         type: "GET",
         url: "/Mission/GetCites",
-        data: "{}",
+        data: {country: selectedCountries},
         success: function (data) {
             var str = "";
             var cityDropDown = $(".cityDropDownList");
             for (var j = 0; j < data["data"].length; j++) {
                 str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country" value="' + data["data"][j].name +'"/> ' + data["data"][j].name + '</a></li>';
             }
+            $(".cityDropDownList").empty();
+
             cityDropDown.append(str);
 
         },
@@ -230,21 +232,21 @@ var ajaxRequest2
             alert("failure");
         },
         error: function (response) {
-            alert("Something went Worng");
+            alert("Something went Worng city");
         }
 
     });
 
-var ajaxRequest3
+var ajaxRequest3=
     $.ajax({
         type: "GET",
         url: "/Mission/GetThemes",
-        data: "{}",
+        data: {},
         success: function (data) {
             var str = "";
             var themeDropDown = $(".themeDropDownList");
             for (var j = 0; j < data["data"].length; j++) {
-                str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country" value="' + data["data"][j].title +'"/> ' + data["data"][j].title + '</a></li>';
+                str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country" value="' + data["data"][j] +'"/> ' + data["data"][j] + '</a></li>';
             }
             themeDropDown.append(str);
 
@@ -252,8 +254,8 @@ var ajaxRequest3
         failure: function (response) {
             alert("failure");
         },
-        error: function (response) {
-            alert("Something went Worng");
+        error: function (xhr, status, error) {
+            alert("Something went Worng themes");
         }
 
     });
@@ -277,7 +279,7 @@ var ajaxRequest4 =
             alert("failure");
         },
         error: function (response) {
-            alert("Something went Worng");
+            alert("Something went Worng skills");
         }
 
     });
@@ -323,19 +325,20 @@ $(".close-chips").on("click", function (e) {
 
 function intializeChips() {
     $(".filters .dropdown-menu li a").on("click", function (e) {
+        console.log("chips call");
         $(".home-chips .chips").append(
-            '<div class="chip">' +
+            '<div class="chip" id="chip-'+$(this).text().trim()+'">' +
             $(this).text() +
-            '<span class="closebtn" onclick="this.parentElement.style.display=\'none\'">&times;</span>'
+            '<span class="closebtn" id="close-' + $(this).text().trim() +'" onclick="this.parentElement.style.display=\'none\'">&times;</span>'
         );
         $(".close-chips").show();
         $(".no-filter-text").hide();
         $(".close-chips").show();
-
+        
         //========================
         //filters
         //========================
-                
+
         //country filters
         selectedCountries = "";
         $.each($(".countryDropDownList li a input:checkbox:checked"), function () {
@@ -359,11 +362,39 @@ function intializeChips() {
         $.each($(".skillDropDownList li a input:checkbox:checked"), function () {
             selectedSkills += $(this).val() + ",";
         });
+        //loadCityWithCountry();
         loadCard();
     });
 }
+function loadCityWithCountry() {
 
+    var ajaxCountry=$.ajax({
+        type: "GET",
+        url: "/Mission/GetCites",
+        data: { country: selectedCountries },
+        success: function (data) {
+            var str = "";
+            var cityDropDown = $(".cityDropDownList");
+            for (var j = 0; j < data["data"].length; j++) {
+                str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country" value="' + data["data"][j].name + '"/> ' + data["data"][j].name + '</a></li>';
+            }
+            $(".cityDropDownList").empty();
 
+            cityDropDown.append(str);
+
+        },
+        failure: function (response) {
+            alert("failure");
+        },
+        error: function (response) {
+            alert("Something went Worng city");
+        }
+
+    });
+    $.when(ajaxCountry).done(function () {
+        intializeChips();
+    });
+}
 
 // ====================================================================
 // sort filter

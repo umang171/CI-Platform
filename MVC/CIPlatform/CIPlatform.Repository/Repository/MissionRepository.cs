@@ -20,9 +20,18 @@ namespace CIPlatform.Repository.Repository
             _ciPlatformDbContext = cIPlatformDbContext;
         }
 
-        IEnumerable<City> IMissionRepository.getCities()
-        {
-            return _ciPlatformDbContext.Cities;
+        IEnumerable<City> IMissionRepository.getCities(string country)
+        {            
+            string[] arr;
+            if (country == null)
+                return _ciPlatformDbContext.Cities;
+            else
+            {
+                string[] values = country.Split(',');
+                values = values.SkipLast(1).ToArray();
+                IEnumerable<City> cities = values.SelectMany(a => _ciPlatformDbContext.Cities.Where(u => u.Country.Name == a));
+                return cities;
+            }
         }
 
         IEnumerable<Country> IMissionRepository.getCountries()
@@ -30,15 +39,39 @@ namespace CIPlatform.Repository.Repository
             return _ciPlatformDbContext.Countries;
 
         }
-
+       
         IEnumerable<Skill> IMissionRepository.getSkills()
         {
-            return _ciPlatformDbContext.Skills;
+
+            List<Skill> skills =_ciPlatformDbContext.Skills.ToList();
+            List<Skill> originalskills=_ciPlatformDbContext.Skills.ToList();
+            foreach (Skill skill in skills)
+            {
+
+                List<Mission> mission=_ciPlatformDbContext.Missions.Where(u => u.MissionSkills.ElementAt(0).Skill.SkillName == skill.SkillName).ToList();
+                if (!mission.Any())
+                {
+                    originalskills.Remove(_ciPlatformDbContext.Skills.Where(u=>u.SkillName == skill.SkillName).First());
+
+                }                
+            }
+            return originalskills;
         }
 
         IEnumerable<MissionTheme> IMissionRepository.getThemes()
         {
-            return _ciPlatformDbContext.MissionThemes;
+            List<MissionTheme> themes=_ciPlatformDbContext.MissionThemes.ToList();
+            List<MissionTheme> originalThemes=_ciPlatformDbContext.MissionThemes.ToList();
+            foreach(MissionTheme theme in themes)
+            {
+                List<Mission> mission = _ciPlatformDbContext.Missions.Where(u => u.Theme.Title== theme.Title).ToList();
+                if (!mission.Any())
+                {
+                    originalThemes.Remove(_ciPlatformDbContext.MissionThemes.Where(u=>u.Title==theme.Title).First());
+
+                }
+            }
+            return originalThemes.AsEnumerable();
         }
 
         

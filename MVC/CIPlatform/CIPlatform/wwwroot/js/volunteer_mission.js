@@ -173,6 +173,7 @@ function getFavouriteMissions() {
         url: '/Mission/getFavouriteMissionsOfUser',
         data: { userid: userId },
         success: function (data) {
+            console.log(data);
             var dataArr = data["data"].split(",");
             var id = $(".volunteer-button-apply")[0].id.slice(18);
             for (var i = 0; i < dataArr.length; i++) {
