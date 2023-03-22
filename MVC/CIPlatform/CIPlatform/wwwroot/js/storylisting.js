@@ -120,7 +120,9 @@ $(document).ready(function () {
 // ====================================================================
 // get stories
 // ====================================================================
-function loadStory() {
+function loadStory(paging) {
+    if (!paging)
+        paging = 1;
     var missionId = $(".missionIdDiv")[0].id.slice(4);
     $.ajax({
         type: "POST",
@@ -137,4 +139,18 @@ function loadStory() {
             console.log(error);
         }
     });
+}
+// ====================================================================
+// Pagination
+// ====================================================================
+
+function loadPagination() {
+    var paging = "";
+    $("#pagination li a").on("click", function (e) {
+        console.log("in page");
+        e.preventDefault();
+        paging = $(this).text();
+        console.log(paging);
+        loadStory(paging);
+    })
 }

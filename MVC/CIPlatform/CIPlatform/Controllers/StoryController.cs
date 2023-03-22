@@ -32,10 +32,10 @@ namespace CIPlatform.Controllers
             storyHomeModel.missionId= missionId;
             return View(storyHomeModel);
         }
-        public IActionResult getStories(int missionId)
+        public IActionResult getStories(int missionId,int pageNumber)
         {
-            IEnumerable<StoryListingModel> storyListingModels=_storyRepository.getStories(missionId);
-            return PartialView("_storyList", storyListingModels);
+            PaginationStory paginationStory=_storyRepository.getStories(missionId,pageNumber);
+            return PartialView("_storyList", paginationStory);
         }
     }
 }

@@ -423,7 +423,6 @@ $("#search-input").on("keyup", function (e) {
 // ====================================================================
 
 //pagination
-console.log("in grid");
 function loadPagination() {
     var paging = "";
     $("#pagination li a").on("click", function (e) {

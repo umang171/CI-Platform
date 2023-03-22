@@ -9,6 +9,6 @@ namespace CIPlatform.Repository.Repository.Interface
 {
     public interface IStoryRepository
     {
-        public IEnumerable<StoryListingModel> getStories(int missionId);
+        public PaginationStory getStories(int missionId,int pageNumber);
     }
 }
