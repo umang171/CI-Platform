@@ -222,5 +222,35 @@ namespace CIPlatform.Repository.Repository
             _ciPlatformDbContext.MissionInvites.Add(missionInviteObj);
             _ciPlatformDbContext.SaveChanges();
         }
+
+        void IMissionRepository.addToApplication(int missionId, int userId)
+        {
+            MissionApplication missionApplication=new MissionApplication();
+            missionApplication.UserId=userId;
+            missionApplication.MissionId=missionId;
+            missionApplication.CreatedAt=DateTime.Now;
+            missionApplication.AppliedAt=DateTime.Now;
+            missionApplication.ApprovalStatus = "PENDING";
+            bool hasAlreadyApplied=_ciPlatformDbContext.MissionApplications.Any(u=>u.MissionId==missionId && u.UserId==userId);
+            if(!hasAlreadyApplied)                
+                _ciPlatformDbContext.MissionApplications.Add(missionApplication);
+            else
+            {
+                MissionApplication missionApp=_ciPlatformDbContext.MissionApplications.Where(u => u.MissionId == missionId && u.UserId == userId).First();
+                missionApp.UserId=userId;
+                missionApp.MissionId=missionId;
+                missionApp.CreatedAt=DateTime.Now;
+                missionApp.AppliedAt=DateTime.Now;
+                missionApp.ApprovalStatus = "PENDING";
+                _ciPlatformDbContext.MissionApplications.Update(missionApp);
+            }
+
+            _ciPlatformDbContext.SaveChanges();
+        }
+
+        IEnumerable<MissionApplication> IMissionRepository.getRecentVolunteers(int missionId)
+        {
+            return _ciPlatformDbContext.MissionApplications.Include(u => u.User).Where(u => u.MissionId == missionId && u.ApprovalStatus == "applied");
+        }
     }
 }

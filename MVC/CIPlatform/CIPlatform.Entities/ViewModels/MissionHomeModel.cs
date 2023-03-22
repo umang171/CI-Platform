@@ -10,6 +10,7 @@ namespace CIPlatform.Entities.ViewModels
     public class MissionHomeModel
     {
         public string username { get; set; }
+        public string avtar { get; set; }
         public long userid { get; set; }
         public IEnumerable<Country> countryList { get; set; }
         public IEnumerable<City> cityList { get; set; }

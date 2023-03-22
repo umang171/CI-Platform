@@ -14,7 +14,7 @@
                 <img src="~/images/cancel.png" alt="" />
             </div>
             <div id="menu-heading" class="d-flex justify-content-center align-items-center">
-                <a asp-action="Index" asp-controller="Story" class="side-menu-items text-decoration-none text-dark w-100 m-1 p-1 px-2">Stories</a>
+                <a asp-action="Index" asp-controller="Story" asp-route-missionId="@Model.MissionId" class="side-menu-items text-decoration-none text-dark w-100 m-1 p-1 px-2">Stories</a>
                 <div class="side-menu-items dropdown w-100 m-1 p-1 px-2">
                     <button
                         class="dropdown-toggle border-0 bg-white w-100 d-flex justify-content-between align-items-center"
@@ -43,7 +43,7 @@
                         <img src="~/images/logo.png" alt="" />
 
                         <div id="menu-heading" class="d-none d-md-flex justify-content-center align-items-center">
-                            <a asp-action="Index" asp-controller="Story" class="text-decoration-none text-dark mx-3">Stories</a>
+                            <a asp-action="Index" asp-controller="Story" asp-route-missionId="@Model.MissionId" class="text-decoration-none text-dark mx-3">Stories</a>
                             <div class="dropdown">
                                 <button class="dropdown-toggle border-0 bg-white m-1" type="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -64,7 +64,7 @@
                     </div>
 
                     <div id="rightNavbar" class="d-flex align-items-center">
-                        <a href=""><img id="user-profile-img" src="~/images/user-img.png"
+                        <a href=""><img id="user-profile-img" src="@Model.avtar"
                                 class="rounded-circle object-fit-cover" alt="" /></a>
                         <div class="dropdown d-sm-block d-none">
                             <button class="dropdown-toggle border-0 bg-white m-1 user-btn" id="user-btn-@Model.userid" type="button"
@@ -413,52 +413,7 @@
                             Recent Volunteers
                         </span>
                     </div>
-                    <div class="d-flex flex-wrap p-1">
-                        <div
-                            class="d-flex justify-content-center align-items-center p-1 p-md-2 flex-column volunteer-images-div">
-                            <img src="~/images/volunteer1.png" class="rounded-circle volunteer-images" alt="">
-                            <span class="fs-6 volunteer-names">Umang Gohel</span>
-                        </div>
-                        <div
-                            class="d-flex justify-content-center align-items-center p-1 p-md-2 flex-column volunteer-images-div">
-                            <img src="~/images/volunteer2.png" class="rounded-circle volunteer-images" alt="">
-                            <span class="fs-6 volunteer-names">Sizuka</span>
-                        </div>
-                        <div
-                            class="d-flex justify-content-center align-items-center p-1 p-md-2 flex-column volunteer-images-div">
-                            <img src="~/images/volunteer3.png" class="rounded-circle volunteer-images" alt="">
-                            <span class="fs-6 volunteer-names">Shinchen Nohara</span>
-                        </div>
-                        <div
-                            class="d-flex justify-content-center align-items-center p-1 p-md-2 flex-column volunteer-images-div">
-                            <img src="~/images/volunteer4.png" class="rounded-circle volunteer-images" alt="">
-                            <span class="fs-6 volunteer-names">Naini</span>
-                        </div>
-                        <div
-                            class="d-flex justify-content-center align-items-center p-1 p-md-2 flex-column volunteer-images-div">
-                            <img src="~/images/volunteer5.png" class="rounded-circle volunteer-images" alt="">
-                            <span class="fs-6 volunteer-names">Nobita nobie</span>
-                        </div>
-                        <div
-                            class="d-flex justify-content-center align-items-center p-1 p-md-2 flex-column volunteer-images-div">
-                            <img src="~/images/volunteer6.png" class="rounded-circle volunteer-images" alt="">
-                            <span class="fs-6 volunteer-names">Mixie Nohara</span>
-                        </div>
-                        <div
-                            class="d-flex justify-content-center align-items-center p-1 p-md-2 flex-column volunteer-images-div">
-                            <img src="~/images/volunteer7.png" class="rounded-circle volunteer-images" alt="">
-                            <span class="fs-6 volunteer-names">Doraemon</span>
-                        </div>
-                        <div
-                            class="d-flex justify-content-center align-items-center p-1 p-md-2 flex-column volunteer-images-div">
-                            <img src="~/images/volunteer8.png" class="rounded-circle volunteer-images" alt="">
-                            <span class="fs-6 volunteer-names">Wonder woman</span>
-                        </div>
-                        <div
-                            class="d-flex justify-content-center align-items-center p-1 p-md-2 flex-column volunteer-images-div">
-                            <img src="~/images/volunteer9.png" class="rounded-circle volunteer-images" alt="">
-                            <span class="fs-6 volunteer-names">Smriti Mandhana</span>
-                        </div>
+                    <div id="recent-volunteers-div" class="d-flex flex-wrap align-content-lg-start h-75 p-1">
 
                     </div>
                     <div id="volunteer-scroll-bar"

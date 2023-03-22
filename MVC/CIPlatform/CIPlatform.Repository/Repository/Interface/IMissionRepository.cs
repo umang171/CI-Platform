@@ -28,5 +28,8 @@ namespace CIPlatform.Repository.Repository.Interface
         public void addComment(int userId,int missionId,string comment);
         public IEnumerable<Comment> getComments(int missionId);
         public void recommendToCoworker(int fromUserId,int toUserId,int missionId);
+        public void addToApplication(int missionId,int userId);
+        public IEnumerable<MissionApplication> getRecentVolunteers(int missionId);
+
     }
 }

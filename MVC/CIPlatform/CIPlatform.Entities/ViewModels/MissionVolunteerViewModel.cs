@@ -10,6 +10,7 @@ namespace CIPlatform.Entities.ViewModels
     {
         public long MissionId { get; set; }
         public string username { get; set; }
+        public string avtar { get; set; }
         public int userid{ get; set; }
         public string? Title { get; set; }
         public string? ShortDescription { get; set; }

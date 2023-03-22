@@ -111,5 +111,30 @@ filtercloseImg.addEventListener("click", (e) => {
   flagFilter++;
 });
 // ====================================================================
-// chips items
+// story listing
 // ====================================================================
+
+$(document).ready(function () {
+    loadStory();
+});
+// ====================================================================
+// get stories
+// ====================================================================
+function loadStory() {
+    var missionId = $(".missionIdDiv")[0].id.slice(4);
+    $.ajax({
+        type: "POST",
+        url: '/Story/getStories',
+        dataType: "html",
+        cache: false,
+        data: { missionId: missionId },
+        success: function (data) {
+            $("#story-content").html("");
+            $("#story-content").html(data);
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    });
+}

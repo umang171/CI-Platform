@@ -33,7 +33,7 @@ namespace CIPlatform.Controllers
             User userObj = _userRepository.findUser(userSessionEmailId);
             missionHomeModel.username = userObj.FirstName+" "+userObj.LastName;
             missionHomeModel.userid=userObj.UserId;
-
+            missionHomeModel.avtar=userObj.Avatar;
             return View(missionHomeModel);
         }
         public IActionResult Mission_Volunteer(int? missionId)
@@ -48,7 +48,7 @@ namespace CIPlatform.Controllers
             User userObj = _userRepository.findUser(userSessionEmailId);
             missionVolunteerViewModelObj.username = userObj.FirstName + " " + userObj.LastName;
             missionVolunteerViewModelObj.userid= (int)userObj.UserId;
-
+            missionVolunteerViewModelObj.avtar=userObj.Avatar;
             return View(missionVolunteerViewModelObj);
         }
         public IActionResult GetCountries()
@@ -146,6 +146,15 @@ namespace CIPlatform.Controllers
             ViewBag.sendMail = mailHelper.Send(toUserEmail, welcomeMessage + path);
 
             return Json(new { data = "Email sent successfully",status=1 });
+        }
+        public void addToApplication(int missionId,int userId)
+        {
+               _missionRepository.addToApplication(missionId, userId);
+        }
+        public IActionResult getRecentVolunteers(int missionId)
+        {
+            IEnumerable<MissionApplication> missionApplicationObj=_missionRepository.getRecentVolunteers(missionId);
+            return PartialView("_recentVolunteers",missionApplicationObj);
         }
     }
 }

@@ -119,6 +119,7 @@ $(document).ready(function () {
     relatedgetFavouriteMissions();
     starRatings();
     getComments();
+    getRecentVolunteers();
 });
 
 // ======================================================================================================
@@ -173,7 +174,6 @@ function getFavouriteMissions() {
         url: '/Mission/getFavouriteMissionsOfUser',
         data: { userid: userId },
         success: function (data) {
-            console.log(data);
             var dataArr = data["data"].split(",");
             var id = $(".volunteer-button-apply")[0].id.slice(18);
             for (var i = 0; i < dataArr.length; i++) {
@@ -369,7 +369,6 @@ $("#send-email-btn").on("click", function (e) {
         url: '/Mission/recommendToCoworker',
         data: { fromUserId: userId, missinoId: missionId, toUserEmail: userEmail},
         success: function (data) {
-            console.log(data["data"]);
 
         },
         error: function (xhr, status, error) {
@@ -378,3 +377,47 @@ $("#send-email-btn").on("click", function (e) {
         }
     });
 });
+
+//========================================================================================
+//Apply to mission
+//========================================================================================
+$("#volunteer-apply-btn").on("click", function (e) {
+    e.preventDefault();
+    var missionId = $(".volunteer-button-apply")[0].id.slice(18);
+    var userId = $("#rightNavbar .user-btn")[0].id.slice(9,);
+    $.ajax({
+        type: "POST",
+        url: '/Mission/addToApplication',
+        data: { missionId: missionId, userId: userId },
+        success: function (data) {
+            alert("You have applied for the mission");
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    });
+});
+
+//========================================================================================
+//Apply to mission
+//========================================================================================
+function getRecentVolunteers() {
+    var missionId = $(".volunteer-button-apply")[0].id.slice(18);
+    
+    $.ajax({
+        type: "POST",
+        url: '/Mission/getRecentVolunteers',
+        dataType: "html",
+        cache: false,
+        data: { missionId: missionId },
+        success: function (data) {
+            $("#recent-volunteers-div").html("");
+            $("#recent-volunteers-div").html(data);
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    });
+}

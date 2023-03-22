@@ -1,0 +1,88 @@
+﻿@model IEnumerable<CIPlatform.Entities.ViewModels.StoryListingModel>
+
+@if (Model.Count() == 0)
+{
+    <h1 class="text-center mt-5">No stories found</h1>
+}
+else
+{
+
+    <div id="story-top-image-div" class="d-flex flex-column justify-content-center align-items-center">
+        <div class="d-flex flex-column justify-content-center align-items-center w-50 fs-6">
+            <div id="story-top-image-content" class="text-white text-center mb-1 mb-sm-2 fw-lighter">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore ex eum reprehenderit, fugit at
+                sint enim, nemo alias explicabo architecto amet nostrum minus a laudantium sunt earum veniam
+                aspernatur rem.
+            </div>
+            <button id="story-top-image-btn"
+                class="text-white p-2 px-4 border mt-1 mt-sm-2 border-1 border-white bg-transparent rounded-5">
+                Share your Story
+                <img src="~/images/right-arrow.png" alt="">
+            </button>
+        </div>
+    </div>
+    <div id="story-list-content">
+        <div id="story-list-div" class="container-lg container-fluid  p-2 d-flex justify-content-center">
+
+            <div class="row w-100  p-2">
+
+                @foreach (var data in Model)
+                {
+
+                    <div class="user-story-parent-div shadow-lg col-12 col-sm-6 col-md-4 p-1 my-1">
+                        <div class="user-story h-auto p-0 m-1 mb-2">
+                            <div class="user-story-image-div position-relative">
+                                <img src="/@data.Path@data.ImageType" alt=""
+                             class="user-story-image">
+                                <div class="story-image-hover-content position-absolute w-100 border border-2 border-warning d-flex justify-content-center align-items-center">
+                                    <button class="story-image-hover-button text-white z-2 bg-transparent border border-2 border-white p-2 px-3 rounded-5">
+                                        View Details
+                                        <img src="~/images/right-arrow.png" alt="">
+                                    </button>
+                                </div>
+                                <div class="story-image-heading text-center  position-absolute w-100 m-auto">
+                                    <span class="rounded-5 p-2 bg-white"> @data.ThemeTitle</span>
+                                </div>
+                            </div>
+
+                            <div class="user-story-content p-4 pb-0 ">
+                                <h3 class="user-story-heading fs-5">
+                                    @data.StoryTitle
+                                </h3>
+                                <p class="user-story-description lh-1 lspace">
+                                    @data.StoryDescription.ToString().Substring(0,80) ...;
+                                </p>
+                            </div>
+                            <div class="user-story-profile d-flex align-items-center p-4 px-4 pt-0">
+                                <img src="@data.Avtar" alt="volunteer1-img"
+                             class="rounded-circle user-story-profile-img mx-1">
+                                <p class="story-user-name m-0 p-0 px-1">@data.Username</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+
+        <nav aria-label="Page navigation example ">
+            <ul class="pagination d-flex justify-content-center align-items-center">
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+}

@@ -1,24 +1,8 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Story</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="css/style.css" />
-</head>
-
-<body>
+﻿@model CIPlatform.Entities.ViewModels.StoryHomeModel
     <div id="main-header" class="d-flex flex-row">
         <div id="menu-side-bar" class="position-absolute">
             <div id="close-img" class="p-3 img-close">
-                <img src="images/cancel.png" alt="" />
+                <img src="~/images/cancel.png" alt="" />
             </div>
             <div id="menu-heading" class="d-flex justify-content-center align-items-center">
                 <a href="#" class="side-menu-items text-decoration-none text-dark w-100 m-1 p-1 px-2">Stories</a>
@@ -27,7 +11,7 @@
                         class="dropdown-toggle border-0 bg-white w-100 d-flex justify-content-between align-items-center"
                         type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Policy
-                        <img src="images/drop-down.png" alt="" />
+                        <img src="~/images/drop-down.png" alt="" />
                     </button>
                     <ul class="dropdown-menu w-100">
                         <li><a class="dropdown-item" href="#">Action</a></li>
@@ -40,7 +24,7 @@
 
         <div id="filter-side-bar" class="position-absolute img-close p-2">
             <div id="filter-img-close" class="p-2 img-close">
-                <img src="images/cancel.png" alt="" />
+                <img src="~/images/cancel.png" alt="" />
             </div>
             <div id="side-search-nav" class="d-block d-flex flex-column">
                 <div class="row d-flex flex-column mx-0" id="side-filter-dropdowns">
@@ -50,7 +34,7 @@
                                 class="w-100 h-100 dropdown-toggle border-0 bg-white d-flex justify-content-between align-items-center"
                                 type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Country
-                                <img src="images/drop-down.png" alt="" />
+                                <img src="~/images/drop-down.png" alt="" />
                             </button>
                             <ul class="dropdown-menu">
                                 <li class="p-1">
@@ -74,7 +58,7 @@
                                 class="w-100 h-100 dropdown-toggle border-0 bg-transparent d-flex justify-content-between align-items-center"
                                 type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 City
-                                <img src="images/drop-down.png" alt="" />
+                                <img src="~/images/drop-down.png" alt="" />
                             </button>
                             <ul class="dropdown-menu">
                                 <li class="p-1">
@@ -98,7 +82,7 @@
                                 class="w-100 h-100 dropdown-toggle border-0 bg-transparent d-flex justify-content-between align-items-center"
                                 type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Theme
-                                <img src="images/drop-down.png" alt="" />
+                                <img src="~/images/drop-down.png" alt="" />
                             </button>
                             <ul class="dropdown-menu">
                                 <li class="p-1">
@@ -122,7 +106,7 @@
                                 class="w-100 h-100 dropdown-toggle border-0 bg-white d-flex justify-content-between align-items-center"
                                 type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Skills
-                                <img src="images/drop-down.png" alt="" />
+                                <img src="~/images/drop-down.png" alt="" />
                             </button>
                             <ul class="dropdown-menu">
                                 <li class="p-1">
@@ -150,10 +134,10 @@
                     <div id="leftNavbar" class="d-flex align-items-center">
                         <div id="menuimg"
                             class="d-flex d-block d-md-none justify-content-center align-items-center p-2 m-1 mx-3">
-                            <img src="images/list.png" alt="" />
+                            <img src="~/images/list.png" alt="" />
                         </div>
 
-                        <img src="images/logo.png" alt="" />
+                        <img src="~/images/logo.png" alt="" />
 
                         <div id="menu-heading" class="d-none d-md-flex justify-content-center align-items-center">
                             <a href="#" class="text-decoration-none text-dark mx-3">Stories</a>
@@ -161,7 +145,7 @@
                                 <button class="dropdown-toggle border-0 bg-white m-1" type="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     Policy
-                                    <img src="images/drop-down.png" alt="" />
+                                    <img src="~/images/drop-down.png" alt="" />
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="#">Action</a></li>
@@ -178,15 +162,15 @@
 
                     <div id="rightNavbar" class="d-flex align-items-center">
                         <button id="search-button" class="p-1 mx-3 border-0 bg-white d-sm-none">
-                            <img src="images/search.png" alt="" />
+                            <img src="~/images/search.png" alt="" />
                         </button>
-                        <a href=""><img id="user-profile-img" src="images/user-img.png"
+                        <a href=""><img id="user-profile-img" src="@Model.avtar"
                                 class="rounded-circle object-fit-cover" alt="" /></a>
                         <div class="dropdown d-sm-block d-none">
                             <button class="dropdown-toggle border-0 bg-white m-1" type="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                Umang Gohel
-                                <img src="images/drop-down.png" alt="" />
+                                @Model.username
+                                <img src="~/images/drop-down.png" alt="" />
                             </button>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Action</a></li>
@@ -212,7 +196,7 @@
                         <div id="search-nav"
                             class="col-md-6 col-2 p-md-0 d-md-block d-flex justify-content-end align-items-center">
                             <button class="d-md-none border-0 bg-transparent" type="button" id="filter-button">
-                                <img src="images/filter.png" id="filter-image" alt="" />
+                                <img src="~/images/filter.png" id="filter-image" alt="" />
                             </button>
                             <div class="row d-md-flex d-none mx-0" id="filter-dropdowns">
                                 <div class="filters col-3 p-0">
@@ -221,7 +205,7 @@
                                             class="w-100 h-100 dropdown-toggle border-0 bg-white d-flex justify-content-between align-items-center"
                                             type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             Country
-                                            <img src="images/drop-down.png" alt="" />
+                                            <img src="~/images/drop-down.png" alt="" />
                                         </button>
                                         <ul class="dropdown-menu">
                                             <li class="p-1">
@@ -248,7 +232,7 @@
                                             class="w-100 h-100 dropdown-toggle border-0 bg-transparent d-flex justify-content-between align-items-center"
                                             type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             City
-                                            <img src="images/drop-down.png" alt="" />
+                                            <img src="~/images/drop-down.png" alt="" />
                                         </button>
                                         <ul class="dropdown-menu">
                                             <li class="p-1">
@@ -275,7 +259,7 @@
                                             class="w-100 h-100 dropdown-toggle border-0 bg-transparent d-flex justify-content-between align-items-center"
                                             type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             Theme
-                                            <img src="images/drop-down.png" alt="" />
+                                            <img src="~/images/drop-down.png" alt="" />
                                         </button>
                                         <ul class="dropdown-menu">
                                             <li class="p-1">
@@ -302,7 +286,7 @@
                                             class="w-100 h-100 dropdown-toggle border-0 bg-white d-flex justify-content-between align-items-center"
                                             type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             Skills
-                                            <img src="images/drop-down.png" alt="" />
+                                            <img src="~/images/drop-down.png" alt="" />
                                         </button>
                                         <ul class="dropdown-menu">
                                             <li class="p-1">
@@ -332,319 +316,9 @@
     </div>
 
 
-
+    <div class="missionIdDiv" id="div-@Model.missionId"></div>
     <div id="story-content" class="container-fluid overflow-y-scroll">
-        <div id="story-top-image-div" class="d-flex flex-column justify-content-center align-items-center">
-            <div class="d-flex flex-column justify-content-center align-items-center w-50 fs-6">
-                <div id="story-top-image-content" class="text-white text-center mb-1 mb-sm-2 fw-lighter">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore ex eum reprehenderit, fugit at
-                    sint enim, nemo alias explicabo architecto amet nostrum minus a laudantium sunt earum veniam
-                    aspernatur rem.
-                </div>
-                <button id="story-top-image-btn"
-                    class="text-white p-2 px-4 border mt-1 mt-sm-2 border-1 border-white bg-transparent rounded-5">
-                    Share your Story
-                    <img src="images/right-arrow.png" alt="">
-                </button>
-            </div>
-        </div>
-
-        <div id="story-list-div" class="container-lg container-fluid  p-2 d-flex justify-content-center">
-
-            <div class="row w-100  p-2">
-                
-              
-                <div class="user-story-parent-div shadow-lg col-12 col-sm-6 col-md-4 p-1 my-1">
-                    <div class="user-story h-auto p-0 m-1 mb-2">
-                        <div class="user-story-image-div position-relative">
-                            <img src="images/Grow-Trees-On-the-path-to-environment-sustainability-login.png" alt=""
-                                class="user-story-image">
-                            <div class="story-image-hover-content position-absolute w-100 border border-2 border-warning d-flex justify-content-center align-items-center">
-                                <button class="story-image-hover-button text-white z-2 bg-transparent border border-2 border-white p-2 px-3 rounded-5">
-                                    View Details
-                                    <img src="images/right-arrow.png" alt="">
-                                </button>
-                            </div>
-                            <div class="story-image-heading text-center  position-absolute w-100 m-auto">
-                                <span class="rounded-5 p-2 bg-white"> Customer Experience</span>
-                            </div>
-                        </div>
-
-                        <div class="user-story-content p-4 pb-0 ">
-                            <h3 class="user-story-heading fs-5">
-                                 User and Customer Engagemant Strategies for 2023
-                            </h3>
-                            <p class="user-story-description lh-1 lspace">Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Vel, eos earum ut quas esse beatae .</p>
-                        </div>
-                        <div class="user-story-profile d-flex align-items-center p-4 px-4 pt-0">
-                            <img src="images/volunteer3.png" alt="volunteer1-img"
-                                class="rounded-circle user-story-profile-img mx-1">
-                            <p class="story-user-name m-0 p-0 px-1">Umang Gohel</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="user-story-parent-div shadow-lg col-12 col-sm-6 col-md-4 p-1 my-1">
-                    <div class="user-story h-auto p-0 m-1 mb-2">
-                        <div class="user-story-image-div position-relative">
-                            <img src="images/Nourish-the-Children-in--African-country-1.png" alt=""
-                                class="user-story-image">
-                            <div class="story-image-hover-content position-absolute w-100 border border-2 border-warning d-flex justify-content-center align-items-center">
-                                <button class="story-image-hover-button text-white z-2 bg-transparent border border-2 border-white p-2 px-3 rounded-5">
-                                    View Details
-                                    <img src="images/right-arrow.png" alt="">
-                                </button>
-                            </div>
-                            <div class="story-image-heading text-center  position-absolute w-100 m-auto">
-                                <span class="rounded-5 p-2 bg-white"> Customer Experience</span>
-                            </div>
-                        </div>
-
-                        <div class="user-story-content p-4 pb-0 ">
-                            <h3 class="user-story-heading fs-5">
-                                Education Supplies for Every Pair of Shoes Sold
-                            </h3>
-                            <p class="user-story-description lh-1 lspace">Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Vel, eos earum ut quas esse beatae .</p>
-                        </div>
-                        <div class="user-story-profile d-flex align-items-center p-4 px-4 pt-0">
-                            <img src="images/volunteer5.png" alt="volunteer-img"
-                                class="rounded-circle user-story-profile-img mx-1">
-                            <p class="story-user-name m-0 p-0 px-1">Rohit Sharma</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="user-story-parent-div shadow-lg col-12 col-sm-6 col-md-4 p-1 my-1">
-                    <div class="user-story h-auto p-0 m-1 mb-2">
-                        <div class="user-story-image-div position-relative">
-                            <img src="images/img11.png" alt=""
-                                class="user-story-image">
-                            <div class="story-image-hover-content position-absolute w-100 border border-2 border-warning d-flex justify-content-center align-items-center">
-                                <button class="story-image-hover-button text-white z-2 bg-transparent border border-2 border-white p-2 px-3 rounded-5">
-                                    View Details
-                                    <img src="images/right-arrow.png" alt="">
-                                </button>
-                            </div>
-                            <div class="story-image-heading text-center  position-absolute w-100 m-auto">
-                                <span class="rounded-5 p-2 bg-white"> Customer Experience</span>
-                            </div>
-                        </div>
-
-                        <div class="user-story-content p-4 pb-0 ">
-                            <h3 class="user-story-heading fs-5">
-                                Grow Trees On the path to environment sustainability
-                            </h3>
-                            <p class="user-story-description lh-1 lspace">Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Vel, eos earum ut quas esse beatae .</p>
-                        </div>
-                        <div class="user-story-profile d-flex align-items-center p-4 px-4 pt-0">
-                            <img src="images/volunteer7.png" alt="volunteer-img"
-                                class="rounded-circle user-story-profile-img mx-1">
-                            <p class="story-user-name m-0 p-0 px-1">John Cena</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="user-story-parent-div shadow-lg col-12 col-sm-6 col-md-4 p-1 my-1">
-                    <div class="user-story h-auto p-0 m-1 mb-2">
-                        <div class="user-story-image-div position-relative">
-                            <img src="images/Education-Supplies-for-Every--Pair-of-Shoes-Sold.png" alt=""
-                                class="user-story-image">
-                            <div class="story-image-hover-content position-absolute w-100 border border-2 border-warning d-flex justify-content-center align-items-center">
-                                <button class="story-image-hover-button text-white z-2 bg-transparent border border-2 border-white p-2 px-3 rounded-5">
-                                    View Details
-                                    <img src="images/right-arrow.png" alt="">
-                                </button>
-                            </div>
-                            <div class="story-image-heading text-center  position-absolute w-100 m-auto">
-                                <span class="rounded-5 p-2 bg-white"> Customer Experience</span>
-                            </div>
-                        </div>
-
-                        <div class="user-story-content p-4 pb-0 ">
-                            <h3 class="user-story-heading fs-5">
-                                Education Supplies for Every Pair of Shoes Sold
-                            </h3>
-                            <p class="user-story-description lh-1 lspace">Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Vel, eos earum ut quas esse beatae .</p>
-                        </div>
-                        <div class="user-story-profile d-flex align-items-center p-4 px-4 pt-0">
-                            <img src="images/volunteer3.png" alt="volunteer1-img"
-                                class="rounded-circle user-story-profile-img mx-1">
-                            <p class="story-user-name m-0 p-0 px-1">Virat kohli</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="user-story-parent-div shadow-lg col-12 col-sm-6 col-md-4 p-1 my-1">
-                    <div class="user-story h-auto p-0 m-1 mb-2">
-                        <div class="user-story-image-div position-relative">
-                            <img src="images/Plantation-and-Afforestation-programme-1.png" alt=""
-                                class="user-story-image">
-                            <div class="story-image-hover-content position-absolute w-100 border border-2 border-warning d-flex justify-content-center align-items-center">
-                                <button class="story-image-hover-button text-white z-2 bg-transparent border border-2 border-white p-2 px-3 rounded-5">
-                                    View Details
-                                    <img src="images/right-arrow.png" alt="">
-                                </button>
-                            </div>
-                            <div class="story-image-heading text-center  position-absolute w-100 m-auto">
-                                <span class="rounded-5 p-2 bg-white"> Customer Experience</span>
-                            </div>
-                        </div>
-
-                        <div class="user-story-content p-4 pb-0 ">
-                            <h3 class="user-story-heading fs-5">
-                                Plantation and Afforestation programme
-                            </h3>
-                            <p class="user-story-description lh-1 lspace">Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Vel, eos earum ut quas esse beatae .</p>
-                        </div>
-                        <div class="user-story-profile d-flex align-items-center p-4 px-4 pt-0">
-                            <img src="images/volunteer5.png" alt="volunteer-img"
-                                class="rounded-circle user-story-profile-img mx-1">
-                            <p class="story-user-name m-0 p-0 px-1">Rohit Sharma</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="user-story-parent-div shadow-lg col-12 col-sm-6 col-md-4 p-1 my-1">
-                    <div class="user-story h-auto p-0 m-1 mb-2">
-                        <div class="user-story-image-div position-relative">
-                            <img src="images/img1.png" alt=""
-                                class="user-story-image">
-                            <div class="story-image-hover-content position-absolute w-100 border border-2 border-warning d-flex justify-content-center align-items-center">
-                                <button class="story-image-hover-button text-white z-2 bg-transparent border border-2 border-white p-2 px-3 rounded-5">
-                                    View Details
-                                    <img src="images/right-arrow.png" alt="">
-                                </button>
-                            </div>
-                            <div class="story-image-heading text-center  position-absolute w-100 m-auto">
-                                <span class="rounded-5 p-2 bg-white"> Customer Experience</span>
-                            </div>
-                        </div>
-
-                        <div class="user-story-content p-4 pb-0 ">
-                            <h3 class="user-story-heading fs-5">
-                                Grow Trees On the path to environment sustainability
-                            </h3>
-                            <p class="user-story-description lh-1 lspace">Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Vel, eos earum ut quas esse beatae .</p>
-                        </div>
-                        <div class="user-story-profile d-flex align-items-center p-4 px-4 pt-0">
-                            <img src="images/volunteer7.png" alt="volunteer-img"
-                                class="rounded-circle user-story-profile-img mx-1">
-                            <p class="story-user-name m-0 p-0 px-1">John Cena</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="user-story-parent-div shadow-lg col-12 col-sm-6 col-md-4 p-1 my-1">
-                    <div class="user-story h-auto p-0 m-1 mb-2">
-                        <div class="user-story-image-div position-relative">
-                            <img src="images/Nourish-the-Children-in--African-country-1.png" alt=""
-                                class="user-story-image">
-                            <div class="story-image-hover-content position-absolute w-100 border border-2 border-warning d-flex justify-content-center align-items-center">
-                                <button class="story-image-hover-button text-white z-2 bg-transparent border border-2 border-white p-2 px-3 rounded-5">
-                                    View Details
-                                    <img src="images/right-arrow.png" alt="">
-                                </button>
-                            </div>
-                            <div class="story-image-heading text-center  position-absolute w-100 m-auto">
-                                <span class="rounded-5 p-2 bg-white"> Customer Experience</span>
-                            </div>
-                        </div>
-
-                        <div class="user-story-content p-4 pb-0 ">
-                            <h3 class="user-story-heading fs-5">
-                                Nourish the Children in African country in 2023
-                            </h3>
-                            <p class="user-story-description lh-1 lspace">Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Vel, eos earum ut quas esse beatae .</p>
-                        </div>
-                        <div class="user-story-profile d-flex align-items-center p-4 px-4 pt-0">
-                            <img src="images/volunteer5.png" alt="volunteer-img"
-                                class="rounded-circle user-story-profile-img mx-1">
-                            <p class="story-user-name m-0 p-0 px-1">Rohit Sharma</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="user-story-parent-div shadow-lg col-12 col-sm-6 col-md-4 p-1 my-1">
-                    <div class="user-story h-auto p-0 m-1 mb-2">
-                        <div class="user-story-image-div position-relative">
-                            <img src="images/img11.png" alt=""
-                                class="user-story-image">
-                            <div class="story-image-hover-content position-absolute w-100 border border-2 border-warning d-flex justify-content-center align-items-center">
-                                <button class="story-image-hover-button text-white z-2 bg-transparent border border-2 border-white p-2 px-3 rounded-5">
-                                    View Details
-                                    <img src="images/right-arrow.png" alt="">
-                                </button>
-                            </div>
-                            <div class="story-image-heading text-center  position-absolute w-100 m-auto">
-                                <span class="rounded-5 p-2 bg-white"> Customer Experience</span>
-                            </div>
-                        </div>
-
-                        <div class="user-story-content p-4 pb-0 ">
-                            <h3 class="user-story-heading fs-5">
-                                Grow Trees On the path to environment sustainability
-                            </h3>
-                            <p class="user-story-description lh-1 lspace">Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Vel, eos earum ut quas esse beatae .</p>
-                        </div>
-                        <div class="user-story-profile d-flex align-items-center p-4 px-4 pt-0">
-                            <img src="images/volunteer7.png" alt="volunteer-img"
-                                class="rounded-circle user-story-profile-img mx-1">
-                            <p class="story-user-name m-0 p-0 px-1">John Cena</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="user-story-parent-div shadow-lg col-12 col-sm-6 col-md-4 p-1 my-1">
-                    <div class="user-story h-auto p-0 m-1 mb-2">
-                        <div class="user-story-image-div position-relative">
-                            <img src="images/Education-Supplies-for-Every--Pair-of-Shoes-Sold.png" alt=""
-                                class="user-story-image">
-                            <div class="story-image-hover-content position-absolute w-100 border border-2 border-warning d-flex justify-content-center align-items-center">
-                                <button class="story-image-hover-button text-white z-2 bg-transparent border border-2 border-white p-2 px-3 rounded-5">
-                                    View Details
-                                    <img src="images/right-arrow.png" alt="">
-                                </button>
-                            </div>
-                            <div class="story-image-heading text-center  position-absolute w-100 m-auto">
-                                <span class="rounded-5 p-2 bg-white"> Customer Experience</span>
-                            </div>
-                        </div>
-
-                        <div class="user-story-content p-4 pb-0 ">
-                            <h3 class="user-story-heading fs-5">
-                                Education Supplies for Every Pair of Shoes Sold
-                            </h3>
-                            <p class="user-story-description lh-1 lspace">Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Vel, eos earum ut quas esse beatae .</p>
-                        </div>
-                        <div class="user-story-profile d-flex align-items-center p-4 px-4 pt-0">
-                            <img src="images/volunteer3.png" alt="volunteer1-img"
-                                class="rounded-circle user-story-profile-img mx-1">
-                            <p class="story-user-name m-0 p-0 px-1">Virat kohli</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>   
-        </div>
-
-        <nav aria-label="Page navigation example ">
-            <ul class="pagination d-flex justify-content-center align-items-center">
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
+        
     </div>
     
 
@@ -653,8 +327,7 @@
             <a href="#">Privacy Policy</a>
         </div>
     </footer>
-    <script src="js/bootstrap.bundle.js"></script>
-    <script src="js/storylisting.js"></script>
-</body>
-
-</html>
+     @section JavaScript
+{
+    <script src="~/js/storylisting.js"></script>
+}

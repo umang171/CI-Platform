@@ -1193,13 +1193,9 @@
     height: calc(100vh - var(--header-height));
 }
 
-#story-list-div {
-    background-color: #FFFFFF00;
-}
-
-#story-content::-webkit-scrollbar {
-    display: none; /* Safari and Chrome */
-}
+    #story-content::-webkit-scrollbar {
+        display: none; /* Safari and Chrome */
+    }
 
 #story-top-image-div {
     background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url(../images/Grow-Trees-On-the-path-to-environment-sustainability-login.png);
@@ -1209,10 +1205,29 @@
     background-position: 0px -180px;
 }
 
+#story-list-div .row {
+    height: max-content;
+}
+
+.user-story-parent-div {
+    height: max-content;
+}
+
 .user-story-image {
     height: 250px;
     width: 100%;
 }
+
+.story-image-hover-content {
+    top: 0px;
+    height: 250px;
+    background-color: rgba(0, 0, 0, 0.60);
+    opacity: 0;
+}
+
+    .story-image-hover-content:hover {
+        opacity: 1;
+    }
 
 .story-image-heading {
     top: 234px;
@@ -1223,8 +1238,8 @@
 }
 
 .user-story-profile-img {
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
 }
 
 /* media query */
@@ -1240,4 +1255,6 @@
     }
 }
 
-
+.story-pagination {
+    height: 100px;
+}

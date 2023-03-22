@@ -1,0 +1,16 @@
+﻿@model IEnumerable<CIPlatform.Entities.DataModels.MissionApplication>
+@if (Model.Count() == 0)
+{
+    <h2>No volunteers has applied</h2>
+}
+else
+{    
+    @foreach (var users in Model)
+    {   
+    <div
+        class="d-flex justify-content-center align-items-center p-1 p-md-2 flex-column volunteer-images-div">
+        <img src="@users.User.Avatar" class="rounded-circle volunteer-images" alt="">
+        <span class="fs-6 volunteer-names">@users.User.FirstName @users.User.LastName</span>
+    </div>
+    }
+}

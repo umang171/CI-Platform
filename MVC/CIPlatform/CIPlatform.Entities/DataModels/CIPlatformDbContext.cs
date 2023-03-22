@@ -17,6 +17,7 @@ public partial class CIPlatformDbContext : DbContext
     }
 
     public virtual DbSet<MissionViewModel> MissionViewModel { get; set; }
+    public virtual DbSet<StoryListingModel> StoryListingModel { get; set; }
     public virtual DbSet<Admin> Admins { get; set; }
 
     public virtual DbSet<Banner> Banners { get; set; }
