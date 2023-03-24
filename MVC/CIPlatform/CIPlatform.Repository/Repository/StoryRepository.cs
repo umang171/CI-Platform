@@ -19,12 +19,11 @@ namespace CIPlatform.Repository.Repository
         {
             _ciPlatformDbContext = cIPlatformDbContext;
         }
-        PaginationStory IStoryRepository.getStories(int missionId, int pageNumber)
+        PaginationStory IStoryRepository.getStories(int pageNumber)
         {
-            pageNumber = 1;
             var output = new SqlParameter("@TotalCount", SqlDbType.BigInt) { Direction = ParameterDirection.Output };
             PaginationStory paginationStory = new PaginationStory();
-            List<StoryListingModel> storyListingObj=_ciPlatformDbContext.StoryListingModel.FromSqlInterpolated($"exec sp_get_story_data @missionId = {missionId},@pageNumber = {pageNumber}, @TotalCount = {output} out").ToList();
+            List<StoryListingModel> storyListingObj=_ciPlatformDbContext.StoryListingModel.FromSqlInterpolated($"exec sp_get_story_data @pageNumber = {pageNumber}, @TotalCount = {output} out").ToList();
             paginationStory.stories = storyListingObj;
             paginationStory.pageCount= long.Parse(output.Value.ToString());
             paginationStory.pageSize = 6;

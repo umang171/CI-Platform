@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "vx17VDppwByt03StsQaF8z7IXr0RRNZJ962S7iwh8uQ=",
+  "Hash": "Zwnfj4/GrBMKtDlUT3JkUqLcIoVurvvW81F+79qP9cw=",
   "Source": "CIPlatform",
   "BasePath": "_content/CIPlatform",
   "Mode": "Default",
@@ -1970,6 +1970,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\custom.js"
+    },
+    {
+      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\share_story.js",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "js/share_story.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\share_story.js"
     },
     {
       "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\js\\site.js",

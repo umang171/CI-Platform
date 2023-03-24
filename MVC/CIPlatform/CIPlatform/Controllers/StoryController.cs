@@ -32,10 +32,23 @@ namespace CIPlatform.Controllers
             storyHomeModel.missionId= missionId;
             return View(storyHomeModel);
         }
-        public IActionResult getStories(int missionId,int pageNumber)
+        public IActionResult getStories(int pageNumber)
         {
-            PaginationStory paginationStory=_storyRepository.getStories(missionId,pageNumber);
+            PaginationStory paginationStory=_storyRepository.getStories(pageNumber);
             return PartialView("_storyList", paginationStory);
+        }
+        public IActionResult ShareStory()
+        {
+            string userSessionEmailId = HttpContext.Session.GetString("useremail");
+            if (userSessionEmailId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            ShareStoryModel shareStoryModel = new ShareStoryModel();
+            User userObj = _userRepository.findUser(userSessionEmailId);
+            shareStoryModel.username = userObj.FirstName + " " + userObj.LastName;
+            shareStoryModel.avatar=userObj.Avatar;
+            return View(shareStoryModel);
         }
     }
 }
