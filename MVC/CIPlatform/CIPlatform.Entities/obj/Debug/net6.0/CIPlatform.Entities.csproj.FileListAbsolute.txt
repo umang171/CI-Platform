@@ -11,7 +11,6 @@ D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Entities\obj\Debug\net6.0\CIPl
 D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Entities\obj\Debug\net6.0\ref\CIPlatform.Entities.dll
 D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.pdb
 D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.genruntimeconfig.cache
-D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.csproj.AssemblyReference.cache
 E:\tatavasoft\ci\CI-Platform\MVC\CIPlatform\CIPlatform.Entities\bin\Debug\net6.0\CIPlatform.Entities.deps.json
 E:\tatavasoft\ci\CI-Platform\MVC\CIPlatform\CIPlatform.Entities\bin\Debug\net6.0\CIPlatform.Entities.runtimeconfig.json
 E:\tatavasoft\ci\CI-Platform\MVC\CIPlatform\CIPlatform.Entities\bin\Debug\net6.0\CIPlatform.Entities.dll

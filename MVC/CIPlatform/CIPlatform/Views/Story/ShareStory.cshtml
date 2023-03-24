@@ -1,71 +1,53 @@
 ﻿@model CIPlatform.Entities.ViewModels.ShareStoryModel
-   <div id="main-header" class="d-flex flex-row">
-        <div id="menu-side-bar" class="position-absolute">
-            <div id="close-img" class="p-3 img-close">
-                <img src="~/images/cancel.png" alt="" />
-            </div>
-            <div id="menu-heading" class="d-flex justify-content-center align-items-center">
-                <a asp-action="Index" asp-controller="Story" class="side-menu-items text-decoration-none text-dark w-100 m-1 p-1 px-2">Stories</a>
-                <div class="side-menu-items dropdown w-100 m-1 p-1 px-2">
-                    <button
-                        class="dropdown-toggle border-0 bg-white w-100 d-flex justify-content-between align-items-center"
+ @section Style{
+<link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+ }
+<div id="main-header" class="d-flex flex-row">
+    <div id="menu-side-bar" class="position-absolute">
+        <div id="close-img" class="p-3 img-close">
+            <img src="~/images/cancel.png" alt="" />
+        </div>
+        <div id="menu-heading" class="d-flex justify-content-center align-items-center">
+            <a asp-action="Index" asp-controller="Story" class="side-menu-items text-decoration-none text-dark w-100 m-1 p-1 px-2">Stories</a>
+            <div class="side-menu-items dropdown w-100 m-1 p-1 px-2">
+                <button class="dropdown-toggle border-0 bg-white w-100 d-flex justify-content-between align-items-center"
                         type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Policy
-                        <img src="~/images/drop-down.png" alt="" />
-                    </button>
-                    <ul class="dropdown-menu w-100">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                </div>
+                    Policy
+                    <img src="~/images/drop-down.png" alt="" />
+                </button>
+                <ul class="dropdown-menu w-100">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
             </div>
         </div>
+    </div>
 
-        <div id="main-container" class="w-100">
-            <header class="w-100 bg-white position-sticky z-2 border-bottom">
-                <div id="main-first-header" class="d-flex justify-content-between align-items-center mx-auto">
-                    <div id="leftNavbar" class="d-flex align-items-center">
-                        <div id="menuimg"
-                            class="d-flex d-block d-md-none justify-content-center align-items-center p-2 m-1 mx-3">
-                            <img src="~/images/list.png" alt="" />
-                        </div>
-
-                        <img src="~/images/logo.png" alt="" />
-
-                        <div id="menu-heading" class="d-none d-md-flex justify-content-center align-items-center">
-                            <a asp-action="Index" asp-controller="Story" class="text-decoration-none text-dark mx-3">Stories</a>
-                            <div class="dropdown">
-                                <button class="dropdown-toggle border-0 bg-white m-1" type="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Policy
-                                    <img src="~/images/drop-down.png" alt="" />
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+    <div id="main-container" class="w-100">
+        <header class="w-100 bg-white position-sticky z-2 border-bottom">
+            <div id="main-first-header" class="d-flex justify-content-between align-items-center mx-auto">
+                <div id="leftNavbar" class="d-flex align-items-center">
+                    <div id="menuimg"
+                         class="d-flex d-block d-md-none justify-content-center align-items-center p-2 m-1 mx-3">
+                        <img src="~/images/list.png" alt="" />
                     </div>
 
-                    <div id="rightNavbar" class="d-flex align-items-center">
-                        <a href=""><img id="user-profile-img" src="@Model.avatar"
-                                class="rounded-circle object-fit-cover" alt="" /></a>
-                        <div class="dropdown d-sm-block d-none">
-                            <button class="dropdown-toggle border-0 bg-white m-1 user-btn" id="user-btn" type="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                @Model.username
+                    <img src="~/images/logo.png" alt="" />
+
+                    <div id="menu-heading" class="d-none d-md-flex justify-content-center align-items-center">
+                        <a asp-action="Index" asp-controller="Story" class="text-decoration-none text-dark mx-3">Stories</a>
+                        <div class="dropdown">
+                            <button class="dropdown-toggle border-0 bg-white m-1" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                Policy
                                 <img src="~/images/drop-down.png" alt="" />
                             </button>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                </li>
                                 <li>
                                     <a class="dropdown-item" href="#">Something else here</a>
                                 </li>
@@ -73,18 +55,136 @@
                         </div>
                     </div>
                 </div>
-            </header>
-        </div>
+
+                <div id="rightNavbar" class="d-flex align-items-center">
+                    <a href="">
+                        <img id="user-profile-img" src="@Model.avatar"
+                             class="rounded-circle object-fit-cover" alt="" />
+                    </a>
+                    <div class="dropdown d-sm-block d-none">
+                        <button class="dropdown-toggle border-0 bg-white m-1 user-btn" id="user-btn" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            @Model.username
+                            <img src="~/images/drop-down.png" alt="" />
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
     </div>
+</div>
 
-    <footer id="mission-footer" class="container-fluid border-top">
-        <div class="py-4 mx-auto">
-            <a href="#">Privacy Policy</a>
-        </div>
-    </footer>
+@*Main content of share story starts here*@
+<div id="mission-content" class="w-100 m-auto h-auto">
+    <div id="share-story-content" class="">
+        <h2 class="fw-light pt-4">Share your story</h2>
+        <form class="py-4 px-0">
+            <div id="share-story-content-mission-info" class="row w-100 m-auto px-0">
+                <div class="share-story-content-mission col-12 col-md-4 p-0 pe-2">
+                    <div class="d-flex flex-column">
+                        <label class="py-1" for="">Select Mission</label>
+                        <select name="sort" id="sort-dropdown" class="py-1 w-100">
+                            <option value="Select">Select Your mission</option>
+                            @foreach (var item in Model.missions)
+                            {
+                                <option value="@item.Title">@item.Title</option>
+                            }
+                        </select>
 
-    @section JavaScript{
-     
-    <script src="~/js/volunteer_mission.js"></script>
+                    </div>
+                </div>
+                <div class="share-story-content-mission col-12 col-md-4 p-0 pe-2 ">
+                    <div class="d-flex flex-column">
+                        <label class="py-1" for="">My Story title</label>
+                        <input type="text" class="p-1 share-story-inputs" placeholder="Enter story title" />
+                    </div>
+                </div>
+                <div class="share-story-content-mission col-12 col-md-4 p-0 pe-2">
+                    <div class="d-flex flex-column">
+                        <label class="py-1" for="">Date</label>
+                        <input type="text" onfocus="(this.type='date')" class="p-1 share-story-inputs" placeholder="Select Date" />
+                    </div>
+                </div>
+            </div>
+            <div id="share-story-content-desc-info" class="pt-3">
+                <label for="">
+                    My Story
+                </label>
+                <textarea id="default" cols="10">Hello, World!</textarea>
+            </div>
+            <div id="share-story-content-video-urls" class="pt-3">
+                <label for="">
+                    Enter Video URL
+                </label>
+                <textarea id="video-url-textar" class="w-100 p-1" style="overflow-y:hidden;" rows="1" placeholder="Enter video url"></textarea>
+            </div>
 
+            <div id="share-story-content-upload-photos" class="pt-3">
+                <label for="">
+                    Upload your photos
+                </label><br/>
+                <div id="dropSection">
+                </div>
+                <br/>
+                Uploaded Files:
+                <hr/>
+                <div id="uploadedFiles">
+                </div>
+                <input type="button" id="btnUpload" value="Upload" />
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+<footer id="mission-footer" class="container-fluid border-top position-static">
+    <div class="pt-4 mx-auto">
+        <a href="#">Privacy Policy</a>
+    </div>
+</footer>
+
+
+</script>
+@section JavaScript{
+<script src="https://cdn.tiny.cloud/1/pja9ajo1o39g0k8thqnh6v1mf71mykif09v83tqtjfhsnung/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="~/js/share_story.js"></script>
+<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+<script src="~/js/filedrop.js"></script>
+<script type="text/javascript">
+        $(function () {
+            $("#dropSection").filedrop({
+                fallback_id: 'btnUpload',
+                fallback_dropzoneClick: true,
+                url: '@Url.Action("Upload")',
+                //allowedfiletypes: ['image/jpeg', 'image/png', 'image/gif', 'application/pdf', 'application/doc'],
+                allowedfileextensions: ['.doc', '.docx', '.pdf', '.jpg', '.jpeg', '.png', '.gif'],
+                paramname: 'postedFiles',
+                maxfiles: 5, //Maximum Number of Files allowed at a time.
+                maxfilesize: 2, //Maximum File Size in MB.
+                dragOver: function () {
+                    $('#dropSection').addClass('active');
+                },
+                dragLeave: function () {
+                    $('#dropSection').removeClass('active');
+                },
+                drop: function () {
+                    $('#dropSection').removeClass('active');
+                },
+                uploadFinished: function (i, file, response, time) {
+                    $('#uploadedFiles').append(file.name + '<br />')
+                },
+                afterAll: function (e) {
+                    //To do some task after all uploads done.
+                }
+            })
+        })
+    </script>
 }

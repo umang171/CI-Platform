@@ -400,7 +400,7 @@ $("#volunteer-apply-btn").on("click", function (e) {
 });
 
 //========================================================================================
-//Apply to mission
+//get recent volunteers
 //========================================================================================
 function getRecentVolunteers() {
     var missionId = $(".volunteer-button-apply")[0].id.slice(18);

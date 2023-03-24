@@ -20,6 +20,10 @@ namespace CIPlatform.Repository.Repository
             _ciPlatformDbContext = cIPlatformDbContext;
         }
 
+        List<Mission> IMissionRepository.getMissions()
+        {
+            return _ciPlatformDbContext.Missions.ToList();
+        }
         IEnumerable<City> IMissionRepository.getCities(string country)
         {            
             string[] arr;

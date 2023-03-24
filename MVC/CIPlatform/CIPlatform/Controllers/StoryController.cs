@@ -2,7 +2,7 @@
 using CIPlatform.Entities.ViewModels;
 using CIPlatform.Repository.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.AspNetCore.Hosting;
 namespace CIPlatform.Controllers
 {
     public class StoryController : Controller
@@ -11,12 +11,14 @@ namespace CIPlatform.Controllers
         private readonly IUserRepository _userRepository;
         private readonly IMissionRepository _missionRepository;
         private readonly IStoryRepository _storyRepository;
+        private readonly Microsoft.AspNetCore.Hosting.IHostingEnvironment _hostEnvironment;
 
-        public StoryController(IUserRepository userRepository, IMissionRepository missionRepository,IStoryRepository storyRepository)
+        public StoryController(IUserRepository userRepository, IMissionRepository missionRepository,IStoryRepository storyRepository, Microsoft.AspNetCore.Hosting.IHostingEnvironment hostEnvironment) 
         {
             _userRepository = userRepository;
             _missionRepository = missionRepository;
             _storyRepository = storyRepository;
+            _hostEnvironment = hostEnvironment;
         }
         public IActionResult Index(int missionId)
         {
@@ -48,7 +50,31 @@ namespace CIPlatform.Controllers
             User userObj = _userRepository.findUser(userSessionEmailId);
             shareStoryModel.username = userObj.FirstName + " " + userObj.LastName;
             shareStoryModel.avatar=userObj.Avatar;
+            shareStoryModel.missions = _missionRepository.getMissions();
             return View(shareStoryModel);
+        }
+        [HttpPost]
+        public IActionResult Upload(List<IFormFile> postedFiles)
+        {
+            string wwwPath = this._hostEnvironment.WebRootPath;
+            string contentPath = this._hostEnvironment.ContentRootPath;
+
+            string path = Path.Combine(this._hostEnvironment.WebRootPath, @"images\uploads");
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory("postedFiles");
+            }
+
+            foreach (IFormFile postedFile in postedFiles)
+            {
+                string fileName = Path.GetFileName(postedFile.FileName);
+                using (FileStream stream = new FileStream(Path.Combine(path, fileName), FileMode.Create))
+                {
+                    postedFile.CopyTo(stream);
+                }
+            }
+
+            return Content("Success");
         }
     }
 }
