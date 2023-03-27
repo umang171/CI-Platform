@@ -11,6 +11,7 @@ namespace CIPlatform.Repository.Repository.Interface
     public interface IMissionRepository
     {
         public List<Mission> getMissions();
+        public List<MissionApplication> getMissionsOfUser(int userId);
         public IEnumerable<Country> getCountries();
         public IEnumerable<City> getCities(string country);
         public IEnumerable<MissionTheme> getThemes();

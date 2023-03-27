@@ -50,7 +50,8 @@ namespace CIPlatform.Controllers
             User userObj = _userRepository.findUser(userSessionEmailId);
             shareStoryModel.username = userObj.FirstName + " " + userObj.LastName;
             shareStoryModel.avatar=userObj.Avatar;
-            shareStoryModel.missions = _missionRepository.getMissions();
+            shareStoryModel.userId = userObj.UserId;
+            shareStoryModel.missions = _missionRepository.getMissionsOfUser((int)userObj.UserId);
             return View(shareStoryModel);
         }
         [HttpPost]
@@ -75,6 +76,16 @@ namespace CIPlatform.Controllers
             }
 
             return Content("Success");
+        }
+        [HttpPost]
+        public void saveStory(StorySaveModel storySaveModelObj)
+        {
+            _storyRepository.saveStories(storySaveModelObj);
+        }
+        [HttpPost]
+        public void submitStory(StorySaveModel storySaveModelObj)
+        {
+            _storyRepository.submitStories(storySaveModelObj);
         }
     }
 }

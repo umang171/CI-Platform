@@ -52,10 +52,106 @@ var init = tinymce.init({
 
 var storyDescription = "";
 $.when(init).done(function () {
-    storyDescription = tinyMCE.activeEditor.getContent();
-    console.log(storyDescription);
 });
 
 //=================================================================================================
-//Texteditor of tinymce
+//Image upload
 //=================================================================================================
+var storyFileNames = "";
+$(function () {
+    $("#dropSection").filedrop({
+        fallback_id: 'btnUpload',
+        fallback_dropzoneClick: true,
+
+        url: '/Story/Upload',
+
+        //allowedfiletypes: ['image/jpeg', 'image/png', 'image/gif', 'application/pdf', 'application/doc'],
+        allowedfileextensions: ['.doc', '.docx', '.pdf', '.jpg', '.jpeg', '.png', '.gif'],
+        paramname: 'postedFiles',
+        maxfiles: 5, //Maximum Number of Files allowed at a time.
+        maxfilesize: 4, //Maximum File Size in MB.
+        dragOver: function () {
+            $('#dropSection').addClass('active');
+        },
+        dragLeave: function () {
+            $('#dropSection').removeClass('active');
+        },
+        drop: function () {
+            $('#dropSection').removeClass('active');
+        },
+        uploadFinished: function (i, file, response, time) {
+            storyFileNames = storyFileNames.concat("images/uploads/"+file.name + ",");
+            $('#uploadedFiles').append('<img src="/images/uploads/' + file.name + '" class="px-2" style="height:100px;width:100px;" />');
+        },
+        afterAll: function (e) {
+            //To do some task after all uploads done.
+        }
+    })
+})
+
+
+//=================================================================================================
+//Save story
+//=================================================================================================
+
+$("#story-save-btn").on("click", function (e) {
+    var userId = $(".user-btn")[0].id.slice(9);
+    var missionId = $("#sort-dropdown").val();
+    var storyTitle = $("#story-title").val();
+    var storyPublishedDate = $("#story-publish-date").val();
+    var storyVideoUrl = $("#video-url-textarea").val();
+    storyDescription = tinyMCE.activeEditor.getContent();
+
+    //console.log("Mission title:", missionTitle);
+    //console.log("Story title:", storyTitle);
+    //console.log("Story published date:", storyPublishedDate);
+    //console.log("Story description:", storyDescription);
+    //console.log("Story video url:", storyVideoUrl);
+    //console.log("Story images:", storyFileNames);
+    //console.log("User id:", userId);
+
+    $.ajax({
+        type: "POST",
+        url: '/Story/saveStory',
+        data: { userId: userId, missionId: missionId, storyTitle: storyTitle, storyPublishedDate: storyPublishedDate, storyDescription: storyDescription, storyVideoUrl: storyVideoUrl, storyFileNames: storyFileNames },
+        success: function (data) {
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    });
+});
+
+//=================================================================================================
+//Submit story
+//=================================================================================================
+
+$("#story-submit-btn").on("click", function (e) {
+    var userId = $(".user-btn")[0].id.slice(9);
+    var missionId = $("#sort-dropdown").val();
+    var storyTitle = $("#story-title").val();
+    var storyPublishedDate = $("#story-publish-date").val();
+    var storyVideoUrl = $("#video-url-textarea").val();
+    storyDescription = tinyMCE.activeEditor.getContent();
+
+    //console.log("Mission title:", missionTitle);
+    //console.log("Story title:", storyTitle);
+    //console.log("Story published date:", storyPublishedDate);
+    //console.log("Story description:", storyDescription);
+    //console.log("Story video url:", storyVideoUrl);
+    //console.log("Story images:", storyFileNames);
+    //console.log("User id:", userId);
+
+    $.ajax({
+        type: "POST",
+        url: '/Story/submitStory',
+        data: { userId: userId, missionId: missionId, storyTitle: storyTitle, storyPublishedDate: storyPublishedDate, storyDescription: storyDescription, storyVideoUrl: storyVideoUrl, storyFileNames: storyFileNames },
+        success: function (data) {
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    });
+});

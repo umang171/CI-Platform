@@ -1,5 +1,5 @@
 ﻿@model CIPlatform.Entities.ViewModels.PaginationStory
-
+@using System.Web;
 @if (Model.stories.Count() == 0)
 {
     <h1 class="text-center mt-5">No stories found</h1>
@@ -34,7 +34,10 @@ else
                     <div class="user-story-parent-div shadow-lg col-12 col-sm-6 col-md-4 p-1 my-1">
                         <div class="user-story h-auto p-0 m-1 mb-2">
                             <div class="user-story-image-div position-relative">
-                                <img src="/@data.Path@data.ImageType" alt=""
+                                @{
+                                    string[] mediaPath = @data.Path.Split(",");
+                                }
+                                <img src="/@mediaPath[0]@data.ImageType" alt=""
                              class="user-story-image">
                                 <div class="story-image-hover-content position-absolute w-100 border border-2 border-warning d-flex justify-content-center align-items-center">
                                     <button class="story-image-hover-button text-white z-2 bg-transparent border border-2 border-white p-2 px-3 rounded-5">
@@ -51,8 +54,29 @@ else
                                 <h3 class="user-story-heading fs-5">
                                     @data.StoryTitle
                                 </h3>
-                                <p class="user-story-description lh-1 lspace">
-                                    @data.StoryDescription.ToString().Substring(0,80) ...;
+                                <p class="user-story-description lh-1 lspace">  
+                                    @{
+                                        string description = data.StoryDescription.ToString().Replace("<p>", "");
+                                        description=description.Replace("</p>","");
+                                        description=description.Replace("<strong>","");
+                                        description=description.Replace("</strong>","");
+                                        description=description.Replace("<sup>","");
+                                        description=description.Replace("</sup>","");
+                                        description=description.Replace("<sub>","");
+                                        description=description.Replace("</sub>","");
+                                        description=description.Replace("<em>","");
+                                        description=description.Replace("</em>","");
+                                    }
+                                    @if(description.Length<80){
+                                        @description; 
+                                       
+                                    }
+                                    else
+                                    {
+                                        @description.Substring(0,80);
+                                        
+                                    }
+                                    ...
                                 </p>
                             </div>
                             <div class="user-story-profile d-flex align-items-center p-4 px-4 pt-0">

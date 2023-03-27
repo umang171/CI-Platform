@@ -62,7 +62,7 @@
                              class="rounded-circle object-fit-cover" alt="" />
                     </a>
                     <div class="dropdown d-sm-block d-none">
-                        <button class="dropdown-toggle border-0 bg-white m-1 user-btn" id="user-btn" type="button"
+                        <button class="dropdown-toggle border-0 bg-white m-1 user-btn" id="user-btn-@Model.userId" type="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                             @Model.username
                             <img src="~/images/drop-down.png" alt="" />
@@ -85,62 +85,70 @@
 <div id="mission-content" class="w-100 m-auto h-auto">
     <div id="share-story-content" class="">
         <h2 class="fw-light pt-4">Share your story</h2>
-        <form class="py-4 px-0">
-            <div id="share-story-content-mission-info" class="row w-100 m-auto px-0">
-                <div class="share-story-content-mission col-12 col-md-4 p-0 pe-2">
-                    <div class="d-flex flex-column">
-                        <label class="py-1" for="">Select Mission</label>
-                        <select name="sort" id="sort-dropdown" class="py-1 w-100">
-                            <option value="Select">Select Your mission</option>
-                            @foreach (var item in Model.missions)
-                            {
-                                <option value="@item.Title">@item.Title</option>
-                            }
-                        </select>
+        <div id="share-story-content-mission-info" class="row w-100 m-auto px-0">
+            <div class="share-story-content-mission col-12 col-md-4 p-0 pe-2">
+                <div class="d-flex flex-column">
+                    <label class="py-1" for="">Select Mission</label>
+                    <select name="sort" id="sort-dropdown" class="py-1 w-100">
+                        <option value="Select">Select Your mission</option>
+                        @foreach (var item in Model.missions)
+                        {
+                            <option value="@item.Mission.MissionId">@item.Mission.Title</option>
+                        }
+                    </select>
 
-                    </div>
-                </div>
-                <div class="share-story-content-mission col-12 col-md-4 p-0 pe-2 ">
-                    <div class="d-flex flex-column">
-                        <label class="py-1" for="">My Story title</label>
-                        <input type="text" class="p-1 share-story-inputs" placeholder="Enter story title" />
-                    </div>
-                </div>
-                <div class="share-story-content-mission col-12 col-md-4 p-0 pe-2">
-                    <div class="d-flex flex-column">
-                        <label class="py-1" for="">Date</label>
-                        <input type="text" onfocus="(this.type='date')" class="p-1 share-story-inputs" placeholder="Select Date" />
-                    </div>
                 </div>
             </div>
-            <div id="share-story-content-desc-info" class="pt-3">
-                <label for="">
-                    My Story
-                </label>
-                <textarea id="default" cols="10">Hello, World!</textarea>
+            <div class="share-story-content-mission col-12 col-md-4 p-0 pe-2 ">
+                <div class="d-flex flex-column">
+                    <label class="py-1" for="">My Story title</label>
+                    <input type="text" class="p-1 share-story-inputs" id="story-title" placeholder="Enter story title" />
+                </div>
             </div>
-            <div id="share-story-content-video-urls" class="pt-3">
-                <label for="">
-                    Enter Video URL
-                </label>
-                <textarea id="video-url-textar" class="w-100 p-1" style="overflow-y:hidden;" rows="1" placeholder="Enter video url"></textarea>
+            <div class="share-story-content-mission col-12 col-md-4 p-0 pe-2">
+                <div class="d-flex flex-column">
+                    <label class="py-1" id="" for="">Date</label>
+                    <input type="text" onfocus="(this.type='date')" id="story-publish-date" class="p-1 share-story-inputs" placeholder="Select Date" />
+                </div>
             </div>
+        </div>
+        <div id="share-story-content-desc-info" class="pt-3">
+            <label for="">
+                My Story
+            </label>
+            <textarea id="default" cols="10">Hello, World!</textarea>
+        </div>
+        <div id="share-story-content-video-urls" class="pt-3">
+            <label for="">
+                Enter Video URL
+            </label>
+            <textarea id="video-url-textarea" class="w-100 p-1" style="overflow-y:hidden;" rows="1" placeholder="Enter video url"></textarea>
+        </div>
 
-            <div id="share-story-content-upload-photos" class="pt-3">
-                <label for="">
-                    Upload your photos
-                </label><br/>
-                <div id="dropSection">
-                </div>
-                <br/>
-                Uploaded Files:
-                <hr/>
-                <div id="uploadedFiles">
-                </div>
-                <input type="button" id="btnUpload" value="Upload" />
+        <div id="share-story-content-upload-photos" class="pt-3">
+            <label for="">
+                Upload your photos
+            </label><br />
+            <div id="dropSection" class="w-100 d-flex flex-column align-items-center justify-content-center">
+                <span class="fs-1 fw-lighter">+</span>
+                <span class="fs-5 fw-lighter">Drag and drop pictures here</span>
             </div>
-        </form>
-
+            <div id="uploadedFiles" class="p-2 d-flex flex-wrap">
+            </div>
+            <input type="button" id="btnUpload" value="Upload" />
+        </div>
+        <div id="share-story-content-buttons" class="py-3 d-flex">
+            <div class="w-75">
+                <a asp-action="Index" asp-controller="Story">
+                    <button class="rounded-5 bg-white px-4 p-2">Cancel</button>
+                </a>
+            </div>
+            <div class="w-25 d-flex justify-content-end">
+                <button class="orange-btn rounded-5 bg-white px-4 p-2">Preview</button>
+                <button id="story-save-btn" class="orange-btn rounded-5 bg-white px-4 p-2 ms-1">Save</button>
+                <button id="story-submit-btn" class="orange-btn rounded-5 bg-white px-4 p-2 ms-1">Submit</button>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -151,40 +159,10 @@
     </div>
 </footer>
 
-
-</script>
 @section JavaScript{
 <script src="https://cdn.tiny.cloud/1/pja9ajo1o39g0k8thqnh6v1mf71mykif09v83tqtjfhsnung/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-<script src="~/js/share_story.js"></script>
 <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
 <script src="~/js/filedrop.js"></script>
-<script type="text/javascript">
-        $(function () {
-            $("#dropSection").filedrop({
-                fallback_id: 'btnUpload',
-                fallback_dropzoneClick: true,
-                url: '@Url.Action("Upload")',
-                //allowedfiletypes: ['image/jpeg', 'image/png', 'image/gif', 'application/pdf', 'application/doc'],
-                allowedfileextensions: ['.doc', '.docx', '.pdf', '.jpg', '.jpeg', '.png', '.gif'],
-                paramname: 'postedFiles',
-                maxfiles: 5, //Maximum Number of Files allowed at a time.
-                maxfilesize: 2, //Maximum File Size in MB.
-                dragOver: function () {
-                    $('#dropSection').addClass('active');
-                },
-                dragLeave: function () {
-                    $('#dropSection').removeClass('active');
-                },
-                drop: function () {
-                    $('#dropSection').removeClass('active');
-                },
-                uploadFinished: function (i, file, response, time) {
-                    $('#uploadedFiles').append(file.name + '<br />')
-                },
-                afterAll: function (e) {
-                    //To do some task after all uploads done.
-                }
-            })
-        })
-    </script>
+<script src="~/js/share_story.js"></script>
+
 }

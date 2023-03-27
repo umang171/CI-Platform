@@ -211,7 +211,7 @@
         // Respond to an upload
         function upload() {
             stop_loop = false;
-
+          
             if (!files) {
                 opts.error(errors[0]);
                 return false;

@@ -10,5 +10,7 @@ namespace CIPlatform.Repository.Repository.Interface
     public interface IStoryRepository
     {
         public PaginationStory getStories(int pageNumber);
+        public void saveStories(StorySaveModel storySaveModelObj);
+        public void submitStories(StorySaveModel storySaveModelObj);
     }
 }

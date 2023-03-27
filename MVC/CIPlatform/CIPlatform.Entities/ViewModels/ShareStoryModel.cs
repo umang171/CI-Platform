@@ -11,6 +11,7 @@ namespace CIPlatform.Entities.ViewModels
     {
         public string username { get; set; }
         public string avatar { get; set; }
-        public List<Mission> missions { get; set; }
+        public long userId { get; set; }
+        public List<MissionApplication> missions { get; set; }
     }
 }

@@ -1267,9 +1267,8 @@ Share your story page
 upload images
 =================================================================================================================*/
 #dropSection {
-    height: 300px;
-    width: 600px;
-    background-color: skyblue;
+    height: 200px;
+    border: 1px dashed gray;
 }
 
 #btnUpload {
@@ -1277,5 +1276,5 @@ upload images
 }
 
 .active {
-    background-color: yellow !important;
+    background-color: skyblue !important;
 }
