@@ -143,7 +143,7 @@ namespace CIPlatform.Controllers
             string path = "<a href=\"" + " https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/Mission/Mission_Volunteer?missionId="+missinoId + " \"   style=\"font-weight:500;color:blue;\" > Recommended mission </a>";
         
             MailHelper mailHelper = new MailHelper(configuration);
-            ViewBag.sendMail = mailHelper.Send(toUserEmail, welcomeMessage + path);
+            mailHelper.Send(toUserEmail, welcomeMessage + path,"Recommended mission");
 
             return Json(new { data = "Email sent successfully",status=1 });
         }

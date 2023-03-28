@@ -47,6 +47,16 @@ namespace CIPlatform.Repository.Repository
             _ciPlatformDbContext.SaveChanges();
             return (int)story.TotalViews;
 
+        }     
+
+        void IStoryRepository.recommendToCoworker(int fromUserId, int toUserId, int storyId)
+        {
+            StoryInvite storyInvite = new StoryInvite();
+            storyInvite.FromUserId= fromUserId;
+            storyInvite.ToUserId = toUserId;
+            storyInvite.StoryId=storyId;
+            _ciPlatformDbContext.StoryInvites.Add(storyInvite);
+            _ciPlatformDbContext.SaveChanges();
         }
 
         int IStoryRepository.saveStories(StorySaveModel storySaveModelObj)

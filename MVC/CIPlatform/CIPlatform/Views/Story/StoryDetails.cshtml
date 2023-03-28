@@ -160,10 +160,27 @@
                 @Model.User.WhyIVolunteer
             </div>
             <div class="story-bottom-info p-2 d-flex flex-sm-column flex-row flex-md-row justify-content-around align-items-center">
-                <button class="rounded-5 p-3 bg-white d-flex align-items-center">
+                <button data-bs-toggle="modal" data-bs-target="#exampleModal"  class="rounded-5 p-3 bg-white d-flex align-items-center">
                     <img src="~/images/add1.png" alt="">
                     <span class="px-md-2">Recommeded to co-worker</span>
                 </button>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">                              
+                            <input id="recommend-input" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="send-email-btn">Send</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                  <a class="text-decoration-none" href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = Model.MissionId }) ">
                 <button id="story-mission-@Model.MissionId" class="story-mission rounded-5 p-3 orange-btn bg-white d-flex align-items-center">
                     <span class="px-md-2">Open mission</span>

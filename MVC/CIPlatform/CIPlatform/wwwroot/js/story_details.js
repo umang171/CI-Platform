@@ -103,3 +103,26 @@ function getTotalViews() {
         }
     });
 }
+
+
+//========================================================================================
+//Recommend to coworker
+//========================================================================================
+$("#send-email-btn").on("click", function (e) {
+    e.preventDefault();
+    var storyid = $(".story-title")[0].id.slice(6);
+    var userEmail = $("#recommend-input").val();
+    console.log(storyid, userEmail);
+    $.ajax({
+        type: "POST",
+        url: '/Story/recommendToCoworker',
+        data: { storyId: storyid, toUserEmail: userEmail },
+        success: function (data) {
+            console.log("success");
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    });
+});

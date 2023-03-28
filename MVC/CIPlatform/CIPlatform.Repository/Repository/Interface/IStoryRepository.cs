@@ -15,5 +15,7 @@ namespace CIPlatform.Repository.Repository.Interface
         public void submitStories(StorySaveModel storySaveModelObj);
         public Story getStoryDetail(int storyId); 
         public int getTotalStoryViews(int storyId);
+        public void recommendToCoworker(int fromUserId, int toUserId, int storyId);
+
     }
 }

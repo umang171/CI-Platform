@@ -3,6 +3,8 @@ using CIPlatform.Entities.ViewModels;
 using CIPlatform.Repository.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Hosting;
+using CIPlatform.Helpers;
+
 namespace CIPlatform.Controllers
 {
     public class StoryController : Controller
@@ -12,13 +14,17 @@ namespace CIPlatform.Controllers
         private readonly IMissionRepository _missionRepository;
         private readonly IStoryRepository _storyRepository;
         private readonly Microsoft.AspNetCore.Hosting.IHostingEnvironment _hostEnvironment;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IConfiguration configuration;
 
-        public StoryController(IUserRepository userRepository, IMissionRepository missionRepository,IStoryRepository storyRepository, Microsoft.AspNetCore.Hosting.IHostingEnvironment hostEnvironment) 
+        public StoryController(IUserRepository userRepository, IMissionRepository missionRepository,IStoryRepository storyRepository, Microsoft.AspNetCore.Hosting.IHostingEnvironment hostEnvironment, IHttpContextAccessor httpContextAccessor, IConfiguration _configuration) 
         {
             _userRepository = userRepository;
             _missionRepository = missionRepository;
             _storyRepository = storyRepository;
             _hostEnvironment = hostEnvironment;
+            _httpContextAccessor = httpContextAccessor;
+            configuration = _configuration;
         }
         public IActionResult Index(int missionId)
         {
@@ -112,6 +118,30 @@ namespace CIPlatform.Controllers
         {
             int total=_storyRepository.getTotalStoryViews((int)storyId);
             return Json(new {data=total});
+        }
+
+        public IActionResult recommendToCoworker( int storyId, string toUserEmail)
+        {
+            string userSessionEmailId = HttpContext.Session.GetString("useremail");           
+            User fromUserObj = _userRepository.findUser(userSessionEmailId);
+            int fromUserId=(int)fromUserObj.UserId;
+            User userObj;
+            try
+            {
+                userObj = _userRepository.findUser(toUserEmail);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { data = "Email not found", status = 0 });
+            }
+            _storyRepository.recommendToCoworker(fromUserId, (int)userObj.UserId, storyId);
+            string welcomeMessage = "Welcome to CI platform, <br/> You are recommended to watch below story </br>";
+            string path = "<a href=\"" + " https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/Story/StoryDetails?storyId=" + storyId + " \"   style=\"font-weight:500;color:blue;\" > Recommended to watch story </a>";
+
+            MailHelper mailHelper = new MailHelper(configuration);
+            ViewBag.sendMail = mailHelper.Send(toUserEmail, welcomeMessage + path,"Recommeded to watch story");
+
+            return Json(new { data = "Email sent successfully", status = 1 });
         }
     }
 }
