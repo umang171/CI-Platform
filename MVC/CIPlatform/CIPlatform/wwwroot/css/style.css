@@ -1275,6 +1275,6 @@ upload images
     display: none;
 }
 
-.active {
+.img-dropdown-active {
     background-color: skyblue !important;
 }

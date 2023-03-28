@@ -144,7 +144,8 @@
                 </a>
             </div>
             <div class="w-25 d-flex justify-content-end">
-                <button class="orange-btn rounded-5 bg-white px-4 p-2">Preview</button>
+                <a id="preview-link" class="text-decoration-none" target="_blank" href="@Url.Action("StoryDetails", "Story", new { storyId =1 }) ">
+                <button id="story-preview-btn" class="orange-btn rounded-5 bg-white px-4 p-2">Preview</button></a>
                 <button id="story-save-btn" class="orange-btn rounded-5 bg-white px-4 p-2 ms-1">Save</button>
                 <button id="story-submit-btn" class="orange-btn rounded-5 bg-white px-4 p-2 ms-1">Submit</button>
             </div>

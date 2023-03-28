@@ -40,10 +40,12 @@ else
                                 <img src="/@mediaPath[0]@data.ImageType" alt=""
                              class="user-story-image">
                                 <div class="story-image-hover-content position-absolute w-100 border border-2 border-warning d-flex justify-content-center align-items-center">
+                 <a class="text-decoration-none" href="@Url.Action("StoryDetails", "Story", new { storyId = data.StoryId}) ">
                                     <button class="story-image-hover-button text-white z-2 bg-transparent border border-2 border-white p-2 px-3 rounded-5">
                                         View Details
                                         <img src="~/images/right-arrow.png" alt="">
                                     </button>
+                                    </a>
                                 </div>
                                 <div class="story-image-heading text-center  position-absolute w-100 m-auto">
                                     <span class="rounded-5 p-2 bg-white"> @data.ThemeTitle</span>

@@ -1,0 +1,194 @@
+﻿@model CIPlatform.Entities.DataModels.Story
+@section Style{
+<style>
+    .carousel-control-prev {
+        all: unset;
+        position: absolute;
+        top: 0;
+        height: 100%;
+        opacity: 0.7;
+    }
+
+    .carousel-control-next {
+        all: unset;
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        opacity: 0.7;
+    }
+</style>
+}
+
+<div id="main-header" class="d-flex flex-row">
+    <div id="menu-side-bar" class="position-absolute">
+        <div id="close-img" class="p-3 img-close">
+            <img src="~/images/cancel.png" alt="" />
+        </div>
+        <div id="menu-heading" class="d-flex justify-content-center align-items-center">
+            <a href="#" class="side-menu-items text-decoration-none text-dark w-100 m-1 p-1 px-2">Stories</a>
+            <div class="side-menu-items dropdown w-100 m-1 p-1 px-2">
+                <button class="dropdown-toggle border-0 bg-white w-100 d-flex justify-content-between align-items-center"
+                        type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Policy
+                    <img src="~/images/drop-down.png" alt="" />
+                </button>
+                <ul class="dropdown-menu w-100">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-container" class="w-100">
+        <header class="w-100 bg-white position-sticky z-2 border-bottom">
+            <div id="main-first-header" class="d-flex justify-content-between align-items-center mx-auto">
+                <div id="leftNavbar" class="d-flex align-items-center">
+                    <div id="menuimg"
+                         class="d-flex d-block d-md-none justify-content-center align-items-center p-2 m-1 mx-3">
+                        <img src="~/images/list.png" alt="" />
+                    </div>
+
+                    <img src="~/images/logo.png" alt="" />
+
+                    <div id="menu-heading" class="d-none d-md-flex justify-content-center align-items-center">
+                       <a asp-action="Index" asp-controller="Story" class="side-menu-items text-decoration-none text-dark w-100 m-1 p-1 px-2">Stories</a>
+                        <div class="dropdown">
+                            <button class="dropdown-toggle border-0 bg-white m-1" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                Policy
+                                <img src="~/images/drop-down.png" alt="" />
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="rightNavbar" class="d-flex align-items-center">
+                    <a href="">
+                        <img id="user-profile-img" src="~/images/user-img.png"
+                             class="rounded-circle object-fit-cover" alt="" />
+                    </a>
+                    <div class="dropdown d-sm-block d-none">
+                        <button class="dropdown-toggle border-0 bg-white m-1" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            Umang Gohel
+                            <img src="~/images/drop-down.png" alt="" />
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+</div>
+
+<div id="mission-content" class="container-fluid overflow-y-scroll p-0 volunteer-content">
+    <div id="volunteer-top-info" class="d-flex flex-column flex-sm-row">
+        <div id="volunteer-image-part" class="w-50">
+            <img id="preview-image" src="~/@Model.StoryMedia.ElementAt(0).Path.ToString().Split(",")[0]@Model.StoryMedia.ElementAt(0).Type"
+                 class="w-100 volunteer-main-image" alt="" />
+            <!-- carousel -->
+            <div id="carouselExampleControls" class="carousel slide w-100" data-bs-ride="carousel">
+                <div class="carousel-inner h-100 w-100">
+                    <div class="carousel-item active h-100 w-100">
+                        <div class="d-flex h-100 w-100">
+                             @{
+                                string[] mediaNames = @Model.StoryMedia.ElementAt(0).Path.ToString().Split(",").SkipLast(1).ToArray();
+                                int mediaLength = mediaNames.Length;
+                            }
+                            @for(int i=0;i<mediaLength;i++)
+                            {
+                            <div class="h-100 w-25">
+                                    <img src="~/@mediaNames[i]@Model.StoryMedia.ElementAt(0).Type"
+                                        class="carousel-images d-block w-100 h-100 p-1" alt="..." />
+                                </div>     
+                                @if ((i+1)%4==0 && i!=0 && (i+1)!=mediaLength)
+                                {                                    
+                            @:</div>
+                            @:</div>
+                            @:<div class="carousel-item h-100 w-100">
+                                @:<div class="d-flex h-100 w-100">
+                                }
+                            }
+                        </div>
+                    </div>  
+                </div>
+                <button class="carousel-control-prev bg-black" type="button"
+                        data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next bg-black" type="button"
+                        data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div id="volunteer-content-part" class="w-50 p-2 d-flex flex-column">
+            <div id="story-top-infp" class=" d-flex justify-content-between px-md-5">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <img src="@Model.User.Avatar" class="rounded-circle" style="height: 100px; width: 100px;" alt="">
+                    <span>@Model.User.FirstName @Model.User.LastName</span>
+                </div>
+                <div class="d-flex justify-content-end align-items-end">
+                    <button class="rounded-5 p-1 px-2 bg-white">
+                        <img src="~/images/eye.png" alt="">
+                        <span id="totalView">0</span>
+                        <span>Views</span>
+                    </button>
+                </div>
+            </div>
+            <div class="story-middle-info p-1 py-md-5 px-md-5">
+                @Model.User.WhyIVolunteer
+            </div>
+            <div class="story-bottom-info p-2 d-flex flex-sm-column flex-row flex-md-row justify-content-around align-items-center">
+                <button class="rounded-5 p-3 bg-white d-flex align-items-center">
+                    <img src="~/images/add1.png" alt="">
+                    <span class="px-md-2">Recommeded to co-worker</span>
+                </button>
+                 <a class="text-decoration-none" href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = Model.MissionId }) ">
+                <button id="story-mission-@Model.MissionId" class="story-mission rounded-5 p-3 orange-btn bg-white d-flex align-items-center">
+                    <span class="px-md-2">Open mission</span>
+                    <img src="~/images/right-arrow.png" alt="">
+                </button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="story-details-info" class="py-3">
+        <h4 class="story-title" id="story-@Model.StoryId">@Model.Title</h4>
+        <hr>
+        <p>
+            @Html.Raw(@Model.Description)
+        </p>
+    </div>
+    <br>
+</div>
+<footer id="mission-footer" class="container-fluid border-top">
+    <div class="py-4 mx-auto">
+        <a href="#">Privacy Policy</a>
+    </div>
+</footer>
+
+@section JavaScript{
+<script src="~/js/story_details.js"></script>
+}

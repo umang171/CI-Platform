@@ -78,14 +78,40 @@ namespace CIPlatform.Controllers
             return Content("Success");
         }
         [HttpPost]
-        public void saveStory(StorySaveModel storySaveModelObj)
+        public IActionResult saveStory(StorySaveModel storySaveModelObj)
         {
-            _storyRepository.saveStories(storySaveModelObj);
+            int storyId=_storyRepository.saveStories(storySaveModelObj);
+            return Json(new { storyId=storyId });
         }
         [HttpPost]
         public void submitStory(StorySaveModel storySaveModelObj)
         {
             _storyRepository.submitStories(storySaveModelObj);
+        }
+        public IActionResult StoryDetails(int? storyId)
+        {
+            Story story = _storyRepository.getStoryDetail((int)storyId);
+            return View(story);
+        }
+        //public IActionResult StoryPreview(StorySaveModel storySaveModelObj)
+        //{
+        //    Story story=new Story();
+        //    string type= storySaveModelObj.storyFileNames.Substring(storySaveModelObj.storyFileNames.Length - 5, 4);
+        //    story.StoryMedia.Add(new StoryMedium());
+        //    story.StoryMedia.ElementAt(0).Type = type;
+        //    story.StoryMedia.ElementAt(0).Path = storySaveModelObj.storyFileNames.Replace(type, "");
+        //    int userid=(int)storySaveModelObj.userId;
+        //    User user=_userRepository.findUser(userid);
+        //    story.User=user;
+        //    story.MissionId = (int)storySaveModelObj.missionId;
+        //    story.Title = storySaveModelObj.storyTitle;
+        //    story.Description=storySaveModelObj.storyDescription;            
+        //    return View(story);
+        //}
+        public IActionResult getTotalStoryViews(int storyId)
+        {
+            int total=_storyRepository.getTotalStoryViews((int)storyId);
+            return Json(new {data=total});
         }
     }
 }

@@ -71,13 +71,13 @@ $(function () {
         maxfiles: 5, //Maximum Number of Files allowed at a time.
         maxfilesize: 4, //Maximum File Size in MB.
         dragOver: function () {
-            $('#dropSection').addClass('active');
+            $('#dropSection').addClass('img-dropdown-active');
         },
         dragLeave: function () {
-            $('#dropSection').removeClass('active');
+            $('#dropSection').removeClass('img-dropdown-active');
         },
         drop: function () {
-            $('#dropSection').removeClass('active');
+            $('#dropSection').removeClass('img-dropdown-active');
         },
         uploadFinished: function (i, file, response, time) {
             storyFileNames = storyFileNames.concat("images/uploads/"+file.name + ",");
@@ -115,6 +115,9 @@ $("#story-save-btn").on("click", function (e) {
         url: '/Story/saveStory',
         data: { userId: userId, missionId: missionId, storyTitle: storyTitle, storyPublishedDate: storyPublishedDate, storyDescription: storyDescription, storyVideoUrl: storyVideoUrl, storyFileNames: storyFileNames },
         success: function (data) {
+            var storyId = data["storyId"];
+            console.log(storyId);
+            $("#preview-link").attr('href', '/Story/StoryDetails?storyId=' + storyId);
         },
         error: function (xhr, status, error) {
             // Handle error
@@ -148,6 +151,7 @@ $("#story-submit-btn").on("click", function (e) {
         url: '/Story/submitStory',
         data: { userId: userId, missionId: missionId, storyTitle: storyTitle, storyPublishedDate: storyPublishedDate, storyDescription: storyDescription, storyVideoUrl: storyVideoUrl, storyFileNames: storyFileNames },
         success: function (data) {
+            window.location="/Story/Index";
         },
         error: function (xhr, status, error) {
             // Handle error
@@ -155,3 +159,29 @@ $("#story-submit-btn").on("click", function (e) {
         }
     });
 });
+//=================================================================================================
+//Preview story
+//=================================================================================================
+
+
+//$("#story-preview-btn").on("click", function (e) {
+//    var userId = $(".user-btn")[0].id.slice(9);
+//    var missionId = $("#sort-dropdown").val();
+//    var storyTitle = $("#story-title").val();
+//    var storyPublishedDate = $("#story-publish-date").val();
+//    var storyVideoUrl = $("#video-url-textarea").val();
+//    storyDescription = tinyMCE.activeEditor.getContent();
+
+//    $.ajax({
+//        type: "POST",
+//        url: '/Story/StoryPreview',
+//        data: { userId: userId, missionId: missionId, storyTitle: storyTitle, storyPublishedDate: storyPublishedDate, storyDescription: storyDescription, storyVideoUrl: storyVideoUrl, storyFileNames: storyFileNames },
+//        success: function (data) {
+            
+//        },
+//        error: function (xhr, status, error) {
+//            // Handle error
+//            console.log(error);
+//        }
+//    });
+//});

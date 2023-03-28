@@ -31,7 +31,25 @@ namespace CIPlatform.Repository.Repository
             return paginationStory;
         }
 
-        void IStoryRepository.saveStories(StorySaveModel storySaveModelObj)
+        Story IStoryRepository.getStoryDetail(int storyId)
+        {
+            Story story=_ciPlatformDbContext.Stories.Where(u=>u.StoryId == storyId).Include(u=>u.User).Include(u=>u.StoryMedia).First();
+            return story;
+        }
+
+        int IStoryRepository.getTotalStoryViews(int storyId)
+        {
+            Story story=_ciPlatformDbContext.Stories.Where(u => u.StoryId == storyId).First();
+            if (story.TotalViews == null)
+                story.TotalViews = 0;
+            story.TotalViews++;
+            _ciPlatformDbContext.Update(story);
+            _ciPlatformDbContext.SaveChanges();
+            return (int)story.TotalViews;
+
+        }
+
+        int IStoryRepository.saveStories(StorySaveModel storySaveModelObj)
         {
             Story story = new Story();
             story.UserId = (long)storySaveModelObj.userId;
@@ -51,6 +69,7 @@ namespace CIPlatform.Repository.Repository
             storyMediumObj.Path = mediaPath;
             _ciPlatformDbContext.StoryMedia.Add(storyMediumObj);
             _ciPlatformDbContext.SaveChanges();
+            return (int)storyId;
         }
         void IStoryRepository.submitStories(StorySaveModel storySaveModelObj)
         {

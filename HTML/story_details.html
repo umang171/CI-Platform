@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mission Volunteering</title>
+
+    <!-- default styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/css/star-rating.min.css" media="all"
+        rel="stylesheet" type="text/css" />
+
+    <!-- with v4.1.0 Krajee SVG theme is used as default (and must be loaded as below) - include any of the other theme CSS files as mentioned below (and change the theme property of the plugin) -->
+    <link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/themes/krajee-svg/theme.css"
+        media="all" rel="stylesheet" type="text/css" />
+
+    <!-- important mandatory libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/js/star-rating.min.js"
+        type="text/javascript"></script>
+
+    <!-- with v4.1.0 Krajee SVG theme is used as default (and must be loaded as below) - include any of the other theme JS files as mentioned below (and change the theme property of the plugin) -->
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/themes/krajee-svg/theme.js"></script>
+
+    <!-- optionally if you need translation for your language then include locale file as mentioned below (replace LANG.js with your own locale file) -->
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/js/locales/LANG.js"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        .carousel-control-prev {
+            all: unset;
+            position: absolute;
+            top: 0;
+            height: 100%;
+            opacity: 0.7;
+        }
+
+        .carousel-control-next {
+            all: unset;
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main-header" class="d-flex flex-row">
+        <div id="menu-side-bar" class="position-absolute">
+            <div id="close-img" class="p-3 img-close">
+                <img src="images/cancel.png" alt="" />
+            </div>
+            <div id="menu-heading" class="d-flex justify-content-center align-items-center">
+                <a href="#" class="side-menu-items text-decoration-none text-dark w-100 m-1 p-1 px-2">Stories</a>
+                <div class="side-menu-items dropdown w-100 m-1 p-1 px-2">
+                    <button
+                        class="dropdown-toggle border-0 bg-white w-100 d-flex justify-content-between align-items-center"
+                        type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Policy
+                        <img src="images/drop-down.png" alt="" />
+                    </button>
+                    <ul class="dropdown-menu w-100">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="main-container" class="w-100">
+            <header class="w-100 bg-white position-sticky z-2 border-bottom">
+                <div id="main-first-header" class="d-flex justify-content-between align-items-center mx-auto">
+                    <div id="leftNavbar" class="d-flex align-items-center">
+                        <div id="menuimg"
+                            class="d-flex d-block d-md-none justify-content-center align-items-center p-2 m-1 mx-3">
+                            <img src="images/list.png" alt="" />
+                        </div>
+
+                        <img src="images/logo.png" alt="" />
+
+                        <div id="menu-heading" class="d-none d-md-flex justify-content-center align-items-center">
+                            <a href="#" class="text-decoration-none text-dark mx-3">Stories</a>
+                            <div class="dropdown">
+                                <button class="dropdown-toggle border-0 bg-white m-1" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Policy
+                                    <img src="images/drop-down.png" alt="" />
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Something else here</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="rightNavbar" class="d-flex align-items-center">
+                        <a href=""><img id="user-profile-img" src="images/user-img.png"
+                                class="rounded-circle object-fit-cover" alt="" /></a>
+                        <div class="dropdown d-sm-block d-none">
+                            <button class="dropdown-toggle border-0 bg-white m-1" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Umang Gohel
+                                <img src="images/drop-down.png" alt="" />
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+    </div>
+
+    <div id="mission-content" class="container-fluid overflow-y-scroll p-0 volunteer-content">
+        <div id="volunteer-top-info" class="d-flex flex-column flex-sm-row">
+            <div id="volunteer-image-part" class="w-50">
+                <img id="preview-image" src="images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png"
+                    class="w-100 volunteer-main-image" alt="" />
+                <!-- carousel -->
+                <div id="carouselExampleControls" class="carousel slide w-100" data-bs-ride="carousel">
+                    <div class="carousel-inner h-100 w-100">
+                        <div class="carousel-item active h-100 w-100">
+                            <div class="d-flex h-100 w-100">
+                                <div class="h-100 w-100">
+                                    <img src="images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png"
+                                        class="carousel-images d-block w-100 h-100 p-1" alt="..." />
+                                </div>
+                                <div class="h-100 w-100">
+                                    <img src="images/img1.png" class="carousel-images d-block w-100 h-100 p-1"
+                                        alt="..." />
+                                </div>
+                                <div class="h-100 w-100">
+                                    <img src="images/Grow-Trees-On-the-path-to-environment-sustainability-login.png"
+                                        class="carousel-images d-block w-100 h-100 p-1" alt="..." />
+                                </div>
+                                <div class="h-100 w-100">
+                                    <img src="images/img11.png" class="carousel-images d-block w-100 h-100 p-1"
+                                        alt="..." />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item h-100 w-100">
+                            <div class="d-flex h-100 w-100">
+                                <div class="h-100 w-100">
+                                    <img src="images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png"
+                                        class="carousel-images d-block w-100 h-100 p-1" alt="..." />
+                                </div>
+                                <div class="h-100 w-100">
+                                    <img src="images/img1.png" class="carousel-images d-block w-100 h-100 p-1"
+                                        alt="..." />
+                                </div>
+                                <div class="h-100 w-100">
+                                    <img src="images/Grow-Trees-On-the-path-to-environment-sustainability-login.png"
+                                        class="carousel-images d-block w-100 h-100 p-1" alt="..." />
+                                </div>
+                                <div class="h-100 w-100">
+                                    <img src="images/img11.png" class="carousel-images d-block w-100 h-100 p-1"
+                                        alt="..." />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item h-100 w-100">
+                            <div class="d-flex h-100 w-100">
+                                <div class="h-100 w-100">
+                                    <img src="images/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png"
+                                        class="carousel-images d-block w-100 h-100 p-1" alt="..." />
+                                </div>
+                                <div class="h-100 w-100">
+                                    <img src="images/img1.png" class="carousel-images d-block w-100 h-100 p-1"
+                                        alt="..." />
+                                </div>
+                                <div class="h-100 w-100">
+                                    <img src="images/Grow-Trees-On-the-path-to-environment-sustainability-login.png"
+                                        class="carousel-images d-block w-100 h-100 p-1" alt="..." />
+                                </div>
+                                <div class="h-100 w-100">
+                                    <img src="images/img11.png" class="carousel-images d-block w-100 h-100 p-1"
+                                        alt="..." />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev bg-black" type="button"
+                        data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next bg-black" type="button"
+                        data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div id="volunteer-content-part" class="w-50 p-2 d-flex flex-column">
+               <div id="story-top-infp" class=" d-flex justify-content-between px-md-5">
+                    <div class="d-flex flex-column justify-content-center align-items-center">
+                        <img src="images/volunteer1.png" class="rounded-circle" style="height: 100px; width: 100px;" alt="">
+                        <span>Umang gohel</span>
+                    </div>
+                    <div class="d-flex justify-content-end align-items-end">
+                        <button class="rounded-5 p-1 px-2 bg-white">
+                            <img src="images/eye.png" alt="">
+                            <span>12000</span>
+                            <span>Views</span>
+                        </button>
+                    </div>
+               </div>
+               <div class="story-middle-info p-1 py-md-5 px-md-5">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, mollitia. Ad et veniam rerum harum, sapiente error minima sit voluptate reiciendis accusantium doloremque, earum nisi tenetur quasi quos recusandae! Modi expedita iste aspernatur tempora quam. Consequatur, placeat, debitis magnam, repellendus unde error eveniet optio laborum quidem nesciunt adipisci! Incidunt consectetur ratione aspernatur doloribus laborum earum molestias dignissimos quo repellat exercitationem, temporibus voluptatibus reiciendis ipsa eligendi error voluptatum! Vel laboriosam vero earum praesentium eligendi
+               </div>
+               <div class="story-bottom-info p-2 d-flex flex-sm-column flex-row flex-md-row justify-content-around align-items-center">
+                    <button class="rounded-5 p-3 bg-white d-flex align-items-center">
+                        <img src="images/add1.png" alt="">
+                        <span class="px-md-2">Recommeded to co-worker</span>
+                    </button>
+                    <button class="rounded-5 p-3 orange-btn bg-white d-flex align-items-center">
+                        <span class="px-md-2">Open mission</span>
+                        <img src="images/right-arrow.png" alt="">
+                    </button>
+               </div>
+            </div>
+        </div>
+
+        <div id="story-details-info" class="py-3">
+            <h4>Grow Trees-On the path to environment sustainability</h4>
+            <hr>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit nisi praesentium, voluptatum eveniet porro debitis quis iste quibusdam voluptatibus aspernatur ducimus iusto tempore nobis qui quidem? Quae sequi vitae adipisci iusto dolores, quos nulla, iure culpa ducimus temporibus velit quia eveniet rem minima pariatur quam fugiat. Hic facilis libero sunt dignissimos ullam laborum sed quod animi? Ipsum accusantium laboriosam sint debitis eius magnam, quaerat nemo corporis maxime ea hic ratione exercitationem perspiciatis? Accusamus dolore ducimus dicta est numquam atque, voluptates aperiam perspiciatis dolorum eveniet architecto quod velit quos quae optio porro voluptatibus? Optio quos neque, nostrum labore fuga aspernatur! Deserunt, consectetur veniam. Numquam dignissimos, dolores pariatur inventore, hic perferendis explicabo alias cumque vitae maiores odit, est quas cupiditate omnis dolore voluptates iure culpa nesciunt iste vero sint? Maiores officiis ea facilis impedit minima, voluptas similique nesciunt necessitatibus at aliquid incidunt, blanditiis provident quod qui temporibus doloribus quos assumenda praesentium nam quas eligendi facere veniam perspiciatis architecto. Incidunt vel minus accusantium soluta excepturi cumque officia aspernatur adipisci nostrum animi quas nobis ipsam assumenda, reiciendis voluptatum ipsa voluptatem distinctio omnis blanditiis non delectus iste perferendis natus. Totam similique, ab, nesciunt deleniti itaque tempore commodi quibusdam ut id earum quam dolorem consequatur iste doloribus quaerat nihil, dolorum excepturi fugit asperiores blanditiis nisi ratione cum deserunt atque? Id est natus quisquam ad unde tempora beatae autem, eius sequi ipsam voluptatem praesentium error dolorum fuga dolorem reiciendis temporibus doloribus dolores facilis quod nam quasi. Pariatur consectetur, hic fugiat excepturi modi vero corporis sequi atque necessitatibus! Iure eaque consequuntur qui cumque. Quis distinctio ipsum incidunt, voluptatem provident porro assumenda illo sed id quaerat sunt. Doloribus ipsa ut ullam eveniet praesentium explicabo eum consectetur nihil laborum corporis, numquam dicta atque autem reprehenderit! Perferendis, laboriosam delectus? Odit laudantium eum consequatur ipsam, excepturi nulla incidunt neque vel soluta iure perspiciatis corrupti. Fuga officiis ab autem suscipit odit quasi ullam, rerum ipsam delectus maxime explicabo hic molestiae saepe deleniti! Sequi earum iure mollitia voluptas eaque necessitatibus itaque, tenetur doloribus atque possimus animi ut corrupti quasi iste alias incidunt porro, minus quibusdam consectetur, aspernatur asperiores. Sunt minus eos quas magni tempora fugiat, aliquam hic molestiae ipsum eum iusto iste optio. Similique at dolorum unde excepturi maiores a veritatis sed autem, enim ut adipisci debitis libero, obcaecati sequi vitae eaque repellendus consectetur laborum nisi reprehenderit? Vero aliquid quos odio! Quam expedita labore est in, neque totam unde quae vitae harum suscipit ex mollitia accusantium doloremque voluptates omnis libero maxime ullam iusto! Nulla minus suscipit sit, assumenda possimus exercitationem obcaecati, tempore eos, natus illum optio fugiat libero hic quaerat impedit? Ratione illo error maxime, voluptas dolore repellat nemo magni voluptatem ab a suscipit corporis sunt quaerat dolores id laborum quidem ea neque modi vel corrupti. Ex velit mollitia at eos dignissimos dolores illum veritatis voluptatum fugiat, unde, tenetur sed dolore similique temporibus voluptatem, consequuntur laudantium assumenda quam modi iusto amet earum? Quam velit at maiores dolores esse, iure et, corporis aspernatur excepturi suscipit laudantium reprehenderit veritatis qui earum non incidunt accusamus nisi enim!
+            </p>
+        </div>
+        <br>
+    </div>
+    <footer id="mission-footer" class="container-fluid border-top">
+        <div class="py-4 mx-auto">
+            <a href="#">Privacy Policy</a>
+        </div>
+    </footer>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/story_details.js"></script>
+</body>
+
+</html>

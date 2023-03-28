@@ -1,4 +1,5 @@
-﻿using CIPlatform.Entities.ViewModels;
+﻿using CIPlatform.Entities.DataModels;
+using CIPlatform.Entities.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,9 @@ namespace CIPlatform.Repository.Repository.Interface
     public interface IStoryRepository
     {
         public PaginationStory getStories(int pageNumber);
-        public void saveStories(StorySaveModel storySaveModelObj);
+        public int saveStories(StorySaveModel storySaveModelObj);
         public void submitStories(StorySaveModel storySaveModelObj);
+        public Story getStoryDetail(int storyId); 
+        public int getTotalStoryViews(int storyId);
     }
 }

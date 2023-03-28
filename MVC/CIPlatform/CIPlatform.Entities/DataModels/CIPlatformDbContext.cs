@@ -686,6 +686,7 @@ public partial class CIPlatformDbContext : DbContext
                 .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("title");
+            entity.Property(e => e.TotalViews).HasColumnName("totalViews");
             entity.Property(e => e.UpdatedAt)
                 .HasColumnType("datetime")
                 .HasColumnName("updated_at");
