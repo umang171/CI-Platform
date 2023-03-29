@@ -6,101 +6,141 @@
 }
 
 
-    <div class="row h-auto" data-current-page="1" aria-live="polite">
-        
-        @foreach(var data in Model)
-        {
-            
+<div class="row h-auto" data-current-page="1" aria-live="polite">
+
+    @foreach (var data in Model)
+    {
+
         <div id="card-parent" class="card-parent col-lg-4 col-md-6 col-sm-6 col-12 grid-item h-auto mb-4">
-        <div class="card">
-            
-        <img class="card-img-top w-100 card-img" src=~/@data.MissionMedia.ElementAt(0).MediaPath/@data.MissionMedia.ElementAt(0).MediaName.ToString().Split(",")[0]@data.MissionMedia.ElementAt(0).MediaType alt="Card image cap" />
-        <div id="card-image-content" class="d-flex flex-column justify-content-between  p-2">
-        <div id="location-image" class="img-content p-2 rounded-5">
-        <img src="~/images/pin.png" alt="">
-        @data.City.Name
-        </div>
-        <div class="d-flex flex-column align-items-end">
-        <div class="img-heart img-content p-2 rounded-5 m-1 favourite-mission-div" style="background-color:black;" id="favourite-mission-@data.MissionId">
-        <img src="~/images/heart.png" alt="">
-        </div>
-        <div id="user-img" class="img-content p-2 rounded-5 m-1">
-        <img src="~/images/user.png" alt="">
-        </div>
-        </div>
-        </div>
-        <h5 class="card-theme-title bg-white rounded-5 p-2">@data.Theme.Title</h5>
-        <div class="card-body">
-        <h5 class="card-title fs-3">@data.Title</h5>
-        <p class="card-text">
-        @data.ShortDescription
-        ...
-        </p>
+            <div class="card">
 
-        <div id="star-content" class="d-flex align-items-center justify-content-between">
-        <p class="my-auto">@data.OrganizationName</p>
-        <div class="d-flex align-items-center">
-        @{
-            int noOfStars;
-        }
-        @if(data.MissionRatings.ElementAt(0).Rating !=null)
-        {                           
-            noOfStars=(int)data.MissionRatings.ElementAt(0).Rating;
-        }
-        else
-        {
-            noOfStars = 0;                            
-        }
-        @{
-            int totalStars = 5;
-            int notSelectedStars = totalStars - noOfStars;
-        }
-         @for(int i = 0; i<noOfStars; i++)
-        {
-        <img src="~/images/selected-star.png" alt="">
-        }
-        @for(int i = 0; i<notSelectedStars; i++)
-        {
-        <img src="~/images/star.png" alt="">
-        }
+                <img class="card-img-top w-100 card-img" src=~/@data.MissionMedia.ElementAt(0).MediaPath/@data.MissionMedia.ElementAt(0).MediaName.ToString().Split(",")[0]@data.MissionMedia.ElementAt(0).MediaType alt="Card image cap" />
+                <div id="card-image-content" class="d-flex flex-column justify-content-between  p-2">
+                    <div id="location-image" class="img-content p-2 rounded-5">
+                        <img src="~/images/pin.png" alt="">
+                        @data.City.Name
+                    </div>
+                    <div class="d-flex flex-column align-items-end">
+                        <div class="img-heart img-content p-2 rounded-5 m-1 favourite-mission-div" style="background-color:black;" id="favourite-mission-@data.MissionId">
+                            <img src="~/images/heart.png" alt="">
+                        </div>
+                        <div id="user-img" class="img-content p-2 rounded-5 m-1">
+                            <img src="~/images/user.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <h5 class="card-theme-title bg-white rounded-5 p-2">@data.Theme.Title</h5>
+                <div class="card-body">
+                    <h5 class="card-title fs-3">@data.Title</h5>
+                    <p class="card-text">
+                        @data.ShortDescription
+                        ...
+                    </p>
+
+                    <div id="star-content" class="d-flex align-items-center justify-content-between">
+                        <p class="my-auto">@data.OrganizationName</p>
+                        <div class="d-flex align-items-center">
+                            @{
+                                int noOfStars;
+                            }
+                            @if (data.MissionRatings.ElementAt(0).Rating != null)
+                            {
+                                noOfStars = (int)data.MissionRatings.ElementAt(0).Rating;
+                            }
+                            else
+                            {
+                                noOfStars = 0;
+                            }
+                            @{
+                                int totalStars = 5;
+                                int notSelectedStars = totalStars - noOfStars;
+                            }
+                            @for (int i = 0; i < noOfStars; i++)
+                            {
+                                <img src="~/images/selected-star.png" alt="">
+                            }
+                            @for (int i = 0; i < notSelectedStars; i++)
+                            {
+                                <img src="~/images/star.png" alt="">
+                            }
 
 
-        </div>
-        </div>
-        </div>
+                        </div>
+                    </div>
+                </div>
 
-        <div id="mission-duration-div">
-        <h5 id="card-time-duration-title" class="border bg-white rounded-5 m-auto fs-6 p-2">
-        From @data.StartDate.ToString().Substring(0,10) until @data.EndDate.ToString().Substring(0,10)
-        </h5>
-        </div>
+                <div id="mission-duration-div">
+                    @if (data.MissionType == "time")
+                        {
+                            <h5 id="list-card-time-duration-title" class="border bg-white rounded-5 m-auto fs-6 p-2">
 
-        <div id="seats-info-card" class="d-flex border border-1 position-relative pt-3 align-items-center justify-content-around">
-        <div id="remain-seats-cards" class=" w-50 d-flex align-items-center p-1 px-lg-4 px-md-1">
-        <img id="seats-left-image" src="~/images/Seats-left.png" alt="">
-        <div class="d-flex flex-column p-2 ">
-        <p id="count" class="m-0 p-0 fs-5">10</p>
-        <p id="seats-left-text" class="m-0 p-0">Seats left</p>
-        </div>
-        </div>
+                                From @data.StartDate.ToString().Substring(0,10) until @data.EndDate.ToString().Substring(0,10)
+                            </h5>
+                        }
+                        else
+                        {
 
-        <div id="deadline-info-card" class=" w-40 d-flex align-items-center p-1 px-lg-4 px-md-1">
-        <img id="deadline-image" src="~/images/deadline.png" alt="">
-        <div class="d-flex flex-column p-2 ">
-        <p id="deadline-date" class="m-0 p-0 fs-5">19/11/2022</p>
-        <p id="deadline-text" class="m-0 p-0">Deadline</p>
+                            <h5 id="list-card-time-duration-title" class="border bg-white rounded-5 m-auto fs-6 p-2">
+
+                                @data.GoalMissions.ElementAt(0).GoalObjectiveText
+                            </h5>
+                        }
+                </div>
+
+                <div id="seats-info-card" class="d-flex border border-1 position-relative pt-3 align-items-center justify-content-around">
+                    <div id="remain-seats-cards" class=" w-50 d-flex align-items-center p-1 px-lg-4 px-md-1">
+                        <img id="seats-left-image" src="~/images/Seats-left.png" alt="">
+                        <div class="d-flex flex-column p-2 ">
+                            <p id="count" class="m-0 p-0 fs-5">10</p>
+                            <p id="seats-left-text" class="m-0 p-0">Seats left</p>
+                        </div>
+                    </div>
+
+                     @if (data.MissionType == "time")
+                        {
+                            <div id="deadline-info-card" class=" w-40 d-flex align-items-center p-1 px-lg-4 px-md-1">
+                                <img id="deadline-image" src="~/images/deadline.png" alt="">
+                                <div class="d-flex flex-column p-2 ">
+                                    <p id="deadline-date" class="m-0 p-0 fs-5">@data.EndDate.ToString().Substring(0,10)</p>
+                                    <p id="deadline-text" class="m-0 p-0">Deadline</p>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div id="deadline-info-card" class=" w-40 d-flex align-items-center p-1 px-lg-4 px-md-1">
+                                <img id="vounteer-achieved-image" src="~/images/achieved.png" alt="" />
+                                <div class="d-flex flex-column p-2">
+                                    <div class="progress">
+                                        <div class="progress-bar w-75" role="progressbar" aria-valuenow="75"
+                                            aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <p id="vounteer-achieved-text" class="m-0 p-0">
+                                        8000 achieved
+                                    </p>
+                                </div>
+                            </div>
+                        }
+                </div>
+                <div class="card-button-apply m-1 p-1 w-100 text-center">
+                    
+                     @if (data.EndDate > DateTime.Now || data.MissionType == "goal")
+                                {
+                                    <a href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = data.MissionId }) ">
+                                        <button id="apply-btn" class="btn btn-outline-warning rounded-5 py-2 px-4 fs-5 ">
+                                            Apply
+                                            <img src="~/images/right-arrow.png" class="mx-1 ms-3" alt="">
+                                        </button>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <button id="close-btn" class="btn btn-outline-secondary rounded-5 py-2 px-4 fs-5 disabled">
+                                        Closed
+                                    </button>
+                                }
+                </div>
+            </div>
         </div>
-        </div>
-        </div>
-        <div class="card-button-apply m-1 p-1 w-100 text-center">
-        <a href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = data.MissionId }) "> 
-            <button id="apply-btn" class="btn btn-outline-warning rounded-5 py-2 px-4 fs-5 ">
-            Apply
-            <img src="~/images/right-arrow.png" class="mx-1 ms-3" alt="">
-        </button>
-        </a>
-        </div>
-        </div>
-        </div>
-        }
-    </div>
+    }
+</div>

@@ -159,10 +159,19 @@
                 <div id="volunteer-mission-details-div">
                     <div>
                         <div id="volunteer-mission-tagline-div">
-                            <h5 id="volunteer-mission-tagline-title" class="border bg-white rounded-5 m-auto fs-6 p-2">
+                        @if (Model.MissionType == "time")
+                        {                            
+                        <h5 id="volunteer-mission-tagline-title" class="border bg-white rounded-5 m-auto fs-6 p-2">
                                 From @Model.StartDate.ToString().Substring(0,10) until @Model.EndDate.ToString().Substring(0,10)
                             </h5>
-                        </div>
+                        }
+                        else
+                        {
+                             <h5 id="volunteer-mission-tagline-title" class="border bg-white rounded-5 m-auto fs-6 p-2">
+                               @Model.GoalObjective
+                            </h5>
+                        }
+                    </div>
 
                         <div id="volunteer-seats-info-card"
                             class="d-flex flex-row flex-sm-column border-bottom border-top border-1 position-relative pt-3 align-items-md-center justify-content-md-center flex-column flex-md-row">
@@ -177,7 +186,20 @@
                                 </div>
                             </div>
 
+                            @if (Model.MissionType == "time")
+                        {
                             <div id="vounteer-achieved-info-card"
+                                class=" w-50 d-flex align-items-center justify-content-md-center p-1 px-lg-4 px-md-1">
+                                <img id="deadline-image" src="~/images/deadline.png" alt="">
+                                <div class="d-flex flex-column p-2 ">
+                                    <p id="deadline-date" class="m-0 p-0 fs-5">@Model.EndDate.ToString().Substring(0,10)</p>
+                                    <p id="deadline-text" class="m-0 p-0">Deadline</p>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {                            
+                        <div id="vounteer-achieved-info-card"
                                 class="w-50 d-flex align-items-center justify-content-md-center p-1 px-lg-4 px-md-1">
                                 <img id="vounteer-achieved-image" src="~/images/achieved.png" alt="" />
                                 <div class="d-flex flex-column p-2">
@@ -190,6 +212,7 @@
                                     </p>
                                 </div>
                             </div>
+                        }
                         </div>
                     </div>
                 </div>

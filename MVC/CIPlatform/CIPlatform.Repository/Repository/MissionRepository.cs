@@ -133,8 +133,11 @@ namespace CIPlatform.Repository.Repository
                 missionVolunteerViewModelObj.MissionId= rdr.GetInt64("MissionId");
                 missionVolunteerViewModelObj.Title= rdr.GetString("Title");
                 missionVolunteerViewModelObj.ShortDescription= rdr.GetString("ShortDescription");
-                missionVolunteerViewModelObj.StartDate= rdr.GetDateTime("StartDate");
-                missionVolunteerViewModelObj.EndDate= rdr.GetDateTime("EndDate");
+                missionVolunteerViewModelObj.StartDate = !rdr.IsDBNull("StartDate") ? rdr.GetDateTime("StartDate") : null;
+                missionVolunteerViewModelObj.EndDate= !rdr.IsDBNull("EndDate") ? rdr.GetDateTime("EndDate") : null;
+                missionVolunteerViewModelObj.MissionType= rdr.GetString("MissionType");
+                missionVolunteerViewModelObj.GoalObjective = !rdr.IsDBNull("GoalObjective") ? rdr.GetString("GoalObjective") : null;
+                missionVolunteerViewModelObj.GoalValue = !rdr.IsDBNull("GoalValue") ? rdr.GetInt32("GoalValue") : null;
                 missionVolunteerViewModelObj.OrganizationName= rdr.GetString("OrganizationName");
                 missionVolunteerViewModelObj.OrganizationDetail= rdr.GetString("OrganizationDetail");
                 missionVolunteerViewModelObj.MediaName = rdr.GetString("MediaName");
@@ -147,7 +150,7 @@ namespace CIPlatform.Repository.Repository
                 missionVolunteerViewModelObj.CityName= rdr.GetString("cityName");
                 missionVolunteerViewModelObj.Skill = !rdr.IsDBNull("Skill") ? rdr.GetString("Skill") : null;
                 missionVolunteerViewModelObj.Availability = rdr.GetString("Availability");
-                missionVolunteerViewModelObj.Rating = rdr.GetInt32("Rating");
+                missionVolunteerViewModelObj.Rating = ! rdr.IsDBNull("Rating")?rdr.GetInt32("Rating"):0;
                 missionVolunteerViewModelObj.TotalVoulunteerRating = rdr.GetInt32("TotalVoulunteerRating");
                 missionVolunteerViewModelObj.Description = rdr.GetString("Description");
             }
@@ -189,14 +192,14 @@ namespace CIPlatform.Repository.Repository
 
         IEnumerable<Mission> IMissionRepository.getRelatedMissions(string themeName,string cityName, int missionId)
         {
-            IEnumerable <Mission> cityRelatedMissions= _ciPlatformDbContext.Missions.Include(mission => mission.Country).ThenInclude(mission => mission.Cities).Include(mission => mission.Theme).Include(mission => mission.MissionSkills).Include(mission => mission.MissionMedia).Include(mission=>mission.MissionRatings).Where(u=>u.MissionId!=missionId).Where(u => u.City.Name == cityName).Take(3);
+            IEnumerable <Mission> cityRelatedMissions= _ciPlatformDbContext.Missions.Include(mission => mission.Country).ThenInclude(mission => mission.Cities).Include(mission => mission.Theme).Include(mission => mission.MissionSkills).Include(mission => mission.MissionMedia).Include(mission=>mission.GoalMissions).Include(mission=>mission.MissionRatings).Where(u=>u.MissionId!=missionId).Where(u => u.City.Name == cityName).Take(3);
 
             if(cityRelatedMissions.Count()==3)
             {
                 return cityRelatedMissions;
             }
             int remainingRelatedMissions = 3-cityRelatedMissions.Count();
-            IEnumerable<Mission> themeRelatedMissions=_ciPlatformDbContext.Missions.Include(mission => mission.Country).ThenInclude(mission => mission.Cities).Include(mission => mission.Theme).Include(mission=>mission.MissionSkills).Include(mission => mission.MissionMedia).Include(mission => mission.MissionRatings).Where(u => u.City.Name != cityName).Where(u => u.MissionId != missionId).Where(u =>u.Theme.Title == themeName).Take(remainingRelatedMissions);
+            IEnumerable<Mission> themeRelatedMissions=_ciPlatformDbContext.Missions.Include(mission => mission.Country).ThenInclude(mission => mission.Cities).Include(mission => mission.Theme).Include(mission=>mission.MissionSkills).Include(mission => mission.MissionMedia).Include(mission => mission.GoalMissions).Include(mission => mission.MissionRatings).Where(u => u.City.Name != cityName).Where(u => u.MissionId != missionId).Where(u =>u.Theme.Title == themeName).Take(remainingRelatedMissions);
             IEnumerable<Mission> relatedMissions=cityRelatedMissions.Concat(themeRelatedMissions);
             return relatedMissions;
         }

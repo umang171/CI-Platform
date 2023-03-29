@@ -17,6 +17,10 @@ namespace CIPlatform.Entities.ViewModels
         public string ? Description { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
+
+        public string? MissionType { get; set; }
+        public string? GoalObjective { get; set; }
+        public int? GoalValue { get; set; }
         public string? OrganizationName { get; set; }
         public string? OrganizationDetail { get; set; }
         public string? MediaName { get; set; }

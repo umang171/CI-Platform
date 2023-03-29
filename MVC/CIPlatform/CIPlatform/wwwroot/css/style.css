@@ -1086,6 +1086,9 @@
         width: 60% !important;
     }
 
+    #vounteer-achieved-info-card {
+        width: 100% !important;
+    }
     #volunteer-content-part {
         width: 40% !important;
     }
@@ -1148,7 +1151,9 @@
     #volunteer-image-part {
         width: 100% !important;
     }
-
+    #vounteer-achieved-info-card{
+        width: 50% !important;
+    }
     #volunteer-content-part {
         width: 100% !important;
     }

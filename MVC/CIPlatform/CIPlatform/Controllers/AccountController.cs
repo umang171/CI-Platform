@@ -114,6 +114,7 @@ namespace CIPlatform.Controllers
                 user.PhoneNumber = long.Parse(obj.PhoneNo);
                 user.Email = obj.EmailId;
                 user.Password = obj.Password;
+                user.Avatar = "/images/user1.png";
                 _userRepository.addUser(user);                
                 return RedirectToAction("Login");
             }
