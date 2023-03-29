@@ -134,6 +134,7 @@
                 <span class="fs-5 fw-lighter">Drag and drop pictures here</span>
             </div>
             <div id="uploadedFiles" class="p-2 d-flex flex-wrap">
+                
             </div>
             <input type="button" id="btnUpload" value="Upload" />
         </div>
@@ -145,7 +146,7 @@
             </div>
             <div class="w-25 d-flex justify-content-end">
                 <a id="preview-link" class="text-decoration-none" target="_blank" href="@Url.Action("StoryDetails", "Story", new { storyId =1 }) ">
-                <button id="story-preview-btn" class="orange-btn rounded-5 bg-white px-4 p-2">Preview</button></a>
+                <button id="story-preview-btn" class="rounded-5 bg-white px-4 p-2" disabled>Preview</button></a>
                 <button id="story-save-btn" class="orange-btn rounded-5 bg-white px-4 p-2 ms-1">Save</button>
                 <button id="story-submit-btn" class="orange-btn rounded-5 bg-white px-4 p-2 ms-1">Submit</button>
             </div>
