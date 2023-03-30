@@ -506,3 +506,16 @@ function getFavouriteMissions() {
         }
     });
 }
+//==================================================================================================
+//Logout
+//==================================================================================================
+$("#logoutLink").on("click", function (e) {
+    e.preventDefault();
+    $.ajax({
+        type: "GET",
+        url: "/Mission/logout",
+        success: function () {
+            location.reload();
+        }
+    });
+});

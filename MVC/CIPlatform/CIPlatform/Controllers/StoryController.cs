@@ -26,13 +26,11 @@ namespace CIPlatform.Controllers
             _httpContextAccessor = httpContextAccessor;
             configuration = _configuration;
         }
+        [SessionHelper]
         public IActionResult Index(int missionId)
         {
             string userSessionEmailId = HttpContext.Session.GetString("useremail");
-            if (userSessionEmailId == null)
-            {
-                return RedirectToAction("Login", "Account");
-            }
+            
             StoryHomeModel storyHomeModel = new StoryHomeModel();
             User userObj = _userRepository.findUser(userSessionEmailId);
             storyHomeModel.username = userObj.FirstName + " " + userObj.LastName;
@@ -45,13 +43,11 @@ namespace CIPlatform.Controllers
             PaginationStory paginationStory=_storyRepository.getStories(pageNumber);
             return PartialView("_storyList", paginationStory);
         }
+        [SessionHelper]
         public IActionResult ShareStory()
         {
             string userSessionEmailId = HttpContext.Session.GetString("useremail");
-            if (userSessionEmailId == null)
-            {
-                return RedirectToAction("Login", "Account");
-            }
+            
             ShareStoryModel shareStoryModel = new ShareStoryModel();
             User userObj = _userRepository.findUser(userSessionEmailId);
             shareStoryModel.username = userObj.FirstName + " " + userObj.LastName;
@@ -60,14 +56,12 @@ namespace CIPlatform.Controllers
             shareStoryModel.missions = _missionRepository.getMissionsOfUser((int)userObj.UserId);
             return View(shareStoryModel);
         }
+        [SessionHelper]
         [HttpPost]
         public IActionResult Upload(List<IFormFile> postedFiles)
         {
             string userSessionEmailId = HttpContext.Session.GetString("useremail");
-            if (userSessionEmailId == null)
-            {
-                return RedirectToAction("Login", "Account");
-            }
+            
             User userObj = _userRepository.findUser(userSessionEmailId);
             int userId = (int)userObj.UserId;
 
@@ -108,13 +102,11 @@ namespace CIPlatform.Controllers
         {
             _storyRepository.submitStories(storySaveModelObj);
         }
+        [SessionHelper]
         public IActionResult StoryDetails(int? storyId)
         {
             string userSessionEmailId = HttpContext.Session.GetString("useremail");
-            if (userSessionEmailId == null)
-            {
-                return RedirectToAction("Login", "Account");
-            }
+            
             StoryDetailsModel storyDetailsObj = new StoryDetailsModel();
             User userObj = _userRepository.findUser(userSessionEmailId);
             storyDetailsObj.username = userObj.FirstName + " " + userObj.LastName;
@@ -129,7 +121,7 @@ namespace CIPlatform.Controllers
             int total=_storyRepository.getTotalStoryViews((int)storyId);
             return Json(new {data=total});
         }
-
+        [SessionHelper]
         public IActionResult recommendToCoworker( int storyId, string toUserEmail)
         {
             string userSessionEmailId = HttpContext.Session.GetString("useremail");           
@@ -152,6 +144,12 @@ namespace CIPlatform.Controllers
             ViewBag.sendMail = mailHelper.Send(toUserEmail, welcomeMessage + path,"Recommeded to watch story");
 
             return Json(new { data = "Email sent successfully", status = 1 });
+        }
+
+        public void logout()
+        {
+            HttpContext.Session.Remove("useremail");
+            HttpContext.Session.Clear();
         }
     }
 }

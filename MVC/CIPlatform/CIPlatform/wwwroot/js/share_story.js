@@ -177,29 +177,17 @@ $("#story-submit-btn").on("click", function (e) {
         }
     });
 });
-//=================================================================================================
-//Preview story
-//=================================================================================================
 
-
-//$("#story-preview-btn").on("click", function (e) {
-//    var userId = $(".user-btn")[0].id.slice(9);
-//    var missionId = $("#sort-dropdown").val();
-//    var storyTitle = $("#story-title").val();
-//    var storyPublishedDate = $("#story-publish-date").val();
-//    var storyVideoUrl = $("#video-url-textarea").val();
-//    storyDescription = tinyMCE.activeEditor.getContent();
-
-//    $.ajax({
-//        type: "POST",
-//        url: '/Story/StoryPreview',
-//        data: { userId: userId, missionId: missionId, storyTitle: storyTitle, storyPublishedDate: storyPublishedDate, storyDescription: storyDescription, storyVideoUrl: storyVideoUrl, storyFileNames: storyFileNames },
-//        success: function (data) {
-            
-//        },
-//        error: function (xhr, status, error) {
-//            // Handle error
-//            console.log(error);
-//        }
-//    });
-//});
+//==================================================================================================
+//Logout
+//==================================================================================================
+$("#logoutLink").on("click", function (e) {
+    e.preventDefault();
+    $.ajax({
+        type: "GET",
+        url: "/Story/logout",
+        success: function () {
+            location.reload();
+        }
+    });
+});

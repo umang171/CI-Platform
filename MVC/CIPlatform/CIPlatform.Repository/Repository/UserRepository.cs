@@ -57,6 +57,7 @@ namespace CIPlatform.Repository.Repository
             return _ciPlatformDbContext.ResetPasswords.Where(u => u.Token == token).First();
         }
 
+
         void IUserRepository.removeResetPasswordToekn(ResetPassword obj)
         {
             _ciPlatformDbContext.Remove(obj);

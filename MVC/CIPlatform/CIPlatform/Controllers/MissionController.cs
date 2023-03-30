@@ -159,5 +159,10 @@ namespace CIPlatform.Controllers
             IEnumerable<MissionApplication> missionApplicationObj=_missionRepository.getRecentVolunteers(missionId);
             return PartialView("_recentVolunteers",missionApplicationObj);
         }
+        public void logout()
+        {
+            HttpContext.Session.Remove("useremail");
+            HttpContext.Session.Clear();
+        }
     }
 }

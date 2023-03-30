@@ -154,3 +154,18 @@ function loadPagination() {
         loadStory(paging);
     })
 }
+
+
+//==================================================================================================
+//Logout
+//==================================================================================================
+$("#logoutLink").on("click", function (e) {
+    e.preventDefault();
+    $.ajax({
+        type: "GET",
+        url: "/Story/logout",
+        success: function () {
+            location.reload();
+        }
+    });
+});
