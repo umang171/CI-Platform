@@ -96,9 +96,9 @@ function getTotalViews() {
     $.ajax({
         type: "POST",
         url: '/Story/getTotalStoryViews',
-        data: { storyId: storyid},
+        data: { storyId: storyid },
         success: function (data) {
-            var total=data["data"];
+            var total = data["data"];
             $("#totalView").text(total)
         },
         error: function (xhr, status, error) {
@@ -116,17 +116,29 @@ $("#send-email-btn").on("click", function (e) {
     e.preventDefault();
     var storyid = $(".story-title")[0].id.slice(6);
     var userEmail = $("#recommend-input").val();
-    console.log(storyid, userEmail);
-    $.ajax({
-        type: "POST",
-        url: '/Story/recommendToCoworker',
-        data: { storyId: storyid, toUserEmail: userEmail },
-        success: function (data) {
-            console.log("success");
-        },
-        error: function (xhr, status, error) {
-            // Handle error
-            console.log(error);
+    var userSelect = $("#recommend-select").val();
+    var isValid = true;
+    if (userSelect != "no") {
+        userEmail = userSelect;
+    } else {
+        console.log("select not", userEmail);
+        if (userEmail == null || userEmail == "") {
+            alert("Please enter email");
+            isValid = false;
         }
-    });
+    }
+    if (isValid) {
+        $.ajax({
+            type: "POST",
+            url: '/Story/recommendToCoworker',
+            data: { storyId: storyid, toUserEmail: userEmail },
+            success: function (data) {
+                console.log("success");
+            },
+            error: function (xhr, status, error) {
+                // Handle error
+                console.log(error);
+            }
+        });
+    }
 });

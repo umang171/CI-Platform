@@ -70,7 +70,6 @@
             doc_leave_timer, stop_loop = false,
             files_count = 0,
             files;
-
         if (opts.fallback_dropzoneClick === true) {
             $('#' + opts.fallback_id).css({
                 display: 'none',
@@ -383,11 +382,19 @@
                 if (typeof newName === "string") {
                     builder = getBuilder(newName, data, mime, boundary);
                 } else {
+                    
                     builder = getBuilder(file.name, data, mime, boundary);
                 }
-
                 upload.index = index;
-                upload.file = file;
+                tmpfile = {};
+                var arr = file.name.split(".")
+                tmpfile.name=arr[0] + "Umang." + arr[1];
+                for (var k in file) {
+                    if(k!="name")
+                        tmpfile[k]=file[k]
+                }
+                upload.file = tmpfile;
+                console.log(typeof(file))
                 upload.downloadStartTime = start_time;
                 upload.currentStart = start_time;
                 upload.currentProgress = 0;

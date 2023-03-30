@@ -80,9 +80,15 @@ $(function () {
             $('#dropSection').removeClass('img-dropdown-active');
         },
         uploadFinished: function (i, file, response, time) {
-            storyFileNames = storyFileNames.concat("images/uploads/"+file.name + ",");
+            let currentDate = new Date().toJSON().slice(0, 10).replaceAll("-", "");
+            var userId = $(".user-btn")[0].id.slice(9);
+
+            var arr = file.name.split(".");
+            fileName = arr[0] + currentDate + userId+ "." + arr[1];
+
+            storyFileNames = storyFileNames.concat("images/uploads/" + fileName + ",");
             
-            $('#uploadedFiles').append('<div><span id="img-' + file.name + '" class = "close-img" style = "position: absolute;cursor:pointer;transform: translate(76px,0px);background-color: black;color:white;padding: 0px 3px;border: 1px solid;" > X</span ><img src="/images/uploads/' + file.name + '" class="px-2" style="height:100px;width:100px;" /></div >');
+            $('#uploadedFiles').append('<div><span id="img-' + fileName + '" class = "close-img" style = "position: absolute;cursor:pointer;transform: translate(76px,0px);background-color: black;color:white;padding: 0px 3px;border: 1px solid;" > X</span ><img src="/images/uploads/' + fileName + '" class="px-2" style="height:100px;width:100px;" /></div >');
         },
         afterAll: function (e) {
             //To do some task after all uploads done.

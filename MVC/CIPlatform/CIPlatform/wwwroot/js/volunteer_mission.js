@@ -364,18 +364,31 @@ $("#send-email-btn").on("click", function (e) {
     var missionId = $(".volunteer-button-apply")[0].id.slice(18);
     var userId = $("#rightNavbar .user-btn")[0].id.slice(9,);
     var userEmail = $("#recommend-input").val();
-    $.ajax({
-        type: "POST",
-        url: '/Mission/recommendToCoworker',
-        data: { fromUserId: userId, missinoId: missionId, toUserEmail: userEmail},
-        success: function (data) {
-
-        },
-        error: function (xhr, status, error) {
-            // Handle error
-            console.log(error);
+    var userSelect = $("#recommend-select").val();
+    var isValid = true;
+    if (userSelect != "no") {
+        userEmail = userSelect;
+    } else {
+        console.log("select not", userEmail);
+        if (userEmail == null || userEmail == "") {
+            alert("Please enter email");
+            isValid = false;
         }
-    });
+    }
+    if (isValid) {
+        $.ajax({
+            type: "POST",
+            url: '/Mission/recommendToCoworker',
+            data: { fromUserId: userId, missinoId: missionId, toUserEmail: userEmail },
+            success: function (data) {
+
+            },
+            error: function (xhr, status, error) {
+                // Handle error
+                console.log(error);
+            }
+        });
+    }
 });
 
 //========================================================================================

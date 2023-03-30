@@ -22,13 +22,11 @@ namespace CIPlatform.Controllers
             _httpContextAccessor = httpContextAccessor;
             configuration = _configuration;
         }
+        [SessionHelper]
         public IActionResult Index()
         {
             string userSessionEmailId=HttpContext.Session.GetString("useremail");
-            if ( userSessionEmailId == null)
-            {
-                return RedirectToAction("Login", "Account");
-            }
+            
             MissionHomeModel missionHomeModel = new MissionHomeModel();
             User userObj = _userRepository.findUser(userSessionEmailId);
             missionHomeModel.username = userObj.FirstName+" "+userObj.LastName;
@@ -36,31 +34,33 @@ namespace CIPlatform.Controllers
             missionHomeModel.avtar=userObj.Avatar;
             return View(missionHomeModel);
         }
+        [SessionHelper]
         public IActionResult Mission_Volunteer(int? missionId)
         {
             string userSessionEmailId = HttpContext.Session.GetString("useremail");
-            if (userSessionEmailId == null)
-            {
-                return RedirectToAction("Login", "Account");
-            }
+            
             MissionVolunteerViewModel missionVolunteerViewModelObj= new MissionVolunteerViewModel();
             missionVolunteerViewModelObj= _missionRepository.getMissionFromMissionId((int)missionId);
             User userObj = _userRepository.findUser(userSessionEmailId);
             missionVolunteerViewModelObj.username = userObj.FirstName + " " + userObj.LastName;
             missionVolunteerViewModelObj.userid= (int)userObj.UserId;
             missionVolunteerViewModelObj.avtar=userObj.Avatar;
+            missionVolunteerViewModelObj.users = _userRepository.getUsers();
             return View(missionVolunteerViewModelObj);
         }
+        [SessionHelper]
         public IActionResult GetCountries()
         {
             IEnumerable<Country> countries = _missionRepository.getCountries();
             return Json(new { data = countries });
         }
+        [SessionHelper]
         public IActionResult GetCites(string country)
         {
             IEnumerable<City> cities = _missionRepository.getCities(country);
             return Json(new { data = cities });
         }
+        [SessionHelper]
         public IActionResult GetThemes()
         {
             IEnumerable<MissionTheme> missionThemes = _missionRepository.getThemes();
@@ -72,7 +72,7 @@ namespace CIPlatform.Controllers
             IEnumerable<Skill> missionSkills= _missionRepository.getSkills();
             return Json(new { data = missionSkills.AsEnumerable() });
         }
-        
+        [SessionHelper]
         [HttpPost]
         public IActionResult getMissionsFromSP(string countryNames, string cityNames, string themeNames, string skillNames, string searchText, string sortValue,int pageNumber)
         {
@@ -122,11 +122,13 @@ namespace CIPlatform.Controllers
         {
             _missionRepository.addComment(userId, missionId, comment);           
         }
+        [SessionHelper]
         public IActionResult getComments(int missionId)
         {
             IEnumerable<Comment> commentsObj=_missionRepository.getComments(missionId);
             return PartialView("_Comments", commentsObj);
         }
+        [SessionHelper]
         public IActionResult recommendToCoworker(int fromUserId,int missinoId,string toUserEmail)
         {
             User userObj;
@@ -151,6 +153,7 @@ namespace CIPlatform.Controllers
         {
                _missionRepository.addToApplication(missionId, userId);
         }
+        [SessionHelper]
         public IActionResult getRecentVolunteers(int missionId)
         {
             IEnumerable<MissionApplication> missionApplicationObj=_missionRepository.getRecentVolunteers(missionId);

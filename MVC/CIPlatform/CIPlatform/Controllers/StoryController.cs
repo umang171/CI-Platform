@@ -63,10 +63,20 @@ namespace CIPlatform.Controllers
         [HttpPost]
         public IActionResult Upload(List<IFormFile> postedFiles)
         {
+            string userSessionEmailId = HttpContext.Session.GetString("useremail");
+            if (userSessionEmailId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            User userObj = _userRepository.findUser(userSessionEmailId);
+            int userId = (int)userObj.UserId;
+
+
             string wwwPath = this._hostEnvironment.WebRootPath;
             string contentPath = this._hostEnvironment.ContentRootPath;
 
             string path = Path.Combine(this._hostEnvironment.WebRootPath, @"images\uploads");
+            
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory("postedFiles");
@@ -75,6 +85,10 @@ namespace CIPlatform.Controllers
             foreach (IFormFile postedFile in postedFiles)
             {
                 string fileName = Path.GetFileName(postedFile.FileName);
+                string time=DateTime.Now.ToString("yyyyMMdd");
+
+                string[] arr = fileName.Split(".");
+                fileName = arr[0] + time+userId +"." + arr[1];
                 using (FileStream stream = new FileStream(Path.Combine(path, fileName), FileMode.Create))
                 {
                     postedFile.CopyTo(stream);
@@ -96,24 +110,20 @@ namespace CIPlatform.Controllers
         }
         public IActionResult StoryDetails(int? storyId)
         {
-            Story story = _storyRepository.getStoryDetail((int)storyId);
-            return View(story);
+            string userSessionEmailId = HttpContext.Session.GetString("useremail");
+            if (userSessionEmailId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            StoryDetailsModel storyDetailsObj = new StoryDetailsModel();
+            User userObj = _userRepository.findUser(userSessionEmailId);
+            storyDetailsObj.username = userObj.FirstName + " " + userObj.LastName;
+            storyDetailsObj.avtar = userObj.Avatar;
+            storyDetailsObj.story= _storyRepository.getStoryDetail((int)storyId);
+            storyDetailsObj.users=_userRepository.getUsers();
+            return View(storyDetailsObj);
         }
-        //public IActionResult StoryPreview(StorySaveModel storySaveModelObj)
-        //{
-        //    Story story=new Story();
-        //    string type= storySaveModelObj.storyFileNames.Substring(storySaveModelObj.storyFileNames.Length - 5, 4);
-        //    story.StoryMedia.Add(new StoryMedium());
-        //    story.StoryMedia.ElementAt(0).Type = type;
-        //    story.StoryMedia.ElementAt(0).Path = storySaveModelObj.storyFileNames.Replace(type, "");
-        //    int userid=(int)storySaveModelObj.userId;
-        //    User user=_userRepository.findUser(userid);
-        //    story.User=user;
-        //    story.MissionId = (int)storySaveModelObj.missionId;
-        //    story.Title = storySaveModelObj.storyTitle;
-        //    story.Description=storySaveModelObj.storyDescription;            
-        //    return View(story);
-        //}
+       
         public IActionResult getTotalStoryViews(int storyId)
         {
             int total=_storyRepository.getTotalStoryViews((int)storyId);

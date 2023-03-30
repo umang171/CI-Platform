@@ -1,4 +1,4 @@
-﻿@model CIPlatform.Entities.DataModels.Story
+﻿@model CIPlatform.Entities.ViewModels.StoryDetailsModel
 @section Style{
 <style>
     .carousel-control-prev {
@@ -76,13 +76,13 @@
 
                 <div id="rightNavbar" class="d-flex align-items-center">
                     <a href="">
-                        <img id="user-profile-img" src="~/images/user-img.png"
+                        <img id="user-profile-img" src="@Model.avtar"
                              class="rounded-circle object-fit-cover" alt="" />
                     </a>
                     <div class="dropdown d-sm-block d-none">
                         <button class="dropdown-toggle border-0 bg-white m-1" type="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                            Umang Gohel
+                            @Model.username
                             <img src="~/images/drop-down.png" alt="" />
                         </button>
                         <ul class="dropdown-menu">
@@ -102,7 +102,7 @@
 <div id="mission-content" class="container-fluid overflow-y-scroll p-0 volunteer-content">
     <div id="volunteer-top-info" class="d-flex flex-column flex-sm-row">
         <div id="volunteer-image-part" class="w-50">
-            <img id="preview-image" src="~/@Model.StoryMedia.ElementAt(0).Path.ToString().Split(",")[0]@Model.StoryMedia.ElementAt(0).Type"
+            <img id="preview-image" src="~/@Model.story.StoryMedia.ElementAt(0).Path.ToString().Split(",")[0]@Model.story.StoryMedia.ElementAt(0).Type"
                  class="w-100 volunteer-main-image" alt="" />
             <!-- carousel -->
             <div id="carouselExampleControls" class="carousel slide w-100" data-bs-ride="carousel">
@@ -110,13 +110,13 @@
                     <div class="carousel-item active h-100 w-100">
                         <div class="d-flex h-100 w-100">
                              @{
-                                string[] mediaNames = @Model.StoryMedia.ElementAt(0).Path.ToString().Split(",").SkipLast(1).ToArray();
+                                string[] mediaNames = @Model.story.StoryMedia.ElementAt(0).Path.ToString().Split(",").SkipLast(1).ToArray();
                                 int mediaLength = mediaNames.Length;
                             }
                             @for(int i=0;i<mediaLength;i++)
                             {
                             <div class="h-100 w-25">
-                                    <img src="~/@mediaNames[i]@Model.StoryMedia.ElementAt(0).Type"
+                                    <img src="~/@mediaNames[i]@Model.story.StoryMedia.ElementAt(0).Type"
                                         class="carousel-images d-block w-100 h-100 p-1" alt="..." />
                                 </div>     
                                 @if ((i+1)%4==0 && i!=0 && (i+1)!=mediaLength)
@@ -145,8 +145,8 @@
         <div id="volunteer-content-part" class="w-50 p-2 d-flex flex-column">
             <div id="story-top-infp" class=" d-flex justify-content-between px-md-5">
                 <div class="d-flex flex-column justify-content-center align-items-center">
-                    <img src="@Model.User.Avatar" class="rounded-circle" style="height: 100px; width: 100px;" alt="">
-                    <span>@Model.User.FirstName @Model.User.LastName</span>
+                    <img src="@Model.story.User.Avatar" class="rounded-circle" style="height: 100px; width: 100px;" alt="">
+                    <span>@Model.story.User.FirstName @Model.story.User.LastName</span>
                 </div>
                 <div class="d-flex justify-content-end align-items-end">
                     <button class="rounded-5 p-1 px-2 bg-white">
@@ -157,7 +157,7 @@
                 </div>
             </div>
             <div class="story-middle-info p-1 py-md-5 px-md-5">
-                @Model.User.WhyIVolunteer
+                @Model.story.User.WhyIVolunteer
             </div>
             <div class="story-bottom-info p-2 d-flex flex-sm-column flex-row flex-md-row justify-content-around align-items-center">
                 <button data-bs-toggle="modal" data-bs-target="#exampleModal"  class="rounded-5 p-3 bg-white d-flex align-items-center">
@@ -168,11 +168,31 @@
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">
+                                Recommened to co-worker
+                            </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
-                          <div class="modal-body">                              
-                            <input id="recommend-input" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                          <div class="modal-body">  
+                            <label class="form-label">Enter email here to share this</label>
+                            <input id="recommend-input" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"  list="programmingLanguages">
+                                
+                                <datalist id="programmingLanguages">
+                                    @foreach(var user in Model.users)
+                                    {
+                                        <option value="@user.Email"> @user.FirstName @user.LastName</option>                                   
+                                    }
+                                </datalist>
+
+                            <br />
+                            <h6 class="text-center">or</h6>
+                            <select id="recommend-select" class="form-select">
+                                <option value="no">Select names</option>
+                                    @foreach(var user in Model.users)
+                                    {
+                                        <option value="@user.Email">@user.FirstName @user.LastName (@user.Email)</option>                                   
+                                    }
+                            </select>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -181,8 +201,8 @@
                         </div>
                       </div>
                     </div>
-                 <a class="text-decoration-none" href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = Model.MissionId }) ">
-                <button id="story-mission-@Model.MissionId" class="story-mission rounded-5 p-3 orange-btn bg-white d-flex align-items-center">
+                 <a class="text-decoration-none" href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = Model.story.MissionId }) ">
+                <button id="story-mission-@Model.story.MissionId" class="story-mission rounded-5 p-3 orange-btn bg-white d-flex align-items-center">
                     <span class="px-md-2">Open mission</span>
                     <img src="~/images/right-arrow.png" alt="">
                 </button>
@@ -192,10 +212,10 @@
     </div>
 
     <div id="story-details-info" class="py-3">
-        <h4 class="story-title" id="story-@Model.StoryId">@Model.Title</h4>
+        <h4 class="story-title" id="story-@Model.story.StoryId">@Model.story.Title</h4>
         <hr>
         <p>
-            @Html.Raw(@Model.Description)
+            @Html.Raw(@Model.story.Description)
         </p>
     </div>
     <br>
