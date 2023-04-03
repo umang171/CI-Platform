@@ -198,6 +198,7 @@ namespace CIPlatform.Controllers
             userProfileModelObj.FirstName = user.FirstName;
             userProfileModelObj.LastName = user.LastName;
             userProfileModelObj.Avatar=user.Avatar;
+            userProfileModelObj.Email=user.Email;
             userProfileModelObj.EmployeeId = user.EmployeeId;
             userProfileModelObj.Title = user.Title;
             userProfileModelObj.Department = user.Department;
@@ -244,6 +245,29 @@ namespace CIPlatform.Controllers
                 userProfileModel.Avatar = @"\images\avatars\" + fileName + extension;
             }
             _userRepository.editUserProfile(userProfileModel);
+            return RedirectToAction("UserProfile", "Account");
+        }
+        [SessionHelper]
+        [HttpPost]
+        public IActionResult ChangePasswod(UserProfileModel userProfileModel)
+        {
+            string userSessionEmailId = HttpContext.Session.GetString("useremail");
+            User user = _userRepository.findUser(userSessionEmailId);
+            if (!user.Password.Equals(userProfileModel.OldPassword))
+            {
+                ModelState.AddModelError("OldPassword", "Password does not match");                
+            }
+            else
+            {
+                if(userProfileModel.NewPassword.Equals(userProfileModel.ConfirmPassword)) {
+                    user.Password=userProfileModel.NewPassword;
+                    _userRepository.updatePassword(user);
+                }
+                else
+                {
+                    ModelState.AddModelError("ConfirmPassword", "Confirm password does not match to new password");
+                }
+            }
             return RedirectToAction("UserProfile", "Account");
         }
         public IActionResult logout()

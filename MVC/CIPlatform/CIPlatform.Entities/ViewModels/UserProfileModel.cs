@@ -18,8 +18,15 @@ namespace CIPlatform.Entities.ViewModels
         public string? LastName { get; set; }
 
         public string? Email { get; set; }
-
-        public string? Password { get; set; }
+        [Required]
+        [MinLength(8, ErrorMessage = "Please enter more than 8 characters")]
+        public string? OldPassword { get; set; }
+        [Required]
+        [MinLength(8, ErrorMessage = "Please enter more than 8 characters")]
+        public string? NewPassword { get; set; }
+        [Required]
+        [MinLength(8, ErrorMessage = "Please enter more than 8 characters")]
+        public string? ConfirmPassword { get; set; }
 
         public long? PhoneNumber { get; set; }
 
