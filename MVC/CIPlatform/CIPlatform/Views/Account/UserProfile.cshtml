@@ -88,7 +88,6 @@
         <div id="user-profile-img-div" class="w-25 p-3">
             <div class="border border-1  d-flex flex-column justify-content-center align-items-center">
                 <img id="user-profile-main-img" class="rounded-circle w-75" src="@Model.Avatar" style="height:250px;cursor:pointer" alt="">
-                <input type="file" id="imgupload" style="display:none" onchange="readURL(this);" />
                 <h4>@Model.FirstName @Model.LastName</h4>
                 <span data-bs-toggle="modal" style="cursor: pointer;" data-bs-target="#passwordModal">Change password</span>
                 <!-- Button trigger modal -->
@@ -116,22 +115,26 @@
             </div>
         </div>
         <div id="user-profile-content-div" class="w-75">
+            <form method="post" asp-action="EditUserProfile" asp-controller="Account" enctype="multipart/form-data">
+                <input name="file" type="file" id="imgupload" style="display:none" onchange="readURL(this);" />
             <h3>Basic Information</h3>
             <hr>
             <div class="user-name-info d-flex pt-3">
                 <div class="d-flex flex-column w-50 pe-2">
                     <label class="form-label" for="name">Name*</label>
-                    <input class="form-control" type="text" placeholder="Enter your name" value="@Model.FirstName">
+                    <input asp-for="FirstName" maxlength="16" class="form-control" type="text" placeholder="Enter your name" value="@Model.FirstName">
+                    <span class="text-danger" asp-validation-for="FirstName"></span>
                 </div>
                 <div class="d-flex flex-column w-50 pe-2">
                     <label class="form-label" for="surname">Surname*</label>
-                    <input class="form-control" type="text" placeholder="Enter your surname" value="@Model.LastName">
+                    <input asp-for="LastName" maxlength="16" class="form-control" type="text" placeholder="Enter your surname" value="@Model.LastName">
+                    <span class="text-danger" asp-validation-for="LastName"></span>
                 </div>
             </div>
             <div class="user-company-info d-flex pt-3">
                 <div class="d-flex flex-column w-50 pe-2">
                     <label class="form-label" for="employeeid">Employee ID</label>
-                    <input class="form-control" type="text" placeholder="Enter your employee id" value="@Model.EmployeeId">
+                    <input asp-for="EmployeeId" maxlength="16" class="form-control" type="text" placeholder="Enter your employee id" value="@Model.EmployeeId">
                 </div>
                 <div class="d-flex flex-column w-50 pe-2">
                     <label class="form-label" for="manager">Manager</label>
@@ -141,37 +144,43 @@
             <div class="user-department-info d-flex pt-3">
                 <div class="d-flex flex-column w-50 pe-2">
                     <label class="form-label" for="title">Title</label>
-                    <input class="form-control" type="text" placeholder="Enter title" value="@Model.Title">
+                    <input asp-for="Title" maxlength="255" class="form-control" type="text" placeholder="Enter title" value="@Model.Title">
                 </div>
                 <div class="d-flex flex-column w-50 pe-2">
                     <label class="form-label" for="department">Department</label>
-                    <input class="form-control" type="text" placeholder="Enter your Department" value="@Model.Department">
+                    <input asp-for="Department" maxlength="16" class="form-control" type="text" placeholder="Enter your Department" value="@Model.Department">
                 </div>
             </div>
             <div class="user-profile-info d-flex flex-column pt-3">
                 <label for="" class="form-label">My Profile*</label>
-                <textarea name="" id="" rows="5" placeholder="Enter your comments" class="w-100 form-control">@Model.ProfileText</textarea>
+                <textarea asp-for="ProfileText" id="" rows="5" placeholder="Enter your comments" class="w-100 form-control">@Model.ProfileText</textarea>
             </div>
             <div class="user-volunteer-info d-flex flex-column pt-3">
                 <label for="" class="form-label">Why I Volunteer*</label>
-                <textarea name="" id="" rows="5" placeholder="Enter why you Volunteer" class="w-100 form-control">@Model.WhyIVolunteer</textarea>
+                <textarea asp-for="WhyIVolunteer" id="" rows="5" placeholder="Enter why you Volunteer" class="w-100 form-control">@Model.WhyIVolunteer</textarea>
             </div>
             <h3 class="pt-5">Address Information</h3>
             <hr>
             <div class="user-address-info d-flex pt-3">
                 <div class="d-flex flex-column w-50 pe-2">
-                    <label class="form-label" for="">City</label>
-                    <input class="form-control" type="text" placeholder="Enter your city" value="@Model.CityName">
-                </div>
-                <div class="d-flex flex-column w-50 pe-2">
                     <label class="form-label" for="">Country*</label>
-                    <select name="" id="" class="form-select">
+                    <select asp-for="CountryId" id="profileCountryDropdown" class="form-select">
                         @foreach(var country in Model.CountryNames)
                         {
                             <option value="@country.CountryId">@country.Name</option>                            
                         }
                     </select>
                 </div>
+                <div class="d-flex flex-column w-50 pe-2">
+                    <label class="form-label" for="">City</label>
+                    <select asp-for="CityId" id="profileCityDropdown" class="form-select">
+                        @foreach(var city in Model.CityNames)
+                        {
+                            <option value="@city.CityId">@city.Name</option>                            
+                        }
+                    </select>
+                </div>
+                
             </div>
             <h3 class="pt-5">Professional Information</h3>
             <hr>
@@ -187,26 +196,19 @@
                 </div>
                 <div class="d-flex flex-column w-50 pe-2">
                     <label class="form-label" for="">LinkedIn</label>
-                    <input class="form-control" type="text" placeholder="Enter LinkedIn URL" value="@Model.LinkedInUrl">
+                    <input asp-for="LinkedInUrl" class="form-control" type="text" placeholder="Enter LinkedIn URL" value="@Model.LinkedInUrl">
                 </div>
             </div>
             <h3 class="pt-5">MySkills</h3>
             <hr>
             <div class="pb-2 user-skill-info d-flex flex-column pt-3">
-               @* <div class="p-2 d-flex flex-column w-100 pe-2 border border-1 border-secondary">
-                    <span>Anthropology</span>
-                    <span>Archeology</span>
-                    <span>Astronomy</span>                   
-                    <span>Environmental</span>
-                    <span>Science</span>
-                    <span>History</span>
-                </div>*@
-                <textarea id="skill-textarea" class="form-control bg-white" rows="5" disabled>
+            
+                <textarea asp-for="userSkillNames" readonly id="skill-textarea" class="form-control bg-white" rows="5">
                 
 
                 </textarea>
             </div>
-            <button class="p-2 px-4 rounded-5 w-auto bg-white" data-bs-toggle="modal" data-bs-target="#skillModal">Add Skill</button>
+            <button  id="addSkillBtn" class="p-2 px-4 rounded-5 w-auto bg-white" data-bs-toggle="modal" data-bs-target="#skillModal">Add Skill</button>
             <!-- Modal -->
             <div class="modal fade" id="skillModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" style="max-width: 70%;">
@@ -219,10 +221,22 @@
                             <div class="d-flex">
                                 <div class="w-50 border border-1 border-secondary p-sm-3 subject-info-box-1">
                                     <select multiple="multiple" id='lstBox1' class="form-control">
+                                            @{
+                                                List<int> userSkillId = new List<int>();
+                                                List<string> userSkillNames = new List<string>();
+                                            }
                                         @foreach(var skill in Model.skills)
                                         {
-                                            <option value="@skill.SkillId">@skill.SkillName</option>                                            
-                                        }
+                                                if (!@Model.userSkills.Any(sk => sk.SkillId == skill.SkillId))
+                                                {
+                                                    <option value="@skill.SkillId">@skill.SkillName</option>
+                                                }
+                                                else
+                                                {
+                                                    userSkillId.Add(skill.SkillId);
+                                                    userSkillNames.Add(skill.SkillName);
+                                                }
+                                            }
                                         
                                     </select>
                                 </div>
@@ -230,9 +244,16 @@
                                     <button id='btnRight' class="p-sm-3 bg-white">></button>
                                     <button id='btnLeft' class="p-sm-3 bg-white"><</button>
                                 </div>
-                                <div class="w-50 border border-1 border-secondary d-flex flex-column p-sm-3 subject-info-box-2">
-                                    <select multiple="multiple" id='lstBox2' class="form-control">
-                                    </select>
+                                <div  class="w-50 border border-1 border-secondary d-flex flex-column p-sm-3 subject-info-box-2">
+                                    <select  multiple="multiple" id='lstBox2' class="form-control">
+                                            @if (userSkillNames.Count()!=0)
+                                            {
+                                                foreach (var item in userSkillNames)
+                                                {
+                                                    <option>@item</option>                                                    
+                                                }
+                                            }
+                                        </select>
                                 </div>
                             </div>
                         </div>
@@ -244,8 +265,9 @@
                 </div>
             </div>
             <div class="d-flex w-100 justify-content-end">
-                <button class="p-2 px-4 rounded-5 w-auto bg-white orange-btn">Save</button>
+                <input type="submit" class="p-2 px-4 rounded-5 w-auto bg-white orange-btn" value="Save"/>
             </div>
+        </form>
         </div>
     </div>
 

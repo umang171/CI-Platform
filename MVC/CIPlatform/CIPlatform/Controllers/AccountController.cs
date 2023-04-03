@@ -14,11 +14,13 @@ namespace CIPlatform.Controllers
         private readonly IUserRepository _userRepository;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IConfiguration configuration;
-        public AccountController(IUserRepository userRepository, IHttpContextAccessor httpContextAccessor, IConfiguration _configuration)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public AccountController(IUserRepository userRepository, IHttpContextAccessor httpContextAccessor, IConfiguration _configuration,IWebHostEnvironment webHostEnvironment)
         {
             _userRepository = userRepository;
             _httpContextAccessor = httpContextAccessor;
             configuration = _configuration;
+            _webHostEnvironment = webHostEnvironment;
         }
         public IActionResult Login()
         {
@@ -206,9 +208,43 @@ namespace CIPlatform.Controllers
             userProfileModelObj.CountryId = user.CountryId==null?-1:user.CountryId;
             userProfileModelObj.CountryName = userProfileModelObj.CountryId != -1 ? _userRepository.getCountryFromCountryId((long)userProfileModelObj.CountryId) : "";
             userProfileModelObj.CountryNames = _userRepository.getCountryNames();
+            userProfileModelObj.CityNames=_userRepository.getCityNames((int)userProfileModelObj.CountryId);
             userProfileModelObj.LinkedInUrl = user.LinkedInUrl;
             userProfileModelObj.skills = _userRepository.getSkillNames();
+            userProfileModelObj.userSkills = user.UserSkills.ToList();
             return View(userProfileModelObj);
+        }
+        public IActionResult getCityNames(int countryId)
+        {
+            List<City> cityNames=_userRepository.getCityNames(countryId);
+            return Json(new {data=cityNames});
+        }
+        public IActionResult getSkillsOfUser(int userId)
+        {
+            List<UserSkill> userSkills=_userRepository.getSkillsOfUser(userId);
+            return Json(new {data=userSkills});
+        }
+        [SessionHelper]
+        [HttpPost]
+        public IActionResult EditUserProfile(UserProfileModel userProfileModel,IFormFile? file)
+        {
+            string userSessionEmailId = HttpContext.Session.GetString("useremail");
+            User user = _userRepository.findUser(userSessionEmailId);
+            userProfileModel.UserId = user.UserId;
+            string wwwRootPath = _webHostEnvironment.WebRootPath;
+            if(file != null)
+            {
+                string fileName=Guid.NewGuid().ToString();
+                var uploads=Path.Combine(wwwRootPath, @"images\avatars");
+                var extension=Path.GetExtension(file.FileName);
+                using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension),FileMode.Create))
+                {
+                    file.CopyTo(fileStreams);
+                }
+                userProfileModel.Avatar = @"\images\avatars\" + fileName + extension;
+            }
+            _userRepository.editUserProfile(userProfileModel);
+            return RedirectToAction("UserProfile", "Account");
         }
         public IActionResult logout()
         {

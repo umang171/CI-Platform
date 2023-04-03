@@ -1,6 +1,7 @@
 ﻿
 
 using CIPlatform.Entities.DataModels;
+using CIPlatform.Entities.ViewModels;
 
 namespace CIPlatform.Repository.Repository.Interface
 {
@@ -21,6 +22,10 @@ namespace CIPlatform.Repository.Repository.Interface
         public string getCityFromCityId(long cityId);
         public string getCountryFromCountryId(long countryId);
         public List<Country> getCountryNames();
+        public List<City> getCityNames(int countryId);
         public List<Skill> getSkillNames();
+        public long getIdOfUserSkill(string userSkillName);
+        public List<UserSkill> getSkillsOfUser(int userId);
+        public void editUserProfile(UserProfileModel userProfileModel);
     }
 }

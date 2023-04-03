@@ -100,7 +100,9 @@ $( document ).ready(function() {
       e.preventDefault();
     });
    
-  })(jQuery);
+})(jQuery);
+
+
 
 var addedSkills = "";
 $("#skill-save-btn").click(function (e) {
@@ -112,10 +114,16 @@ $("#skill-save-btn").click(function (e) {
     var values = $.map(options, function (option) {
         addedSkills += option.innerHTML + "\n";
     });
-    console.log(addedSkills);
     $("#skill-textarea").val(addedSkills);
 });
+addedSkills = "";
 
+var options = $('#lstBox2 option');
+
+var values = $.map(options, function (option) {
+    addedSkills += option.innerHTML + "\n";
+});
+$("#skill-textarea").val(addedSkills);
 // =================================================================================
 //User profile upload
 // =================================================================================
@@ -133,3 +141,33 @@ function readURL(input) {
     reader.readAsDataURL(input.files[0]);
   }
 }
+
+
+$("#addSkillBtn").on("click", function (e) {
+    e.preventDefault();
+});
+// =================================================================================
+//Get cities
+// =================================================================================
+$('#profileCountryDropdown').change(function () {
+    var optionSelected = $(this).find("option:selected");
+    var countryId = optionSelected.val();
+    var cityDropDown = $("#profileCityDropdown");
+    $.ajax({
+        type: "POST",
+        url: '/Account/getCityNames',
+        data: { countryId: countryId },
+        success: function (response) {
+            var str = "";
+            cityDropDown.empty();
+            for (var j = 0; j < response["data"].length; j++) {
+                str += "<option value=" + response["data"][j].cityId + ">" + response["data"][j].name +"</option>";
+            }
+            cityDropDown.append(str);
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    });
+});

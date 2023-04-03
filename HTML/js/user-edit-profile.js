@@ -4,8 +4,6 @@ const searchButton = document.getElementById("search-button");
 const missionContent=document.getElementById("mission-content");
 let missionContentHeight=missionContent.style.height;
 
-console.log(missionContent);
-console.log(missionContentHeight);
 
 function getStyle(element) {
   if (typeof getComputedStyle !== "undefined") {
@@ -15,8 +13,7 @@ function getStyle(element) {
 }
 
 var heightStyle = getStyle(missionContent).height;
-heightStyle=+heightStyle.slice(0,-2)+78;
-console.log(heightStyle);
+heightStyle=+heightStyle.slice(0,-2)+78+78;
 
 
 let flag=0;
@@ -77,7 +74,6 @@ y.addListener(myFunction2) // Attach listener function on state changes
 // Add skills
 // =================================================================================
 $( document ).ready(function() {
-    console.log( "ready!" );
 });
 (function () {
     $("#btnRight").click(function (e) {
@@ -104,3 +100,21 @@ $( document ).ready(function() {
     });
    
   })(jQuery);
+
+// =================================================================================
+//User profile upload
+// =================================================================================
+$("#user-profile-main-img").on("click",function(e){
+  $('#imgupload').trigger('click');
+});
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+      $('#user-profile-main-img').attr('src', e.target.result);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
