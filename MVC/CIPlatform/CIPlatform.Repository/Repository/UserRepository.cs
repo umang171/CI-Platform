@@ -57,6 +57,25 @@ namespace CIPlatform.Repository.Repository
             return _ciPlatformDbContext.ResetPasswords.Where(u => u.Token == token).First();
         }
 
+        string IUserRepository.getCityFromCityId(long cityId)
+        {
+            return _ciPlatformDbContext.Cities.Where(city => city.CityId == cityId).Select(city => city.Name).First();
+        }
+
+        string IUserRepository.getCountryFromCountryId(long countryId)
+        {
+            return _ciPlatformDbContext.Countries.Where(country=>country.CountryId==countryId).Select(country=> country.Name).First();
+        }
+
+        List<Country> IUserRepository.getCountryNames()
+        {
+            return _ciPlatformDbContext.Countries.ToList();
+        }
+
+        List<Skill> IUserRepository.getSkillNames()
+        {
+            return _ciPlatformDbContext.Skills.ToList();
+        }
 
         void IUserRepository.removeResetPasswordToekn(ResetPassword obj)
         {
@@ -79,5 +98,6 @@ namespace CIPlatform.Repository.Repository
         {
             return _ciPlatformDbContext.Users.Any(u => u.Password == password && u.Email== email);
         }
+        
     }
 }

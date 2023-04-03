@@ -146,10 +146,11 @@ namespace CIPlatform.Controllers
             return Json(new { data = "Email sent successfully", status = 1 });
         }
 
-        public void logout()
+        public IActionResult logout()
         {
             HttpContext.Session.Remove("useremail");
             HttpContext.Session.Clear();
+            return RedirectToAction("Login", "Account");
         }
     }
 }

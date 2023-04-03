@@ -61,25 +61,63 @@ namespace CIPlatform.Repository.Repository
 
         int IStoryRepository.saveStories(StorySaveModel storySaveModelObj)
         {
-            Story story = new Story();
-            story.UserId = (long)storySaveModelObj.userId;
-            story.MissionId = (long)storySaveModelObj.missionId;
-            story.Title = storySaveModelObj.storyTitle;
-            story.Description = storySaveModelObj.storyDescription;
-            story.PublishedAt = DateTime.Parse(storySaveModelObj.storyPublishedDate);
-            _ciPlatformDbContext.Stories.Add(story);
-            _ciPlatformDbContext.SaveChanges();
+            if (!_ciPlatformDbContext.Stories.Any(u => u.UserId == storySaveModelObj.userId && u.MissionId == storySaveModelObj.missionId && u.Title == storySaveModelObj.storyTitle))
+            {
+                Story story = new Story();
+                story.UserId = (long)storySaveModelObj.userId;
+                story.MissionId = (long)storySaveModelObj.missionId;
+                story.Title = storySaveModelObj.storyTitle;
+                story.Description = storySaveModelObj.storyDescription;
+                story.PublishedAt = DateTime.Parse(storySaveModelObj.storyPublishedDate);
+                _ciPlatformDbContext.Stories.Add(story);
+                _ciPlatformDbContext.SaveChanges();
 
-            long storyId = story.StoryId;
-            StoryMedium storyMediumObj = new StoryMedium();
-            storyMediumObj.StoryId = storyId;
-            string type = storySaveModelObj.storyFileNames.Substring(storySaveModelObj.storyFileNames.Length - 5, 4);
-            string mediaPath = storySaveModelObj.storyFileNames.Replace(type, "");
-            storyMediumObj.Type = type;
-            storyMediumObj.Path = mediaPath;
-            _ciPlatformDbContext.StoryMedia.Add(storyMediumObj);
-            _ciPlatformDbContext.SaveChanges();
-            return (int)storyId;
+                long storyId = story.StoryId;
+                StoryMedium storyMediumObj = new StoryMedium();
+                storyMediumObj.StoryId = storyId;
+                string type = storySaveModelObj.storyFileNames.Substring(storySaveModelObj.storyFileNames.Length - 5, 4);
+                string mediaPath = storySaveModelObj.storyFileNames.Replace(type, "");
+                storyMediumObj.Type = type;
+                storyMediumObj.Path = mediaPath;
+                _ciPlatformDbContext.StoryMedia.Add(storyMediumObj);
+                _ciPlatformDbContext.SaveChanges();
+                return (int)storyId;
+            }
+            else
+            {
+                Story story = _ciPlatformDbContext.Stories.Where(u => u.UserId == storySaveModelObj.userId && u.MissionId == storySaveModelObj.missionId && u.Title == storySaveModelObj.storyTitle).First();
+                story.UserId = (long)storySaveModelObj.userId;
+                story.MissionId = (long)storySaveModelObj.missionId;
+                story.Title = storySaveModelObj.storyTitle;
+                story.Description = storySaveModelObj.storyDescription;
+                story.PublishedAt = DateTime.Parse(storySaveModelObj.storyPublishedDate);
+                _ciPlatformDbContext.Stories.Update(story);
+                _ciPlatformDbContext.SaveChanges();
+                long storyId = story.StoryId;
+                if (!_ciPlatformDbContext.StoryMedia.Any(u => u.StoryId == storyId))
+                {
+                    StoryMedium storyMediumObj = new StoryMedium();
+                    storyMediumObj.StoryId = storyId;
+                    string type = storySaveModelObj.storyFileNames.Substring(storySaveModelObj.storyFileNames.Length - 5, 4);
+                    string mediaPath = storySaveModelObj.storyFileNames.Replace(type, "");
+                    storyMediumObj.Type = type;
+                    storyMediumObj.Path = mediaPath;
+                    _ciPlatformDbContext.StoryMedia.Add(storyMediumObj);
+                    _ciPlatformDbContext.SaveChanges();
+                }
+                else
+                {
+                    StoryMedium storyMediumObj = _ciPlatformDbContext.StoryMedia.Where(u => u.StoryId == storyId).First();
+                    storyMediumObj.StoryId = storyId;
+                    string type = storySaveModelObj.storyFileNames.Substring(storySaveModelObj.storyFileNames.Length - 5, 4);
+                    string mediaPath = storySaveModelObj.storyFileNames.Replace(type, "");
+                    storyMediumObj.Type = type;
+                    storyMediumObj.Path = mediaPath;
+                    _ciPlatformDbContext.StoryMedia.Update(storyMediumObj);
+                    _ciPlatformDbContext.SaveChanges();
+                }
+                return (int)storyId;
+            }
         }
         void IStoryRepository.submitStories(StorySaveModel storySaveModelObj)
         {

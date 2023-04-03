@@ -187,8 +187,34 @@ namespace CIPlatform.Controllers
             }
             return View(obj);
         }
-
-
-
+        [SessionHelper]
+        public IActionResult UserProfile()
+        {
+            string userSessionEmailId = HttpContext.Session.GetString("useremail");
+            User user = _userRepository.findUser(userSessionEmailId);
+            UserProfileModel userProfileModelObj=new UserProfileModel();
+            userProfileModelObj.FirstName = user.FirstName;
+            userProfileModelObj.LastName = user.LastName;
+            userProfileModelObj.Avatar=user.Avatar;
+            userProfileModelObj.EmployeeId = user.EmployeeId;
+            userProfileModelObj.Title = user.Title;
+            userProfileModelObj.Department = user.Department;
+            userProfileModelObj.ProfileText = user.ProfileText;
+            userProfileModelObj.WhyIVolunteer=user.WhyIVolunteer;
+            userProfileModelObj.CityId = user.CityId == null ? -1:user.CityId ;
+            userProfileModelObj.CityName = userProfileModelObj.CityId != -1?_userRepository.getCityFromCityId((long)userProfileModelObj.CityId):"";
+            userProfileModelObj.CountryId = user.CountryId==null?-1:user.CountryId;
+            userProfileModelObj.CountryName = userProfileModelObj.CountryId != -1 ? _userRepository.getCountryFromCountryId((long)userProfileModelObj.CountryId) : "";
+            userProfileModelObj.CountryNames = _userRepository.getCountryNames();
+            userProfileModelObj.LinkedInUrl = user.LinkedInUrl;
+            userProfileModelObj.skills = _userRepository.getSkillNames();
+            return View(userProfileModelObj);
+        }
+        public IActionResult logout()
+        {
+            HttpContext.Session.Remove("useremail");
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login", "Account");
+        }
     }
 }

@@ -1283,3 +1283,50 @@ upload images
 .img-dropdown-active {
     background-color: skyblue !important;
 }
+
+/* ============================================================ */
+/* user edit profile */
+/* ============================================================ */
+
+.subject-info-box-1,
+.subject-info-box-2 {
+    float: left;
+    width: 45%;
+    height: 80%;
+}
+
+    .subject-info-box-1 select, .subject-info-box-2 select {
+        height: 500px;
+        padding: 0;
+    }
+
+        .subject-info-box-1 select option, .subject-info-box-2 select option {
+            padding: 4px 10px 4px 10px;
+        }
+
+            .subject-info-box-1 select option:hover, .subject-info-box-2 select option:hover {
+                background: #EEEEEE;
+            }
+
+@media screen and (max-width:767px) {
+    #user-profile-img-div {
+        width: 100% !important;
+    }
+
+    #user-profile-img {
+        width: 30% !important;
+        height: 30% !important;
+    }
+
+    #user-profile-content-div {
+        width: 100% !important;
+    }
+
+        #user-profile-content-div .modal-dialog {
+            max-width: 95% !important;
+        }
+
+    .subject-info-box-1 select option, .subject-info-box-2 select option {
+        padding: 1px;
+    }
+}

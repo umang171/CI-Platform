@@ -91,8 +91,8 @@
                                 <img src="~/images/drop-down.png" alt="" />
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">My Profile</a></li>
-                                <li><a class="dropdown-item" id="logoutLink" href="#">Logout</a></li>   
+                            <li><a class="dropdown-item" href="/Account/UserProfile">My Profile</a></li>
+                            <li><a class="dropdown-item" href="/Mission/logout">Logout</a></li> 
                             </ul>
                         </div>
                     </div>
@@ -115,18 +115,18 @@
                                 string[] mediaNames = Model.MediaName.ToString().Split(",");
                                 int mediaLength = mediaNames.Length;
                             }
-                            @for(int i=0;i<mediaLength;i++)
+                            @for (int i = 0; i < mediaLength; i++)
                             {
-                            <div class="h-100 w-25">
-                                    <img src="~/@Model.MediaPath/@mediaNames[i]@Model.MediaType"
+                                <div class="h-100 w-25">
+                                        <img src="~/@Model.MediaPath/@mediaNames[i]@Model.MediaType"
                                         class="carousel-images d-block w-100 h-100 p-1" alt="..." />
-                                </div>     
-                                @if ((i+1)%4==0 && i!=0 && (i+1)!=mediaLength)
+                                    </div>     
+                                @if ((i + 1) % 4 == 0 && i != 0 && (i + 1) != mediaLength)
                                 {                                    
-                            @:</div>
-                            @:</div>
-                            @:<div class="carousel-item h-100 w-100">
-                                @:<div class="d-flex h-100 w-100">
+                                    @:</div>
+                                    @:</div>
+                                    @:<div class="carousel-item h-100 w-100">
+                                    @:<div class="d-flex h-100 w-100">
                                 }
                             }
                             </div>
@@ -147,10 +147,10 @@
             <div id="volunteer-content-part" class="w-50 p-2 d-flex flex-column justify-content-around">
                 <div id="volunteer-mission-title-div">
                     <div id="volunteer-mission-title" class="fs-1">
-                        @Model.Title
+                    @Model.Title
                     </div>
                     <div id="volunteer-mission-description" class="fs-6">
-                       @Model.ShortDescription
+                    @Model.ShortDescription
                     </div>
                 </div>
                 <div id="volunteer-mission-details-div">
@@ -158,15 +158,15 @@
                         <div id="volunteer-mission-tagline-div">
                         @if (Model.MissionType == "time")
                         {                            
-                        <h5 id="volunteer-mission-tagline-title" class="border bg-white rounded-5 m-auto fs-6 p-2">
-                                From @Model.StartDate.ToString().Substring(0,10) until @Model.EndDate.ToString().Substring(0,10)
-                            </h5>
+                            <h5 id="volunteer-mission-tagline-title" class="border bg-white rounded-5 m-auto fs-6 p-2">
+                                    From @Model.StartDate.ToString().Substring(0,10) until @Model.EndDate.ToString().Substring(0,10)
+                                </h5>
                         }
                         else
                         {
-                             <h5 id="volunteer-mission-tagline-title" class="border bg-white rounded-5 m-auto fs-6 p-2">
-                               @Model.GoalObjective
-                            </h5>
+                                 <h5 id="volunteer-mission-tagline-title" class="border bg-white rounded-5 m-auto fs-6 p-2">
+                                @Model.GoalObjective
+                                </h5>
                         }
                     </div>
 
@@ -183,32 +183,32 @@
                                 </div>
                             </div>
 
-                            @if (Model.MissionType == "time")
+                        @if (Model.MissionType == "time")
                         {
-                            <div id="vounteer-achieved-info-card"
+                                <div id="vounteer-achieved-info-card"
                                 class=" w-50 d-flex align-items-center justify-content-md-center p-1 px-lg-4 px-md-1">
-                                <img id="deadline-image" src="~/images/deadline.png" alt="">
-                                <div class="d-flex flex-column p-2 ">
-                                    <p id="deadline-date" class="m-0 p-0 fs-5">@Model.EndDate.ToString().Substring(0,10)</p>
-                                    <p id="deadline-text" class="m-0 p-0">Deadline</p>
+                                    <img id="deadline-image" src="~/images/deadline.png" alt="">
+                                    <div class="d-flex flex-column p-2 ">
+                                        <p id="deadline-date" class="m-0 p-0 fs-5">@Model.EndDate.ToString().Substring(0,10)</p>
+                                        <p id="deadline-text" class="m-0 p-0">Deadline</p>
+                                    </div>
                                 </div>
-                            </div>
                         }
                         else
                         {                            
-                        <div id="vounteer-achieved-info-card"
+                            <div id="vounteer-achieved-info-card"
                                 class="w-50 d-flex align-items-center justify-content-md-center p-1 px-lg-4 px-md-1">
-                                <img id="vounteer-achieved-image" src="~/images/achieved.png" alt="" />
-                                <div class="d-flex flex-column p-2">
-                                    <div class="progress">
-                                        <div class="progress-bar w-75" role="progressbar" aria-valuenow="75"
+                                    <img id="vounteer-achieved-image" src="~/images/achieved.png" alt="" />
+                                    <div class="d-flex flex-column p-2">
+                                        <div class="progress">
+                                            <div class="progress-bar w-75" role="progressbar" aria-valuenow="75"
                                             aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                        <p id="vounteer-achieved-text" class="m-0 p-0">
+                                            8000 achieved
+                                        </p>
                                     </div>
-                                    <p id="vounteer-achieved-text" class="m-0 p-0">
-                                        8000 achieved
-                                    </p>
                                 </div>
-                            </div>
                         }
                         </div>
                     </div>
@@ -235,9 +235,9 @@
                             <label class="form-label">Enter email here to share this</label>
                             <input id="recommend-input" type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" list="userlist">                                
                                 <datalist id="userlist">
-                                    @foreach(var user in Model.users)
+                                    @foreach (var user in Model.users)
                                     {
-                                        <option value="@user.Email">@user.FirstName @user.LastName</option>                                   
+                                            <option value="@user.Email">@user.FirstName @user.LastName</option>                                   
                                     }
                                 </datalist>
 
@@ -245,9 +245,9 @@
                             <h6 class="text-center">or</h6>
                             <select id="recommend-select" class="form-select">
                                 <option value="no">Select names</option>
-                                    @foreach(var user in Model.users)
+                                    @foreach (var user in Model.users)
                                     {
-                                        <option value="@user.Email">@user.FirstName @user.LastName (@user.Email)</option>                                   
+                                            <option value="@user.Email">@user.FirstName @user.LastName (@user.Email)</option>                                   
                                     }
                             </select>
                           </div>
@@ -337,24 +337,24 @@
                     <p>@Model.Description</p>
                     <h3>Documents</h3>
                     <div class="">
-                    @if (@Model.DocumentName==null)                    
+                    @if (@Model.DocumentName == null)
                     {
-                        <p>No documents found</p>
+                            <p>No documents found</p>
                     }
                     else
                     {
-                    string[] documentNames = Model.DocumentName.ToString().Split(",");
-                    int docuemntLength = documentNames.Length;
-                        
-                    @for(int i=0;i<docuemntLength;i++)
-                            {
-                        <button class="border border-1 rounded-5 px-3 py-2 bg-white mx-2">
-                            <a href="~/@Model.DocumentPath/@documentNames[i]@Model.DocumentType" target="_blank"
+                        string[] documentNames = Model.DocumentName.ToString().Split(",");
+                        int docuemntLength = documentNames.Length;
+
+                        @for (int i = 0; i < docuemntLength; i++)
+                        {
+                                <button class="border border-1 rounded-5 px-3 py-2 bg-white mx-2">
+                                    <a href="~/@Model.DocumentPath/@documentNames[i]@Model.DocumentType" target="_blank"
                                 class="text-decoration-none text-dark">
-                                <img src="~/images/doc.png" class="px-2" alt="">@documentNames[i]@Model.DocumentType
-                            </a>
-                        </button>
-                            }
+                                        <img src="~/images/doc.png" class="px-2" alt="">@documentNames[i]@Model.DocumentType
+                                    </a>
+                                </button>
+                        }
                     }
                     </div>
                 </div>
@@ -393,8 +393,8 @@
                         </button>
                     </form>
                     <div id="volunteer-comments-div" class=" p-2 ">
-                        
-                     
+
+
 
                     </div>
                 </div>
@@ -414,11 +414,11 @@
                             <div class="w-25">Skills</div>
                         @if (Model.Skill == null)
                         {
-                            <div class="w-75">No skills required</div>
+                                <div class="w-75">No skills required</div>
                         }
                         else
                         {
-                            <div class="w-75">@Model.Skill</div>                            
+                                <div class="w-75">@Model.Skill</div>                            
                         }
                     </div>
                         <div
@@ -434,25 +434,25 @@
                             @{
                                 int noOfStars;
                             }
-                            @if(Model.Rating !=null)
-                            {                           
-                                noOfStars=(int)Model.Rating;
+                            @if (Model.Rating != null)
+                            {
+                                noOfStars = (int)Model.Rating;
                             }
                             else
                             {
-                                noOfStars = 0;                            
+                                noOfStars = 0;
                             }
                             @{
                                 int totalStars = 5;
                                 int notSelectedStars = totalStars - noOfStars;
                             }
-                                @for(int i = 0; i<noOfStars; i++)
+                            @for (int i = 0; i < noOfStars; i++)
                             {
-                            <img src="~/images/selected-star.png" alt="">
+                                <img src="~/images/selected-star.png" alt="">
                             }
-                            @for(int i = 0; i<notSelectedStars; i++)
+                            @for (int i = 0; i < notSelectedStars; i++)
                             {
-                            <img src="~/images/star.png" alt="">
+                                <img src="~/images/star.png" alt="">
                             }
 
                                 <span>(by @Model.TotalVoulunteerRating volunteers)</span>
@@ -492,7 +492,7 @@
             </h1>
 
             <div id="related-mission-grid" class="container p-0">
-              
+
             </div>
         </div>
     </div>
@@ -502,9 +502,9 @@
         </div>
     </footer>
 
-    @section JavaScript{
+@section JavaScript{
           <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
+
     <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-star-rating@4.1.2/js/star-rating.min.js"
         type="text/javascript"></script>
 

@@ -43,14 +43,14 @@
                 <img src="~/images/drop-down.png" alt="" />
               </button>
               <ul class="dropdown-menu countryDropDownList">
-                 @* @foreach (var country in Model.countryList)
-                  {
-                      <li class="p-1">
-                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                          @country.Name
-                          </a>
-                      </li>
-                  }  *@                    
+                                                             @* @foreach (var country in Model.countryList)
+                                                                          {
+                                                              <li class="p-1">
+                                                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
+                                                  @country.Name
+                                                  </a>
+                                                              </li>
+                                                                          }  *@                    
                 </ul>
             </div>
           </div>
@@ -63,13 +63,13 @@
                 <img src="~/images/drop-down.png" alt="" />
               </button>
               <ul class="dropdown-menu cityDropDownList">
-                     @*@foreach(var cities in Model.cityList){
-                        <li class="p-1">
-                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                          @cities.Name
-                          </a>
-                      </li>
-                     }*@
+                                                 @*@foreach(var cities in Model.cityList){
+                                                        <li class="p-1">
+                                                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
+                                                  @cities.Name
+                                                  </a>
+                                                              </li>
+                                                                 }*@
                     </ul>
             </div>
           </div>
@@ -82,13 +82,13 @@
                 <img src="~/images/drop-down.png" alt="" />
               </button>
               <ul class="dropdown-menu themeDropDownList">
-                     @*@foreach(var theme in Model.themeList){
-                        <li class="p-1">
-                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                        @theme.Title  
-                        </a>
-                      </li>
-                     }*@
+                                                 @*@foreach(var theme in Model.themeList){
+                                                        <li class="p-1">
+                                                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
+                                                        @theme.Title  
+                                                        </a>
+                                                              </li>
+                                                                 }*@
                     </ul>
             </div>
           </div>
@@ -101,13 +101,13 @@
                 <img src="~/images/drop-down.png" alt="" />
               </button>
               <ul class="dropdown-menu skillDropDownList">
-                     @*@foreach(var skill in @Model.skillList){
-                        <li class="p-1">
-                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                        @skill.SkillName
-                        </a>
-                      </li>
-                     }*@
+                                                 @*@foreach(var skill in @Model.skillList){
+                                                        <li class="p-1">
+                                                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
+                                                        @skill.SkillName
+                                                        </a>
+                                                              </li>
+                                                                 }*@
                </ul>
             </div>
           </div>
@@ -155,12 +155,12 @@
             <div class="dropdown d-sm-block d-none">
               <button class="dropdown-toggle border-0 bg-white m-1 user-btn" id="user-btn-@Model.userid" type="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                @Model.username
+                                                                @Model.username
                 <img src="~/images/drop-down.png" alt="" />
               </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">My Profile</a></li>
-                <li><a class="dropdown-item" id="logoutLink" href="#">Logout</a></li>                
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="/Account/UserProfile">My Profile</a></li>
+                <li><a class="dropdown-item" href="/Mission/logout">Logout</a></li>             
               </ul>
             </div>
           </div>
@@ -190,14 +190,14 @@
                     </button>
 
                      <ul class="dropdown-menu countryDropDownList">
-                     @* @foreach (var country in Model.countryList) 
-                      {
-                          <li class="p-1">
-                            <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                              @country.Name
-                              </a>
-                          </li>
-                      }*@                      
+                                                                                                 @* @foreach (var country in Model.countryList) 
+                                                                                                              {
+                                                                                                  <li class="p-1">
+                                                                                            <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
+                                                                                      @country.Name
+                                                                                      </a>
+                                                                                                  </li>
+                                                                                                              }*@                      
                     </ul>
                   </div>
                 </div>
@@ -210,13 +210,13 @@
                       <img src="~/images/drop-down.png" alt="" />
                     </button>
                     <ul class="dropdown-menu cityDropDownList">
-                     @*@foreach(var cities in Model.cityList){
-                        <li class="p-1">
-                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                          @cities.Name
-                          </a>
-                      </li>
-                     }*@
+                                                                                                 @*@foreach(var cities in Model.cityList){
+                                                                                                        <li class="p-1">
+                                                                                                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
+                                                                                                  @cities.Name
+                                                                                                  </a>
+                                                                                                              </li>
+                                                                                                                 }*@
                     </ul>
                   </div>
                 </div>
@@ -229,13 +229,13 @@
                       <img src="~/images/drop-down.png" alt="" />
                     </button>
                     <ul class="dropdown-menu themeDropDownList">
-                     @*@foreach(var theme in Model.themeList){
-                        <li class="p-1">
-                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                        @theme.Title  
-                        </a>
-                      </li>
-                     }*@
+                                                                                                 @*@foreach(var theme in Model.themeList){
+                                                                                                        <li class="p-1">
+                                                                                                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
+                                                                                                        @theme.Title  
+                                                                                                        </a>
+                                                                                                              </li>
+                                                                                                                 }*@
                     </ul>
                   </div>
                 </div>
@@ -248,13 +248,13 @@
                       <img src="~/images/drop-down.png" alt="" />
                     </button>
                     <ul class="dropdown-menu skillDropDownList">
-                     @*@foreach(var skill in @Model.skillList){
-                        <li class="p-1">
-                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                        @skill.SkillName
-                        </a>
-                      </li>
-                     }*@
+                                                                                                 @*@foreach(var skill in @Model.skillList){
+                                                                                                        <li class="p-1">
+                                                                                                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
+                                                                                                        @skill.SkillName
+                                                                                                        </a>
+                                                                                                              </li>
+                                                                                                                 }*@
                     </ul>
                   </div>
                 </div>
@@ -271,28 +271,28 @@
    <!-- chips -->
     <div class="home-chips border border-1 d-flex py-2 px-1 align-items-center flex-wrap">
       <div class="chips d-flex flex-wrap mr-2">
-        
-        
+
+
       </div>
       <p class="no-filter-text">No filters applied</p>
       <a class="close-chips" style="display:none;" href="#">Clear All</a>
     </div>
 
     <!-- mission heading -->
-    
+
 
     <!-- mission cards -->
 <!-- Grid view -->
 <div id="mission-card-views">
 </div>
 
-     
+
   <footer id="mission-footer" class="container-fluid border-top">
     <div class="py-4 mx-auto">
       <a href="#">Privacy Policy</a>
     </div>
   </footer>
- @section JavaScript
+             @section JavaScript
 {
    <script type="text/javascript" src="~/js/custom.js"></script>
 }

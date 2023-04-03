@@ -18,5 +18,9 @@ namespace CIPlatform.Repository.Repository.Interface
         public void addUser(User user);
         public void addResetPasswordToken(ResetPassword obj);
         public void removeResetPasswordToekn(ResetPassword obj);
+        public string getCityFromCityId(long cityId);
+        public string getCountryFromCountryId(long countryId);
+        public List<Country> getCountryNames();
+        public List<Skill> getSkillNames();
     }
 }

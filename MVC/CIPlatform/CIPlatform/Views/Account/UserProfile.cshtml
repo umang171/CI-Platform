@@ -1,0 +1,296 @@
+﻿@model CIPlatform.Entities.ViewModels.UserProfileModel
+
+<div id="main-header" class="d-flex flex-row">
+    <div id="menu-side-bar" class="position-absolute">
+        <div id="close-img" class="p-3 img-close">
+            <img src="~/images/cancel.png" alt="" />
+        </div>
+        <div id="menu-heading"
+             class="d-flex justify-content-center align-items-center">
+            <a href="#"
+               class="side-menu-items text-decoration-none text-dark w-100 m-1 p-1 px-2">Stories</a>
+            <div class="side-menu-items dropdown w-100 m-1 p-1 px-2">
+                <button class="dropdown-toggle border-0 bg-white w-100 d-flex justify-content-between align-items-center"
+                        type="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    Policy
+                    <img src="~/images/drop-down.png" alt="" />
+                </button>
+                <ul class="dropdown-menu w-100">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-container" class="w-100">
+        <header class="w-100 bg-white position-sticky z-2 border-bottom">
+            <div id="main-first-header"
+                 class="d-flex justify-content-between align-items-center mx-auto">
+                <div id="leftNavbar" class="d-flex align-items-center">
+                    <div id="menuimg"
+                         class="d-flex d-block d-md-none justify-content-center align-items-center p-2 m-1 mx-3">
+                        <img src="~/images/list.png" alt="" />
+                    </div>
+
+                    <img src="~/images/logo.png" alt="" />
+
+                    <div id="menu-heading"
+                         class="d-none d-md-flex justify-content-center align-items-center">
+                        <a href="#" class="text-decoration-none text-dark mx-3">Stories</a>
+                        <div class="dropdown">
+                            <button class="dropdown-toggle border-0 bg-white m-1"
+                                    type="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                Policy
+                                <img src="~/images/drop-down.png" alt="" />
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="rightNavbar" class="d-flex align-items-center">
+                    <img id="user-profile-img" src="@Model.Avatar" class="rounded-circle object-fit-cover" alt="" />
+                    <div class="dropdown d-sm-block d-none">
+                        <button class="dropdown-toggle border-0 bg-white m-1"
+                                type="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            @Model.FirstName @Model.LastName
+                            <img src="~/images/drop-down.png" alt="" />
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/Account/UserProfile">My Profile</a></li>
+                            <li><a class="dropdown-item" href="/Mission/logout">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+</div>
+
+<div id="mission-content" class="container overflow-y-scroll p-0 user-content">
+    <div class="d-flex flex-column flex-md-row">
+        <div id="user-profile-img-div" class="w-25 p-3">
+            <div class="border border-1  d-flex flex-column justify-content-center align-items-center">
+                <img id="user-profile-main-img" class="rounded-circle w-75" src="@Model.Avatar" style="height:250px;cursor:pointer" alt="">
+                <input type="file" id="imgupload" style="display:none" onchange="readURL(this);" />
+                <h4>@Model.FirstName @Model.LastName</h4>
+                <span data-bs-toggle="modal" style="cursor: pointer;" data-bs-target="#passwordModal">Change password</span>
+                <!-- Button trigger modal -->
+                <!-- Modal -->
+                <div class="modal fade" id="passwordModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" style="margin: 200px auto;">
+
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Change password</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <input type="text" id="oldPassword" class="form-control my-3" placeholder="Enter old password">
+                                <input type="text" id="newPassword" class="form-control my-3" placeholder="Enter new password">
+                                <input type="text" id="confirmPassword" class="form-control my-3" placeholder="Enter confirm password">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn border border-1 border-secondary p-2 px-3 bg-white rounded-5" data-bs-dismiss="modal">Cancel</button>
+                                <button type="button" class="bg-white p-2 px-3 rounded-5 orange-btn">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="user-profile-content-div" class="w-75">
+            <h3>Basic Information</h3>
+            <hr>
+            <div class="user-name-info d-flex pt-3">
+                <div class="d-flex flex-column w-50 pe-2">
+                    <label class="form-label" for="name">Name*</label>
+                    <input class="form-control" type="text" placeholder="Enter your name" value="@Model.FirstName">
+                </div>
+                <div class="d-flex flex-column w-50 pe-2">
+                    <label class="form-label" for="surname">Surname*</label>
+                    <input class="form-control" type="text" placeholder="Enter your surname" value="@Model.LastName">
+                </div>
+            </div>
+            <div class="user-company-info d-flex pt-3">
+                <div class="d-flex flex-column w-50 pe-2">
+                    <label class="form-label" for="employeeid">Employee ID</label>
+                    <input class="form-control" type="text" placeholder="Enter your employee id" value="@Model.EmployeeId">
+                </div>
+                <div class="d-flex flex-column w-50 pe-2">
+                    <label class="form-label" for="manager">Manager</label>
+                    <input class="form-control" type="text" placeholder="Enter your mangaer details" value="">
+                </div>
+            </div>
+            <div class="user-department-info d-flex pt-3">
+                <div class="d-flex flex-column w-50 pe-2">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" placeholder="Enter title" value="@Model.Title">
+                </div>
+                <div class="d-flex flex-column w-50 pe-2">
+                    <label class="form-label" for="department">Department</label>
+                    <input class="form-control" type="text" placeholder="Enter your Department" value="@Model.Department">
+                </div>
+            </div>
+            <div class="user-profile-info d-flex flex-column pt-3">
+                <label for="" class="form-label">My Profile*</label>
+                <textarea name="" id="" rows="5" placeholder="Enter your comments" class="w-100 form-control">@Model.ProfileText</textarea>
+            </div>
+            <div class="user-volunteer-info d-flex flex-column pt-3">
+                <label for="" class="form-label">Why I Volunteer*</label>
+                <textarea name="" id="" rows="5" placeholder="Enter why you Volunteer" class="w-100 form-control">@Model.WhyIVolunteer</textarea>
+            </div>
+            <h3 class="pt-5">Address Information</h3>
+            <hr>
+            <div class="user-address-info d-flex pt-3">
+                <div class="d-flex flex-column w-50 pe-2">
+                    <label class="form-label" for="">City</label>
+                    <input class="form-control" type="text" placeholder="Enter your city" value="@Model.CityName">
+                </div>
+                <div class="d-flex flex-column w-50 pe-2">
+                    <label class="form-label" for="">Country*</label>
+                    <select name="" id="" class="form-select">
+                        @foreach(var country in Model.CountryNames)
+                        {
+                            <option value="@country.CountryId">@country.Name</option>                            
+                        }
+                    </select>
+                </div>
+            </div>
+            <h3 class="pt-5">Professional Information</h3>
+            <hr>
+            <div class="user-professional-info d-flex pt-3">
+                <div class="d-flex flex-column w-50 pe-2">
+                    <label class="form-label" for="">Availablity</label>
+                    <select name="" id="" class="form-select">
+                        <option value="Select your Availablity">Select your Availablity</option>
+                        <option value="Daily">Daily</option>
+                        <option value="Weekly">Weekly</option>
+                        <option value="Monthly">Monthly</option>
+                    </select>
+                </div>
+                <div class="d-flex flex-column w-50 pe-2">
+                    <label class="form-label" for="">LinkedIn</label>
+                    <input class="form-control" type="text" placeholder="Enter LinkedIn URL" value="@Model.LinkedInUrl">
+                </div>
+            </div>
+            <h3 class="pt-5">MySkills</h3>
+            <hr>
+            <div class="pb-2 user-skill-info d-flex flex-column pt-3">
+               @* <div class="p-2 d-flex flex-column w-100 pe-2 border border-1 border-secondary">
+                    <span>Anthropology</span>
+                    <span>Archeology</span>
+                    <span>Astronomy</span>                   
+                    <span>Environmental</span>
+                    <span>Science</span>
+                    <span>History</span>
+                </div>*@
+                <textarea id="skill-textarea" class="form-control bg-white" rows="5" disabled>
+                
+
+                </textarea>
+            </div>
+            <button class="p-2 px-4 rounded-5 w-auto bg-white" data-bs-toggle="modal" data-bs-target="#skillModal">Add Skill</button>
+            <!-- Modal -->
+            <div class="modal fade" id="skillModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" style="max-width: 70%;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add your skills</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="d-flex">
+                                <div class="w-50 border border-1 border-secondary p-sm-3 subject-info-box-1">
+                                    <select multiple="multiple" id='lstBox1' class="form-control">
+                                        @foreach(var skill in Model.skills)
+                                        {
+                                            <option value="@skill.SkillId">@skill.SkillName</option>                                            
+                                        }
+                                        
+                                    </select>
+                                </div>
+                                <div class="d-flex flex-column align-items-center justify-content-center">
+                                    <button id='btnRight' class="p-sm-3 bg-white">></button>
+                                    <button id='btnLeft' class="p-sm-3 bg-white"><</button>
+                                </div>
+                                <div class="w-50 border border-1 border-secondary d-flex flex-column p-sm-3 subject-info-box-2">
+                                    <select multiple="multiple" id='lstBox2' class="form-control">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn border border-1 border-secondary bg-white p-2 px-3 rounded-5" data-bs-dismiss="modal">Close</button>
+                            <button data-bs-dismiss="modal" id="skill-save-btn" type="button" class="bg-white p-2 px-3 rounded-5 orange-btn">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex w-100 justify-content-end">
+                <button class="p-2 px-4 rounded-5 w-auto bg-white orange-btn">Save</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="contactModalLabel">Change password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label class="form-label m-1 mt-3" for="">Name*</label>
+                    <input type="text" id="contactName" class="form-control" placeholder="Umang Gohel" disabled>
+                    <label class="form-label m-1 mt-3" for="">Email Address*</label>
+                    <input type="text" id="contactEmail" class="form-control " placeholder="gohelumang@gmail.com" disabled>
+                    <label class="form-label m-1 mt-3" for="">Subject*</label>
+                    <input type="text" id="contactSubject" class="form-control " placeholder="Enter your subject">
+                    <label class="form-label m-1 mt-3" for="">Message*</label>
+                    <textarea name="message" class="form-control" rows="3" placeholder="Enter your message"></textarea>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn border border-1 border-secondary p-2 px-3 bg-white rounded-5" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="bg-white p-2 px-3 rounded-5 orange-btn">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+</div>
+<footer id="mission-footer" class="container-fluid border-top bg-white">
+    <div class="py-4 mx-auto">
+        <a href="#">Privacy Policy</a>
+        <span data-bs-toggle="modal" style="cursor: pointer;" class="ps-3" data-bs-target="#contactModal">Contact Us</span>
+        <!-- Button trigger modal -->
+    </div>
+</footer>
+
+    @section JavaScript{
+
+<script src="~/js/user-edit-profile.js"></script>
+    }

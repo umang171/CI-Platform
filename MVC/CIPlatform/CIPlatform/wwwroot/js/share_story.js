@@ -177,17 +177,3 @@ $("#story-submit-btn").on("click", function (e) {
         }
     });
 });
-
-//==================================================================================================
-//Logout
-//==================================================================================================
-$("#logoutLink").on("click", function (e) {
-    e.preventDefault();
-    $.ajax({
-        type: "GET",
-        url: "/Story/logout",
-        success: function () {
-            location.reload();
-        }
-    });
-});
