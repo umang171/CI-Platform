@@ -161,9 +161,32 @@ $('#profileCountryDropdown').change(function () {
             var str = "";
             cityDropDown.empty();
             for (var j = 0; j < response["data"].length; j++) {
-                str += "<option value=" + response["data"][j].cityId + ">" + response["data"][j].name +"</option>";
+                str += "<option value=" + response["data"][j].cityId + ">" + response["data"][j].name + "</option>";
             }
             cityDropDown.append(str);
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    });
+});
+
+// =================================================================================
+//contact us
+// =================================================================================
+$('#contact-save-btn').on("click",function () {
+    var contactName = $("#contactName").val();
+    var contactEmail = $("#contactEmail").val();
+    var contactSubject = $("#contactSubject").val();
+    var contactMessage = $("#contactMessage").val();
+    console.log(contactName, contactEmail, contactSubject, contactMessage);
+    $.ajax({
+        type: "POST",
+        url: '/Account/contactUs',
+        data: { contactName: contactName, contactEmail: contactEmail, contactSubject: contactSubject, contactMessage: contactMessage },
+        success: function (response) {
+            alert("Mail has sent successfully");
         },
         error: function (xhr, status, error) {
             // Handle error

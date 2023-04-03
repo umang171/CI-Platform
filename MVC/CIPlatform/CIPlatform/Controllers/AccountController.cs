@@ -270,6 +270,16 @@ namespace CIPlatform.Controllers
             }
             return RedirectToAction("UserProfile", "Account");
         }
+        public IActionResult contactUs(string contactName, string contactEmail, string contactSubject, string contactMessage)
+        {
+            string welcomeMessage = "Welcome to CI platform, <br/> We have an suggerstion from "+contactName +"("+contactEmail+") </br>";
+            
+            MailHelper mailHelper = new MailHelper(configuration);
+            ViewBag.sendMail = mailHelper.Send("gohelumang12@gmail.com", welcomeMessage + "</br>" + contactMessage,contactSubject);
+
+
+            return RedirectToAction("UserProfile", "Account");
+        }
         public IActionResult logout()
         {
             HttpContext.Session.Remove("useremail");

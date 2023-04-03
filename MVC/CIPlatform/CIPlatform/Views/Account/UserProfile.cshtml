@@ -290,18 +290,18 @@
                 </div>
                 <div class="modal-body">
                     <label class="form-label m-1 mt-3" for="">Name*</label>
-                    <input type="text" id="contactName" class="form-control" placeholder="@Model.FirstName @Model.LastName" disabled>
+                    <input type="text" id="contactName" class="form-control" value="@Model.FirstName @Model.LastName" disabled>
                     <label class="form-label m-1 mt-3" for="">Email Address*</label>
-                    <input type="text" id="contactEmail" class="form-control " placeholder="@Model.Email" disabled>
-                    <label class="form-label m-1 mt-3" for="">Subject*</label>
+                    <input type="text" id="contactEmail" class="form-control " value="@Model.Email" disabled>
+                    <label  class="form-label m-1 mt-3" for="">Subject*</label>
                     <input type="text" id="contactSubject" class="form-control " placeholder="Enter your subject">
                     <label class="form-label m-1 mt-3" for="">Message*</label>
-                    <textarea name="message" class="form-control" rows="3" placeholder="Enter your message"></textarea>
+                    <textarea id="contactMessage" name="message" class="form-control" rows="3" placeholder="Enter your message"></textarea>
                 </div>
 
                 <div class="modal-footer">
                     <button type="button" class="btn border border-1 border-secondary p-2 px-3 bg-white rounded-5" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="bg-white p-2 px-3 rounded-5 orange-btn">Save changes</button>
+                    <button  id="contact-save-btn" type="button" class="bg-white p-2 px-3 rounded-5 orange-btn" data-bs-dismiss="modal">Save</button>
                 </div>
             </div>
         </div>
