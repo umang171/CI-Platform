@@ -165,5 +165,10 @@ namespace CIPlatform.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("Login", "Account");
         }
+        public IActionResult getAppliedMissionOfUser(int userId, int missionId)
+        {
+            string status = _missionRepository.getAppliedMissionOfUser(userId, missionId);
+            return Json(new {status=status});
+        }
     }
 }

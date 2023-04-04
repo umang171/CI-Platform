@@ -32,6 +32,6 @@ namespace CIPlatform.Repository.Repository.Interface
         public void recommendToCoworker(int fromUserId,int toUserId,int missionId);
         public void addToApplication(int missionId,int userId);
         public IEnumerable<MissionApplication> getRecentVolunteers(int missionId);
-
+        public string getAppliedMissionOfUser(int userId,int missionId);
     }
 }

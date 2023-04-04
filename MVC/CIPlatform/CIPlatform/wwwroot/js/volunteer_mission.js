@@ -120,6 +120,7 @@ $(document).ready(function () {
     starRatings();
     getComments();
     getRecentVolunteers();
+    getAppliedMissions();
 });
 
 // ======================================================================================================
@@ -404,6 +405,7 @@ $("#volunteer-apply-btn").on("click", function (e) {
         data: { missionId: missionId, userId: userId },
         success: function (data) {
             alert("You have applied for the mission");
+            getAppliedMissions();
         },
         error: function (xhr, status, error) {
             // Handle error
@@ -427,6 +429,35 @@ function getRecentVolunteers() {
         success: function (data) {
             $("#recent-volunteers-div").html("");
             $("#recent-volunteers-div").html(data);
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    });
+}
+
+//========================================================================================
+//applied mission
+//========================================================================================
+function getAppliedMissions() {
+    var missionId = $(".volunteer-button-apply")[0].id.slice(18);
+    var userId = $("#rightNavbar .user-btn")[0].id.slice(9,);
+    $.ajax({
+        type: "post",
+        url: '/Mission/getAppliedMissionOfUser',
+        data: { userid: userId, missionId: missionId },
+        success: function (response) {
+            var status = response["status"];
+            if (status == "applied") {
+                $("#volunteer-apply-btn").text("Already Applied");
+                $("#volunteer-apply-btn").prop('disabled', true);
+            }
+            else if (status == "PENDING"){
+                $("#volunteer-apply-btn").text("Pending for approval");
+                $("#volunteer-apply-btn").prop('disabled', true);
+            }
+
         },
         error: function (xhr, status, error) {
             // Handle error

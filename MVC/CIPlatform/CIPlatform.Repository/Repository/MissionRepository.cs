@@ -264,5 +264,13 @@ namespace CIPlatform.Repository.Repository
         {
             return _ciPlatformDbContext.MissionApplications.Include(u=>u.Mission).Where(u=>u.UserId==userId && u.ApprovalStatus=="applied").ToList();
         }
+
+        string IMissionRepository.getAppliedMissionOfUser(int userId, int missionId)
+        {
+            if(_ciPlatformDbContext.MissionApplications.Any(mission => mission.UserId == userId && mission.MissionId == missionId)){
+                return _ciPlatformDbContext.MissionApplications.Where(mission=>mission.UserId==userId && mission.MissionId==missionId).Select(missionApp=> missionApp.ApprovalStatus).First();
+            }
+            return "not applied";
+        }
     }
 }

@@ -114,7 +114,7 @@ filtercloseImg.addEventListener("click", (e) => {
 // ====================================================================
 var toggleGrid = true;
 function toggleListGrid() {
-    
+
     //console.log("toggle");
     const missionListView = document.getElementById("mission-list");
     //console.log(missionListView);
@@ -136,13 +136,13 @@ function toggleListGrid() {
         gridViewBtn.setAttribute("style", "background-color:#dee2e6 !important;");
         toggleListGrid();
     });
-    if (!(toggleGrid ==true)) {
-        
+    if (!(toggleGrid == true)) {
+
         missionListView.setAttribute("style", "display:block !important;");
         missionGridView.setAttribute("style", "display:none !important;");
     }
     else {
-        
+
         missionListView.setAttribute("style", "display:none !important;");
         missionGridView.setAttribute("style", "display:block !important;");
     }
@@ -152,9 +152,9 @@ function toggleListGrid() {
 //==============================================================================
 //Ajax calls
 //==============================================================================
-$(document).ready(function () {    
+$(document).ready(function () {
     loadCard();
-    
+
 });
 var selectedCountries = "";
 var selectedCities = "";
@@ -166,12 +166,12 @@ function loadCard(paging) {
     if (!paging)
         paging = 1;
     $.ajax({
-        
+
         type: "POST",
         url: "/Mission/getMissionsFromSP",
         dataType: "html",
-        cache:false,
-        data: { countryNames: selectedCountries, cityNames: selectedCities, themeNames: selectedThemes, skillNames: selectedSkills, searchText: searchText, sortValue: sortMissionFilterVal,pageNumber: paging  },
+        cache: false,
+        data: { countryNames: selectedCountries, cityNames: selectedCities, themeNames: selectedThemes, skillNames: selectedSkills, searchText: searchText, sortValue: sortMissionFilterVal, pageNumber: paging },
         success: function (data) {
             $("#mission-card-views").html("");
             $('#mission-card-views').html(data);
@@ -179,7 +179,7 @@ function loadCard(paging) {
             favouriteMissions();
             getFavouriteMissions();
             loadPagination();
-
+            getAppliedMissions();
             sortMissionFilter();
         },
         error: function (xhr, status, error) {
@@ -198,7 +198,7 @@ var ajaxRequest1 =
             var str = "";
             var countryDropDown = $(".countryDropDownList");
             for (var j = 0; j < data["data"].length; j++) {
-                str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country" value="' + data["data"][j].name+'"/> ' + data["data"][j].name + '</a></li>';
+                str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country" value="' + data["data"][j].name + '"/> ' + data["data"][j].name + '</a></li>';
             }
             countryDropDown.append(str);
 
@@ -212,16 +212,16 @@ var ajaxRequest1 =
 
     });
 
-var ajaxRequest2=
+var ajaxRequest2 =
     $.ajax({
         type: "GET",
         url: "/Mission/GetCites",
-        data: {country: selectedCountries},
+        data: { country: selectedCountries },
         success: function (data) {
             var str = "";
             var cityDropDown = $(".cityDropDownList");
             for (var j = 0; j < data["data"].length; j++) {
-                str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country" value="' + data["data"][j].name +'"/> ' + data["data"][j].name + '</a></li>';
+                str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country" value="' + data["data"][j].name + '"/> ' + data["data"][j].name + '</a></li>';
             }
             $(".cityDropDownList").empty();
 
@@ -237,7 +237,7 @@ var ajaxRequest2=
 
     });
 
-var ajaxRequest3=
+var ajaxRequest3 =
     $.ajax({
         type: "GET",
         url: "/Mission/GetThemes",
@@ -246,7 +246,7 @@ var ajaxRequest3=
             var str = "";
             var themeDropDown = $(".themeDropDownList");
             for (var j = 0; j < data["data"].length; j++) {
-                str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country" value="' + data["data"][j] +'"/> ' + data["data"][j] + '</a></li>';
+                str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country" value="' + data["data"][j] + '"/> ' + data["data"][j] + '</a></li>';
             }
             themeDropDown.append(str);
 
@@ -270,7 +270,7 @@ var ajaxRequest4 =
             var str = "";
             var skillDropDown = $(".skillDropDownList");
             for (var j = 0; j < data["data"].length; j++) {
-                str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country" value="' + data["data"][j].skillName+'"/> ' + data["data"][j].skillName + '</a></li>';
+                str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country" value="' + data["data"][j].skillName + '"/> ' + data["data"][j].skillName + '</a></li>';
             }
             skillDropDown.append(str);
 
@@ -301,7 +301,7 @@ $(".close-chips").on("click", function (e) {
 
     selectedCountries = "";
     $.each($(".countryDropDownList li a input:checkbox"), function () {
-        this.checked=false;
+        this.checked = false;
     });
     //city filters
     selectedCities = "";
@@ -327,14 +327,14 @@ function intializeChips() {
     $(".filters .dropdown-menu li a").on("click", function (e) {
         console.log("chips call");
         $(".home-chips .chips").append(
-            '<div class="chip" id="chip-'+$(this).text().trim()+'">' +
+            '<div class="chip" id="chip-' + $(this).text().trim() + '">' +
             $(this).text() +
-            '<span class="closebtn" id="close-' + $(this).text().trim() +'" onclick="this.parentElement.style.display=\'none\'">&times;</span>'
+            '<span class="closebtn" id="close-' + $(this).text().trim() + '" onclick="this.parentElement.style.display=\'none\'">&times;</span>'
         );
         $(".close-chips").show();
         $(".no-filter-text").hide();
         $(".close-chips").show();
-        
+
         //========================
         //filters
         //========================
@@ -368,7 +368,7 @@ function intializeChips() {
 }
 function loadCityWithCountry() {
 
-    var ajaxCountry=$.ajax({
+    var ajaxCountry = $.ajax({
         type: "GET",
         url: "/Mission/GetCites",
         data: { country: selectedCountries },
@@ -423,14 +423,30 @@ $("#search-input").on("keyup", function (e) {
 // ====================================================================
 
 //pagination
+var pagingNumber = 1;
 function loadPagination() {
+    var totalPages = parseInt($(".Pagination-total")[0].id.slice(6));
     var paging = "";
     $("#pagination li a").on("click", function (e) {
-        console.log("in page");
         e.preventDefault();
         paging = $(this).text();
-        console.log(paging);
-        loadCard(paging);
+        
+        if (!isNaN(paging)) {
+            pagingNumber = parseInt(paging);
+            console.log(pagingNumber);
+            loadCard(paging);
+        }
+        else {
+            if (paging == "<") {
+                if (pagingNumber != 1)
+                    loadCard(--pagingNumber);
+            }
+            else if (paging == ">") {
+                console.log(pagingNumber)
+                if (pagingNumber != totalPages)
+                    loadCard(++pagingNumber);
+            }
+        }
     })
 }
 //=================================================================================================
@@ -441,8 +457,8 @@ function favouriteMissions() {
         event.preventDefault();
         if (this.style.backgroundColor == "black") {
             this.style.opacity = 1;
-            var missionId =this.id.slice(18,);
-            var userId =$("#rightNavbar .user-btn")[0].id.slice(9,);
+            var missionId = this.id.slice(18,);
+            var userId = $("#rightNavbar .user-btn")[0].id.slice(9,);
             $.ajax({
                 type: "POST",
                 url: '/Mission/addFavouriteMissions',
@@ -459,7 +475,7 @@ function favouriteMissions() {
 
         }
         else {
-           
+
             var missionId = this.id.slice(18,);
             var userId = $("#rightNavbar .user-btn")[0].id.slice(9,);
             $.ajax({
@@ -489,7 +505,7 @@ function getFavouriteMissions() {
 
             $("#mission-card-views .favourite-mission-div").each(function (index) {
                 var id = this.id.slice(18);
-                for (var i = 0; i <dataArr.length; i++) {
+                for (var i = 0; i < dataArr.length; i++) {
                     if (dataArr[i] == id) {
                         this.style.backgroundColor = "red";
                         this.style.opacity = 1;
@@ -504,5 +520,39 @@ function getFavouriteMissions() {
             // Handle error
             console.log(error);
         }
+    });
+}
+//=======================================================================================
+//Applied mission
+//=======================================================================================
+
+function getAppliedMissions() {
+    var userId = $("#rightNavbar .user-btn")[0].id.slice(9,);
+    $(".mission-applied").each(function (index) {
+        var divId = this.id;
+        var missionId = this.id.slice(16);
+        $.ajax({
+            type: "post",
+            url: '/Mission/getAppliedMissionOfUser',
+            data: { userid: userId,missionId:missionId },
+            success: function (response) {
+                var status=response["status"];
+                if (status == "applied") {
+                    $("#" + divId).css("display", "block");
+                    $("#l" + divId).css("display", "block");
+                    $(".apply-btn-" + missionId).text("View Details");
+                    $(".apply-btn-" + missionId).append('<img src="/images/right-arrow.png" class="mx-1 ms-3" alt="">')
+                }
+                else {
+                    $("#" + divId).css("display", "none");
+                    $("#l" + divId).css("display", "none");
+                }
+
+            },
+            error: function (xhr, status, error) {
+                // Handle error
+                console.log(error);
+            }
+        });
     });
 }

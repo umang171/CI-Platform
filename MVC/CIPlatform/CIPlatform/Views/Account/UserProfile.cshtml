@@ -160,11 +160,11 @@
             </div>
             <div class="user-profile-info d-flex flex-column pt-3">
                 <label for="" class="form-label">My Profile*</label>
-                <textarea asp-for="ProfileText" id="" rows="5" placeholder="Enter your comments" class="w-100 form-control">@Model.ProfileText</textarea>
+                <textarea asp-for="ProfileText" rows="5" placeholder="Enter your comments" class="w-100 form-control">@Model.ProfileText</textarea>
             </div>
             <div class="user-volunteer-info d-flex flex-column pt-3">
                 <label for="" class="form-label">Why I Volunteer*</label>
-                <textarea asp-for="WhyIVolunteer" id="" rows="5" placeholder="Enter why you Volunteer" class="w-100 form-control">@Model.WhyIVolunteer</textarea>
+                <textarea asp-for="WhyIVolunteer" rows="5" placeholder="Enter why you Volunteer" class="w-100 form-control">@Model.WhyIVolunteer</textarea>
             </div>
             <h3 class="pt-5">Address Information</h3>
             <hr>
@@ -211,8 +211,6 @@
             <div class="pb-2 user-skill-info d-flex flex-column pt-3">
             
                 <textarea asp-for="userSkillNames" readonly id="skill-textarea" class="form-control bg-white" rows="5">
-                
-
                 </textarea>
             </div>
             <button  id="addSkillBtn" class="p-2 px-4 rounded-5 w-auto bg-white" data-bs-toggle="modal" data-bs-target="#skillModal">Add Skill</button>
