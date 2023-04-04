@@ -10,10 +10,10 @@ namespace CIPlatform.Entities.ViewModels
     {
         public int? userId { get; set; }
         public int? missionId{ get; set; }
-        public string? storyTitle { get; set; }
-        public string? storyPublishedDate { get; set; }
-        public string? storyDescription { get; set; }
-        public string? storyVideoUrl { get; set; }
-        public string? storyFileNames { get; set; }
+        public string? storyTitle { get; set; } = string.Empty;
+        public string? storyPublishedDate { get; set; }= string.Empty;
+        public string? storyDescription { get; set; }= string.Empty;
+        public string? storyVideoUrl { get; set; }= string.Empty;
+        public string? storyFileNames { get; set; }= string.Empty;
     }
 }

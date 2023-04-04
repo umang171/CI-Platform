@@ -331,11 +331,39 @@
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center" id="pagination">
            <li style="cursor:pointer;" class="page-item"><a class="page-link">&lt;</a></li>
-            @for (int i = 1; i <= Model.pageCount; i++)
-            {
+            @if (Model.pageCount <= 5)
+            {             
+                for (int i = 1; i <= Model.pageCount; i++)
+                {
+                    <li class="page-item ">
+                        <a class="page-link" href="">@i</a>
+                    </li>
+                }   
+            }
+            else{
+                int tmp = 1;
+                int i = 1;
+                while(tmp<4)
+                {
+                    <li class="page-item ">
+                        <a class="page-link" href="">@i</a>
+                    </li>
+                    i++;
+                    tmp++;
+                }
                 <li class="page-item ">
-                    <a class="page-link" href="">@i</a>
+                    <a class="page-link" href="" disabled>......</a>
                 </li>
+                tmp = 1;
+                i =(int)Model.pageCount - 1;
+                while(tmp<=2)
+                {
+                    <li class="page-item ">
+                        <a class="page-link" href="">@i</a>
+                    </li>
+                    i++;
+                    tmp++;
+                }
             }
            <li style="cursor:pointer;" class="page-item"><a class="page-link">&gt;</a></li>
         </ul>

@@ -117,6 +117,7 @@ $(document).ready(function () {
     getFavouriteMissions();
     relatedfavouriteMissions();
     relatedgetFavouriteMissions();
+    getRatingOfUser();
     starRatings();
     getComments();
     getRecentVolunteers();
@@ -286,6 +287,19 @@ function starRatings() {
     });
 }
 
+function getRatingOfUser() {
+    var missionId = $(".volunteer-button-apply")[0].id.slice(18);
+    var userId = $("#rightNavbar .user-btn")[0].id.slice(9,);
+    $.ajax({
+        type: "POST",
+        url: '/Mission/getRatingOfUser',
+        data: { userId: userId, missionId: missionId},
+        success: function (response) {
+            var rating=response["rating"]*20;
+            $(".filled-stars").width(rating+"%");
+        }
+    });
+}
 //====================================================================================================
 //related missions
 //====================================================================================================

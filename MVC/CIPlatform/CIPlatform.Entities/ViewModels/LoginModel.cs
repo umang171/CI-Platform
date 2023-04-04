@@ -11,11 +11,11 @@ namespace CIPlatform.Entities.ViewModels
     {
         [Required]
         [RegularExpression("^[a-z]{1}[a-z0-9]+@[a-z]+\\.+[a-z]{2,3}$", ErrorMessage = "Please enter valid e-mail address")]
-        public string EmailId { get; set; }
+        public string EmailId { get; set; } = string.Empty;
 
 
         [Required]
         [MinLength(8, ErrorMessage = "Please enter more than 8 characters")]
-        public string Password { get; set; }
+        public string Password { get; set; } = string.Empty;
     }
 }

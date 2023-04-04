@@ -9,12 +9,12 @@ namespace CIPlatform.Entities.ViewModels
 {
     public class MissionHomeModel
     {
-        public string username { get; set; }
-        public string avtar { get; set; }
+        public string username { get; set; }=String.Empty;
+        public string avtar { get; set; }=String.Empty;
         public long userid { get; set; }
-        public IEnumerable<Country> countryList { get; set; }
-        public IEnumerable<City> cityList { get; set; }
-        public IEnumerable<MissionTheme> themeList { get; set; }
-        public IEnumerable<Skill> skillList{ get; set; }
+        public IEnumerable<Country> countryList { get; set; }=new List<Country>();
+        public IEnumerable<City> cityList { get; set; }=new List<City>();
+        public IEnumerable<MissionTheme> themeList { get; set; }= new List<MissionTheme>();
+        public IEnumerable<Skill> skillList{ get; set; }=new List<Skill>();
     }
 }

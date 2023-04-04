@@ -89,7 +89,7 @@ namespace CIPlatform.Repository.Repository
             PaginationMission pagination = new PaginationMission();
             List<MissionViewModel> test = _ciPlatformDbContext.MissionViewModel.FromSqlInterpolated($"exec sp_get_mission_data @countryNames = {countryNames}, @cityNames = {cityNames}, @themeNames = {themeNames}, @skillNames = {skillNames}, @searchText = {searchText}, @sortValue = {sortValue}, @pageNumber = {pageNumber}, @TotalCount = {output} out,@MissionCount={output1} out").ToList();
             pagination.missions = test;
-            pagination.pageSize = 6;
+            pagination.pageSize = 9;
             pagination.pageCount = long.Parse(output.Value.ToString());
             pagination.missionCount = long.Parse(output1.Value.ToString());
             pagination.activePage = pageNumber;
@@ -117,7 +117,7 @@ namespace CIPlatform.Repository.Repository
         MissionVolunteerViewModel IMissionRepository.getMissionFromMissionId(int missionId)
         {
             MissionVolunteerViewModel missionVolunteerViewModelObj=new MissionVolunteerViewModel();
-            SqlConnection conn = null;
+            SqlConnection conn = new SqlConnection();
 
             SqlDataReader rdr = null;
             conn = new SqlConnection("Server=PCTR29\\SQL2017;User Id=sa;Password=tatva123;Database=CI;Trusted_Connection=true;TrustServerCertificate=true;");
@@ -257,7 +257,7 @@ namespace CIPlatform.Repository.Repository
 
         IEnumerable<MissionApplication> IMissionRepository.getRecentVolunteers(int missionId)
         {
-            return _ciPlatformDbContext.MissionApplications.Include(u => u.User).Where(u => u.MissionId == missionId && u.ApprovalStatus == "applied");
+            return _ciPlatformDbContext.MissionApplications.Include(u => u.User).Where(u => u.MissionId == missionId && u.ApprovalStatus == "applied").Take(9);
         }
 
         List<MissionApplication> IMissionRepository.getMissionsOfUser(int userId)
@@ -271,6 +271,15 @@ namespace CIPlatform.Repository.Repository
                 return _ciPlatformDbContext.MissionApplications.Where(mission=>mission.UserId==userId && mission.MissionId==missionId).Select(missionApp=> missionApp.ApprovalStatus).First();
             }
             return "not applied";
+        }
+
+        int IMissionRepository.getRatingOfUserForMission(int userId, int missionId)
+        {
+            if(_ciPlatformDbContext.MissionRatings.Any(rating => rating.UserId == userId && rating.MissionId == missionId))
+            {
+                return _ciPlatformDbContext.MissionRatings.Where(rating => rating.UserId == userId && rating.MissionId == missionId).Select(rating => rating.Rating).First();
+            }
+            return 0;
         }
     }
 }

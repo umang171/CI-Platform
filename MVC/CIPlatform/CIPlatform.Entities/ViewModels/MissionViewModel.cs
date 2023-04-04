@@ -11,19 +11,19 @@ namespace CIPlatform.Entities.ViewModels
     {
         [Key]
         public long MissionId { get; set; }
-        public string? Title { get; set; }
-        public string? ShortDescription { get; set; }
+        public string? Title { get; set; }= string.Empty;
+        public string? ShortDescription { get; set; } = string.Empty;
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
-        public string? OrganizationName { get; set; }
-        public string? MissionType { get; set; }
-        public string? GoalObjective { get; set; }
+        public string? OrganizationName { get; set; } = string.Empty;
+        public string? MissionType { get; set; } = string.Empty;
+        public string? GoalObjective { get; set; } = string.Empty;
         public int? GoalValue { get; set; }
-        public string? MediaName { get; set; }
-        public string? MediaType { get; set; }
-        public string? MediaPath { get; set; }
-        public string? ThemeTitle { get; set; }
-        public string CityName { get; set; }
+        public string? MediaName { get; set; } = string.Empty;
+        public string? MediaType { get; set; } = string.Empty;
+        public string? MediaPath { get; set; } = string.Empty;
+        public string? ThemeTitle { get; set; } = string.Empty;
+        public string CityName { get; set; } = string.Empty;
         public int? Rating { get; set; }
     }
 }

@@ -8,8 +8,8 @@ namespace CIPlatform.Entities.ViewModels
 {
     public class StoryHomeModel
     {
-        public string username { get; set; }
-        public string avtar{ get; set; }
+        public string username { get; set; } = string.Empty;
+        public string avtar{ get; set; } = string.Empty;
         public int missionId { get; set; }
     }
 }

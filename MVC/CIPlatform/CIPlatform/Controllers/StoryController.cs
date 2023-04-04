@@ -29,7 +29,7 @@ namespace CIPlatform.Controllers
         [SessionHelper]
         public IActionResult Index(int missionId)
         {
-            string userSessionEmailId = HttpContext.Session.GetString("useremail");
+            string? userSessionEmailId = HttpContext.Session.GetString("useremail");
             
             StoryHomeModel storyHomeModel = new StoryHomeModel();
             User userObj = _userRepository.findUser(userSessionEmailId);
@@ -46,7 +46,7 @@ namespace CIPlatform.Controllers
         [SessionHelper]
         public IActionResult ShareStory()
         {
-            string userSessionEmailId = HttpContext.Session.GetString("useremail");
+            string? userSessionEmailId = HttpContext.Session.GetString("useremail");
             
             ShareStoryModel shareStoryModel = new ShareStoryModel();
             User userObj = _userRepository.findUser(userSessionEmailId);
@@ -60,7 +60,7 @@ namespace CIPlatform.Controllers
         [HttpPost]
         public IActionResult Upload(List<IFormFile> postedFiles)
         {
-            string userSessionEmailId = HttpContext.Session.GetString("useremail");
+            string? userSessionEmailId = HttpContext.Session.GetString("useremail");
             
             User userObj = _userRepository.findUser(userSessionEmailId);
             int userId = (int)userObj.UserId;
@@ -105,7 +105,7 @@ namespace CIPlatform.Controllers
         [SessionHelper]
         public IActionResult StoryDetails(int? storyId)
         {
-            string userSessionEmailId = HttpContext.Session.GetString("useremail");
+            string? userSessionEmailId = HttpContext.Session.GetString("useremail");
             
             StoryDetailsModel storyDetailsObj = new StoryDetailsModel();
             User userObj = _userRepository.findUser(userSessionEmailId);
@@ -124,7 +124,7 @@ namespace CIPlatform.Controllers
         [SessionHelper]
         public IActionResult recommendToCoworker( int storyId, string toUserEmail)
         {
-            string userSessionEmailId = HttpContext.Session.GetString("useremail");           
+            string? userSessionEmailId = HttpContext.Session.GetString("useremail");           
             User fromUserObj = _userRepository.findUser(userSessionEmailId);
             int fromUserId=(int)fromUserObj.UserId;
             User userObj;
@@ -134,7 +134,7 @@ namespace CIPlatform.Controllers
             }
             catch (Exception ex)
             {
-                return Json(new { data = "Email not found", status = 0 });
+                return Json(new { data = "Email not found"+ex, status = 0 });
             }
             _storyRepository.recommendToCoworker(fromUserId, (int)userObj.UserId, storyId);
             string welcomeMessage = "Welcome to CI platform, <br/> You are recommended to watch below story </br>";

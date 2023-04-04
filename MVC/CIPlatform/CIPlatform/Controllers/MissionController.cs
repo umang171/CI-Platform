@@ -49,11 +49,8 @@ namespace CIPlatform.Controllers
             return View(missionVolunteerViewModelObj);
         }
         [SessionHelper]
-        public IActionResult GetCountries()
-        {
-            IEnumerable<Country> countries = _missionRepository.getCountries();
-            return Json(new { data = countries });
-        }
+        public IActionResult GetCountries() => Json(new { data = _missionRepository.getCountries() });
+        
         [SessionHelper]
         public IActionResult GetCites(string country)
         {
@@ -105,7 +102,7 @@ namespace CIPlatform.Controllers
             {
                 arr += favouriteMission.MissionId+",";
             }
-            return Json(new { data=arr });
+            return  Json(new { data=arr });
         }
         [HttpPost]
         public void addRatingStars(int userId, int missionId, int ratingStars)
@@ -169,6 +166,10 @@ namespace CIPlatform.Controllers
         {
             string status = _missionRepository.getAppliedMissionOfUser(userId, missionId);
             return Json(new {status=status});
+        }
+        public IActionResult getRatingOfUser(int userId,int missionId)
+        {            
+            return Json(new { rating = _missionRepository.getRatingOfUserForMission(userId, missionId) });
         }
     }
 }

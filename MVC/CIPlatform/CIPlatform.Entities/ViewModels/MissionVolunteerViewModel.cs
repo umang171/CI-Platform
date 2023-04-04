@@ -10,31 +10,31 @@ namespace CIPlatform.Entities.ViewModels
     public class MissionVolunteerViewModel
     {
         public long MissionId { get; set; }
-        public string username { get; set; }
-        public string avtar { get; set; }
-        public IEnumerable<User> users { get; set; }
+        public string username { get; set; } = string.Empty;
+        public string avtar { get; set; } = string.Empty;
+        public IEnumerable<User> users { get; set; }=new List<User>();
         public int userid{ get; set; }
-        public string? Title { get; set; }
-        public string? ShortDescription { get; set; }
-        public string ? Description { get; set; }
+        public string? Title { get; set; } = string.Empty;
+        public string? ShortDescription { get; set; } = string.Empty;
+        public string ? Description { get; set; } = string.Empty;
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
 
-        public string? MissionType { get; set; }
-        public string? GoalObjective { get; set; }
+        public string? MissionType { get; set; } = string.Empty;
+        public string? GoalObjective { get; set; } = string.Empty;
         public int? GoalValue { get; set; }
-        public string? OrganizationName { get; set; }
-        public string? OrganizationDetail { get; set; }
-        public string? MediaName { get; set; }
-        public string? MediaType { get; set; }
-        public string? MediaPath { get; set; }
-        public string? DocumentName { get; set; }
-        public string? DocumentType { get; set; }
-        public string? DocumentPath { get; set; }
-        public string? ThemeTitle { get; set; }
-        public string CityName { get; set; }
+        public string? OrganizationName { get; set; } = string.Empty;
+        public string? OrganizationDetail { get; set; } = string.Empty;
+        public string? MediaName { get; set; } = string.Empty;
+        public string? MediaType { get; set; } = string.Empty;
+        public string? MediaPath { get; set; } = string.Empty;
+        public string? DocumentName { get; set; } = string.Empty;
+        public string? DocumentType { get; set; } = string.Empty;
+        public string? DocumentPath { get; set; } = string.Empty;
+        public string? ThemeTitle { get; set; } = string.Empty;
+        public string CityName { get; set; } = string.Empty;
         public string? Skill { get; set; } = null;
-        public string Availability { get; set; }
+        public string Availability { get; set; } = string.Empty;
         public int ? Rating { get; set; }
         public int? TotalVoulunteerRating { get; set; }
     }

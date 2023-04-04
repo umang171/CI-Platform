@@ -160,7 +160,7 @@ namespace CIPlatform.Repository.Repository
 
         List<City> IUserRepository.getCityNames(int countryId)
         {
-            if (countryId == null || countryId<0)
+            if (countryId<0)
             {
                 countryId=1;
             }
