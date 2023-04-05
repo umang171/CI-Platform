@@ -1,0 +1,77 @@
+﻿@model CIPlatform.Entities.ViewModels.HeaderViewModel
+<div id="main-header" class="d-flex flex-row">
+    <div id="menu-side-bar" class="position-absolute">
+        <div id="close-img" class="p-3 img-close">
+            <img src="~/images/cancel.png" alt="" />
+        </div>
+        <div id="menu-heading" class="d-flex justify-content-center align-items-center">
+             <a asp-action="Index" asp-controller="Story" class="side-menu-items text-decoration-none text-dark w-100 m-1 p-1 px-2">Stories</a>
+             <div class="side-menu-items dropdown w-100 m-1 p-1 px-2">
+                <button class="dropdown-toggle border-0 bg-white w-100 d-flex justify-content-between align-items-center"
+                        type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Policy
+                    <img src="~/images/drop-down.png" alt="" />
+                </button>
+                <ul class="dropdown-menu w-100">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-container" class="w-100">
+        <header class="w-100 bg-white position-sticky z-2 border-bottom">
+            <div id="main-first-header" class="d-flex justify-content-between align-items-center mx-auto">
+                <div id="leftNavbar" class="d-flex align-items-center">
+                    <div id="menuimg"
+                         class="d-flex d-block d-md-none justify-content-center align-items-center p-2 m-1 mx-3">
+                        <img src="~/images/list.png" alt="" />
+                    </div>
+
+                    <img src="~/images/logo.png" alt="" />
+
+                    <div id="menu-heading" class="d-none d-md-flex justify-content-center align-items-center">
+                            <a asp-action="Index" asp-controller="Story" class="text-decoration-none text-dark mx-3">Stories</a>
+                        <div class="dropdown">
+                            <button class="dropdown-toggle border-0 bg-white m-1" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                Policy
+                                <img src="~/images/drop-down.png" alt="" />
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="rightNavbar" class="d-flex align-items-center">
+                    <a href="">
+                        <img id="user-profile-img" src="@Model.avtar"
+                             class="rounded-circle object-fit-cover" alt="" />
+                    </a>
+                    <div class="dropdown d-sm-block d-none">
+                        <button class="dropdown-toggle border-0 bg-white m-1" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                            @Model.username
+                            <img src="~/images/drop-down.png" alt="" />
+                        </button>
+                        <ul class="dropdown-menu">
+                           <li><a class="dropdown-item" href="/Account/UserProfile">My Profile</a></li>
+                            <li><a class="dropdown-item" href="/Account/VolunteerTimesheet">Volunteering Timesheet</a></li> 
+                            <li><a class="dropdown-item" href="/Mission/logout">Logout</a></li> 
+                             </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+</div>

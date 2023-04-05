@@ -1313,7 +1313,7 @@ upload images
         width: 100% !important;
     }
 
-    #user-profile-img {
+    #user-profile-main-img {
         width: 30% !important;
         height: 30% !important;
     }
@@ -1328,5 +1328,17 @@ upload images
 
     .subject-info-box-1 select option, .subject-info-box-2 select option {
         padding: 1px;
+    }
+}
+
+/* ============================================================ */
+/* volunteer timesheet */
+/* ============================================================ */
+@media screen and (max-width:767px) {
+    #volunteer-timesheet-main-div {
+        height:90% !important;
+    }
+    .vol-time-div {
+        width:100% !important;
     }
 }

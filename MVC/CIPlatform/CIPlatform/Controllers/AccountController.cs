@@ -89,6 +89,16 @@ namespace CIPlatform.Controllers
             }
             return View();
         }
+        [SessionHelper]
+        public IActionResult VolunteerTimesheet()
+        {
+            string userSessionEmailId = HttpContext.Session.GetString("useremail");
+            User user = _userRepository.findUser(userSessionEmailId);
+            VolunteerTimesheetViewModel volunteerTimesheetViewModel = new VolunteerTimesheetViewModel();
+            volunteerTimesheetViewModel.headerViewModel.username=user.FirstName+" "+user.LastName;
+            volunteerTimesheetViewModel.headerViewModel.avtar = user.Avatar;
+            return View(volunteerTimesheetViewModel);
+        }
         public IActionResult Register()
         {
             return View();
