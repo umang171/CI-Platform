@@ -15,12 +15,14 @@ namespace CIPlatform.Controllers
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IConfiguration configuration;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        public AccountController(IUserRepository userRepository, IHttpContextAccessor httpContextAccessor, IConfiguration _configuration,IWebHostEnvironment webHostEnvironment)
+        private readonly IMissionRepository _missionRepository;
+        public AccountController(IUserRepository userRepository,IMissionRepository missionRepository, IHttpContextAccessor httpContextAccessor, IConfiguration _configuration,IWebHostEnvironment webHostEnvironment)
         {
             _userRepository = userRepository;
             _httpContextAccessor = httpContextAccessor;
             configuration = _configuration;
             _webHostEnvironment = webHostEnvironment;
+            _missionRepository = missionRepository;
         }
         public IActionResult Login()
         {
@@ -97,6 +99,8 @@ namespace CIPlatform.Controllers
             VolunteerTimesheetViewModel volunteerTimesheetViewModel = new VolunteerTimesheetViewModel();
             volunteerTimesheetViewModel.headerViewModel.username=user.FirstName+" "+user.LastName;
             volunteerTimesheetViewModel.headerViewModel.avtar = user.Avatar;
+            volunteerTimesheetViewModel.headerViewModel.userid= user.UserId;
+            volunteerTimesheetViewModel.missions=_missionRepository.getMissionsOfUser((int)user.UserId);
             return View(volunteerTimesheetViewModel);
         }
         public IActionResult Register()

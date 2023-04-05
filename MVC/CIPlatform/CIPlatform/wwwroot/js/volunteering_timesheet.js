@@ -66,3 +66,11 @@ function myFunction2(y) {
 let y = window.matchMedia("(min-width: 768px)")
 myFunction2(y) // Call listener function at run time
 y.addListener(myFunction2) // Attach listener function on state changes
+
+//===============================================================================================================
+//Add Hour timesheet
+//===============================================================================================================
+var userId = $(".user-btn")[0].id.slice(9)
+var missionId = $("#volunteer-timesheet-hour-mission").val();
+var volunteerDate = $("#volunteer-timesheet-hour-date").val();
+var volunteerDate = $("#volunteer-timesheet-hour-date").val();
