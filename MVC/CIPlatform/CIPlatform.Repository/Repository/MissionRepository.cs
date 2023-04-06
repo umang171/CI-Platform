@@ -262,7 +262,15 @@ namespace CIPlatform.Repository.Repository
 
         List<MissionApplication> IMissionRepository.getMissionsOfUser(int userId)
         {
-            return _ciPlatformDbContext.MissionApplications.Include(u=>u.Mission).Where(u=>u.UserId==userId && u.ApprovalStatus=="applied").ToList();
+            return _ciPlatformDbContext.MissionApplications.Include(u => u.Mission).Where(u => u.UserId == userId && u.ApprovalStatus == "applied").ToList();
+        }
+        List<Mission?> IMissionRepository.getTimeMissionsOfUser(int userId)
+        {
+            return _ciPlatformDbContext.MissionApplications.Where(u => u.UserId == userId && u.ApprovalStatus == "applied").Select(u => u.Mission).Where(mission=>mission.MissionType=="time").ToList();
+        }
+        List<Mission?> IMissionRepository.getGoalMissionsOfUser(int userId)
+        {
+            return _ciPlatformDbContext.MissionApplications.Where(u => u.UserId == userId && u.ApprovalStatus == "applied").Select(u => u.Mission).Where(mission => mission.MissionType == "goal").ToList();
         }
 
         string IMissionRepository.getAppliedMissionOfUser(int userId, int missionId)

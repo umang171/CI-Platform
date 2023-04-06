@@ -177,5 +177,11 @@ namespace CIPlatform.Repository.Repository
         {
             return _ciPlatformDbContext.UserSkills.Where(skill => skill.UserId == userId).ToList();
         }
+
+        void IUserRepository.addTimeBasedVolunteerTimesheet(Timesheet timesheet)
+        {
+            _ciPlatformDbContext.Timesheets.AddAsync(timesheet);
+            _ciPlatformDbContext.SaveChangesAsync();
+        }
     }
 }

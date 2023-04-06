@@ -100,7 +100,8 @@ namespace CIPlatform.Controllers
             volunteerTimesheetViewModel.headerViewModel.username=user.FirstName+" "+user.LastName;
             volunteerTimesheetViewModel.headerViewModel.avtar = user.Avatar;
             volunteerTimesheetViewModel.headerViewModel.userid= user.UserId;
-            volunteerTimesheetViewModel.missions=_missionRepository.getMissionsOfUser((int)user.UserId);
+            volunteerTimesheetViewModel.timeBasedMissions=_missionRepository.getTimeMissionsOfUser((int)user.UserId);
+            volunteerTimesheetViewModel.goalBasedMissions = _missionRepository.getGoalMissionsOfUser((int)user.UserId);
             return View(volunteerTimesheetViewModel);
         }
         public IActionResult Register()
@@ -293,6 +294,19 @@ namespace CIPlatform.Controllers
 
 
             return RedirectToAction("UserProfile", "Account");
+        }
+        public IActionResult addTimeBasedVolunteerTimesheet(VolunteerTimesheetRecordModel volunteerTimesheetRecordModel)
+        {
+            Timesheet timesheet =new Timesheet();
+            timesheet.UserId=volunteerTimesheetRecordModel.UserId;
+            timesheet.MissionId = volunteerTimesheetRecordModel.MissionId;
+            timesheet.DateVolunteered = volunteerTimesheetRecordModel.DateVolunteered;
+            timesheet.Time = volunteerTimesheetRecordModel.Time == null || volunteerTimesheetRecordModel.Time==""?null:TimeOnly.Parse(volunteerTimesheetRecordModel.Time);
+            timesheet.Action= volunteerTimesheetRecordModel.Action;
+            timesheet.Notes = volunteerTimesheetRecordModel.Notes; 
+            timesheet.Status = "pending";
+            _userRepository.addTimeBasedVolunteerTimesheet(timesheet);
+            return Ok();
         }
         public IActionResult logout()
         {

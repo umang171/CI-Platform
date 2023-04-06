@@ -10,7 +10,8 @@ namespace CIPlatform.Entities.ViewModels
     public class VolunteerTimesheetViewModel
     {
         public HeaderViewModel headerViewModel=new HeaderViewModel();
-        public List<MissionApplication> missions { get; set; }=new List<MissionApplication>();
+        public List<Mission?> timeBasedMissions { get; set; }=new List<Mission?>();
+        public List<Mission?> goalBasedMissions { get; set; }=new List<Mission?>();
 
     }
 }
