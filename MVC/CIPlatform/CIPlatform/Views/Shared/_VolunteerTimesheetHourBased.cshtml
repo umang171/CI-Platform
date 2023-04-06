@@ -1,5 +1,40 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@model List<CIPlatform.Entities.ViewModels.VolunteerTimesheetRecordModel>
+@if (Model.Count() == 0)
+{
+    <h3>No data found</h3>
+}
+else
+{
+    <table class="table p-3">
+        <thead>
+            <tr>
+                <th>Mission</th>
+                <th>Date</th>
+                <th>Hours</th>
+                <th>Minutes</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var data in Model)
+            {
+                <tr>
+                    <td class="hour-data d-none" id="hour-@data.TimesheetId"></td>
+                    <td class="hour-mission" id="mission-@data.MissionId">@data.MissionName</td>
+                    <td>@data.DateVolunteered.ToString().Substring(0,10)</td>
+                    <td>@data.Time.Substring(0,2)</td>
+                    <td>@data.Time.Substring(3,2)</td>
+                    <td>
+                        <img class="edit-hour-data" id="edit-@data.TimesheetId" style="cursor:pointer;" height="20px" src="~/images/Voted-Missions.png" alt="" data-bs-toggle="modal" data-bs-target="#hourTimesheetModal">
+                    </td>
+                    <td>
+                        <img class="delete-hour-data" id="delete-@data.TimesheetId" style="cursor:pointer;"  src="~/images/bin.png" alt="">
+                    </td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
 }

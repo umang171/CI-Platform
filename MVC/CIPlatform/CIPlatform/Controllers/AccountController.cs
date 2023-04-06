@@ -295,7 +295,7 @@ namespace CIPlatform.Controllers
 
             return RedirectToAction("UserProfile", "Account");
         }
-        public IActionResult addTimeBasedVolunteerTimesheet(VolunteerTimesheetRecordModel volunteerTimesheetRecordModel)
+        public IActionResult addVolunteerTimesheet(VolunteerTimesheetRecordModel volunteerTimesheetRecordModel)
         {
             Timesheet timesheet =new Timesheet();
             timesheet.UserId=volunteerTimesheetRecordModel.UserId;
@@ -304,8 +304,8 @@ namespace CIPlatform.Controllers
             timesheet.Time = volunteerTimesheetRecordModel.Time == null || volunteerTimesheetRecordModel.Time==""?null:TimeOnly.Parse(volunteerTimesheetRecordModel.Time);
             timesheet.Action= volunteerTimesheetRecordModel.Action;
             timesheet.Notes = volunteerTimesheetRecordModel.Notes; 
-            timesheet.Status = "pending";
-            _userRepository.addTimeBasedVolunteerTimesheet(timesheet);
+            timesheet.Status = "applied";
+            _userRepository.addVolunteerTimesheet(timesheet);
             return Ok();
         }
         public IActionResult logout()
@@ -313,6 +313,21 @@ namespace CIPlatform.Controllers
             HttpContext.Session.Remove("useremail");
             HttpContext.Session.Clear();
             return RedirectToAction("Login", "Account");
+        }
+        public IActionResult getVolunteerTimesheetRecordHourBased(int userId)
+        {
+            List<VolunteerTimesheetRecordModel> volunteerTimesheetRecordModels = _userRepository.getVolunteerTimesheetRecordHourBased(userId);
+            return PartialView("_VolunteerTimesheetHourBased", volunteerTimesheetRecordModels);
+        }
+        public IActionResult getVolunteerTimesheetRecordGoalBased(int userId)
+        {
+            List<VolunteerTimesheetRecordModel> volunteerTimesheetRecordModels = _userRepository.getVolunteerTimesheetRecordGoalBased(userId);
+            return PartialView("_VolunteerTimesheetGoalBased", volunteerTimesheetRecordModels);
+        }
+        public IActionResult deleteVolunteerTimesheet(int timesheetId)
+        {
+            _userRepository.deleteVolunteerTimesheet(timesheetId);
+            return Ok();
         }
     }
 }

@@ -13,6 +13,7 @@ namespace CIPlatform.Entities.ViewModels
         public long UserId { get; set; }
 
         public long MissionId { get; set; }
+        public string? MissionName { get; set; }=String.Empty;
 
         public string? Time { get; set; }=String.Empty;
 

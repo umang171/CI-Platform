@@ -82,10 +82,10 @@ $("#hour-timesheet-submit-btn").on("click", function (e) {
     if ((volunteerHour >= 0 && volunteerHour <= 23) && (volunteerMinutes >= 0 && volunteerMinutes <= 59)) {
         $.ajax({
             type: "POST",
-            url: '/Account/addTimeBasedVolunteerTimesheet',
+            url: '/Account/addVolunteerTimesheet',
             data: { UserId: userId, MissionId: missionId, DateVolunteered: volunteerDate, Time: time, Notes: volunteerMessage },
             success: function (data) {
-                console.log("success");
+                getVolunteerTimesheetHourBased();
             },
             error: function (xhr, status, error) {
                 // Handle error
@@ -108,15 +108,92 @@ $("#goal-timesheet-submit-btn").on("click", function (e) {
     var volunteerAction = $("#volunteer-goal-timesheet-action").val();
     var volunteerMessage = $("#volunteer-goal-timesheet-message").val();
     $.ajax({
-            type: "POST",
-            url: '/Account/addTimeBasedVolunteerTimesheet',
+        type: "POST",
+        url: '/Account/addVolunteerTimesheet',
         data: { UserId: userId, MissionId: missionId, DateVolunteered: volunteerDate, Action: volunteerAction, Notes: volunteerMessage },
-            success: function (data) {
-                console.log("success");
-            },
-            error: function (xhr, status, error) {
-                // Handle error
-                console.log(error);
-            }
-        });
+        success: function (data) {
+            getVolunteerTimesheetGoalBased();
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    });
 });
+//===============================================================================================================
+//get hour timesheet data
+//===============================================================================================================
+$(document).ready(function () {
+    getVolunteerTimesheetHourBased();
+    getVolunteerTimesheetGoalBased();
+});
+function getVolunteerTimesheetHourBased() {
+    var userId = $(".user-btn")[0].id.slice(9);
+    $.ajax({
+        type: "POST",
+        url: '/Account/getVolunteerTimesheetRecordHourBased',
+        dataType: "html",
+        cache: false,
+        data: { userId: userId },
+        success: function (data) {
+            $("#hour-based-records").html("");
+            $("#hour-based-records").html(data);
+            loaddeleteVolunteerBtn();
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    });
+}
+
+function getVolunteerTimesheetGoalBased() {
+    var userId = $(".user-btn")[0].id.slice(9);
+    $.ajax({
+        type: "POST",
+        url: '/Account/getVolunteerTimesheetRecordGoalBased',
+        dataType: "html",
+        cache: false,
+        data: { userId: userId },
+        success: function (data) {
+            $("#goal-based-records").html("");
+            $("#goal-based-records").html(data);
+            loaddeleteVolunteerBtn();
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    });
+}
+
+//===============================================================================================================
+//delete timesheet data
+//===============================================================================================================
+function loaddeleteVolunteerBtn() {
+    console.log($(".delete-hour-data"),"call");
+$(".delete-hour-data").on("click", function (e) {
+    deleteVolunteerTimesheet(this.id.slice(7));
+});
+$(".delete-goal-data").on("click", function (e) {
+    deleteVolunteerTimesheet(this.id.slice(7));
+});
+
+}
+
+function deleteVolunteerTimesheet(timesheetId) {
+    $.ajax({
+        type: "POST",
+        url: '/Account/deleteVolunteerTimesheet',
+       
+        data: { timesheetId: timesheetId },
+        success: function (data) {
+            getVolunteerTimesheetGoalBased();
+            alert("Record successfully deleted");
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    });
+}

@@ -19,30 +19,11 @@
                         + Add
                     </button>
                 </div>
-                <table class="table p-3">
-                    <thead>
-                    <th>Mission</th>
-                    <th>Date</th>
-                    <th>Hours</th>
-                    <th>Minutes</th>
-                    <th></th>
-                    <th></th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Environment Conservation</td>
-                            <td>22/02/2022</td>
-                            <td>1h</td>
-                            <td>30min</td>
-                            <td>
-                                <img style="cursor:pointer;" height="20px" src="~/images/Voted-Missions.png" alt="" data-bs-toggle="modal" data-bs-target="#hourTimesheetModal">
-                            </td>
-                            <td>
-                                <img src="~/images/bin.png" alt="">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+
+                <div id="hour-based-records">
+
+                </div>
+               
                 <!-- Button trigger modal -->
                 <!-- Modal -->
                 <div class="modal fade" id="hourTimesheetModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -97,39 +78,7 @@
                         + Add
                     </button>
                 </div>
-                <table class="table p-3">
-                    <thead>
-                    <th>Mission</th>
-                    <th>Date</th>
-                    <th>Action</th>
-                    <th></th>
-                    <th></th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Plantation Programme</td>
-                            <td>22/02/2022</td>
-                            <td>0</td>
-                            <td>
-                                <img style="cursor:pointer;" height="20px" src="~/images/Voted-Missions.png" alt="" data-bs-toggle="modal" data-bs-target="#goalTimesheetModal">
-                            </td>
-                            <td>
-                                <img src="~/images/bin.png" alt="">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Education Programme</td>
-                            <td>22/02/2022</td>
-                            <td>1</td>
-                            <td>
-                                <img style="cursor:pointer;" height="20px" src="~/images/Voted-Missions.png" alt="" data-bs-toggle="modal" data-bs-target="#goalTimesheetModal">
-                            </td>
-                            <td>
-                                <img src="~/images/bin.png" alt="">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div id="goal-based-records"></div>
                 <!-- Modal -->
                 <div class="modal fade" id="goalTimesheetModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" style="margin: 20vh 0 0 25vw;">

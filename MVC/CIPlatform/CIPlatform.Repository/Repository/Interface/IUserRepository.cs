@@ -27,6 +27,9 @@ namespace CIPlatform.Repository.Repository.Interface
         public long getIdOfUserSkill(string userSkillName);
         public List<UserSkill> getSkillsOfUser(int userId);
         public void editUserProfile(UserProfileModel userProfileModel);
-        public void addTimeBasedVolunteerTimesheet(Timesheet timesheet);
+        public void addVolunteerTimesheet(Timesheet timesheet);
+        public List<VolunteerTimesheetRecordModel> getVolunteerTimesheetRecordHourBased(int userId);
+        public List<VolunteerTimesheetRecordModel> getVolunteerTimesheetRecordGoalBased(int userId);
+        public void deleteVolunteerTimesheet(int timesheetId);
     }
 }
