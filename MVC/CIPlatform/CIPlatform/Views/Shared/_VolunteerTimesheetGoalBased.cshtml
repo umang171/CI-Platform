@@ -19,7 +19,7 @@ else
             @foreach (var data in Model)
             {
                 <tr>
-                    <td class="goal-data d-none" id="goal-@data.TimesheetId"></td>
+                    <td class="goal-data-id d-none" id="goal-@data.TimesheetId"></td>
                     <td class="goal-mission" id="mission-@data.MissionId">@data.MissionName</td>
                     <td>@data.DateVolunteered.ToString().Substring(0,10)</td>
                     <td>@data.Action</td>

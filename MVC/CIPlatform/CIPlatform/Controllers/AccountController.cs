@@ -297,23 +297,23 @@ namespace CIPlatform.Controllers
         }
         public IActionResult addVolunteerTimesheet(VolunteerTimesheetRecordModel volunteerTimesheetRecordModel)
         {
-            Timesheet timesheet =new Timesheet();
-            timesheet.UserId=volunteerTimesheetRecordModel.UserId;
+            Timesheet timesheet = new Timesheet();
+            timesheet.UserId = volunteerTimesheetRecordModel.UserId;
             timesheet.MissionId = volunteerTimesheetRecordModel.MissionId;
             timesheet.DateVolunteered = volunteerTimesheetRecordModel.DateVolunteered;
-            timesheet.Time = volunteerTimesheetRecordModel.Time == null || volunteerTimesheetRecordModel.Time==""?null:TimeOnly.Parse(volunteerTimesheetRecordModel.Time);
-            timesheet.Action= volunteerTimesheetRecordModel.Action;
-            timesheet.Notes = volunteerTimesheetRecordModel.Notes; 
+            timesheet.Time = volunteerTimesheetRecordModel.Time == null || volunteerTimesheetRecordModel.Time == "" ? null : TimeOnly.Parse(volunteerTimesheetRecordModel.Time);
+            timesheet.Action = volunteerTimesheetRecordModel.Action;
+            timesheet.Notes = volunteerTimesheetRecordModel.Notes;
             timesheet.Status = "applied";
             _userRepository.addVolunteerTimesheet(timesheet);
             return Ok();
         }
-        public IActionResult logout()
-        {
-            HttpContext.Session.Remove("useremail");
-            HttpContext.Session.Clear();
-            return RedirectToAction("Login", "Account");
+        public IActionResult editVolunteerTimesheet(VolunteerTimesheetRecordModel volunteerTimesheetRecordModel)
+        {            
+            _userRepository.editVolunteerTimesheet(volunteerTimesheetRecordModel);
+            return Ok();
         }
+
         public IActionResult getVolunteerTimesheetRecordHourBased(int userId)
         {
             List<VolunteerTimesheetRecordModel> volunteerTimesheetRecordModels = _userRepository.getVolunteerTimesheetRecordHourBased(userId);
@@ -324,10 +324,21 @@ namespace CIPlatform.Controllers
             List<VolunteerTimesheetRecordModel> volunteerTimesheetRecordModels = _userRepository.getVolunteerTimesheetRecordGoalBased(userId);
             return PartialView("_VolunteerTimesheetGoalBased", volunteerTimesheetRecordModels);
         }
-        public IActionResult deleteVolunteerTimesheet(int timesheetId)
+        public async Task<IActionResult> deleteVolunteerTimesheet(int timesheetId)
         {
             _userRepository.deleteVolunteerTimesheet(timesheetId);
             return Ok();
+        }
+        public IActionResult getEditVolunteerTimesheet(int timesheetId)
+        {
+            VolunteerTimesheetRecordModel volunteerTimesheetRecordModel= _userRepository.getEditVolunteerTimesheet(timesheetId);
+            return Json(new {data=volunteerTimesheetRecordModel});
+        }
+        public IActionResult logout()
+        {
+            HttpContext.Session.Remove("useremail");
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login", "Account");
         }
     }
 }

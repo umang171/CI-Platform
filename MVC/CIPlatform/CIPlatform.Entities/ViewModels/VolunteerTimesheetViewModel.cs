@@ -12,6 +12,6 @@ namespace CIPlatform.Entities.ViewModels
         public HeaderViewModel headerViewModel=new HeaderViewModel();
         public List<Mission?> timeBasedMissions { get; set; }=new List<Mission?>();
         public List<Mission?> goalBasedMissions { get; set; }=new List<Mission?>();
-
+        public VolunteerTimesheetRecordModel volunteerTimesheetRecordModel { get; set; }=new VolunteerTimesheetRecordModel();
     }
 }

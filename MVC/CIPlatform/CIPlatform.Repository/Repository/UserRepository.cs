@@ -196,22 +196,35 @@ namespace CIPlatform.Repository.Repository
             return hourTimesheets;
         }
 
-        void IUserRepository.deleteVolunteerTimesheet(int timesheetId)
+        async Task IUserRepository.deleteVolunteerTimesheet(int timesheetId)
         {
             if (_ciPlatformDbContext.Timesheets.Any(timesheet => timesheet.TimesheetId == timesheetId))
             {
-               
-                try
-                {
-                    Timesheet timesheet = _ciPlatformDbContext.Timesheets.Where(timesheet => timesheet.TimesheetId == timesheetId).First();
-                    _ciPlatformDbContext.Remove(timesheet);
-                    _ciPlatformDbContext.SaveChanges();
-                }
-                catch (DbUpdateConcurrencyException ex)
-                {
-                    throw new Exception(ex.Message);
-                }
+                Timesheet timesheet = _ciPlatformDbContext.Timesheets.Where(timesheet => timesheet.TimesheetId == timesheetId).First();
+                _ciPlatformDbContext.Timesheets.Remove(timesheet);
+                await _ciPlatformDbContext.SaveChangesAsync();
             }
+            return;
+        }
+
+        VolunteerTimesheetRecordModel IUserRepository.getEditVolunteerTimesheet(int timesheetId)
+        {
+            return _ciPlatformDbContext.Timesheets.Where(timesheet => timesheet.TimesheetId==timesheetId).Select(timesheet => new VolunteerTimesheetRecordModel { TimesheetId = timesheet.TimesheetId, UserId = timesheet.UserId, MissionId = timesheet.MissionId, MissionName = timesheet.Mission.Title, Time = timesheet.Time.ToString(), Action = timesheet.Action, DateVolunteered = timesheet.DateVolunteered, Notes = timesheet.Notes }).First();
+
+        }
+
+        void IUserRepository.editVolunteerTimesheet(VolunteerTimesheetRecordModel volunteerTimesheetRecordModel)
+        {
+            Timesheet timesheet =_ciPlatformDbContext.Timesheets.Where(timesheet=> timesheet.TimesheetId==volunteerTimesheetRecordModel.TimesheetId).First();
+            timesheet.UserId = volunteerTimesheetRecordModel.UserId;
+            timesheet.MissionId = volunteerTimesheetRecordModel.MissionId;
+            timesheet.DateVolunteered = volunteerTimesheetRecordModel.DateVolunteered;
+            timesheet.Time = volunteerTimesheetRecordModel.Time == null || volunteerTimesheetRecordModel.Time == "" ? null : TimeOnly.Parse(volunteerTimesheetRecordModel.Time);
+            timesheet.Action = volunteerTimesheetRecordModel.Action;
+            timesheet.Notes = volunteerTimesheetRecordModel.Notes;
+            timesheet.Status = "applied";
+            _ciPlatformDbContext.Update(timesheet);
+            _ciPlatformDbContext.SaveChanges();
         }
     }
 }

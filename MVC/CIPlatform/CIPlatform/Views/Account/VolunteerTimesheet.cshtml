@@ -15,7 +15,7 @@
             <div style="overflow-y: scroll;" class="vol-time-div border m-2 w-50 h-100 py-4 px-2">
                 <div class="d-flex justify-content-between">
                     <h4 class="fw-light">Volunteering Hours</h4>
-                    <button class="btn btn-outline-warning orange-btn rounded-5 p-2 px-3" data-bs-toggle="modal" data-bs-target="#hourTimesheetModal">
+                    <button class="add-vol-data-btn btn btn-outline-warning orange-btn rounded-5 p-2 px-3" data-bs-toggle="modal" data-bs-target="#hourTimesheetModal">
                         + Add
                     </button>
                 </div>
@@ -50,6 +50,8 @@
                                 </select>
                                 <label for="" class="form-label">Date Volunteered</label>
                                 <input type="text" onfocus="(this.type='date')" id="volunteer-hour-timesheet-date" class="form-control" placeholder="Select Date" />
+                                <span class="text-danger"></span>
+
                                 <div class="row">
                                     <div class="col-6">
                                         <label for="" class="form-label">Hours</label>
@@ -62,10 +64,12 @@
                                 </div>
                                 <label for="" class="form-label">Message</label>
                                 <textarea id="volunteer-hour-timesheet-message" class="form-control" rows="3" placeholder="Enter your message"></textarea>
+                                <span class="text-danger"></span>
+                                <input type="text" id="hour-timesheetId" hidden/>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="bg-white rounded-5 p-2 px-3" data-bs-dismiss="modal">Cancel</button>
-                                <button id="hour-timesheet-submit-btn" type="button" class="btn btn-outline-warning orange-btn rounded-5 p-2 px-3" data-bs-dismiss="modal">Submit</button>
+                                <button id="hour-timesheet-submit-btn" type="button" class="timesheet-submit-btn btn btn-outline-warning orange-btn rounded-5 p-2 px-3" data-bs-dismiss="modal">Submit</button>
                             </div>
                         </div>
                     </div>
@@ -74,7 +78,7 @@
             <div style="overflow-y: scroll;" class="vol-time-div border m-2 w-50 h-100 py-4 px-2">
                 <div class="d-flex justify-content-between">
                     <h4 class="fw-light">Volunteering Goals</h4>
-                    <button class="btn btn-outline-warning orange-btn rounded-5 p-2 px-3" data-bs-toggle="modal" data-bs-target="#goalTimesheetModal">
+                    <button class="add-vol-data-btn btn btn-outline-warning orange-btn rounded-5 p-2 px-3" data-bs-toggle="modal" data-bs-target="#goalTimesheetModal">
                         + Add
                     </button>
                 </div>
@@ -112,9 +116,10 @@
                                 <label for="" class="form-label">Message</label>
                                 <textarea id="volunteer-goal-timesheet-message" class="form-control" rows="3" placeholder="Enter your message"></textarea>
                             </div>
+                            <input type="number" id="goal-timesheetId" hidden/>
                             <div class="modal-footer">
                                 <button type="button" class="bg-white rounded-5 p-2 px-3" data-bs-dismiss="modal">Cancel</button>
-                                <button id="goal-timesheet-submit-btn" type="button" class="btn btn-outline-warning orange-btn rounded-5 p-2 px-3" data-bs-dismiss="modal">Submit</button>
+                                <button id="goal-timesheet-submit-btn" type="button" class="timesheet-submit-btn btn btn-outline-warning orange-btn rounded-5 p-2 px-3" data-bs-dismiss="modal">Submit</button>
                             </div>
                         </div>
                     </div>
