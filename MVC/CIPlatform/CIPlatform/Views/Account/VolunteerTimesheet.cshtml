@@ -21,9 +21,8 @@
                 </div>
 
                 <div id="hour-based-records">
-
                 </div>
-               
+
                 <!-- Button trigger modal -->
                 <!-- Modal -->
                 <div class="modal fade" id="hourTimesheetModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -33,44 +32,50 @@
                                 <h5 class="modal-title" id="exampleModalLabel">Please input below Volunteering Hours</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body">
-                                <label for="" class="form-label">Mission</label>
-                                <select id="volunteer-timesheet-hour-mission" class="form-select">
-                                    @if (Model.timeBasedMissions.Count() < 1)
-                                    {
-                                        <option value="-1">No mission found</option>
-                                    }
-                                    else
-                                    {
-                                        @foreach (var item in Model.timeBasedMissions)
+                            <form method="POST">
+                                <div class="modal-body">
+                                    <label for="" class="form-label">Mission</label>
+                                    <select id="volunteer-timesheet-hour-mission" class="form-select">
+                                        @if (Model.timeBasedMissions.Count() < 1)
                                         {
-                                            <option value="@item.MissionId">@item.Title</option>
+                                            <option value="-1">No mission found</option>
                                         }
-                                    }
-                                </select>
-                                <label for="" class="form-label">Date Volunteered</label>
-                                <input type="text" onfocus="(this.type='date')" id="volunteer-hour-timesheet-date" class="form-control" placeholder="Select Date" />
-                                <span class="text-danger"></span>
+                                        else
+                                        {
+                                            @foreach (var item in Model.timeBasedMissions)
+                                            {
+                                                <option value="@item.MissionId">@item.Title</option>
+                                            }
+                                        }
+                                    </select>
+                                    <label for="" class="form-label">Date Volunteered</label>
+                                    <input asp-for="volunteerTimesheetRecordModel.DateVolunteered" type="text" onfocus="(this.type='date')" id="volunteer-hour-timesheet-date" class="form-control" placeholder="Select Date" />
+                                    <span asp-validation-for="volunteerTimesheetRecordModel.DateVolunteered" class="text-danger"></span>
 
-                                <div class="row">
-                                    <div class="col-6">
-                                        <label for="" class="form-label">Hours</label>
-                                        <input type="number" id="volunteer-hour-timesheet-hour" class="form-control" min="0" max="23" placeholder="Enter spent Hours">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <label for="" class="form-label">Hours</label>
+                                            <input asp-for="volunteerTimesheetRecordModel.Hour" type="number" id="volunteer-hour-timesheet-hour" class="form-control" min="0" max="23" placeholder="Enter spent Hours">
+                                            <span asp-validation-for="volunteerTimesheetRecordModel.Hour" class="text-danger"></span>
+
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="" class="form-label">Minutes</label>
+                                            <input asp-for="volunteerTimesheetRecordModel.Minutes" type="number" id="volunteer-hour-timesheet-minutes" class="form-control" min="0" max="59" placeholder="Enter spent Minutes">
+                                            <span asp-validation-for="volunteerTimesheetRecordModel.Minutes" class="text-danger"></span>
+
+                                        </div>
                                     </div>
-                                    <div class="col-6">
-                                        <label for="" class="form-label">Minutes</label>
-                                        <input type="number" id="volunteer-hour-timesheet-minutes" class="form-control" min="0" max="59" placeholder="Enter spent Minutes">
-                                    </div>
+                                    <label for="" class="form-label">Message</label>
+                                    <textarea asp-for="volunteerTimesheetRecordModel.Notes" id="volunteer-hour-timesheet-message" class="form-control" rows="3" placeholder="Enter your message"></textarea>
+                                    <span asp-validation-for="volunteerTimesheetRecordModel.Notes" class="text-danger"></span>
+                                    <input type="text" id="hour-timesheetId" hidden />
                                 </div>
-                                <label for="" class="form-label">Message</label>
-                                <textarea id="volunteer-hour-timesheet-message" class="form-control" rows="3" placeholder="Enter your message"></textarea>
-                                <span class="text-danger"></span>
-                                <input type="text" id="hour-timesheetId" hidden/>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="bg-white rounded-5 p-2 px-3" data-bs-dismiss="modal">Cancel</button>
-                                <button id="hour-timesheet-submit-btn" type="button" class="timesheet-submit-btn btn btn-outline-warning orange-btn rounded-5 p-2 px-3" data-bs-dismiss="modal">Submit</button>
-                            </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="bg-white rounded-5 p-2 px-3" data-bs-dismiss="modal">Cancel</button>
+                                    <input id="hour-timesheet-submit-btn" type="submit" class="timesheet-submit-btn btn btn-outline-warning orange-btn rounded-5 p-2 px-3" value="Submit">
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -91,36 +96,43 @@
                                 <h5 class="modal-title" id="exampleModalLabel">Please input below Volunteering Goal</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body">
-                                <label for="" class="form-label">Mission</label>
-                                <select id="volunteer-timesheet-goal-mission" class="form-select">
-                                    @if (Model.goalBasedMissions.Count() < 1)
-                                    {
-                                        <option value="-1">No mission found</option>
-                                    }
-                                    else
-                                    {
-                                        @foreach (var item in Model.goalBasedMissions)
+                            <form method="POST">
+                                <div class="modal-body">
+                                    <label for="" class="form-label">Mission</label>
+                                    <select id="volunteer-timesheet-goal-mission" class="form-select">
+                                        @if (Model.goalBasedMissions.Count() < 1)
                                         {
-                                            <option value="@item.MissionId">@item.Title</option>
+                                            <option value="-1">No mission found</option>
                                         }
-                                    }
+                                        else
+                                        {
+                                            @foreach (var item in Model.goalBasedMissions)
+                                            {
+                                                <option value="@item.MissionId">@item.Title</option>
+                                            }
+                                        }
 
-                                </select>
-                                <label for="" class="form-label">Actions</label>
-                                <input id="volunteer-goal-timesheet-action" type="number" class="form-control" placeholder="Enter Actions" />
-
-                                <label for="" class="form-label">Date Volunteered</label>
-                                <input type="text" onfocus="(this.type='date')" id="volunteer-goal-timesheet-date" class="form-control" placeholder="Select Date" />
-
-                                <label for="" class="form-label">Message</label>
-                                <textarea id="volunteer-goal-timesheet-message" class="form-control" rows="3" placeholder="Enter your message"></textarea>
-                            </div>
-                            <input type="number" id="goal-timesheetId" hidden/>
-                            <div class="modal-footer">
-                                <button type="button" class="bg-white rounded-5 p-2 px-3" data-bs-dismiss="modal">Cancel</button>
-                                <button id="goal-timesheet-submit-btn" type="button" class="timesheet-submit-btn btn btn-outline-warning orange-btn rounded-5 p-2 px-3" data-bs-dismiss="modal">Submit</button>
-                            </div>
+                                    </select>
+                                    <label for="" class="form-label">Actions</label>
+                                    <input asp-for="volunteerTimesheetRecordModel.Action" id="volunteer-goal-timesheet-action" type="number" class="form-control" placeholder="Enter Actions" />
+                                    <span asp-validation-for="volunteerTimesheetRecordModel.Action" class="text-danger"></span>
+                                    <div>
+                                        <label for="" class="form-label">Date Volunteered</label>
+                                        <input asp-for="volunteerTimesheetRecordModel.DateVolunteered" type="text" onfocus="(this.type='date')" id="volunteer-goal-timesheet-date" class="form-control" placeholder="Select Date" />
+                                        <span asp-validation-for="volunteerTimesheetRecordModel.DateVolunteered" class="text-danger"></span>
+                                    </div>
+                                    <div>
+                                        <label for="" class="form-label">Message</label>
+                                        <textarea asp-for="volunteerTimesheetRecordModel.Notes" id="volunteer-goal-timesheet-message" class="form-control" rows="3" placeholder="Enter your message"></textarea>
+                                        <span asp-validation-for="volunteerTimesheetRecordModel.Notes" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <input type="number" id="goal-timesheetId" hidden />
+                                <div class="modal-footer">
+                                    <button type="button" class="bg-white rounded-5 p-2 px-3" data-bs-dismiss="modal">Cancel</button>
+                                    <input id="goal-timesheet-submit-btn" type="submit" class="timesheet-submit-btn btn btn-outline-warning orange-btn rounded-5 p-2 px-3" value="Submit">
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -129,11 +141,8 @@
     </div>
     <br>
 </div>
-<footer id="mission-footer" class="container-fluid border-top">
-    <div class="py-4 mx-auto">
-        <a href="#">Privacy Policy</a>
-    </div>
-</footer>
+<partial name="_footer" />
+
 @section JavaScript{
 <script src="~/js/volunteering_timesheet.js"></script>
 }

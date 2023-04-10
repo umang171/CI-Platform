@@ -186,7 +186,7 @@ namespace CIPlatform.Repository.Repository
 
         List<VolunteerTimesheetRecordModel> IUserRepository.getVolunteerTimesheetRecordHourBased(int userId)
         {
-            List<VolunteerTimesheetRecordModel> hourTimesheets = _ciPlatformDbContext.Timesheets.Where(timesheet => timesheet.UserId == userId && timesheet.Time != null && timesheet.Status == "applied").Select(timesheet => new VolunteerTimesheetRecordModel { TimesheetId = timesheet.TimesheetId, UserId = timesheet.UserId, MissionId = timesheet.MissionId, MissionName = timesheet.Mission.Title, Time = timesheet.Time.ToString(), DateVolunteered = timesheet.DateVolunteered, Notes = timesheet.Notes }).ToList();
+            List<VolunteerTimesheetRecordModel> hourTimesheets = _ciPlatformDbContext.Timesheets.Where(timesheet => timesheet.UserId == userId && timesheet.Time != null && timesheet.Status == "applied").Select(timesheet => new VolunteerTimesheetRecordModel { TimesheetId = timesheet.TimesheetId, UserId = timesheet.UserId, MissionId = timesheet.MissionId, MissionName = timesheet.Mission.Title, Hour = timesheet.Time.ToString().Substring(0, 2), Minutes = timesheet.Time.ToString().Substring(3, 2), DateVolunteered = timesheet.DateVolunteered, Notes = timesheet.Notes }).ToList();
             return hourTimesheets;
         }
 
@@ -209,7 +209,7 @@ namespace CIPlatform.Repository.Repository
 
         VolunteerTimesheetRecordModel IUserRepository.getEditVolunteerTimesheet(int timesheetId)
         {
-            return _ciPlatformDbContext.Timesheets.Where(timesheet => timesheet.TimesheetId==timesheetId).Select(timesheet => new VolunteerTimesheetRecordModel { TimesheetId = timesheet.TimesheetId, UserId = timesheet.UserId, MissionId = timesheet.MissionId, MissionName = timesheet.Mission.Title, Time = timesheet.Time.ToString(), Action = timesheet.Action, DateVolunteered = timesheet.DateVolunteered, Notes = timesheet.Notes }).First();
+            return _ciPlatformDbContext.Timesheets.Where(timesheet => timesheet.TimesheetId == timesheetId).Select(timesheet => new VolunteerTimesheetRecordModel { TimesheetId = timesheet.TimesheetId, UserId = timesheet.UserId, MissionId = timesheet.MissionId, MissionName = timesheet.Mission.Title, Hour = timesheet.Time==null?null:timesheet.Time.ToString().Substring(0,2), Minutes= timesheet.Time==null?null: timesheet.Time.ToString().Substring(3,2),Action = timesheet.Action, DateVolunteered = timesheet.DateVolunteered, Notes = timesheet.Notes }).First();
 
         }
 
@@ -219,8 +219,16 @@ namespace CIPlatform.Repository.Repository
             timesheet.UserId = volunteerTimesheetRecordModel.UserId;
             timesheet.MissionId = volunteerTimesheetRecordModel.MissionId;
             timesheet.DateVolunteered = volunteerTimesheetRecordModel.DateVolunteered;
-            timesheet.Time = volunteerTimesheetRecordModel.Time == null || volunteerTimesheetRecordModel.Time == "" ? null : TimeOnly.Parse(volunteerTimesheetRecordModel.Time);
-            timesheet.Action = volunteerTimesheetRecordModel.Action;
+            if ((volunteerTimesheetRecordModel.Hour == null || volunteerTimesheetRecordModel.Hour == "" || volunteerTimesheetRecordModel.Hour == "0") && (volunteerTimesheetRecordModel.Minutes == null || volunteerTimesheetRecordModel.Minutes == "" || volunteerTimesheetRecordModel.Minutes == "0"))
+            {
+                timesheet.Time = null;
+            }
+            else
+            {
+                string Time = volunteerTimesheetRecordModel.Hour + ":" + volunteerTimesheetRecordModel.Minutes;
+                timesheet.Time = TimeOnly.Parse(Time);
+            }
+            timesheet.Action = volunteerTimesheetRecordModel.Action == -1 ? null : volunteerTimesheetRecordModel.Action;
             timesheet.Notes = volunteerTimesheetRecordModel.Notes;
             timesheet.Status = "applied";
             _ciPlatformDbContext.Update(timesheet);

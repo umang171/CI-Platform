@@ -23,8 +23,8 @@ else
                     <td class="hour-data-id d-none" id="hour-@data.TimesheetId"></td>
                     <td class="hour-mission" id="mission-@data.MissionId">@data.MissionName</td>
                     <td>@data.DateVolunteered.ToString().Substring(0,10)</td>
-                    <td>@data.Time.Substring(0,2)</td>
-                    <td>@data.Time.Substring(3,2)</td>
+                    <td>@data.Hour</td>
+                    <td>@data.Minutes</td>
                     <td>
                         <img class="edit-hour-data" id="edit-@data.TimesheetId" style="cursor:pointer;" height="20px" src="~/images/Voted-Missions.png" alt="" data-bs-toggle="modal" data-bs-target="#hourTimesheetModal">
                     </td>

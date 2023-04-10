@@ -147,6 +147,25 @@ $("#addSkillBtn").on("click", function (e) {
     e.preventDefault();
 });
 // =================================================================================
+//Change password
+// =================================================================================
+$('#profile-change-pass-btn').on("click",function () {
+    $.ajax({
+        type: "POST",
+        url: '/Account/ChangePasswod',
+        data: { countryId: countryId },
+        success: function (response) {
+            console.log(response);
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    });
+});
+
+
+// =================================================================================
 //Get cities
 // =================================================================================
 $('#profileCountryDropdown').change(function () {

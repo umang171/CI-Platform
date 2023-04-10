@@ -15,9 +15,13 @@ namespace CIPlatform.Entities.ViewModels
 
         public long MissionId { get; set; }
         public string? MissionName { get; set; }=String.Empty;
-
-        public string? Time { get; set; }=String.Empty;
-
+       [Range(0,59)]
+       [Required]
+        public string? Hour{ get; set; }=String.Empty;
+        [Range(0, 59)]
+        [Required]
+        public string? Minutes { get; set; }=String.Empty;
+        [Required]
         public int? Action { get; set; }
         [Required]
         public DateTime DateVolunteered { get; set; }=DateTime.Now;

@@ -72,9 +72,15 @@ y.addListener(myFunction2) // Attach listener function on state changes
 //===============================================================================================================
 $(".add-vol-data-btn").on("click", function () {
     $(".timesheet-submit-btn").text("Submit");
+    $("#volunteer-hour-timesheet-date").val("");
+    $("#volunteer-hour-timesheet-hour").val("");
+    $("#volunteer-hour-timesheet-minutes").val("");
+    $("#volunteer-hour-timesheet-message").val("");
+    $("#volunteer-goal-timesheet-date").val("");
+    $("#volunteer-goal-timesheet-action").val("");
+    $("#volunteer-goal-timesheet-message").val("");
 });
 $("#hour-timesheet-submit-btn").on("click", function (e) {
-
     var userId = $(".user-btn")[0].id.slice(9)
     var missionId = $("#volunteer-timesheet-hour-mission").val();
     var volunteerDate = $("#volunteer-hour-timesheet-date").val();
@@ -82,14 +88,18 @@ $("#hour-timesheet-submit-btn").on("click", function (e) {
     var volunteerMinutes = $("#volunteer-hour-timesheet-minutes").val();
     var volunteerMessage = $("#volunteer-hour-timesheet-message").val();
     var time = volunteerHour + ":" + volunteerMinutes;
-    if ($(".timesheet-submit-btn")[0].innerHTML == "Submit") {
+    if ($(".timesheet-submit-btn")[0].value == "Submit") {
         if ((volunteerHour >= 0 && volunteerHour <= 23) && (volunteerMinutes >= 0 && volunteerMinutes <= 59)) {
             $.ajax({
                 type: "POST",
                 url: '/Account/addVolunteerTimesheet',
-                data: { UserId: userId, MissionId: missionId, DateVolunteered: volunteerDate, Time: time, Notes: volunteerMessage },
+                data: { UserId: userId, MissionId: missionId, DateVolunteered: volunteerDate, Hour: volunteerHour, Minutes: volunteerMinutes, Notes: volunteerMessage, Action: -1 },
                 success: function (data) {
                     getVolunteerTimesheetHourBased();
+                    if (data["status"] == 1) {
+                        $('#hourTimesheetModal').modal('toggle');
+                    }
+
                 },
                 error: function (xhr, status, error) {
                     // Handle error
@@ -107,9 +117,13 @@ $("#hour-timesheet-submit-btn").on("click", function (e) {
             $.ajax({
                 type: "POST",
                 url: '/Account/editVolunteerTimesheet',
-                data: { TimesheetId: timesheetId, UserId: userId, MissionId: missionId, DateVolunteered: volunteerDate, Time: time, Notes: volunteerMessage },
+                data: { TimesheetId: timesheetId, UserId: userId, MissionId: missionId, DateVolunteered: volunteerDate, Hour: volunteerHour, Minutes: volunteerMinutes, Notes: volunteerMessage,Action: -1 },
                 success: function (data) {
                     getVolunteerTimesheetHourBased();
+                    if (data["status"] == 1) {
+                        $('#hourTimesheetModal').modal('toggle');
+                    }
+    
                 },
                 error: function (xhr, status, error) {
                     // Handle error
@@ -132,13 +146,16 @@ $("#goal-timesheet-submit-btn").on("click", function (e) {
     var volunteerDate = $("#volunteer-goal-timesheet-date").val();
     var volunteerAction = $("#volunteer-goal-timesheet-action").val();
     var volunteerMessage = $("#volunteer-goal-timesheet-message").val();
-    if ($(".timesheet-submit-btn")[1].innerHTML == "Submit") {
+    if ($(".timesheet-submit-btn")[1].value == "Submit") {
         $.ajax({
             type: "POST",
             url: '/Account/addVolunteerTimesheet',
-            data: { UserId: userId, MissionId: missionId, DateVolunteered: volunteerDate, Action: volunteerAction, Notes: volunteerMessage },
+            data: { UserId: userId, MissionId: missionId, Hour: 0, Minutes: 0,  DateVolunteered: volunteerDate, Action: volunteerAction, Notes: volunteerMessage },
             success: function (data) {
                 getVolunteerTimesheetGoalBased();
+                if (data["status"] == 1) {
+                    $('#goalTimesheetModal').modal('toggle');
+                }
             },
             error: function (xhr, status, error) {
                 // Handle error
@@ -151,9 +168,12 @@ $("#goal-timesheet-submit-btn").on("click", function (e) {
         $.ajax({
             type: "POST",
             url: '/Account/editVolunteerTimesheet',
-            data: { TimesheetId: timesheetId,UserId: userId, MissionId: missionId, DateVolunteered: volunteerDate, Action: volunteerAction, Notes: volunteerMessage },
+            data: { TimesheetId: timesheetId, UserId: userId, Hour: 0, Minutes: 0, MissionId: missionId, DateVolunteered: volunteerDate, Action: volunteerAction, Notes: volunteerMessage },
             success: function (data) {
                 getVolunteerTimesheetGoalBased();
+                if (data["status"] == 1) {
+                    $('#goalTimesheetModal').modal('toggle');
+                }
             },
             error: function (xhr, status, error) {
                 // Handle error
@@ -278,8 +298,8 @@ function getEditVolunteerTimesheet(timesheetId) {
                 $("#volunteer-hour-timesheet-date")[0].type = 'date';
                 $("#volunteer-timesheet-hour-mission").val(data["data"].missionId);
                 $("#volunteer-hour-timesheet-date").val(data["data"].dateVolunteered.slice(0, 10));
-                $("#volunteer-hour-timesheet-hour").val(data["data"].time.slice(0, 2));
-                $("#volunteer-hour-timesheet-minutes").val(data["data"].time.slice(3, 5));
+                $("#volunteer-hour-timesheet-hour").val(data["data"].hour);
+                $("#volunteer-hour-timesheet-minutes").val(data["data"].minutes);
                 $("#volunteer-hour-timesheet-message").val(data["data"].notes);
                 $("#hour-timesheetId").val(data["data"].timesheetId)
             }
@@ -291,7 +311,7 @@ function getEditVolunteerTimesheet(timesheetId) {
                 $("#goal-timesheetId").val(data["data"].timesheetId)
             }
 
-            $(".timesheet-submit-btn").text("Update");
+            $(".timesheet-submit-btn").val("Update");
 
         },
         error: function (xhr, status, error) {

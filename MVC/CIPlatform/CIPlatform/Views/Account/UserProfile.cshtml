@@ -113,7 +113,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn border border-1 border-secondary p-2 px-3 bg-white rounded-5" data-bs-dismiss="modal">Cancel</button>
-                                <input type="submit" class="bg-white p-2 px-3 rounded-5 orange-btn" value="Save changes"/>
+                                <input id="profile-change-pass-btn" type="submit" class="bg-white p-2 px-3 rounded-5 orange-btn" value="Save changes"/>
                             </div>
                             </form>
                         </div>
@@ -311,7 +311,7 @@
 </div>
 <footer id="mission-footer" class="container-fluid border-top bg-white">
     <div class="py-4 mx-auto">
-        <a href="#">Privacy Policy</a>
+        <a asp-controller="Account" asp-action="Policy">Privacy Policy</a>
         <span data-bs-toggle="modal" style="cursor: pointer;" class="ps-3" data-bs-target="#contactModal">Contact Us</span>
         <!-- Button trigger modal -->
     </div>
