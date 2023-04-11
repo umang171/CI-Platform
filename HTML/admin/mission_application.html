@@ -17,7 +17,7 @@
                     <span id="admin-menu-close-btn" class="d-lg-none d-block text-black px-2 p-1 bg-white">X</span></h5>
                 <div class="d-flex flex-column justify-content-center align-items-start">
                     
-                    <a href="#" class="text-decoration-none w-100 my-2 text-white admin-navigation-menu admin-nav-active">
+                    <a href="#" class="text-decoration-none w-100 my-2 text-white admin-navigation-menu">
                         <div class="d-flex justify-content-start align-items-center p-2 ">
                             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
                                 <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
@@ -60,7 +60,7 @@
                             <span class="px-2 fs-5">Mission Skills</span>
                         </div>
                     </a>
-                    <a href="#" class="text-decoration-none w-100 my-2 text-white admin-navigation-menu">
+                    <a href="#" class="text-decoration-none w-100 my-2 text-white admin-navigation-menu admin-nav-active">
                         <div class="d-flex justify-content-start align-items-center p-2 ">
                             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
                                 <path d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3zm-8.322.12C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139z"/>
@@ -109,198 +109,215 @@
                 </div>
                 <div class="admin-main-content p-sm-3 pb-0">
                     <div class="admin-page-heading border-bottom py-1">
-                        <h1 class="">User</h1>                        
+                        <h1 class="">Mission Application</h1>                        
                     </div>
                     <div class="admin-page-content p-sm-3">
                         <div class="admin-search-add d-flex justify-content-between align-items-center py-2">
                             <input type="text" id="admin-search-input" placeholder="Search mission..." class=" border bg-white p-2 w-50  ps-5">
-                            <button class="bg-white border-4 rounded-5 p-2 px-3 btn-orange">+ Add</button>
                         </div>
                         <div id="" class="admin-page-table py-3 overflow-x-scroll">
                             <table class="table border admin-table">
                                 <thead>
                                     <tr class="p-1 fs-5" style="background-color: #F8F9FC;">
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Email</th>
-                                        <th>Empolyee Id</th>
-                                        <th>Department</th>
-                                        <th>Status</th>
+                                        <th>Mission Title</th>
+                                        <th>Mission Id</th>
+                                        <th>User Id</th>
+                                        <th>User Name</th>
+                                        <th>Applied Date</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr class="p-1 fs-6">
-                                        <td>Umang</td>
-                                        <td>Gohel</td>
-                                        <td>gohelumang12@gmail.com</td>
-                                        <td>1364978456</td>
-                                        <td>Develper</td>
-                                        <td class="admin-status-active">Active</td>
+                                        <td>Desktop publishing software</td>
+                                        <td>5164978456</td>
+                                        <td>1364975623</td>
+                                        <td>Umang Gohel</td>
+                                        <td>12/02/2022</td>
                                         <td>
                                             <div class="d-flex justify-content-start align-items-center w-100">
-                                                  <svg  xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi text-orange bi-pencil-square" style="cursor:pointer;" viewBox="0 0 16 16">
-                                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                                  </svg>
-                                                <img style="cursor:pointer;" class="ms-3" height="20px" src="/images/bin.png" alt="" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" style="color: #3bce2e; cursor:pointer;" fill="currentColor" class="bi bi-check-circle me-1" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                                                  </svg>    
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" style="color: red; cursor:pointer;" fill="currentColor" class="bi bi-x-circle ms-1" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                  </svg>                                     
                                             </div>
                                         </td>
                                     </tr>
                                     <tr class="p-1 fs-6">
-                                        <td>Umang</td>
-                                        <td>Gohel</td>
-                                        <td>gohelumang12@gmail.com</td>
-                                        <td>1364978456</td>
-                                        <td>Develper</td>
-                                        <td class="admin-status-active">Active</td>
+                                        <td>Desktop publishing software</td>
+                                        <td>5164978456</td>
+                                        <td>1364975623</td>
+                                        <td>Umang Gohel</td>
+                                        <td>12/02/2022</td>
                                         <td>
                                             <div class="d-flex justify-content-start align-items-center w-100">
-                                                  <svg  xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi text-orange bi-pencil-square" style="cursor:pointer;" viewBox="0 0 16 16">
-                                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                                  </svg>
-                                                <img style="cursor:pointer;" class="ms-3" height="20px" src="/images/bin.png" alt="" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" style="color: #3bce2e; cursor:pointer;" fill="currentColor" class="bi bi-check-circle me-1" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                                                  </svg>    
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" style="color: red; cursor:pointer;" fill="currentColor" class="bi bi-x-circle ms-1" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                  </svg>                                     
                                             </div>
                                         </td>
                                     </tr>
                                     <tr class="p-1 fs-6">
-                                        <td>Umang</td>
-                                        <td>Gohel</td>
-                                        <td>gohelumang12@gmail.com</td>
-                                        <td>1364978456</td>
-                                        <td>Develper</td>
-                                        <td class="admin-status-active">Active</td>
+                                        <td>Desktop publishing software</td>
+                                        <td>5164978456</td>
+                                        <td>1364975623</td>
+                                        <td>Umang Gohel</td>
+                                        <td>12/02/2022</td>
                                         <td>
                                             <div class="d-flex justify-content-start align-items-center w-100">
-                                                  <svg  xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi text-orange bi-pencil-square" style="cursor:pointer;" viewBox="0 0 16 16">
-                                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                                  </svg>
-                                                <img style="cursor:pointer;" class="ms-3" height="20px" src="/images/bin.png" alt="" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" style="color: #3bce2e; cursor:pointer;" fill="currentColor" class="bi bi-check-circle me-1" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                                                  </svg>    
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" style="color: red; cursor:pointer;" fill="currentColor" class="bi bi-x-circle ms-1" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                  </svg>                                     
                                             </div>
                                         </td>
                                     </tr>
                                     <tr class="p-1 fs-6">
-                                        <td>Umang</td>
-                                        <td>Gohel</td>
-                                        <td>gohelumang12@gmail.com</td>
-                                        <td>1364978456</td>
-                                        <td>Develper</td>
-                                        <td class="admin-status-active">Active</td>
+                                        <td>Desktop publishing software</td>
+                                        <td>5164978456</td>
+                                        <td>1364975623</td>
+                                        <td>Umang Gohel</td>
+                                        <td>12/02/2022</td>
                                         <td>
                                             <div class="d-flex justify-content-start align-items-center w-100">
-                                                  <svg  xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi text-orange bi-pencil-square" style="cursor:pointer;" viewBox="0 0 16 16">
-                                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                                  </svg>
-                                                <img style="cursor:pointer;" class="ms-3" height="20px" src="/images/bin.png" alt="" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" style="color: #3bce2e; cursor:pointer;" fill="currentColor" class="bi bi-check-circle me-1" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                                                  </svg>    
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" style="color: red; cursor:pointer;" fill="currentColor" class="bi bi-x-circle ms-1" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                  </svg>                                     
                                             </div>
                                         </td>
                                     </tr>
                                     <tr class="p-1 fs-6">
-                                        <td>Umang</td>
-                                        <td>Gohel</td>
-                                        <td>gohelumang12@gmail.com</td>
-                                        <td>1364978456</td>
-                                        <td>Develper</td>
-                                        <td class="admin-status-active">Active</td>
+                                        <td>Desktop publishing software</td>
+                                        <td>5164978456</td>
+                                        <td>1364975623</td>
+                                        <td>Umang Gohel</td>
+                                        <td>12/02/2022</td>
                                         <td>
                                             <div class="d-flex justify-content-start align-items-center w-100">
-                                                  <svg  xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi text-orange bi-pencil-square" style="cursor:pointer;" viewBox="0 0 16 16">
-                                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                                  </svg>
-                                                <img style="cursor:pointer;" class="ms-3" height="20px" src="/images/bin.png" alt="" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" style="color: #3bce2e; cursor:pointer;" fill="currentColor" class="bi bi-check-circle me-1" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                                                  </svg>    
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" style="color: red; cursor:pointer;" fill="currentColor" class="bi bi-x-circle ms-1" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                  </svg>                                     
                                             </div>
                                         </td>
                                     </tr>
                                     <tr class="p-1 fs-6">
-                                        <td>Umang</td>
-                                        <td>Gohel</td>
-                                        <td>gohelumang12@gmail.com</td>
-                                        <td>1364978456</td>
-                                        <td>Develper</td>
-                                        <td class="admin-status-active">Active</td>
+                                        <td>Desktop publishing software</td>
+                                        <td>5164978456</td>
+                                        <td>1364975623</td>
+                                        <td>Umang Gohel</td>
+                                        <td>12/02/2022</td>
                                         <td>
                                             <div class="d-flex justify-content-start align-items-center w-100">
-                                                  <svg  xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi text-orange bi-pencil-square" style="cursor:pointer;" viewBox="0 0 16 16">
-                                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                                  </svg>
-                                                <img style="cursor:pointer;" class="ms-3" height="20px" src="/images/bin.png" alt="" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" style="color: #3bce2e; cursor:pointer;" fill="currentColor" class="bi bi-check-circle me-1" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                                                  </svg>    
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" style="color: red; cursor:pointer;" fill="currentColor" class="bi bi-x-circle ms-1" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                  </svg>                                     
                                             </div>
                                         </td>
                                     </tr>
                                     <tr class="p-1 fs-6">
-                                        <td>Umang</td>
-                                        <td>Gohel</td>
-                                        <td>gohelumang12@gmail.com</td>
-                                        <td>1364978456</td>
-                                        <td>Develper</td>
-                                        <td class="admin-status-active">Active</td>
+                                        <td>Desktop publishing software</td>
+                                        <td>5164978456</td>
+                                        <td>1364975623</td>
+                                        <td>Umang Gohel</td>
+                                        <td>12/02/2022</td>
                                         <td>
                                             <div class="d-flex justify-content-start align-items-center w-100">
-                                                  <svg  xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi text-orange bi-pencil-square" style="cursor:pointer;" viewBox="0 0 16 16">
-                                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                                  </svg>
-                                                <img style="cursor:pointer;" class="ms-3" height="20px" src="/images/bin.png" alt="" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" style="color: #3bce2e; cursor:pointer;" fill="currentColor" class="bi bi-check-circle me-1" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                                                  </svg>    
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" style="color: red; cursor:pointer;" fill="currentColor" class="bi bi-x-circle ms-1" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                  </svg>                                     
                                             </div>
                                         </td>
                                     </tr>
                                     <tr class="p-1 fs-6">
-                                        <td>Umang</td>
-                                        <td>Gohel</td>
-                                        <td>gohelumang12@gmail.com</td>
-                                        <td>1364978456</td>
-                                        <td>Develper</td>
-                                        <td class="admin-status-active">Active</td>
+                                        <td>Desktop publishing software</td>
+                                        <td>5164978456</td>
+                                        <td>1364975623</td>
+                                        <td>Umang Gohel</td>
+                                        <td>12/02/2022</td>
                                         <td>
                                             <div class="d-flex justify-content-start align-items-center w-100">
-                                                  <svg  xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi text-orange bi-pencil-square" style="cursor:pointer;" viewBox="0 0 16 16">
-                                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                                  </svg>
-                                                <img style="cursor:pointer;" class="ms-3" height="20px" src="/images/bin.png" alt="" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" style="color: #3bce2e; cursor:pointer;" fill="currentColor" class="bi bi-check-circle me-1" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                                                  </svg>    
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" style="color: red; cursor:pointer;" fill="currentColor" class="bi bi-x-circle ms-1" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                  </svg>                                     
                                             </div>
                                         </td>
                                     </tr>
                                     <tr class="p-1 fs-6">
-                                        <td>Umang</td>
-                                        <td>Gohel</td>
-                                        <td>gohelumang12@gmail.com</td>
-                                        <td>1364978456</td>
-                                        <td>Develper</td>
-                                        <td class="admin-status-active">Active</td>
+                                        <td>Desktop publishing software</td>
+                                        <td>5164978456</td>
+                                        <td>1364975623</td>
+                                        <td>Umang Gohel</td>
+                                        <td>12/02/2022</td>
                                         <td>
                                             <div class="d-flex justify-content-start align-items-center w-100">
-                                                  <svg  xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi text-orange bi-pencil-square" style="cursor:pointer;" viewBox="0 0 16 16">
-                                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                                  </svg>
-                                                <img style="cursor:pointer;" class="ms-3" height="20px" src="/images/bin.png" alt="" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" style="color: #3bce2e; cursor:pointer;" fill="currentColor" class="bi bi-check-circle me-1" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                                                  </svg>    
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" style="color: red; cursor:pointer;" fill="currentColor" class="bi bi-x-circle ms-1" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                  </svg>                                     
                                             </div>
                                         </td>
                                     </tr>
                                     <tr class="p-1 fs-6">
-                                        <td>Umang</td>
-                                        <td>Gohel</td>
-                                        <td>gohelumang12@gmail.com</td>
-                                        <td>1364978456</td>
-                                        <td>Develper</td>
-                                        <td class="admin-status-active">Active</td>
+                                        <td>Desktop publishing software</td>
+                                        <td>5164978456</td>
+                                        <td>1364975623</td>
+                                        <td>Umang Gohel</td>
+                                        <td>12/02/2022</td>
                                         <td>
                                             <div class="d-flex justify-content-start align-items-center w-100">
-                                                  <svg  xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi text-orange bi-pencil-square" style="cursor:pointer;" viewBox="0 0 16 16">
-                                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                                  </svg>
-                                                <img style="cursor:pointer;" class="ms-3" height="20px" src="/images/bin.png" alt="" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" style="color: #3bce2e; cursor:pointer;" fill="currentColor" class="bi bi-check-circle me-1" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                                                  </svg>    
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" style="color: red; cursor:pointer;" fill="currentColor" class="bi bi-x-circle ms-1" viewBox="0 0 16 16">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                  </svg>                                     
                                             </div>
                                         </td>
                                     </tr>
-                                   
                                 </tbody>
                             </table>
                         </div>

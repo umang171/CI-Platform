@@ -1,4 +1,4 @@
-const missionContent=document.getElementById("mission-content");
+const missionContent=document.getElementById("policy-content");
 let missionContentHeight=missionContent.style.height;
 
 // console.log(missionContent);
@@ -12,7 +12,7 @@ function getStyle(element) {
 }
 
 var heightStyle = getStyle(missionContent).height;
-heightStyle=+heightStyle.slice(0,-2)+78;
+heightStyle=+heightStyle.slice(0,-2)+78+78;
 // console.log(heightStyle);
 
 

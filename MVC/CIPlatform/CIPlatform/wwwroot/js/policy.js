@@ -1,4 +1,4 @@
-const missionContent=document.getElementById("mission-content");
+const missionContent=document.getElementById("policy-content");
 let missionContentHeight=missionContent.style.height;
 
 // console.log(missionContent);
