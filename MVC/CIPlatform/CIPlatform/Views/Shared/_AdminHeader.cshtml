@@ -1,0 +1,19 @@
+﻿@model CIPlatform.Entities.ViewModels.AdminHeader
+<div class="admin-header border-bottom d-flex justify-content-between align-items-center p-sm-3">
+    <div class="d-flex justify-content-start align-items-center">
+        <div class="d-lg-none d-block p-1" id="admin-menu-btn">
+            <img src="/images/list.png" alt="">
+        </div>
+        <span class="ps-2">@DateTime.Now.ToString("dddd, MMMM dd,yyyy, HH:mm tt")</span>
+    </div>
+    <div class="d-flex">
+        <img src="/images/user-img.png" class="rounded-circle" style="height: 50px;width: 50px;" alt="">
+        <button class="dropdown-toggle border-0 bg-white m-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            @Model.username
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+        </ul>
+    </div>
+</div>

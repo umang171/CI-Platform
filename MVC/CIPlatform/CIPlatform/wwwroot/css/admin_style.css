@@ -1,0 +1,75 @@
+.text-orange{
+    color: #F88634;
+}
+.bg-orange{
+    background-color: #F88634;
+}
+.btn-orange{
+    border-color: #F88634;
+    color: #F88634;
+}
+.btn-orange:hover{
+    border-color: white;
+    background-color: #F88634 !important;
+    color:white;
+}
+.admin-nav-active{
+    background-color: white !important;
+    color:#F88634 !important;
+}
+.admin-table th,.admin-table td{
+    padding: 13px 5px;
+}
+.admin-status-active{
+    color: #14C506;
+}
+.admin-navigation{
+    color: white;
+}
+.admin-page-table::-webkit-scrollbar{
+    display:none;
+}
+.admin-navigation-menu:hover{
+    background-color: white !important;
+    color:#F88634 !important;
+}
+#admin-search-input {
+    background: url(/images/search.png) no-repeat;
+    background-position: 10px center;
+}
+
+#admin-menu-close-btn{
+    cursor: pointer;   
+}
+#admin-menu-close-btn:hover{
+    color: red !important; 
+}
+#pagination a {
+    color: black;
+}
+
+.pagination-number,
+.pagination-button{
+  font-size: 1.1rem;
+  background-color: transparent;
+  border: none;
+  margin: 0.25rem 0.25rem;
+  cursor: pointer;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: .2rem;
+}
+.page-link:hover{
+    background-color: #F88634 !important;
+    color: white !important;
+}
+@media screen and (max-width:991px) {
+    #admin-menubar{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 3;
+        width: 270px !important;
+        padding: 20px 10px !important;
+    }
+}

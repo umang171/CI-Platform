@@ -14,6 +14,7 @@ builder.Services.AddDbContext<CIPlatformDbContext>(options => options.UseSqlServ
 builder.Services.AddScoped<IUserRepository,UserRepository>();
 builder.Services.AddScoped<IMissionRepository, MissionRepository>();
 builder.Services.AddScoped<IStoryRepository,StoryRepository>();
+builder.Services.AddScoped<IAdminRepository,AdminRepository>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 builder.Services.AddDistributedMemoryCache();

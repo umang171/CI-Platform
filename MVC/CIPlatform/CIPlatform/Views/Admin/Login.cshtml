@@ -1,0 +1,23 @@
+﻿@model CIPlatform.Entities.ViewModels.AdminLogin
+@{
+    ViewData["Title"] = "Admin Login";
+}
+
+@section Style{
+<link rel="stylesheet" href="/css/admin_style.css" />
+}
+<div class="container">
+    <div class="m-auto w-50 mt-5 border p-5">
+        <h1>Admin login</h1>
+        <form method="POST" asp-action="Login" asp-controller="Admin">
+            <label class="form-label my-1" for="loginemail">Email Address</label>
+            <input asp-for="EmailId" class="form-control my-1" type="email" id="loginemail" placeholder="shichan@nohara.com">
+            <span asp-validation-for="EmailId" class="text-danger"></span></br>
+
+            <label class="form-label my-1" for="loginpassword">Password</label>
+            <input asp-for="Password" class="form-control my-1" type="password" id="loginpass" placeholder="**********">
+            <span asp-validation-for="Password" class="text-danger"></span>
+            <input class="form-control my-3 btn-orange" type="submit" value="Login">
+        </form>
+    </div>
+</div>
