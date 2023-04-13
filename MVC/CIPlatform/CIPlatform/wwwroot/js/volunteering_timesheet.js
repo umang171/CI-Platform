@@ -79,9 +79,31 @@ $(".add-vol-data-btn").on("click", function () {
     $("#volunteer-goal-timesheet-date").val("");
     $("#volunteer-goal-timesheet-action").val("");
     $("#volunteer-goal-timesheet-message").val("");
+
+});
+$("#volunteer-hour-timesheet-date").on("change", function (e) {
+
+    var missionId = $("#volunteer-timesheet-hour-mission").val();
+    
+    $.ajax({
+        type: "POST",
+        url: '/Account/GetDatesOfMission',
+        data: { MissionId: missionId},
+        success: function (data) {
+            const dates = data.split(",");
+            $("#volunteer-hour-timesheet-date").prop("min", dates[0]);
+            $("#volunteer-hour-timesheet-date").prop("max", dates[1]);
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    });
+    
 });
 $("#hour-timesheet-submit-btn").on("click", function (e) {
-    var userId = $(".user-btn")[0].id.slice(9)
+
+    var userId = $(".user-btn")[0].id.slice(9);
     var missionId = $("#volunteer-timesheet-hour-mission").val();
     var volunteerDate = $("#volunteer-hour-timesheet-date").val();
     var volunteerHour = $("#volunteer-hour-timesheet-hour").val();
@@ -99,7 +121,8 @@ $("#hour-timesheet-submit-btn").on("click", function (e) {
                     if (data["status"] == 1) {
                         $('#hourTimesheetModal').modal('toggle');
                     }
-
+                    $("#volunteer-hour-timesheet-date").removeProp("min");
+                    $("#volunteer-hour-timesheet-date").removeProp("max");
                 },
                 error: function (xhr, status, error) {
                     // Handle error
@@ -123,7 +146,8 @@ $("#hour-timesheet-submit-btn").on("click", function (e) {
                     if (data["status"] == 1) {
                         $('#hourTimesheetModal').modal('toggle');
                     }
-    
+                    $("#volunteer-hour-timesheet-date").removeProp("min");
+                    $("#volunteer-hour-timesheet-date").removeProp("max");
                 },
                 error: function (xhr, status, error) {
                     // Handle error

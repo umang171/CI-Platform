@@ -15,6 +15,7 @@ namespace CIPlatform.Repository.Repository.Interface
         
         public ResetPassword findUserByToken(string token);
         public void updatePassword(User user);
+        public string GetDatesOfMission(int missionId);
 
         public void addUser(User user);
         public void addResetPasswordToken(ResetPassword obj);
@@ -31,7 +32,7 @@ namespace CIPlatform.Repository.Repository.Interface
         public void editVolunteerTimesheet(VolunteerTimesheetRecordModel volunteerTimesheetRecordModel);
         public List<VolunteerTimesheetRecordModel> getVolunteerTimesheetRecordHourBased(int userId);
         public List<VolunteerTimesheetRecordModel> getVolunteerTimesheetRecordGoalBased(int userId);
-        public Task deleteVolunteerTimesheet(int timesheetId);
+        public void deleteVolunteerTimesheet(int timesheetId);
         public VolunteerTimesheetRecordModel getEditVolunteerTimesheet(int timesheetId);
     }
 }

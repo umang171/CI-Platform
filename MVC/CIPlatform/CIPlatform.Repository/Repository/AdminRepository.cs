@@ -1,4 +1,5 @@
 ﻿using CIPlatform.Entities.DataModels;
+using CIPlatform.Entities.ViewModels;
 using CIPlatform.Repository.Repository.Interface;
 using System;
 using System.Collections.Generic;
@@ -24,16 +25,32 @@ namespace CIPlatform.Repository.Repository
         {
             return _ciPlatformDbContext.Admins.Any(admin => admin.Password == password && admin.Email == email);
         }
-        List<User> IAdminRepository.getUsers(string? searchText)
+        AdminPageList<User> IAdminRepository.getUsers(string? searchText, int pageNumber, int pageSize)
         {
+            IEnumerable<User> users;
             if (searchText == null)
-                return _ciPlatformDbContext.Users.ToList();
+                users=_ciPlatformDbContext.Users.Where(user=>user.DeletedAt==null);
             else
-                return _ciPlatformDbContext.Users.Where(user => user.FirstName.Contains(searchText)).ToList();
+                users=_ciPlatformDbContext.Users.Where(user => user.DeletedAt == null).Where(user => user.FirstName.Contains(searchText) || user.Email.Contains(searchText) || user.LastName.Contains(searchText));
+            var totalCounts=users.Count();
+            var records = users
+                .Skip((pageNumber-1)*pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            return new AdminPageList<User>(records,totalCounts){};
         }
         public Admin findAdmin(string email)
         {
             return _ciPlatformDbContext.Admins.Where(admin => admin.Email == email).First();
+        }
+
+        void IAdminRepository.deleteUser(long userId)
+        {
+            User user=_ciPlatformDbContext.Users.Where(user => user.UserId == userId).First();
+            user.DeletedAt = DateTime.Now;
+            _ciPlatformDbContext.Users.Update(user);
+            _ciPlatformDbContext.SaveChanges();
         }
     }
 }

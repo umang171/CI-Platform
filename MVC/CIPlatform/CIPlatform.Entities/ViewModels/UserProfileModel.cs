@@ -26,6 +26,7 @@ namespace CIPlatform.Entities.ViewModels
         public string? NewPassword { get; set; }= string.Empty;
         [Required]
         [MinLength(8, ErrorMessage = "Please enter more than 8 characters")]
+        [Compare("NewPassword")]
         public string? ConfirmPassword { get; set; }= string.Empty;
 
         public long? PhoneNumber { get; set; }

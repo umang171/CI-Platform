@@ -271,6 +271,7 @@ namespace CIPlatform.Controllers
             if (!user.Password.Equals(userProfileModel.OldPassword))
             {
                 ModelState.AddModelError("OldPassword", "Password does not match");
+                TempData["Error"] = "Password does not match";
             }
             else
             {
@@ -278,11 +279,11 @@ namespace CIPlatform.Controllers
                 {
                     user.Password = userProfileModel.NewPassword;
                     _userRepository.updatePassword(user);
+
                 }
                 else
                 {
                     ModelState.AddModelError("ConfirmPassword", "Confirm password does not match to new password");
-                    return Ok();
                 }
             }
             return RedirectToAction("UserProfile", "Account");
@@ -363,6 +364,11 @@ namespace CIPlatform.Controllers
         {
             VolunteerTimesheetRecordModel volunteerTimesheetRecordModel = _userRepository.getEditVolunteerTimesheet(timesheetId);
             return Json(new { data = volunteerTimesheetRecordModel });
+        }
+        public string GetDatesOfMission(int missionId)
+        {
+            string dates=_userRepository.GetDatesOfMission(missionId);
+            return dates;
         }
         public IActionResult logout()
         {

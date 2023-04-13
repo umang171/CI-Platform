@@ -1,4 +1,5 @@
 ﻿using CIPlatform.Entities.DataModels;
+using CIPlatform.Entities.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,8 @@ namespace CIPlatform.Repository.Repository.Interface
     {
         public Boolean validateEmail(string email);
         public Boolean validateUser(string email, string password);
-        public List<User> getUsers(string? searchText);
+        public AdminPageList<User> getUsers(string? searchText,int pageNumber,int pageSize);
         public Admin findAdmin(string email);
+        public void deleteUser(long userId);
     }
 }

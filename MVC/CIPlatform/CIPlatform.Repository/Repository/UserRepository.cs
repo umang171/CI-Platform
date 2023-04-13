@@ -196,13 +196,13 @@ namespace CIPlatform.Repository.Repository
             return hourTimesheets;
         }
 
-        async Task IUserRepository.deleteVolunteerTimesheet(int timesheetId)
+        void IUserRepository.deleteVolunteerTimesheet(int timesheetId)
         {
             if (_ciPlatformDbContext.Timesheets.Any(timesheet => timesheet.TimesheetId == timesheetId))
             {
                 Timesheet timesheet = _ciPlatformDbContext.Timesheets.Where(timesheet => timesheet.TimesheetId == timesheetId).First();
                 _ciPlatformDbContext.Timesheets.Remove(timesheet);
-                await _ciPlatformDbContext.SaveChangesAsync();
+                _ciPlatformDbContext.SaveChanges();
             }
             return;
         }
@@ -233,6 +233,16 @@ namespace CIPlatform.Repository.Repository
             timesheet.Status = "applied";
             _ciPlatformDbContext.Update(timesheet);
             _ciPlatformDbContext.SaveChanges();
+        }
+
+        string IUserRepository.GetDatesOfMission(int missionId)
+        {
+            DateTime startDate = (DateTime)_ciPlatformDbContext.Missions.Where(mission => mission.MissionId == missionId).First().StartDate;
+            DateTime endDate= (DateTime)_ciPlatformDbContext.Missions.Where(mission => mission.MissionId == missionId).First().EndDate;
+
+            string dates=startDate.ToString("yyyy-MM-dd");
+            dates+=","+endDate.ToString("yyyy-MM-dd");
+            return dates;
         }
     }
 }

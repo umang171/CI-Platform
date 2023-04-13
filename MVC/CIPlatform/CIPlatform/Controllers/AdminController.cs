@@ -31,10 +31,15 @@ namespace CIPlatform.Controllers
             adminUserEditModel.adminHeader = adminHeader;
             return View(adminUserEditModel);
         }
-        public IActionResult getUsers(string? searchText)
+        public IActionResult getUsers(string? searchText,int pageNumber,int pageSize)
         {
-            List<User> users = _adminRepository.getUsers(searchText);
-            return PartialView("_AdminUserList",users);
+            AdminPageList<User> user= _adminRepository.getUsers(searchText,pageNumber,pageSize);
+            return PartialView("_AdminUserList",user);
+        }
+        public IActionResult deleteUser(long userId)
+        {
+            _adminRepository.deleteUser(userId);
+            return Ok();
         }
         public IActionResult Login()
         {

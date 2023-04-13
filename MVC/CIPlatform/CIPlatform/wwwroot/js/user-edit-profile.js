@@ -155,7 +155,7 @@ $('#profile-change-pass-btn').on("click",function () {
         url: '/Account/ChangePasswod',
         data: { countryId: countryId },
         success: function (response) {
-            console.log(response);
+            
         },
         error: function (xhr, status, error) {
             // Handle error
