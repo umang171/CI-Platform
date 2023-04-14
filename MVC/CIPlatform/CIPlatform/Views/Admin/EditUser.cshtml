@@ -1,0 +1,115 @@
+﻿@model CIPlatform.Entities.ViewModels.AdminUserAddModel
+@section Style{
+<link rel="stylesheet" href="/css/admin_style.css">
+}
+<div class="container-fluid">
+    <div class="row">
+        <partial name="_AdminNavigationbar" />
+        <div class="col-lg-10 col-md-12 min-vh-100">
+            <partial name="_AdminHeader" model="Model.adminHeader" />
+            <div class="admin-main-content p-sm-3 pb-0">
+                <div class="cms-add-form">
+                    <div class="cms-add-header p-sm-2 px-sm-3 border" style="background-color: #F8F9FC;">
+                        <h4>Add</h4>
+                    </div>
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="border px-1 p-sm-3 ">
+                            <div class="py-2 d-flex">
+                                <div class="w-50 me-1">
+                                    <label for="" class="form-label">First Name</label>
+                                    <input asp-for="FirstName" type="text" class="form-control">
+                                    <span class="text-danger" asp-validation-for="FirstName"></span>
+                                </div>
+                                <div class="w-50 ms-1">
+                                    <label for="" class="form-label">Last Name</label>
+                                    <input type="text" asp-for="LastName" class="form-control">
+                                    <span class="text-danger" asp-validation-for="LastName"></span>
+                                </div>
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">Phone number</label>
+                                <input type="text" asp-for="PhoneNo" maxlength="10" minlength="10" class="form-control">
+                                <span class="text-danger" asp-validation-for="PhoneNo"></span>
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">Email</label>
+                                <input type="text" id="user-email" asp-for="EmailId" class="form-control">
+                                <span class="text-danger" asp-validation-for="EmailId"></span>
+                            </div>
+                            <input asp-for="UserId" value="@Model.UserId" type="number" hidden>
+                            <div class="py-2">
+                                <label for="" class="form-label">Password</label>
+                                <input id="user-password" type="password" asp-for="Password" class="form-control" value=@Model.Password readonly>
+                            </div>
+                            <div class="py-2 d-flex">
+                                <div class="w-50 me-1">
+                                    <label for="" class="form-label">Employee ID</label>
+                                    <input asp-for="EmployeeId" type="number" maxlength="10" class="form-control">
+                                    <span class="text-danger" asp-validation-for="EmployeeId"></span>
+                                </div>
+                                <div class="w-50 ms-1">
+                                    <label for="" class="form-label">Department</label>
+                                    <input asp-for="Department" type="text" class="form-control">
+                                    <span class="text-danger" asp-validation-for="Department"></span>
+                                </div>
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">My Profile</label>
+                                <textarea asp-for="MyProfile" class="form-control" id="default" rows="5"></textarea>
+                                <span class="text-danger" asp-validation-for="MyProfile"></span>
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">Why I volunteer</label>
+                                <textarea asp-for="WhyIVolunteer" class="form-control" id="default" rows="5"></textarea>
+                                <span class="text-danger" asp-validation-for="WhyIVolunteer"></span>
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">User Avtar</label>
+                                <input type="file" name="Avatar" id="admin-user-avatar" class="form-control">
+                                <div class="border" id="preview-user-avatar">
+                                    <img src="@Model.Profile" style="height:200px;width:200px" />
+                                    <input asp-for="Profile" value="@Model.Profile" type="text" hidden>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pt-3 d-flex justify-content-end align-items-center">
+                            <button id="user-cancel-btn" class="me-1 border border-2 border-secondary bg-white rounded-5 px-4 p-2">Cancel</button>
+                            <input type="submit" class="ms-2 btn-orange bg-white rounded-5 px-4 p-2" value="Update">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section JavaScript{
+<script src="/js/admin_custom.js"></script>
+<script>
+    $("#user-cancel-btn").click(function(e){
+        e.preventDefault();
+        window.location = "/Admin/Index";
+    });
+    $("#admin-navigation-user").addClass("admin-nav-active");
+    $(document).ready(function(e){
+    });
+    //display profile
+     var imagesPreview = function(input, placeToInsertImagePreview) {
+
+    if (input.files) {
+        var filesAmount = input.files.length;
+
+        for (i = 0; i < filesAmount; i++) {
+            var reader = new FileReader();
+                reader.onload = function(event) {
+                    $("#preview-user-avatar").html("")
+                    $($.parseHTML('<img>')).attr('src', event.target.result).css("height","200px").css("width","200px").appendTo(placeToInsertImagePreview);
+                }
+                reader.readAsDataURL(input.files[i]);
+            }
+        }
+    };
+    $('#admin-user-avatar').on('change', function() {
+        imagesPreview(this, 'div#preview-user-avatar');
+    });
+</script>
+}  

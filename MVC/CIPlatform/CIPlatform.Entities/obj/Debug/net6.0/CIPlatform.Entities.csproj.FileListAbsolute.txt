@@ -25,3 +25,4 @@ E:\tatavasoft\ci\CI-Platform\MVC\CIPlatform\CIPlatform.Entities\obj\Debug\net6.0
 E:\tatavasoft\ci\CI-Platform\MVC\CIPlatform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.pdb
 E:\tatavasoft\ci\CI-Platform\MVC\CIPlatform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.genruntimeconfig.cache
 E:\tatavasoft\ci\CI-Platform\MVC\CIPlatform\CIPlatform.Entities\obj\Debug\net6.0\ref\CIPlatform.Entities.dll
+D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.csproj.AssemblyReference.cache

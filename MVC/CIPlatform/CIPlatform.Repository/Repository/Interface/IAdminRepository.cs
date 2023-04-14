@@ -15,5 +15,10 @@ namespace CIPlatform.Repository.Repository.Interface
         public AdminPageList<User> getUsers(string? searchText,int pageNumber,int pageSize);
         public Admin findAdmin(string email);
         public void deleteUser(long userId);
+        public void addUser(User user);
+        public void editUser(User user);
+        public AdminPageList<CmsPage> getCmsPages(string? searchText,int pageNumber,int pageSize);
+        public void deleteCmsPage(long cmsPageId);
+
     }
 }

@@ -150,7 +150,7 @@ namespace CIPlatform.Repository.Repository
 
         bool IUserRepository.validateEmail(string email)
         {
-            return _ciPlatformDbContext.Users.Any(u => u.Email == email);
+            return _ciPlatformDbContext.Users.Any(user => user.Email == email && user.DeletedAt==null);
         }
 
         bool IUserRepository.validateUser(string email, string password)

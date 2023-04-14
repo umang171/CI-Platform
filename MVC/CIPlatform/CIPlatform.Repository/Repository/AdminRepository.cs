@@ -39,7 +39,7 @@ namespace CIPlatform.Repository.Repository
                 .ToList();
 
             return new AdminPageList<User>(records,totalCounts){};
-        }
+        }       
         public Admin findAdmin(string email)
         {
             return _ciPlatformDbContext.Admins.Where(admin => admin.Email == email).First();
@@ -50,6 +50,37 @@ namespace CIPlatform.Repository.Repository
             User user=_ciPlatformDbContext.Users.Where(user => user.UserId == userId).First();
             user.DeletedAt = DateTime.Now;
             _ciPlatformDbContext.Users.Update(user);
+            _ciPlatformDbContext.SaveChanges();
+        }
+
+        public void addUser(User user)
+        {
+            _ciPlatformDbContext.Users.Add(user);
+            _ciPlatformDbContext.SaveChanges();
+        }
+
+        void IAdminRepository.editUser(User user)
+        {
+            _ciPlatformDbContext.Update(user);
+            _ciPlatformDbContext.SaveChanges();
+        }
+        AdminPageList<CmsPage> IAdminRepository.getCmsPages(string? searchText, int pageNumber, int pageSize)
+        {
+            IEnumerable<CmsPage> cmsPages;
+            if (searchText == null)
+                cmsPages = _ciPlatformDbContext.CmsPages.Where(page => page.DeletedAt == null);
+            else
+                cmsPages = _ciPlatformDbContext.CmsPages.Where(page => page.DeletedAt == null).Where(page => page.Title.Contains(searchText));
+            var totalCounts = cmsPages.Count();
+            var records = cmsPages.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            return new AdminPageList<CmsPage>(records, totalCounts);
+        }
+
+        void IAdminRepository.deleteCmsPage(long cmsPageId)
+        {
+            CmsPage cmsPage=_ciPlatformDbContext.CmsPages.Where(cmsPage=>cmsPage.CmsPageId == cmsPageId).First();
+            cmsPage.DeletedAt = DateTime.Now;
+            _ciPlatformDbContext.CmsPages.Update(cmsPage);
             _ciPlatformDbContext.SaveChanges();
         }
     }
