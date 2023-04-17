@@ -100,5 +100,17 @@ namespace CIPlatform.Repository.Repository
             _ciPlatformDbContext.Update(cmsPage);
             _ciPlatformDbContext.SaveChanges();
         }
+
+        AdminPageList<Mission> IAdminRepository.getMissions(string? searchText, int pageNumber, int pageSize)
+        {
+            IEnumerable<Mission> missions;
+            if (searchText == null)
+                missions = _ciPlatformDbContext.Missions.Where(mission=> mission.DeletedAt == null && mission.Status == true);
+            else
+                missions = _ciPlatformDbContext.Missions.Where(mission => mission.DeletedAt == null && mission.Status == true).Where(mission => mission.Title.Contains(searchText));
+            var totalCounts = missions.Count();
+            var records = missions.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            return new AdminPageList<Mission>(records, totalCounts);
+        }
     }
 }

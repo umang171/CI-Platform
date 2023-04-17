@@ -267,5 +267,25 @@ namespace CIPlatform.Controllers
             }
             return View(adminCMSModel);
         }
+        [SessionHelper]
+        public IActionResult AdminMission()
+        {
+            string adminSessionEmail = HttpContext.Session.GetString("useremail");
+            Admin admin = _adminRepository.findAdmin(adminSessionEmail);
+            AdminHeader adminHeader = new AdminHeader();
+            adminHeader.username = admin.FirstName + " " + admin.LastName;
+            AdminMissionModel adminMissionModel = new AdminMissionModel();
+            adminMissionModel.adminHeader = adminHeader;
+            return View(adminMissionModel);
+        }
+        public IActionResult GetMissions(string? searchText, int pageNumber, int pageSize)
+        {
+            AdminPageList<Mission> mission = _adminRepository.getMissions(searchText, pageNumber, pageSize);
+            return PartialView("_AdminMissionList", mission);
+        }
+        public IActionResult AddMission()
+        {
+            return View();
+        }
     }   
 }

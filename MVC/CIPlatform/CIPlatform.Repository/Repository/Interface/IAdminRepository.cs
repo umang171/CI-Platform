@@ -22,6 +22,7 @@ namespace CIPlatform.Repository.Repository.Interface
         public void addCMSPage(CmsPage cmsPage);
         public CmsPage findCMSPageByID(long cmsPageID);
         public void editCMSPage(CmsPage cmsPage);
+        public AdminPageList<Mission> getMissions(string? searchText, int pageNumber, int pageSize);
 
     }
 }
