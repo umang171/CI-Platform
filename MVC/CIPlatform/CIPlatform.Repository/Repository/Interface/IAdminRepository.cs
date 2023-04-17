@@ -19,6 +19,9 @@ namespace CIPlatform.Repository.Repository.Interface
         public void editUser(User user);
         public AdminPageList<CmsPage> getCmsPages(string? searchText,int pageNumber,int pageSize);
         public void deleteCmsPage(long cmsPageId);
+        public void addCMSPage(CmsPage cmsPage);
+        public CmsPage findCMSPageByID(long cmsPageID);
+        public void editCMSPage(CmsPage cmsPage);
 
     }
 }

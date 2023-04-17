@@ -214,5 +214,58 @@ namespace CIPlatform.Controllers
             adminCMSModel.adminHeader = adminHeader;
             return View(adminCMSModel);
         }
-    }
+        [SessionHelper]
+        [HttpPost]
+        public IActionResult ADDCmsPage(AdminCMSModel adminCMSModel)
+        {
+            if (ModelState.IsValid)
+            {
+                CmsPage cmsPage = new CmsPage
+                {
+                    Title = adminCMSModel.Title,
+                    Slug = adminCMSModel.Slug,
+                    Description = adminCMSModel.Description,
+                    Status = Boolean.Parse(adminCMSModel.Status),
+                };
+                _adminRepository.addCMSPage(cmsPage);
+                return RedirectToAction("AdminCMSPage");
+            }
+            return View(adminCMSModel);
+        }
+        [SessionHelper]
+        public IActionResult EditCMSPage(long cmsPageId)
+        {
+            string adminSessionEmail = HttpContext.Session.GetString("useremail");
+            Admin admin = _adminRepository.findAdmin(adminSessionEmail);
+            AdminHeader adminHeader = new AdminHeader();
+            adminHeader.username = admin.FirstName + " " + admin.LastName;
+            AdminCMSModel adminCMSModel = new AdminCMSModel();
+            adminCMSModel.adminHeader = adminHeader;
+            CmsPage cmsPage = _adminRepository.findCMSPageByID(cmsPageId);
+
+            adminCMSModel.Title = cmsPage.Title;
+            adminCMSModel.Description = cmsPage.Description;
+            adminCMSModel.Slug = cmsPage.Slug;
+            adminCMSModel.Status = cmsPage.Status.ToString();
+            adminCMSModel.CMSPageId = cmsPageId;
+            return View(adminCMSModel);
+        }
+        [SessionHelper]
+        [HttpPost]
+        public IActionResult EditCMSPage(AdminCMSModel adminCMSModel)
+        {
+            if (ModelState.IsValid)
+            {
+                CmsPage cmsPage=_adminRepository.findCMSPageByID(adminCMSModel.CMSPageId);
+                cmsPage.Title = adminCMSModel.Title;
+                cmsPage.Slug = adminCMSModel.Slug;
+                cmsPage.Description = adminCMSModel.Description;
+                cmsPage.Status = Boolean.Parse(adminCMSModel.Status);
+                cmsPage.CmsPageId=adminCMSModel.CMSPageId;
+                _adminRepository.editCMSPage(cmsPage);
+                return RedirectToAction("AdminCMSPage");
+            }
+            return View(adminCMSModel);
+        }
+    }   
 }

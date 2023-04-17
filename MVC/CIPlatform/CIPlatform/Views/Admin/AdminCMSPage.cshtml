@@ -70,6 +70,7 @@
                    $('#admin-cms-table').html(data);
                    loadPagination();
                    deleteCMSPages();
+                   editCMSPages();
                },
                error: function (xhr, status, error) {
                    // Handle error
@@ -150,6 +151,14 @@
                 }
             });
     });
-
+     //========================================================================
+    //Edit users
+    //========================================================================
+    function editCMSPages(){
+        $(".edit-cms-btn").click(function(){
+            var cmsPageId=this.id.slice(5);
+            window.location = "/Admin/EditCMSPage?cmsPageId="+cmsPageId;
+        });
+    }
 </script>
 }

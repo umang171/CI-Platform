@@ -68,9 +68,9 @@ namespace CIPlatform.Repository.Repository
         {
             IEnumerable<CmsPage> cmsPages;
             if (searchText == null)
-                cmsPages = _ciPlatformDbContext.CmsPages.Where(page => page.DeletedAt == null);
+                cmsPages = _ciPlatformDbContext.CmsPages.Where(page => page.DeletedAt == null && page.Status == true);
             else
-                cmsPages = _ciPlatformDbContext.CmsPages.Where(page => page.DeletedAt == null).Where(page => page.Title.Contains(searchText));
+                cmsPages = _ciPlatformDbContext.CmsPages.Where(page => page.DeletedAt == null && page.Status == true).Where(page => page.Title.Contains(searchText));
             var totalCounts = cmsPages.Count();
             var records = cmsPages.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
             return new AdminPageList<CmsPage>(records, totalCounts);
@@ -81,6 +81,23 @@ namespace CIPlatform.Repository.Repository
             CmsPage cmsPage=_ciPlatformDbContext.CmsPages.Where(cmsPage=>cmsPage.CmsPageId == cmsPageId).First();
             cmsPage.DeletedAt = DateTime.Now;
             _ciPlatformDbContext.CmsPages.Update(cmsPage);
+            _ciPlatformDbContext.SaveChanges();
+        }
+
+        void IAdminRepository.addCMSPage(CmsPage cmsPage)
+        {
+            _ciPlatformDbContext.Add(cmsPage);
+            _ciPlatformDbContext.SaveChanges();
+        }
+
+        CmsPage IAdminRepository.findCMSPageByID(long cmsPageID)
+        {
+            return _ciPlatformDbContext.CmsPages.Where(cmsPage=> cmsPage.DeletedAt == null && cmsPage.CmsPageId==cmsPageID).First();
+        }
+
+        void IAdminRepository.editCMSPage(CmsPage cmsPage)
+        {
+            _ciPlatformDbContext.Update(cmsPage);
             _ciPlatformDbContext.SaveChanges();
         }
     }
