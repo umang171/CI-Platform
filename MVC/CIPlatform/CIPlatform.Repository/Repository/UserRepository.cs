@@ -244,5 +244,10 @@ namespace CIPlatform.Repository.Repository
             dates+=","+endDate.ToString("yyyy-MM-dd");
             return dates;
         }
+
+        List<Banner> IUserRepository.GetBannners()
+        {
+           return _ciPlatformDbContext.Banners.Where(banner=>banner.DeletedAt==null).OrderBy(banner=>banner.SortOrder).ToList();
+        }
     }
 }

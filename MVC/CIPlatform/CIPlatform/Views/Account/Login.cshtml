@@ -6,7 +6,7 @@
 
     <div class="container-fluid">
         <div class="row">
-             @Html.Partial("_AccountCarousel")  
+            <partial name="_AccountCarousel" model="Model.banners"/>
             <div id="logincontent" class="col-md-4 col-sm-12 logincontent">
                 <form asp-action="Login" asp-controller="Account">
                     <label asp-for="EmailId">Email Address</label>

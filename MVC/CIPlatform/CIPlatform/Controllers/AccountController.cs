@@ -26,8 +26,10 @@ namespace CIPlatform.Controllers
         }
         public IActionResult Login()
         {
-
-            return View();
+            List<Banner> banners=_userRepository.GetBannners();
+            LoginModel loginModel = new LoginModel();
+            loginModel.banners = banners;
+            return View(loginModel);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -369,7 +371,7 @@ namespace CIPlatform.Controllers
         {
             string dates=_userRepository.GetDatesOfMission(missionId);
             return dates;
-        }
+        }        
         public IActionResult logout()
         {
             HttpContext.Session.Remove("useremail");

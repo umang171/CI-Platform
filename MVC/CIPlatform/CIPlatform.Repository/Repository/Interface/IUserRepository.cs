@@ -34,5 +34,6 @@ namespace CIPlatform.Repository.Repository.Interface
         public List<VolunteerTimesheetRecordModel> getVolunteerTimesheetRecordGoalBased(int userId);
         public void deleteVolunteerTimesheet(int timesheetId);
         public VolunteerTimesheetRecordModel getEditVolunteerTimesheet(int timesheetId);
+        public List<Banner> GetBannners();
     }
 }
