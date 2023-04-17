@@ -23,6 +23,11 @@ namespace CIPlatform.Repository.Repository.Interface
         public CmsPage findCMSPageByID(long cmsPageID);
         public void editCMSPage(CmsPage cmsPage);
         public AdminPageList<Mission> getMissions(string? searchText, int pageNumber, int pageSize);
+        public AdminPageList<Banner> GetBanners(string? searchText, int pageNumber, int pageSize);
+        public void addBanner(Banner banner);
+        public void deleteBanner(long bannerId);
+        public Banner findBannerById(long bannerId);
+        public void editBanner(Banner banner);
 
     }
 }

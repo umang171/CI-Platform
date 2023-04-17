@@ -1,0 +1,306 @@
+﻿@model CIPlatform.Entities.ViewModels.AdminMissionModel
+@section Style{
+<link rel="stylesheet" href="/css/admin_style.css">
+}
+<div class="container-fluid">
+    <div class="row">
+        <partial name="_AdminNavigationbar" />
+        <div class="col-lg-10 col-md-12 min-vh-100">
+            <partial name="_AdminHeader" model="Model.adminHeader" />
+            <div class="admin-main-content p-sm-3 pb-0">
+                <div class="cms-add-form">
+                    <div class="cms-add-header p-sm-2 px-sm-3 border" style="background-color: #F8F9FC;">
+                        <h4>Add Mission</h4>
+                    </div>
+                    <form action="">
+                        <div class="border px-1 p-sm-3 ">
+                            <div class="py-2">
+                                <label for="" class="form-label">Mission Title</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">Mission Short Description</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">Description</label>
+                                <textarea id="" class="form-control" rows="3"></textarea>
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">Type</label>
+                                <select name="" id="" class="form-select">
+                                    <option value="1">time</option>
+                                    <option value="1">goal</option>
+                                </select>
+                            </div>
+
+                            <div class="py-2 d-flex">
+                                <div class="w-50 me-1">
+                                    <label for="" class="form-label">Start Date</label>
+                                    <input type="date" class="form-control">
+                                </div>
+                                <div class="w-50 ms-1">
+                                    <label for="" class="form-label">End Date</label>
+                                    <input type="date" class="form-control">
+                                </div>
+                            </div>
+                            <div class="py-2 d-flex">
+                                <div class="w-50 me-1">
+                                    <label for="" class="form-label">Goal Value</label>
+                                    <input type="number" class="form-control">
+                                </div>
+                                <div class="w-50 ms-1">
+                                    <label for="" class="form-label">Goal Objective</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="py-2 d-flex">
+                                <div class="w-50 me-1">
+                                    <label for="" class="form-label">Country</label>
+                                    <select name="" id="" class="form-select">
+                                        <option value="1">India</option>
+                                        <option value="1">Canada</option>
+                                        <option value="1">Australia</option>
+                                    </select>
+                                </div>
+                                <div class="w-50 ms-1">
+                                    <label for="" class="form-label">City</label>
+                                    <select name="" id="" class="form-select">
+                                        <option value="1">Ahmedabad</option>
+                                        <option value="1">Rajkot</option>
+                                        <option value="1">Mumbai</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="py-2 d-flex">
+                                <div class="w-50 ms-1">
+                                    <label for="" class="form-label">Total seats</label>
+                                    <input type="number" class="form-control">
+                                </div>
+                                <div class="w-50 ms-1">
+                                    <label for="" class="form-label">Mission Theme</label>
+                                    <select name="" id="" class="form-select">
+                                        <option value="1">Environment</option>
+                                        <option value="1">Children</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">Required Skills</label>
+                                <button type="button" class="p-1 ms-2 px-4 rounded-5 btn-orange bg-white" data-bs-toggle="modal" data-bs-target="#skillModal">
+                                    Add Skill
+                                </button>
+                                <textarea readonly id="skill-textarea" class="form-control" rows="5"></textarea>
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">Organization Name</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">Organization Detail</label>
+                                <textarea id="" class="form-control" rows="3"></textarea>
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">Availability</label>
+                                <select name="" id="" class="form-select">
+                                    <option value="1">Daily</option>
+                                    <option value="1">Weekly</option>
+                                    <option value="1">Monthly</option>
+                                </select>
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">Mission Media</label>
+                                <input type="file" name="" id="admin-mission-media" class="form-control" multiple>
+                                <div class="border" id="preview-mission-media"></div>
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">Mission Documents</label>
+                                <input type="file" name="" id="admin-mission-document" class="form-control" multiple>
+                                <p class="border" id="preview-mission-document"></p>
+                            </div>
+
+                        </div>
+                        <div class="pt-3 d-flex justify-content-end align-items-center">
+                            <button id="mission-cancel-btn" class="me-1 border border-2 border-secondary bg-white rounded-5 px-4 p-2">Cancel</button>
+                            <input type="submit" class="ms-2 btn-orange bg-white rounded-5 px-4 p-2" value="Save">
+                        </div>
+                    </form>
+                    <div class="modal fade" id="skillModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" style="max-width: 70%;">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Add your skills</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="d-flex">
+                                        <div class="w-50 border border-1 border-secondary p-sm-3 subject-info-box-1">
+                                            <select multiple="multiple" id='lstBox1' class="form-control">
+                                                <option value="Anthropology">Anthropology</option>
+                                                <option value="Archeology">Archeology</option>
+                                                <option value="Astronomy">Astronomy</option>
+                                                <option value="Computer Science">Computer Science</option>
+                                                <option value="Environmental Science">Environmental Science</option>
+                                                <option value="History">History</option>
+                                                <option value="Library Sciences">Library Sciences</option>
+                                                <option value="Mathematics">Mathematics</option>
+                                                <option value="Music">Music</option>
+                                                <option value="Theory">Theory</option>
+                                                <option value="Research">Research</option>
+                                                <option value="Administrative Support">Administrative Support</option>
+                                                <option value="Customer Service">Customer Service</option>
+                                                <option value="Data Entry">Data Entry</option>
+                                                <option value="Executive Admin">Executive Admin</option>
+                                                <option value="Office Management">Office Management</option>
+                                                <option value="Office Reception">Office Reception</option>
+                                                <option value="Program Management">Program Management</option>
+                                                <option value="Transactions">Transactions</option>
+                                                <option value="Agronomy">Agronomy</option>
+                                                <option value="Animal Care / Handling ">Animal Care / Handling </option>
+                                                <option value="Animal Therapy">Animal Therapy</option>
+                                                <option value="Aquarium Maintenance">Aquarium Maintenance</option>
+                                                <option value="Botany">Botany</option>
+                                                <option value="Environmental Education">Environmental Education</option>
+                                                <option value="Environmental Policy">Environmental Policy</option>
+                                                <option value="Farming">Farming</option>
+                                            </select>
+                                        </div>
+                                        <div class="d-flex flex-column align-items-center justify-content-center">
+                                            <button id='btnRight' class="p-sm-3 bg-white">></button>
+                                            <button id='btnLeft' class="p-sm-3 bg-white"><</button>
+                                        </div>
+                                        <div class="w-50 border border-1 border-secondary d-flex flex-column p-sm-3 subject-info-box-2">
+                                            <select multiple="multiple" id='lstBox2' class="form-control">
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button  type="button" class="btn border border-1 border-secondary bg-white p-2 px-3 rounded-5" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" id="skill-save-btn" class="bg-white p-2 px-3 rounded-5 btn-orange" data-bs-dismiss="modal">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section JavaScript{
+<script src="https://cdn.tiny.cloud/1/pja9ajo1o39g0k8thqnh6v1mf71mykif09v83tqtjfhsnung/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script src="/js/admin_custom.js"></script>
+<script>
+     $("#admin-navigation-mission").addClass("admin-nav-active");
+            tinymce.init({
+          selector: 'textarea#default',
+          plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+          toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        });
+        $("#mission-cancel-btn").click(function(e){
+            e.preventDefault();
+            window.location = "/Admin/AdminMission";
+        });
+    // ==============================================================================
+    // Add skills
+    // ==============================================================================
+    (function () {
+        $("#btnRight").click(function (e) {
+          var selectedOpts = $("#lstBox1 option:selected");
+          if (selectedOpts.length == 0) {
+            alert("Nothing to move.");
+            e.preventDefault();
+            }
+
+          $("#lstBox2").append($(selectedOpts).clone());
+           $(selectedOpts).remove();
+          e.preventDefault();
+        });
+
+
+        $("#btnLeft").click(function (e) {
+          var selectedOpts = $("#lstBox2 option:selected");
+          if (selectedOpts.length == 0) {
+            alert("Nothing to move.");
+            e.preventDefault();
+          }
+          $("#lstBox1").append($(selectedOpts).clone());
+          $(selectedOpts).remove();
+          e.preventDefault();
+        });
+
+    })(jQuery);
+
+    var addedSkills = "";
+    $("#skill-save-btn").click(function (e) {
+        addedSkills = "";
+        console.log("click");
+        var selectedOpts = $("#lstBox2 option");
+
+        var options = $('#lstBox2 option');
+
+        var values = $.map(options, function (option) {
+            addedSkills += option.innerHTML + "\n";
+        });
+        $("#skill-textarea").val(addedSkills);
+    });
+    addedSkills = "";
+
+    var options = $('#lstBox2 option');
+
+    var values = $.map(options, function (option) {
+        addedSkills += option.innerHTML + "\n";
+    });
+    $("#skill-textarea").val(addedSkills);
+    // ==============================================================================
+    // Add Media
+    // ==============================================================================
+    $(function() {
+        // Multiple images preview in browser
+        var imagesPreview = function(input, placeToInsertImagePreview) {
+
+            if (input.files) {
+                var filesAmount = input.files.length;
+
+                for (i = 0; i < filesAmount; i++) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(event) {
+                        $($.parseHTML('<img>')).attr('src', event.target.result).css("height","100px").css("width","100px").css("margin","5px 8px").appendTo(placeToInsertImagePreview);
+                    }
+
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+
+        };
+
+        $('#admin-mission-media').on('change', function() {
+            imagesPreview(this, 'div#preview-mission-media');
+        });
+    });
+    // ==============================================================================
+    // Add Documents
+    // ==============================================================================
+    $(function() {
+        // Multiple images preview in browser
+        var documentPreview = function(input) {
+
+            if (input.files) {
+                var filesAmount = input.files.length;
+                var docNames=""
+                for (i = 0; i < filesAmount; i++) {
+                    docNames+=input.files[i].name+"</br>";
+                }
+                $("#preview-mission-document").html(docNames)
+            }
+
+        };
+
+        $('#admin-mission-document').on('change', function() {
+            documentPreview(this);
+        });
+    });
+</script>
+}

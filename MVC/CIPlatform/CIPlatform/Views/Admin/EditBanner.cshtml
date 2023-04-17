@@ -1,0 +1,80 @@
+﻿@model CIPlatform.Entities.ViewModels.AdminBannerModel
+@section Style{
+<link rel="stylesheet" href="/css/admin_style.css">
+}<div class="container-fluid">
+    <div class="row">
+        <partial name="_AdminNavigationbar" />
+        <div class="col-lg-10 col-md-12 min-vh-100">
+            <partial name="_AdminHeader" model="Model.adminHeader" />
+            <div class="admin-main-content p-sm-3 pb-0">
+                <div class="cms-add-form">
+                    <div class="cms-add-header p-sm-2 px-sm-3 border" style="background-color: #F8F9FC;">
+                        <h4>Banner Edit</h4>
+                    </div>
+                    <form method="POST" enctype="multipart/form-data">
+                        <div class="border px-1 p-sm-3 ">
+                            <div class="py-2">
+                                <label for="" class="form-label">Banner</label>
+                                <input type="file" name="Image" id="admin-banner" class="form-control">
+                                <div class="border" id="preview-banner">
+                                    <img src="@Model.BannerImage" style="height:400px;width:500px"/>
+                                </div>
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">Banner text</label>
+                                <textarea asp-for="Text" id="" class="form-control" rows="5"></textarea>
+                                <span asp-validation-for="Text" class="text-danger"></span>
+                            </div>
+                                <input type="number" asp-for="BannerID" hidden>
+                                <input type="string" asp-for="BannerImage" hidden>
+                            <div class="py-2">
+                                <label for="" class="form-label">Sort Order</label>
+                                <input type="number" asp-for="SortOrder" class="form-control">
+                                <span asp-validation-for="SortOrder" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="pt-3 d-flex justify-content-end align-items-center">
+                            <button id="banner-cancel-btn" class="me-1 border border-2 border-secondary bg-white rounded-5 px-4 p-2">Cancel</button>
+                            <input type="submit" class="ms-2 btn-orange bg-white rounded-5 px-4 p-2" value="Update">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section JavaScript{
+<script src="/js/admin_custom.js"></script>
+<script>
+    $("#admin-navigation-banner").addClass("admin-nav-active");
+     $("#banner-cancel-btn").click(function(e){
+            e.preventDefault();
+            window.location = "/Admin/AdminBannerMgmt";
+        });
+      $(function() {
+    // Multiple images preview in browser
+    var imagesPreview = function(input, placeToInsertImagePreview) {
+
+        if (input.files) {
+            var filesAmount = input.files.length;
+
+            for (i = 0; i < filesAmount; i++) {
+                var reader = new FileReader();
+
+                reader.onload = function(event) {
+                    $("#preview-banner").html("")
+                    $($.parseHTML('<img>')).attr('src', event.target.result).css("height","400px").css("width","500px").appendTo(placeToInsertImagePreview);
+                }
+
+                reader.readAsDataURL(input.files[i]);
+            }
+        }
+
+    };
+
+    $('#admin-banner').on('change', function() {
+        imagesPreview(this, 'div#preview-banner');
+    });
+});
+    </script>
+}

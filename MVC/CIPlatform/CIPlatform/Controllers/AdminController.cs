@@ -278,14 +278,130 @@ namespace CIPlatform.Controllers
             adminMissionModel.adminHeader = adminHeader;
             return View(adminMissionModel);
         }
+        [SessionHelper]
         public IActionResult GetMissions(string? searchText, int pageNumber, int pageSize)
         {
             AdminPageList<Mission> mission = _adminRepository.getMissions(searchText, pageNumber, pageSize);
             return PartialView("_AdminMissionList", mission);
         }
+        [SessionHelper]
         public IActionResult AddMission()
         {
-            return View();
+            string adminSessionEmail = HttpContext.Session.GetString("useremail");
+            Admin admin = _adminRepository.findAdmin(adminSessionEmail);
+            AdminHeader adminHeader = new AdminHeader();
+            adminHeader.username = admin.FirstName + " " + admin.LastName;
+            AdminMissionModel adminMissionModel= new AdminMissionModel();
+            adminMissionModel.adminHeader = adminHeader;
+            return View(adminMissionModel);
+        }
+        [SessionHelper]
+        public IActionResult AdminBannerMgmt()
+        {
+            string adminSessionEmail = HttpContext.Session.GetString("useremail");
+            Admin admin = _adminRepository.findAdmin(adminSessionEmail);
+            AdminHeader adminHeader = new AdminHeader();
+            adminHeader.username = admin.FirstName + " " + admin.LastName;
+            AdminBannerModel adminBannerModel = new AdminBannerModel();
+            adminBannerModel.adminHeader = adminHeader;
+            return View(adminBannerModel);
+        }
+        [SessionHelper]
+        public IActionResult GetBanners(string? searchText, int pageNumber, int pageSize)
+        {
+            AdminPageList<Banner> banners = _adminRepository.GetBanners(searchText, pageNumber, pageSize);
+            return PartialView("_AdminBannerList",banners);
+        }
+        [SessionHelper]
+        public IActionResult AddBanner()
+        {
+            string adminSessionEmail = HttpContext.Session.GetString("useremail");
+            Admin admin = _adminRepository.findAdmin(adminSessionEmail);
+            AdminHeader adminHeader = new AdminHeader();
+            adminHeader.username = admin.FirstName + " " + admin.LastName;
+            AdminBannerModel adminBannerModel = new AdminBannerModel();
+            adminBannerModel.adminHeader = adminHeader;
+            return View(adminBannerModel);
+        }
+        [SessionHelper]
+        [HttpPost]
+        public IActionResult AddBanner(AdminBannerModel adminBannerModel,IFormFile Image)
+        {
+            if (ModelState.IsValid)
+            {
+                Banner banner = new Banner();
+
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+                if (Image != null)
+                {
+                    string fileName = Guid.NewGuid().ToString();
+                    var uploads = Path.Combine(wwwRootPath, @"images\banners");
+                    var extension = Path.GetExtension(Image.FileName);
+                    using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
+                    {
+                        Image.CopyTo(fileStreams);
+                    }
+                    banner.Image= @"\images\banners\" + fileName + extension;
+                }
+                banner.Text = adminBannerModel.Text;
+                banner.SortOrder=adminBannerModel.SortOrder;
+                _adminRepository.addBanner(banner);
+                return RedirectToAction("AdminBannerMgmt");
+            }
+            return View(adminBannerModel);
+        }
+        [SessionHelper]
+        public IActionResult DeleteBanner(long bannerId)
+        {
+            _adminRepository.deleteBanner(bannerId);
+            return Ok();
+        }
+        [SessionHelper]
+        public IActionResult EditBanner(long bannerId)
+        {
+            string adminSessionEmail = HttpContext.Session.GetString("useremail");
+            Admin admin = _adminRepository.findAdmin(adminSessionEmail);
+            AdminHeader adminHeader = new AdminHeader();
+            adminHeader.username = admin.FirstName + " " + admin.LastName;
+            AdminBannerModel adminBannerModel = new AdminBannerModel();
+            adminBannerModel.adminHeader = adminHeader;
+            Banner banner = _adminRepository.findBannerById(bannerId);
+            adminBannerModel.Text = banner.Text;
+            adminBannerModel.BannerImage= banner.Image;
+            adminBannerModel.SortOrder = banner.SortOrder;
+            adminBannerModel.BannerID = banner.BannerId;
+            return View(adminBannerModel);
+        }
+        [HttpPost]
+        public IActionResult EditBanner(AdminBannerModel adminBannerModel, IFormFile? Image)
+        {
+            if (ModelState.IsValid)
+            {
+                Banner banner = new Banner();
+
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+                if (Image != null)
+                {
+                    string fileName = Guid.NewGuid().ToString();
+                    var uploads = Path.Combine(wwwRootPath, @"images\banners");
+                    var extension = Path.GetExtension(Image.FileName);
+                    using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
+                    {
+                        Image.CopyTo(fileStreams);
+                    }
+                    banner.Image = @"\images\banners\" + fileName + extension;
+                }
+                else
+                {
+                    banner.Image= adminBannerModel.BannerImage;
+                }
+                banner.Text = adminBannerModel.Text;
+                banner.SortOrder = adminBannerModel.SortOrder;
+                banner.BannerId = adminBannerModel.BannerID;
+                _adminRepository.editBanner(banner);
+                return RedirectToAction("AdminBannerMgmt");
+            }
+            return View(adminBannerModel);
         }
     }   
 }

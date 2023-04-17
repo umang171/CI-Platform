@@ -1,75 +1,132 @@
-.text-orange{
+.text-orange {
     color: #F88634;
 }
-.bg-orange{
+
+.bg-orange {
     background-color: #F88634;
 }
-.btn-orange{
+
+.btn-orange {
     border-color: #F88634;
     color: #F88634;
 }
-.btn-orange:hover{
-    border-color: white;
-    background-color: #F88634 !important;
-    color:white;
-}
-.admin-nav-active{
+
+    .btn-orange:hover {
+        border-color: white;
+        background-color: #F88634 !important;
+        color: white;
+    }
+
+.admin-nav-active {
     background-color: white !important;
-    color:#F88634 !important;
+    color: #F88634 !important;
 }
-.admin-table th,.admin-table td{
+
+.admin-table th, .admin-table td {
     padding: 13px 5px;
 }
-.admin-status-active{
+
+.admin-status-active {
     color: #14C506;
 }
-.admin-navigation{
+
+.admin-navigation {
     color: white;
 }
-.admin-page-table::-webkit-scrollbar{
-    display:none;
+
+.admin-page-table::-webkit-scrollbar {
+    display: none;
 }
-.admin-navigation-menu:hover{
+
+.admin-navigation-menu:hover {
     background-color: white !important;
-    color:#F88634 !important;
+    color: #F88634 !important;
 }
+
 #admin-search-input {
     background: url(/images/search.png) no-repeat;
     background-position: 10px center;
 }
 
-#admin-menu-close-btn{
-    cursor: pointer;   
+#admin-menu-close-btn {
+    cursor: pointer;
 }
-#admin-menu-close-btn:hover{
-    color: red !important; 
-}
+
+    #admin-menu-close-btn:hover {
+        color: red !important;
+    }
+
 #pagination a {
     color: black;
 }
 
 .pagination-number,
-.pagination-button{
-  font-size: 1.1rem;
-  background-color: transparent;
-  border: none;
-  margin: 0.25rem 0.25rem;
-  cursor: pointer;
-  height: 2.5rem;
-  width: 2.5rem;
-  border-radius: .2rem;
+.pagination-button {
+    font-size: 1.1rem;
+    background-color: transparent;
+    border: none;
+    margin: 0.25rem 0.25rem;
+    cursor: pointer;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: .2rem;
 }
-.page-link:hover{
+
+.page-link:hover {
     background-color: #F88634 !important;
     color: white !important;
 }
+
 @media screen and (max-width:991px) {
-    #admin-menubar{
+    #admin-menubar {
         position: absolute;
         top: 0px;
         left: 0px;
         z-index: 3;
         width: 270px !important;
         padding: 20px 10px !important;
+    }
+}
+/*Admin mission add*/
+.subject-info-box-1,
+.subject-info-box-2 {
+    float: left;
+    width: 45%;
+    height: 80%;
+}
+
+    .subject-info-box-1 select, .subject-info-box-2 select {
+        height: 500px;
+        padding: 0;
+    }
+
+        .subject-info-box-1 select option, .subject-info-box-2 select option {
+            padding: 4px 10px 4px 10px;
+        }
+
+            .subject-info-box-1 select option:hover, .subject-info-box-2 select option:hover {
+                background: #EEEEEE;
+            }
+
+@media screen and (max-width:767px) {
+    #user-profile-img-div {
+        width: 100% !important;
+    }
+
+    #user-profile-main-img {
+        width: 30% !important;
+        height: 30% !important;
+    }
+
+    #user-profile-content-div {
+        width: 100% !important;
+    }
+
+        #user-profile-content-div .modal-dialog {
+            max-width: 95% !important;
+        }
+
+    .subject-info-box-1 select option, .subject-info-box-2 select option {
+        padding: 1px;
     }
 }

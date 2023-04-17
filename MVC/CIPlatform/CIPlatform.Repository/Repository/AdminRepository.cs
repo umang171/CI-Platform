@@ -112,5 +112,42 @@ namespace CIPlatform.Repository.Repository
             var records = missions.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
             return new AdminPageList<Mission>(records, totalCounts);
         }
+
+        AdminPageList<Banner> IAdminRepository.GetBanners(string? searchText, int pageNumber, int pageSize)
+        {
+            IEnumerable<Banner> banners;
+            if (searchText == null)
+                banners = _ciPlatformDbContext.Banners.Where(banner => banner.DeletedAt == null);
+            else
+                banners = _ciPlatformDbContext.Banners.Where(banner => banner.DeletedAt == null).Where(banner=>banner.Image.Contains(searchText));
+            var totalCounts = banners.Count();
+            var records = banners.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            return new AdminPageList<Banner>(records, totalCounts);
+        }
+
+        void IAdminRepository.addBanner(Banner banner)
+        {
+            _ciPlatformDbContext.Add(banner);
+            _ciPlatformDbContext.SaveChanges();
+        }
+
+        void IAdminRepository.deleteBanner(long bannerId)
+        {
+            Banner banner=_ciPlatformDbContext.Banners.Where(banner=>banner.BannerId==bannerId).First();
+            banner.DeletedAt=DateTime.Now;
+            _ciPlatformDbContext.Update(banner);
+            _ciPlatformDbContext.SaveChanges();
+        }
+
+        Banner IAdminRepository.findBannerById(long bannerId)
+        {
+            return _ciPlatformDbContext.Banners.Where(banner=>banner.BannerId == bannerId).First();
+        }
+
+        void IAdminRepository.editBanner(Banner banner)
+        {
+            _ciPlatformDbContext.Update(banner);
+            _ciPlatformDbContext.SaveChanges();
+        }
     }
 }
