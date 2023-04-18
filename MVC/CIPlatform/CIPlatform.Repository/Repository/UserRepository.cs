@@ -113,7 +113,7 @@ namespace CIPlatform.Repository.Repository
         ResetPassword IUserRepository.findUserByToken(string token)
         {
 
-            return _ciPlatformDbContext.ResetPasswords.Where(u => u.Token == token).First();
+            return _ciPlatformDbContext.ResetPasswords.Where(user => user.Token.Equals(token)).First();
         }
 
         string IUserRepository.getCityFromCityId(long cityId)

@@ -55,17 +55,26 @@ namespace CIPlatform.Controllers
                 HttpContext.Session.SetString("useremail", emailId);
                 return RedirectToAction("Index", "Mission");
             }
-            return Login();
+            List<Banner> banners = _userRepository.GetBannners();
+            LoginModel loginModel = new LoginModel();
+            loginModel.banners = banners;
+            return View(loginModel);
         }
         public IActionResult ForgotPassword()
         {
-            return View();
+            List<Banner> banners = _userRepository.GetBannners();
+            ForgotPasswordModel forgotPasswordModel= new ForgotPasswordModel();
+            forgotPasswordModel.banners = banners;
+            return View(forgotPasswordModel);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
 
         public IActionResult ForgotPassword(ForgotPasswordModel obj)
         {
+            List<Banner> banners = _userRepository.GetBannners();
+            ForgotPasswordModel forgotPasswordModel = new ForgotPasswordModel();
+            forgotPasswordModel.banners = banners;
             if (!_userRepository.validateEmail(obj.EmailId))
             {
                 ModelState.AddModelError("EmailId", "Email not found");
@@ -87,11 +96,9 @@ namespace CIPlatform.Controllers
                 string path = "<a href=\"" + " https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/Account/NewPassword?token=" + uuid + " \"  style=\"font-weight:500;color:blue;\" > Reset Password </a>";
                 MailHelper mailHelper = new MailHelper(configuration);
                 ViewBag.sendMail = mailHelper.Send(obj.EmailId, welcomeMessage + path);
-
-
-                return View();
+                return View(forgotPasswordModel);
             }
-            return View();
+            return View(forgotPasswordModel);
         }
         [SessionHelper]
         public IActionResult VolunteerTimesheet()
@@ -108,7 +115,10 @@ namespace CIPlatform.Controllers
         }
         public IActionResult Register()
         {
-            return View();
+            List<Banner> banners = _userRepository.GetBannners();
+            RegistrationModel register= new RegistrationModel();
+            register.banners = banners;
+            return View(register);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -137,7 +147,10 @@ namespace CIPlatform.Controllers
                 _userRepository.addUser(user);
                 return RedirectToAction("Login");
             }
-            return View();
+            List<Banner> banners = _userRepository.GetBannners();
+            RegistrationModel register = new RegistrationModel();
+            register.banners = banners;
+            return View(register);
         }
 
         public IActionResult NewPassword(string? token)
@@ -165,8 +178,11 @@ namespace CIPlatform.Controllers
                 _userRepository.removeResetPasswordToekn(resetObj);
                 return RedirectToAction("Login");
             }
+            List<Banner> banners = _userRepository.GetBannners();
             NewPasswordModel newPasswordModel = new NewPasswordModel();
+            newPasswordModel.banners = banners;
             newPasswordModel.token = token;
+            
             return View(newPasswordModel);
 
 
@@ -204,6 +220,8 @@ namespace CIPlatform.Controllers
                     ModelState.AddModelError("ConfirmPassword", "Confirm password does not match to new password");
                 }
             }
+            List<Banner> banners = _userRepository.GetBannners();
+            obj.banners = banners;
             return View(obj);
         }
         [SessionHelper]

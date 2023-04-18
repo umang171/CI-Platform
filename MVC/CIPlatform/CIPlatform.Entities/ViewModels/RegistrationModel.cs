@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CIPlatform.Entities.DataModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -32,5 +33,6 @@ namespace CIPlatform.Entities.ViewModels
         [Required]
         [MinLength(8, ErrorMessage = "Enter more than 8 characters")]
         public string ConfirmPassword { get; set; }= string.Empty;
+        public List<Banner> banners { get; set; } = new List<Banner>();
     }
 }
