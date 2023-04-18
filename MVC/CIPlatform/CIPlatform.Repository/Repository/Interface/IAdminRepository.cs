@@ -28,6 +28,10 @@ namespace CIPlatform.Repository.Repository.Interface
         public void deleteBanner(long bannerId);
         public Banner findBannerById(long bannerId);
         public void editBanner(Banner banner);
-
+        public AdminPageList<Skill> GetSkills(string? searchText, int pageNumber, int pageSize);
+        public void DeleteSkill(long skillId);
+        public void AddSkill(Skill skill);
+        public Skill FindSkill(long skillId);
+        public void EditSkill(Skill skill);
     }
 }

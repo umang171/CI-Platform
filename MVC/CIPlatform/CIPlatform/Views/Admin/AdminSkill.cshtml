@@ -1,0 +1,162 @@
+﻿@model CIPlatform.Entities.ViewModels.AdminSkillModel
+@section Style{
+<link rel="stylesheet" href="/css/admin_style.css">
+}
+<div class="container-fluid">
+    <div class="row">
+        <partial name="_AdminNavigationbar" />
+        <div class="col-lg-10 col-md-12 min-vh-100">
+            <partial name="_AdminHeader" model="Model.adminHeader" />
+            <div class="admin-main-content p-sm-3 pb-0">
+                <div class="admin-page-heading border-bottom py-1">
+                    <h1 class="">Mission Skills</h1>
+                </div>
+                <div class="admin-page-content p-sm-3">
+                    <div class="admin-search-add d-flex justify-content-between align-items-center py-2">
+                        <input type="text" id="admin-search-input" placeholder="Search mission..." class=" border bg-white p-2 w-50  ps-5">
+                        <a asp-action="AddSkill" asp-controller="Admin" style="border:2px solid" class="bg-white border-4 rounded-5 p-2 px-3 btn-orange text-decoration-none">+ Add</a>
+                    </div>
+                    <div id="admin-skill-table" class="admin-page-table py-3 overflow-x-scroll">
+                    </div>
+                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" style="margin:30vh auto;">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Confirm Delete</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <h4>Are you sure you want to delete this item?</h4>
+                                    <div class="d-flex justify-content-center align-items-center pt-4">
+                                        <input type="text" id="delete-skill-inp" hidden />
+                                        <button class="me-1 border border-2 border-secondary bg-white rounded-5 px-4 p-2" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" id="delete-skill-button" class="ms-1 btn-orange bg-white rounded-5 px-4 p-2" data-bs-dismiss="modal">Delete</button>
+
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section JavaScript{
+<script src="/js/admin_custom.js"></script>
+<script>
+    $("#admin-navigation-skill").addClass("admin-nav-active");
+     $(document).ready(function(){
+                loadSkills();
+            });
+            //=================================================================================
+            //Load skills
+            //=================================================================================
+            var searchText = "";
+            var pageSize=5;
+            var pageNumber=1;
+            function loadSkills() {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/GetSkills",
+                dataType: "html",
+                cache: false,
+                data: {searchText:searchText,pageNumber:pageNumber,pageSize:pageSize},
+                success: function (data) {
+                    $("#admin-skill-table").html("");
+                    $('#admin-skill-table').html(data);
+                    loadPagination();
+                    deleteSkill();
+                    editSkill();
+                },
+                error: function (xhr, status, error) {
+                    // Handle error
+                    console.log(error);
+                }
+            });
+            }
+            $("#admin-search-input").on("keyup", function (e) {
+                searchText = $("#admin-search-input").val();
+                if (searchText.length > 2) {
+                    loadSkills();
+                }
+                else {
+                    searchText = "";
+                    loadSkills();
+                }
+            });
+
+        //========================================================================
+        //Pagination
+        //========================================================================
+        function loadPagination() {
+        var totalPages = parseInt($(".Pagination-total")[0].id.slice(6));
+        var paging = "";
+        $("#pagination li a").on("click", function (e) {
+            e.preventDefault();
+            paging = $(this).text();
+            if (!isNaN(paging)) {
+                pageNumber = parseInt(paging);
+            }
+            else {
+                if (paging == "<") {
+                    if (pageNumber != 1){
+                    --pageNumber;
+                    }
+                }
+                else if (paging == ">") {
+                    if (pageNumber != totalPages){
+                    ++pageNumber;
+                    }
+                }
+                else if (paging == ">>") {
+                    pageNumber=totalPages;
+                }
+                else if (paging == "<<") {
+                        pageNumber=1;
+                }
+            }
+            loadSkills();
+        });
+    }
+    //========================================================================
+    //Delete Skills
+    //========================================================================
+    function deleteSkill(){
+        $(".delete-skill-btn").click(function(){
+            var delSkillId=this.id.slice(7);            
+            $("#delete-skill-inp").val(delSkillId);
+        });
+    }
+    $("#delete-skill-button").click(function(){
+        var skillId=$("#delete-skill-inp").val();   
+        $.ajax({
+                type: "POST",
+                url: "/Admin/DeleteSkill",
+                dataType: "html",
+                cache: false,
+                data: {skillId:skillId},
+                success: function (data) {
+                    alert("Skill is deleted");
+                    loadSkills();
+                },
+                error: function (xhr, status, error) {
+                    // Handle error
+                    console.log(error);
+                }
+            });
+    });
+    
+    //========================================================================
+    //Edit Skills
+    //========================================================================
+    function editSkill(){
+        $(".edit-skill-btn").click(function(){
+            var skillId=this.id.slice(5);
+            window.location = "/Admin/EditSkill?skillId="+skillId;
+        });
+    }
+</script>
+}

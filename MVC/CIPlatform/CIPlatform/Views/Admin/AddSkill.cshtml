@@ -1,0 +1,42 @@
+﻿@model CIPlatform.Entities.ViewModels.AdminSkillModel
+@section Style{
+<link rel="stylesheet" href="/css/admin_style.css">
+}
+<div class="container-fluid">
+    <div class="row">
+        <partial name="_AdminNavigationbar" />
+        <div class="col-lg-10 col-md-12 min-vh-100">
+            <partial name="_AdminHeader" model="Model.adminHeader" />
+            <div class="admin-main-content p-sm-3 pb-0">
+                <div class="cms-add-form">
+                    <div class="cms-add-header p-sm-2 px-sm-3 border" style="background-color: #F8F9FC;">
+                        <h4>Mission Skill Add</h4>
+                    </div>
+                    <form method="POST">
+                        <div class="border px-1 p-sm-3 ">
+                            <div class="py-2">
+                                <label for="" class="form-label">Skill Name</label>
+                                <input asp-for="SkillName" type="text" class="form-control">
+                                <span asp-validation-for="SkillName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="pt-3 d-flex justify-content-end align-items-center">
+                            <button id="skill-cancel-btn" class="me-1 border border-2 border-secondary bg-white rounded-5 px-4 p-2">Cancel</button>
+                            <input type="submit" class="ms-2 btn-orange bg-white rounded-5 px-4 p-2" value="Save">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section JavaScript{
+<script src="/js/js/admin_custom.js"></script>
+<script>
+    $("#admin-navigation-skill").addClass("admin-nav-active");
+    $("#skill-cancel-btn").click(function(e){
+            e.preventDefault();
+            window.location = "/Admin/AdminSkill";
+        });
+</script>
+}

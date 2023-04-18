@@ -403,5 +403,78 @@ namespace CIPlatform.Controllers
             }
             return View(adminBannerModel);
         }
+        public IActionResult AdminSkill()
+        {
+            string adminSessionEmail = HttpContext.Session.GetString("useremail");
+            Admin admin = _adminRepository.findAdmin(adminSessionEmail);
+            AdminHeader adminHeader = new AdminHeader();
+            adminHeader.username = admin.FirstName + " " + admin.LastName;
+            AdminSkillModel adminSkillModel= new AdminSkillModel();
+            adminSkillModel.adminHeader = adminHeader;
+            return View(adminSkillModel);
+        }
+        [SessionHelper]
+        public IActionResult GetSkills(string? searchText, int pageNumber, int pageSize)
+        {
+            AdminPageList<Skill> skills= _adminRepository.GetSkills(searchText, pageNumber, pageSize);
+            return PartialView("_AdminSkillList", skills);
+        }
+        [SessionHelper]
+        public IActionResult DeleteSkill(long skillId)
+        {
+            _adminRepository.DeleteSkill(skillId);
+            return Ok();
+        }
+        [SessionHelper]
+        public IActionResult AddSkill()
+        {
+            string adminSessionEmail = HttpContext.Session.GetString("useremail");
+            Admin admin = _adminRepository.findAdmin(adminSessionEmail);
+            AdminHeader adminHeader = new AdminHeader();
+            adminHeader.username = admin.FirstName + " " + admin.LastName;
+            AdminSkillModel adminSkillModel = new AdminSkillModel();
+            adminSkillModel.adminHeader = adminHeader;
+            return View(adminSkillModel);
+        }
+        [SessionHelper]
+        [HttpPost]
+        public IActionResult AddSkill(AdminSkillModel adminSkillModel)
+        {
+            if (ModelState.IsValid)
+            {
+                Skill skill = new Skill();
+                skill.SkillName = adminSkillModel.SkillName;
+                _adminRepository.AddSkill(skill);
+                return RedirectToAction("AdminSkill");
+            }
+            return View(adminSkillModel);
+        }
+        [SessionHelper]
+        public IActionResult EditSkill(long skillId)
+        {
+            string adminSessionEmail = HttpContext.Session.GetString("useremail");
+            Admin admin = _adminRepository.findAdmin(adminSessionEmail);
+            AdminHeader adminHeader = new AdminHeader();
+            adminHeader.username = admin.FirstName + " " + admin.LastName;
+            AdminSkillModel adminSkillModel = new AdminSkillModel();
+            adminSkillModel.adminHeader = adminHeader;
+            Skill skill = _adminRepository.FindSkill(skillId);
+            adminSkillModel.SkillName=skill.SkillName;
+            adminSkillModel.SkillId=skill.SkillId;
+            return View(adminSkillModel);
+        }
+        [SessionHelper]
+        [HttpPost]
+        public IActionResult EditSkill(AdminSkillModel adminSkillModel)
+        {
+            if (ModelState.IsValid)
+            {
+                Skill skill = _adminRepository.FindSkill(adminSkillModel.SkillId);
+                skill.SkillName = adminSkillModel.SkillName;
+                _adminRepository.EditSkill(skill);
+                return RedirectToAction("AdminSkill");
+            }
+            return View(adminSkillModel);
+        }
     }   
 }

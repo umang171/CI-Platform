@@ -149,5 +149,41 @@ namespace CIPlatform.Repository.Repository
             _ciPlatformDbContext.Update(banner);
             _ciPlatformDbContext.SaveChanges();
         }
+
+        AdminPageList<Skill> IAdminRepository.GetSkills(string? searchText, int pageNumber, int pageSize)
+        {
+            IEnumerable<Skill> skills;
+            if (searchText == null)
+                skills = _ciPlatformDbContext.Skills.Where(skill=> skill.DeletedAt == null);
+            else
+                skills= _ciPlatformDbContext.Skills.Where(skill=> skill.DeletedAt == null).Where(skill=> skill.SkillName.Contains(searchText));
+            var totalCounts = skills.Count();
+            var records = skills.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            return new AdminPageList<Skill>(records, totalCounts);
+        }
+
+        void IAdminRepository.DeleteSkill(long skillId)
+        {
+            Skill skill= _ciPlatformDbContext.Skills.Where(skill=> skill.SkillId== skillId).First();
+            skill.DeletedAt = DateTime.Now;
+            _ciPlatformDbContext.Skills.Update(skill);
+            _ciPlatformDbContext.SaveChanges();
+        }
+
+        void IAdminRepository.AddSkill(Skill skill)
+        {
+            _ciPlatformDbContext.Skills.Add(skill);
+            _ciPlatformDbContext.SaveChanges();
+        }
+
+        Skill IAdminRepository.FindSkill(long skillId)
+        {
+            return _ciPlatformDbContext.Skills.Where(skill=>skill.SkillId== skillId).First();
+        }
+        void IAdminRepository.EditSkill(Skill skill)
+        {
+            _ciPlatformDbContext.Update(skill);
+            _ciPlatformDbContext.SaveChanges();
+        }
     }
 }
