@@ -1,0 +1,59 @@
+﻿@using CIPlatform.Entities.ViewModels
+@model CIPlatform.Entities.ViewModels.AdminPageList<AdminStoryListModel>
+<table class="table border admin-table">
+    <thead>
+        <tr class="p-1 fs-5" style="background-color: #F8F9FC;">
+            <th>Story Title</th>
+            <th>Full Name</th>
+            <th>Mission Title</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Records)
+        {
+            <tr class="p-1 fs-6">
+                <td>@item.StoryTitle</td>
+                <td>@item.UserName</td>
+                <td>@item.MissionTitle</td>
+                <td>
+                    <div class="d-flex justify-content-start align-items-center w-100">
+                        <a href="/Story/StoryDetails?storyId=@item.StoryId" id="v-@item.StoryId" class="btn view-story me-1 btn-orange bg-white rounded-5 px-2 py-0">View
+                        </a>
+                        <svg id="y-@item.StoryId" xmlns="http://www.w3.org/2000/svg" width="25" height="25" style="color: #3bce2e; cursor:pointer;" fill="currentColor" class="approve-btn bi bi-check-circle mx-2" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                            <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                        </svg>
+                            <svg id="n-@item.StoryId" xmlns="http://www.w3.org/2000/svg" width="25" height="25" style="color: red; cursor:pointer;" fill="currentColor" class="reject-btn bi bi-x-circle mx-2" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                            </svg>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@{
+    int pageSize = 5;
+    double pageCount = Math.Ceiling((Model.TotalCount * 1.0) / (pageSize * 1.0));
+}
+<div class="pe-0 pe-sm-5 d-flex justify-content-end align-items-center">
+    <div id="pages-@pageCount" class="Pagination Pagination-total">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center" id="pagination">
+                <li style="cursor:pointer;" class="page-item"><a class="page-link">&lt;&lt;</a></li>
+                <li style="cursor:pointer;" class="page-item"><a class="page-link">&lt;</a></li>
+
+                @for (int i = 1; i <= pageCount; i++)
+                {
+                    <li class="page-item ">
+                        <a class="page-link" href="">@i</a>
+                    </li>
+                }
+                <li style="cursor:pointer;" class="page-item"><a class="page-link">&gt;</a></li>
+                <li style="cursor:pointer;" class="page-item"><a class="page-link">&gt;&gt;</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>

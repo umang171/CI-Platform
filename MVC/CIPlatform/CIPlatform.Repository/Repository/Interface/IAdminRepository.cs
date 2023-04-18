@@ -36,5 +36,8 @@ namespace CIPlatform.Repository.Repository.Interface
         public AdminPageList<AdminMissionApplicationListModel> GetMissionApplications(string? searchText, int pageNumber, int pageSize);
         public void ApproveMissionApplication(long missionApplicationId);
         public void RejectMissionApplication(long missionApplicationId);
+        public AdminPageList<AdminStoryListModel> GetStories(string? searchText, int pageNumber, int pageSize);
+        public void ApproveStory(long storyId);
+        public void RejectStory(long storyId);
     }
 }

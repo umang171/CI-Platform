@@ -129,7 +129,7 @@ namespace CIPlatform.Repository.Repository
                 story.Title = storySaveModelObj.storyTitle;
                 story.Description = storySaveModelObj.storyDescription;
                 story.PublishedAt = DateTime.Parse(storySaveModelObj.storyPublishedDate);
-                story.Status = "1";
+                story.Status = "PENDING";
                 _ciPlatformDbContext.Stories.Add(story);
                 _ciPlatformDbContext.SaveChanges();
 
@@ -151,7 +151,7 @@ namespace CIPlatform.Repository.Repository
                 story.Title = storySaveModelObj.storyTitle;
                 story.Description = storySaveModelObj.storyDescription;
                 story.PublishedAt = DateTime.Parse(storySaveModelObj.storyPublishedDate);
-                story.Status = "1";
+                story.Status = "PENDING";
                 _ciPlatformDbContext.Stories.Update(story);
                 _ciPlatformDbContext.SaveChanges();
                 long storyId = story.StoryId;

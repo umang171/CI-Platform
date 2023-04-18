@@ -216,5 +216,41 @@ namespace CIPlatform.Repository.Repository
             _ciPlatformDbContext.Remove(missionApplication);
             _ciPlatformDbContext.SaveChanges();
         }
+
+        AdminPageList<AdminStoryListModel> IAdminRepository.GetStories(string? searchText, int pageNumber, int pageSize)
+        {
+            IEnumerable<AdminStoryListModel> stories;
+            if (searchText == null)
+            {
+                stories = _ciPlatformDbContext.Stories.Where(story => story.DeletedAt == null && story.Status == "PENDING").Select(story => new AdminStoryListModel { StoryId = story.StoryId,StoryTitle= story.Title, UserName =story.User.FirstName+" "+story.User.LastName,MissionTitle=story.Mission.Title});
+            }
+            else
+            {
+                stories = _ciPlatformDbContext.Stories.Where(story => story.DeletedAt == null && story.Status == "PENDING").Where(story=> story.Title.Contains(searchText) || story.Mission.Title.Contains(searchText) || story.User.FirstName.Contains(searchText) || story.User.LastName.Contains(searchText)).Select(story => new AdminStoryListModel { StoryId = story.StoryId, StoryTitle = story.Title, UserName = story.User.FirstName + " " + story.User.LastName, MissionTitle = story.Mission.Title });
+            }
+            var totalCounts = stories.Count();
+            var records = stories.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            return new AdminPageList<AdminStoryListModel>(records, totalCounts);
+        }
+
+        void IAdminRepository.ApproveStory(long storyId)
+        {
+            Story story= _ciPlatformDbContext.Stories.Where(story =>story.StoryId==storyId).First();
+            story.Status = "1";
+            _ciPlatformDbContext.Update(story);
+            _ciPlatformDbContext.SaveChanges();
+        }
+
+        void IAdminRepository.RejectStory(long storyId)
+        {
+            Story story = _ciPlatformDbContext.Stories.Where(story => story.StoryId == storyId).First();
+            List<StoryMedium> storyMedia=_ciPlatformDbContext.StoryMedia.Where(story => story.StoryId == storyId).ToList();
+            foreach(var storyMediaItem in storyMedia)
+            {
+                _ciPlatformDbContext.Remove(storyMediaItem);
+            }
+            _ciPlatformDbContext.Remove(story);
+            _ciPlatformDbContext.SaveChanges();
+        }
     }
 }

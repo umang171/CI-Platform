@@ -516,5 +516,21 @@ namespace CIPlatform.Controllers
             adminStoryModel.adminHeader = adminHeader;
             return View(adminStoryModel);
         }
+        [SessionHelper]
+        public IActionResult GetStories(string? searchText, int pageNumber, int pageSize)
+        {
+            AdminPageList<AdminStoryListModel> stories = _adminRepository.GetStories(searchText, pageNumber, pageSize);
+            return PartialView("_AdminStoryList", stories);
+        }
+        public IActionResult ApproveStory(long storyId)
+        {
+            _adminRepository.ApproveStory(storyId);
+            return Ok();
+        }
+        public IActionResult RejectStory(long storyId)
+        {
+            _adminRepository.RejectStory(storyId);
+            return Ok();
+        }
     }
 }
