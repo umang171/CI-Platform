@@ -59,6 +59,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkU2tpbGwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Projects/CI platform/MVC/CIPlatform/CIPlatform/Views/Admin/AddTheme.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkVGhlbWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Projects/CI platform/MVC/CIPlatform/CIPlatform/Views/Admin/AddUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRkVXNlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -85,6 +89,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Projects/CI platform/MVC/CIPlatform/CIPlatform/Views/Admin/AdminStory.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5TdG9yeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CI platform/MVC/CIPlatform/CIPlatform/Views/Admin/AdminTheme.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5UaGVtZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Projects/CI platform/MVC/CIPlatform/CIPlatform/Views/Admin/EditBanner.cshtml]
@@ -165,6 +173,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Projects/CI platform/MVC/CIPlatform/CIPlatform/Views/Shared/_AdminStoryList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pblN0b3J5TGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Projects/CI platform/MVC/CIPlatform/CIPlatform/Views/Shared/_AdminThemeList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pblRoZW1lTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Projects/CI platform/MVC/CIPlatform/CIPlatform/Views/Shared/_AdminUserList.cshtml]

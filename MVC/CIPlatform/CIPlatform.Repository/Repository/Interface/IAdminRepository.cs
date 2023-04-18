@@ -39,5 +39,8 @@ namespace CIPlatform.Repository.Repository.Interface
         public AdminPageList<AdminStoryListModel> GetStories(string? searchText, int pageNumber, int pageSize);
         public void ApproveStory(long storyId);
         public void RejectStory(long storyId);
+        public AdminPageList<MissionTheme> GetThemes(string? searchText, int pageNumber, int pageSize);
+
+
     }
 }

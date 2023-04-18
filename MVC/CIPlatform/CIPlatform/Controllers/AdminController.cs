@@ -29,7 +29,7 @@ namespace CIPlatform.Controllers
             AdminHeader adminHeader = new AdminHeader();
             adminHeader.username = admin.FirstName + " " + admin.LastName;
             AdminUserEditModel adminUserEditModel = new AdminUserEditModel();
-            adminUserEditModel.adminHeader = adminHeader;
+            adminUserEditModel.adminHeader= adminHeader;
             return View(adminUserEditModel);
         }
         public IActionResult GetUsers(string? searchText, int pageNumber, int pageSize)
@@ -531,6 +531,34 @@ namespace CIPlatform.Controllers
         {
             _adminRepository.RejectStory(storyId);
             return Ok();
+        }
+        public IActionResult AdminTheme()
+        {
+            string adminSessionEmail = HttpContext.Session.GetString("useremail");
+            Admin admin = _adminRepository.findAdmin(adminSessionEmail);
+            AdminHeader adminHeader = new AdminHeader();
+            adminHeader.username = admin.FirstName + " " + admin.LastName;
+            AdminThemeModel adminThemeModel = new AdminThemeModel();
+            adminThemeModel.adminHeader = adminHeader;
+            return View(adminThemeModel);
+        }
+        [SessionHelper]
+        public IActionResult GetThemes(string? searchText, int pageNumber, int pageSize)
+        {
+            AdminPageList<MissionTheme> missionTheme = _adminRepository.GetThemes(searchText, pageNumber, pageSize);
+            return PartialView("_AdminThemeList", missionTheme);
+        }
+        [SessionHelper]
+        public IActionResult AddTheme()
+        {
+            string adminSessionEmail = HttpContext.Session.GetString("useremail");
+            Admin admin = _adminRepository.findAdmin(adminSessionEmail);
+            AdminHeader adminHeader = new AdminHeader();
+            adminHeader.username = admin.FirstName + " " + admin.LastName;
+            adminHeader.username = admin.FirstName + " " + admin.LastName;
+            AdminThemeModel adminThemeModel = new AdminThemeModel();
+            adminThemeModel.adminHeader = adminHeader;
+            return View(adminThemeModel);
         }
     }
 }

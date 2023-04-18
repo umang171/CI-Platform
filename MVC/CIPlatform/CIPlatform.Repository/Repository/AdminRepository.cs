@@ -252,5 +252,17 @@ namespace CIPlatform.Repository.Repository
             _ciPlatformDbContext.Remove(story);
             _ciPlatformDbContext.SaveChanges();
         }
+
+        AdminPageList<MissionTheme> IAdminRepository.GetThemes(string? searchText, int pageNumber, int pageSize)
+        {
+            IEnumerable<MissionTheme> themes;
+            if (searchText == null)
+                themes = _ciPlatformDbContext.MissionThemes.Where(theme => theme.DeletedAt == null);
+            else
+                themes = _ciPlatformDbContext.MissionThemes.Where(theme => theme.DeletedAt == null).Where(theme => theme.Title.Contains(searchText));
+            var totalCounts = themes.Count();
+            var records = themes.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            return new AdminPageList<MissionTheme>(records, totalCounts);
+        }
     }
 }
