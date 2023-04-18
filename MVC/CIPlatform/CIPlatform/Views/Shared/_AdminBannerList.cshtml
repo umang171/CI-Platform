@@ -1,5 +1,10 @@
 ﻿@using CIPlatform.Entities.DataModels
 @model CIPlatform.Entities.ViewModels.AdminPageList<Banner>
+@section Style{
+    <style>
+   
+    </style>
+}
 <table class="table border admin-table">
     <thead>
         <tr class="p-1 fs-5" style="background-color: #F8F9FC;">
@@ -16,7 +21,7 @@
                 <td>
                     <img src="@item.Image" style="height: 100px; width: 150px;" alt="">
                 </td>
-                <td>@item.Text.ToString().Substring(0,250) ...</td>
+                <td>@item.Text.ToString().Substring(0,150) ...</td>
                 <td>@item.SortOrder</td>
                 <td>
                     <div class="d-flex justify-content-start align-items-center w-100">

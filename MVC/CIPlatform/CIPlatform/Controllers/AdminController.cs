@@ -13,7 +13,7 @@ namespace CIPlatform.Controllers
         private readonly IStoryRepository _storyRepository;
         private readonly IAdminRepository _adminRepository;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        public AdminController(IUserRepository userRepository, IMissionRepository missionRepository, IStoryRepository storyRepository,IAdminRepository adminRepository, IWebHostEnvironment webHostEnvironment)
+        public AdminController(IUserRepository userRepository, IMissionRepository missionRepository, IStoryRepository storyRepository, IAdminRepository adminRepository, IWebHostEnvironment webHostEnvironment)
         {
             _userRepository = userRepository;
             _missionRepository = missionRepository;
@@ -25,17 +25,17 @@ namespace CIPlatform.Controllers
         public IActionResult Index()
         {
             string adminSessionEmail = HttpContext.Session.GetString("useremail");
-            Admin admin= _adminRepository.findAdmin(adminSessionEmail);
+            Admin admin = _adminRepository.findAdmin(adminSessionEmail);
             AdminHeader adminHeader = new AdminHeader();
-            adminHeader.username=admin.FirstName+" "+admin.LastName;
+            adminHeader.username = admin.FirstName + " " + admin.LastName;
             AdminUserEditModel adminUserEditModel = new AdminUserEditModel();
             adminUserEditModel.adminHeader = adminHeader;
             return View(adminUserEditModel);
         }
-        public IActionResult GetUsers(string? searchText,int pageNumber,int pageSize)
+        public IActionResult GetUsers(string? searchText, int pageNumber, int pageSize)
         {
-            AdminPageList<User> user= _adminRepository.getUsers(searchText,pageNumber,pageSize);
-            return PartialView("_AdminUserList",user);
+            AdminPageList<User> user = _adminRepository.getUsers(searchText, pageNumber, pageSize);
+            return PartialView("_AdminUserList", user);
         }
         [SessionHelper]
         public IActionResult AddUser()
@@ -50,7 +50,7 @@ namespace CIPlatform.Controllers
         }
         [SessionHelper]
         [HttpPost]
-        public IActionResult AddUser(AdminUserAddModel adminUserAddModel,IFormFile? Avatar)
+        public IActionResult AddUser(AdminUserAddModel adminUserAddModel, IFormFile? Avatar)
         {
             if (_userRepository.validateEmail(adminUserAddModel.EmailId))
             {
@@ -85,7 +85,7 @@ namespace CIPlatform.Controllers
                 user.ProfileText = adminUserAddModel.MyProfile;
                 user.WhyIVolunteer = adminUserAddModel.WhyIVolunteer;
                 _userRepository.addUser(user);
-                return RedirectToAction("Index","Admin");
+                return RedirectToAction("Index", "Admin");
             }
             return View(adminUserAddModel);
         }
@@ -99,13 +99,13 @@ namespace CIPlatform.Controllers
             AdminUserAddModel adminUserAddModel = new AdminUserAddModel();
             adminUserAddModel.adminHeader = adminHeader;
 
-            User user=_userRepository.findUser(userId);
-            adminUserAddModel.FirstName= user.FirstName;
-            adminUserAddModel.LastName= user.LastName;
+            User user = _userRepository.findUser(userId);
+            adminUserAddModel.FirstName = user.FirstName;
+            adminUserAddModel.LastName = user.LastName;
             adminUserAddModel.PhoneNo = user.PhoneNumber.ToString();
             adminUserAddModel.EmailId = user.Email;
-            adminUserAddModel.Password=user.Password;
-            adminUserAddModel.Department=user.Department;
+            adminUserAddModel.Password = user.Password;
+            adminUserAddModel.Department = user.Department;
             adminUserAddModel.EmployeeId = user.EmployeeId;
             adminUserAddModel.MyProfile = user.ProfileText;
             adminUserAddModel.WhyIVolunteer = user.WhyIVolunteer;
@@ -115,10 +115,10 @@ namespace CIPlatform.Controllers
         }
         [HttpPost]
         public IActionResult EditUser(AdminUserAddModel adminUserAddModel, IFormFile? Avatar)
-        {           
+        {
             if (ModelState.IsValid)
             {
-                User user =_userRepository.findUser((int)adminUserAddModel.UserId);
+                User user = _userRepository.findUser((int)adminUserAddModel.UserId);
                 string wwwRootPath = _webHostEnvironment.WebRootPath;
                 if (Avatar != null)
                 {
@@ -195,8 +195,8 @@ namespace CIPlatform.Controllers
         [SessionHelper]
         public IActionResult GetCMSPages(string? searchText, int pageNumber, int pageSize)
         {
-            AdminPageList<CmsPage> cmsPage=_adminRepository.getCmsPages(searchText, pageNumber, pageSize);
-            return PartialView("_AdminCMSList",cmsPage);
+            AdminPageList<CmsPage> cmsPage = _adminRepository.getCmsPages(searchText, pageNumber, pageSize);
+            return PartialView("_AdminCMSList", cmsPage);
         }
         public IActionResult DeleteCmsPage(long cmsPageId)
         {
@@ -256,12 +256,12 @@ namespace CIPlatform.Controllers
         {
             if (ModelState.IsValid)
             {
-                CmsPage cmsPage=_adminRepository.findCMSPageByID(adminCMSModel.CMSPageId);
+                CmsPage cmsPage = _adminRepository.findCMSPageByID(adminCMSModel.CMSPageId);
                 cmsPage.Title = adminCMSModel.Title;
                 cmsPage.Slug = adminCMSModel.Slug;
                 cmsPage.Description = adminCMSModel.Description;
                 cmsPage.Status = Boolean.Parse(adminCMSModel.Status);
-                cmsPage.CmsPageId=adminCMSModel.CMSPageId;
+                cmsPage.CmsPageId = adminCMSModel.CMSPageId;
                 _adminRepository.editCMSPage(cmsPage);
                 return RedirectToAction("AdminCMSPage");
             }
@@ -291,7 +291,7 @@ namespace CIPlatform.Controllers
             Admin admin = _adminRepository.findAdmin(adminSessionEmail);
             AdminHeader adminHeader = new AdminHeader();
             adminHeader.username = admin.FirstName + " " + admin.LastName;
-            AdminMissionModel adminMissionModel= new AdminMissionModel();
+            AdminMissionModel adminMissionModel = new AdminMissionModel();
             adminMissionModel.adminHeader = adminHeader;
             return View(adminMissionModel);
         }
@@ -310,7 +310,7 @@ namespace CIPlatform.Controllers
         public IActionResult GetBanners(string? searchText, int pageNumber, int pageSize)
         {
             AdminPageList<Banner> banners = _adminRepository.GetBanners(searchText, pageNumber, pageSize);
-            return PartialView("_AdminBannerList",banners);
+            return PartialView("_AdminBannerList", banners);
         }
         [SessionHelper]
         public IActionResult AddBanner()
@@ -325,7 +325,7 @@ namespace CIPlatform.Controllers
         }
         [SessionHelper]
         [HttpPost]
-        public IActionResult AddBanner(AdminBannerModel adminBannerModel,IFormFile Image)
+        public IActionResult AddBanner(AdminBannerModel adminBannerModel, IFormFile Image)
         {
             if (ModelState.IsValid)
             {
@@ -341,10 +341,10 @@ namespace CIPlatform.Controllers
                     {
                         Image.CopyTo(fileStreams);
                     }
-                    banner.Image= @"\images\banners\" + fileName + extension;
+                    banner.Image = @"\images\banners\" + fileName + extension;
                 }
                 banner.Text = adminBannerModel.Text;
-                banner.SortOrder=adminBannerModel.SortOrder;
+                banner.SortOrder = adminBannerModel.SortOrder;
                 _adminRepository.addBanner(banner);
                 return RedirectToAction("AdminBannerMgmt");
             }
@@ -367,7 +367,7 @@ namespace CIPlatform.Controllers
             adminBannerModel.adminHeader = adminHeader;
             Banner banner = _adminRepository.findBannerById(bannerId);
             adminBannerModel.Text = banner.Text;
-            adminBannerModel.BannerImage= banner.Image;
+            adminBannerModel.BannerImage = banner.Image;
             adminBannerModel.SortOrder = banner.SortOrder;
             adminBannerModel.BannerID = banner.BannerId;
             return View(adminBannerModel);
@@ -393,7 +393,7 @@ namespace CIPlatform.Controllers
                 }
                 else
                 {
-                    banner.Image= adminBannerModel.BannerImage;
+                    banner.Image = adminBannerModel.BannerImage;
                 }
                 banner.Text = adminBannerModel.Text;
                 banner.SortOrder = adminBannerModel.SortOrder;
@@ -409,14 +409,14 @@ namespace CIPlatform.Controllers
             Admin admin = _adminRepository.findAdmin(adminSessionEmail);
             AdminHeader adminHeader = new AdminHeader();
             adminHeader.username = admin.FirstName + " " + admin.LastName;
-            AdminSkillModel adminSkillModel= new AdminSkillModel();
+            AdminSkillModel adminSkillModel = new AdminSkillModel();
             adminSkillModel.adminHeader = adminHeader;
             return View(adminSkillModel);
         }
         [SessionHelper]
         public IActionResult GetSkills(string? searchText, int pageNumber, int pageSize)
         {
-            AdminPageList<Skill> skills= _adminRepository.GetSkills(searchText, pageNumber, pageSize);
+            AdminPageList<Skill> skills = _adminRepository.GetSkills(searchText, pageNumber, pageSize);
             return PartialView("_AdminSkillList", skills);
         }
         [SessionHelper]
@@ -459,8 +459,8 @@ namespace CIPlatform.Controllers
             AdminSkillModel adminSkillModel = new AdminSkillModel();
             adminSkillModel.adminHeader = adminHeader;
             Skill skill = _adminRepository.FindSkill(skillId);
-            adminSkillModel.SkillName=skill.SkillName;
-            adminSkillModel.SkillId=skill.SkillId;
+            adminSkillModel.SkillName = skill.SkillName;
+            adminSkillModel.SkillId = skill.SkillId;
             return View(adminSkillModel);
         }
         [SessionHelper]
@@ -476,5 +476,45 @@ namespace CIPlatform.Controllers
             }
             return View(adminSkillModel);
         }
-    }   
+        [SessionHelper]
+        public IActionResult AdminMissionApplication()
+        {
+            string adminSessionEmail = HttpContext.Session.GetString("useremail");
+            Admin admin = _adminRepository.findAdmin(adminSessionEmail);
+            AdminHeader adminHeader = new AdminHeader();
+            adminHeader.username = admin.FirstName + " " + admin.LastName;
+            AdminMissionApplicationModel adminMissionApplicationModel = new AdminMissionApplicationModel();
+            adminMissionApplicationModel.adminHeader=adminHeader;
+            return View(adminMissionApplicationModel);
+        }
+        [SessionHelper]
+        public IActionResult GetMissionApplications(string? searchText, int pageNumber, int pageSize)
+        {
+            AdminPageList<AdminMissionApplicationListModel> missionApplications=_adminRepository.GetMissionApplications(searchText, pageNumber, pageSize);
+            return PartialView("_AdminMissionApplicationList", missionApplications);
+        }
+        [SessionHelper]
+        public IActionResult ApproveMissionApplication(long missionApplicationId)
+        {
+            _adminRepository.ApproveMissionApplication(missionApplicationId);
+            return Ok();
+        }
+        [SessionHelper]
+        public IActionResult RejectMissionApplication(long missionApplicationId)
+        {
+            _adminRepository.RejectMissionApplication(missionApplicationId);
+            return Ok();
+        }
+        [SessionHelper]
+        public IActionResult AdminStory()
+        {
+            string adminSessionEmail = HttpContext.Session.GetString("useremail");
+            Admin admin = _adminRepository.findAdmin(adminSessionEmail);
+            AdminHeader adminHeader = new AdminHeader();
+            adminHeader.username = admin.FirstName + " " + admin.LastName;
+            AdminStoryModel adminStoryModel= new AdminStoryModel();
+            adminStoryModel.adminHeader = adminHeader;
+            return View(adminStoryModel);
+        }
+    }
 }

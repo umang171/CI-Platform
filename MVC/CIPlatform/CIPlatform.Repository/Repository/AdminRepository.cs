@@ -185,5 +185,36 @@ namespace CIPlatform.Repository.Repository
             _ciPlatformDbContext.Update(skill);
             _ciPlatformDbContext.SaveChanges();
         }
+
+        AdminPageList<AdminMissionApplicationListModel> IAdminRepository.GetMissionApplications(string? searchText, int pageNumber, int pageSize)
+        {
+            IEnumerable<AdminMissionApplicationListModel> missionApplications;
+            if (searchText == null)
+            {
+                missionApplications = _ciPlatformDbContext.MissionApplications.Where(mission => mission.DeletedAt == null && mission.ApprovalStatus== "PENDING").Select(missionApp => new AdminMissionApplicationListModel {MissionApplicationId=missionApp.MissionApplicationId,MissionTitle=missionApp.Mission.Title,MissionId=(long)missionApp.MissionId,UserId=(long)missionApp.UserId,UserName=missionApp.User.FirstName+" "+missionApp.User.LastName,AppliedDate=missionApp.AppliedAt.ToShortDateString()});
+            }
+            else
+            {
+                missionApplications = _ciPlatformDbContext.MissionApplications.Where(mission => mission.DeletedAt == null && mission.ApprovalStatus == "PENDING").Where(missionApp => missionApp.Mission.Title.Contains(searchText) || missionApp.User.FirstName.Contains(searchText) || missionApp.User.LastName.Contains(searchText)).Select(missionApp => new AdminMissionApplicationListModel { MissionApplicationId = missionApp.MissionApplicationId,MissionTitle = missionApp.Mission.Title, MissionId = (long)missionApp.MissionId, UserId = (long)missionApp.UserId, UserName = missionApp.User.FirstName + " " + missionApp.User.LastName, AppliedDate = missionApp.AppliedAt.ToShortDateString() });
+            }
+            var totalCounts = missionApplications.Count();
+            var records = missionApplications.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+            return new AdminPageList<AdminMissionApplicationListModel>(records, totalCounts);
+        }
+
+        void IAdminRepository.ApproveMissionApplication(long missionApplicationId)
+        {
+            MissionApplication missionApplication = _ciPlatformDbContext.MissionApplications.Where(missionApp => missionApp.MissionApplicationId == missionApplicationId).First();
+            missionApplication.ApprovalStatus = "applied";
+            _ciPlatformDbContext.Update(missionApplication);
+            _ciPlatformDbContext.SaveChanges();
+        }
+
+        void IAdminRepository.RejectMissionApplication(long missionApplicationId)
+        {
+            MissionApplication missionApplication = _ciPlatformDbContext.MissionApplications.Where(missionApp => missionApp.MissionApplicationId == missionApplicationId).First();
+            _ciPlatformDbContext.Remove(missionApplication);
+            _ciPlatformDbContext.SaveChanges();
+        }
     }
 }

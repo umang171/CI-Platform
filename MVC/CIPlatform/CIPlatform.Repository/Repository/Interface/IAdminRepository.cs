@@ -33,5 +33,8 @@ namespace CIPlatform.Repository.Repository.Interface
         public void AddSkill(Skill skill);
         public Skill FindSkill(long skillId);
         public void EditSkill(Skill skill);
+        public AdminPageList<AdminMissionApplicationListModel> GetMissionApplications(string? searchText, int pageNumber, int pageSize);
+        public void ApproveMissionApplication(long missionApplicationId);
+        public void RejectMissionApplication(long missionApplicationId);
     }
 }
