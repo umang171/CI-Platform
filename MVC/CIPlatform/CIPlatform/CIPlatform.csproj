@@ -28,7 +28,9 @@
   <ItemGroup>
     <Folder Include="wwwroot\images\avatars\" />
     <Folder Include="wwwroot\images\banners\" />
+    <Folder Include="wwwroot\images\missions\" />
     <Folder Include="wwwroot\images\uploads\" />
+    <Folder Include="wwwroot\documents\" />
   </ItemGroup>
 
   <ItemGroup>

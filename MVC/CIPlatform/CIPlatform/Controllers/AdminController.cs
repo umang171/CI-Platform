@@ -29,7 +29,7 @@ namespace CIPlatform.Controllers
             AdminHeader adminHeader = new AdminHeader();
             adminHeader.username = admin.FirstName + " " + admin.LastName;
             AdminUserEditModel adminUserEditModel = new AdminUserEditModel();
-            adminUserEditModel.adminHeader= adminHeader;
+            adminUserEditModel.adminHeader = adminHeader;
             return View(adminUserEditModel);
         }
         public IActionResult GetUsers(string? searchText, int pageNumber, int pageSize)
@@ -293,7 +293,124 @@ namespace CIPlatform.Controllers
             adminHeader.username = admin.FirstName + " " + admin.LastName;
             AdminMissionModel adminMissionModel = new AdminMissionModel();
             adminMissionModel.adminHeader = adminHeader;
+            adminMissionModel.countryLists = _adminRepository.GetCountryLists();
+            adminMissionModel.cityLists= _adminRepository.GetCityLists(adminMissionModel.countryLists.ElementAt(0).CountryId);
+            adminMissionModel.themeLists= _adminRepository.GetThemeLists();
+            adminMissionModel.skillLists= _adminRepository.GetSkillLists();
             return View(adminMissionModel);
+        }
+        [SessionHelper]
+        [HttpPost]
+        public IActionResult AddMission(AdminMissionModel adminMissionModel, List<IFormFile> missionMedias, List<IFormFile> missionDocuments)
+        {
+            if (missionMedias.Count() == 0)
+                ModelState.AddModelError("MissionMedia", "Please select Media");
+            if (adminMissionModel.MissionType == "time")
+            {
+                if (adminMissionModel.StartDate == null)
+                    ModelState.AddModelError("StartDate", "Start Date is required for time based mission");
+                if (adminMissionModel.EndDate == null)
+                    ModelState.AddModelError("EndDate", "End Date is required for time based mission");
+                if (adminMissionModel.StartDate!= null && adminMissionModel.EndDate != null)
+                {
+                    if (adminMissionModel.StartDate > adminMissionModel.EndDate)
+                    {
+                        ModelState.AddModelError("StartDate", "Start Date must be less then end date");
+                    }
+                }
+            }
+            else
+            {
+                if (adminMissionModel.GoalValue == null || adminMissionModel.GoalValue<= 0)
+                {
+                    ModelState.AddModelError("GoalValue", "Goal value required for goal based mission");
+                }
+                if (adminMissionModel.GoalObjective == null || adminMissionModel.GoalObjective.Length == 0)
+                {
+                    ModelState.AddModelError("GoalObjective", "Goal Objective required for goal based mission");
+                }
+            }
+            if (adminMissionModel.TotalSeats <= 0)
+            {
+                ModelState.AddModelError("TotalSeats", "Total seats must be greater than 0");
+            }
+            if (ModelState.IsValid)
+            {
+                Mission mission=new Mission();
+                mission.Title = adminMissionModel.MissionTitle;
+                mission.ShortDescription = adminMissionModel.ShortDescription;
+                mission.Description = adminMissionModel.Description;
+                mission.MissionType=adminMissionModel.MissionType;
+                mission.StartDate = adminMissionModel.StartDate;
+                mission.EndDate = adminMissionModel.EndDate;
+                mission.CountryId=adminMissionModel.CountryId;
+                mission.CityId = adminMissionModel.CityId;
+                //mission.TotalSeats = adminMissionModel.TotalSeats;
+                mission.ThemeId=adminMissionModel.ThemeId;
+                mission.OrganizationName=adminMissionModel.OrganizationName;
+                mission.OrganizationDetail=adminMissionModel.OrganizationDetail;
+                mission.Availability=adminMissionModel.Availability;
+
+                List<MissionSkill> missionSkills=new List<MissionSkill>();
+                foreach(var item in adminMissionModel.Skills.Split(",").SkipLast(1))
+                {
+                    MissionSkill skill=new MissionSkill();
+                    skill.SkillId = Int32.Parse(item);                    
+                    missionSkills.Add(skill);
+                }
+
+                GoalMission goalMission = new GoalMission();
+                goalMission.GoalValue =(int)adminMissionModel.GoalValue;
+                goalMission.GoalObjectiveText = adminMissionModel.GoalObjective;
+
+                MissionMedium missionMedia=new MissionMedium();
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+                foreach (IFormFile postedFile in missionMedias)
+                {                    
+                    string fileName = Guid.NewGuid().ToString();
+                    missionMedia.MediaName += fileName + ",";
+                    var uploads = Path.Combine(wwwRootPath, @"images\missions");
+                    missionMedia.MediaPath = @"images\missions";
+                    var extension = Path.GetExtension(postedFile.FileName);
+                    missionMedia.MediaType = extension;
+
+                    using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
+                    {
+                        postedFile.CopyTo(fileStreams);
+                    }
+                }
+                MissionDocument missionDocument= new MissionDocument();
+                foreach (IFormFile postedFile in missionDocuments)
+                {
+                    string fileName = Guid.NewGuid().ToString();
+                    missionDocument.DocumentName += fileName + ",";
+                    var uploads = Path.Combine(wwwRootPath, @"documents");
+                    missionDocument.DocumentPath = @"documents";
+                    var extension = Path.GetExtension(postedFile.FileName);
+                    missionDocument.DocumentType = extension;
+
+                    using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
+                    {
+                        postedFile.CopyTo(fileStreams);
+                    }
+                }
+                _adminRepository.AddMission(mission,missionSkills,goalMission,missionMedia,missionDocument);
+            }
+            adminMissionModel.countryLists = _adminRepository.GetCountryLists();
+            adminMissionModel.cityLists = _adminRepository.GetCityLists(adminMissionModel.CountryId);
+            adminMissionModel.themeLists= _adminRepository.GetThemeLists();
+            adminMissionModel.skillLists= _adminRepository.GetSkillLists();
+            return View(adminMissionModel);
+        }
+        public IActionResult GetCities(long countryId)
+        {
+            return Json(_adminRepository.GetCityLists(countryId));
+        }
+        [SessionHelper]
+        public IActionResult DeleteMission(long missionId)
+        {
+            _adminRepository.DeleteMission(missionId);
+            return Ok();
         }
         [SessionHelper]
         public IActionResult AdminBannerMgmt()
@@ -484,13 +601,13 @@ namespace CIPlatform.Controllers
             AdminHeader adminHeader = new AdminHeader();
             adminHeader.username = admin.FirstName + " " + admin.LastName;
             AdminMissionApplicationModel adminMissionApplicationModel = new AdminMissionApplicationModel();
-            adminMissionApplicationModel.adminHeader=adminHeader;
+            adminMissionApplicationModel.adminHeader = adminHeader;
             return View(adminMissionApplicationModel);
         }
         [SessionHelper]
         public IActionResult GetMissionApplications(string? searchText, int pageNumber, int pageSize)
         {
-            AdminPageList<AdminMissionApplicationListModel> missionApplications=_adminRepository.GetMissionApplications(searchText, pageNumber, pageSize);
+            AdminPageList<AdminMissionApplicationListModel> missionApplications = _adminRepository.GetMissionApplications(searchText, pageNumber, pageSize);
             return PartialView("_AdminMissionApplicationList", missionApplications);
         }
         [SessionHelper]
@@ -512,7 +629,7 @@ namespace CIPlatform.Controllers
             Admin admin = _adminRepository.findAdmin(adminSessionEmail);
             AdminHeader adminHeader = new AdminHeader();
             adminHeader.username = admin.FirstName + " " + admin.LastName;
-            AdminStoryModel adminStoryModel= new AdminStoryModel();
+            AdminStoryModel adminStoryModel = new AdminStoryModel();
             adminStoryModel.adminHeader = adminHeader;
             return View(adminStoryModel);
         }
@@ -588,9 +705,9 @@ namespace CIPlatform.Controllers
             adminHeader.username = admin.FirstName + " " + admin.LastName;
             AdminThemeModel adminThemeModel = new AdminThemeModel();
             adminThemeModel.adminHeader = adminHeader;
-            MissionTheme missionTheme= _adminRepository.FindTheme(themeId);
-            adminThemeModel.ThemeName= missionTheme.Title;
-            adminThemeModel.ThemeId= missionTheme.MissionThemeId;
+            MissionTheme missionTheme = _adminRepository.FindTheme(themeId);
+            adminThemeModel.ThemeName = missionTheme.Title;
+            adminThemeModel.ThemeId = missionTheme.MissionThemeId;
             return View(adminThemeModel);
         }
         [SessionHelper]

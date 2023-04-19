@@ -299,7 +299,6 @@ namespace CIPlatform.Controllers
                 {
                     user.Password = userProfileModel.NewPassword;
                     _userRepository.updatePassword(user);
-
                 }
                 else
                 {

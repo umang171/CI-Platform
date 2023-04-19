@@ -23,6 +23,8 @@ namespace CIPlatform.Repository.Repository.Interface
         public CmsPage findCMSPageByID(long cmsPageID);
         public void editCMSPage(CmsPage cmsPage);
         public AdminPageList<Mission> getMissions(string? searchText, int pageNumber, int pageSize);
+        public void DeleteMission(long missionId);
+        public void AddMission(Mission mission, List<MissionSkill> missionSkills, GoalMission goalMission, MissionMedium missionMedia, MissionDocument missionDocument);
         public AdminPageList<Banner> GetBanners(string? searchText, int pageNumber, int pageSize);
         public void addBanner(Banner banner);
         public void deleteBanner(long bannerId);
@@ -44,7 +46,9 @@ namespace CIPlatform.Repository.Repository.Interface
         public void DeleteTheme(long themeId);
         public MissionTheme FindTheme(long themeId);
         public void EditTheme(MissionTheme theme);
-
-
+        public List<CountryList> GetCountryLists();
+        public List<CityList> GetCityLists(long countryId);
+        public List<ThemeList> GetThemeLists();
+        public List<SkillList> GetSkillLists();
     }
 }

@@ -112,7 +112,38 @@ namespace CIPlatform.Repository.Repository
             var records = missions.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
             return new AdminPageList<Mission>(records, totalCounts);
         }
+        void IAdminRepository.DeleteMission(long missionId)
+        {
+            Mission mission= _ciPlatformDbContext.Missions.Where(mission=> mission.MissionId == missionId).First();
+            mission.DeletedAt = DateTime.Now;
+            _ciPlatformDbContext.Update(mission);
+            _ciPlatformDbContext.SaveChanges();
+        }
+        void IAdminRepository.AddMission(Mission mission, List<MissionSkill> missionSkills, GoalMission goalMission, MissionMedium missionMedia, MissionDocument missionDocument)
+        {
+            _ciPlatformDbContext.Add(mission);
+            _ciPlatformDbContext.SaveChanges();
 
+            long missionId = mission.MissionId;
+            foreach(MissionSkill skill in missionSkills)
+            {
+                skill.MissionId = missionId;
+                _ciPlatformDbContext.Add(skill);
+                _ciPlatformDbContext.SaveChanges();
+            }
+
+            goalMission.MissionId= missionId;
+            _ciPlatformDbContext.Add(goalMission);
+            _ciPlatformDbContext.SaveChanges();
+
+            missionMedia.MissionId= missionId;
+            _ciPlatformDbContext.Add(missionMedia);
+            _ciPlatformDbContext.SaveChanges();
+
+            missionDocument.MissionId= missionId;
+            _ciPlatformDbContext.Add(missionDocument);
+            _ciPlatformDbContext.SaveChanges();
+        }
         AdminPageList<Banner> IAdminRepository.GetBanners(string? searchText, int pageNumber, int pageSize)
         {
             IEnumerable<Banner> banners;
@@ -283,11 +314,43 @@ namespace CIPlatform.Repository.Repository
         {
             return _ciPlatformDbContext.MissionThemes.Where(theme=> theme.MissionThemeId== themeId).First();
         }
-
         void IAdminRepository.EditTheme(MissionTheme theme)
         {
             _ciPlatformDbContext.Update(theme);
             _ciPlatformDbContext.SaveChanges();
+        }
+        List<CountryList> IAdminRepository.GetCountryLists()
+        {
+            return _ciPlatformDbContext.Countries.Select(country => new CountryList
+            {
+                CountryId = country.CountryId,
+                CountryName = country.Name
+            }).ToList();
+        }
+        List<CityList> IAdminRepository.GetCityLists(long countryID)
+        {
+            return _ciPlatformDbContext.Cities.Where(city=>city.CountryId==countryID).Select(city=> new CityList
+            {
+                CityId= city.CityId,
+                CityName= city.Name
+            }).ToList();
+        }
+
+        List<ThemeList> IAdminRepository.GetThemeLists()
+        {
+            return _ciPlatformDbContext.MissionThemes.Where(theme => theme.DeletedAt == null).Select(theme=> new ThemeList
+            {
+                ThemeId= theme.MissionThemeId,
+                ThemeName= theme.Title
+            }).ToList();
+        }
+        List<SkillList> IAdminRepository.GetSkillLists()
+        {
+            return _ciPlatformDbContext.Skills.Where(skill => skill.DeletedAt == null).Select(skill=> new SkillList
+            {
+                SkillId= skill.SkillId,
+                SkillName= skill.SkillName,
+            }).ToList();
         }
     }
 }
