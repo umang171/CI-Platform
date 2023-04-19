@@ -17,13 +17,14 @@
                         <div class="border px-1 p-sm-3 ">
                             <div class="py-2">
                                 <label for="" class="form-label">Theme Title</label>
+                                <input asp-for="ThemeId" hidden/>
                                 <input type="text" asp-for="ThemeName" class="form-control">
                                 <span asp-validation-for="ThemeName" class="text-danger"></span>
                             </div>
                         </div>
                             <div class="pt-3 d-flex justify-content-end align-items-center">
                                 <button id="theme-cancel-btn" class="me-1 border border-2 border-secondary bg-white rounded-5 px-4 p-2">Cancel</button>
-                                <input type="submit" class="ms-2 btn-orange bg-white rounded-5 px-4 p-2" value="Save">
+                                <input type="submit" class="ms-2 btn-orange bg-white rounded-5 px-4 p-2" value="Update">
                             </div>
                     </form>
                    </div>                  
@@ -34,7 +35,7 @@
    @section JavaScript{
 
     <script src="/js/admin_custom.js"></script>
-    <script>
+     <script>
      $("#admin-navigation-theme").addClass("admin-nav-active");
     $("#theme-cancel-btn").click(function(e){
             e.preventDefault();

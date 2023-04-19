@@ -264,5 +264,30 @@ namespace CIPlatform.Repository.Repository
             var records = themes.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
             return new AdminPageList<MissionTheme>(records, totalCounts);
         }
+
+        void IAdminRepository.AddTheme(MissionTheme theme)
+        {
+            _ciPlatformDbContext.Add(theme);
+            _ciPlatformDbContext.SaveChanges();
+        }
+
+        void IAdminRepository.DeleteTheme(long themeId)
+        {
+            MissionTheme missionTheme= _ciPlatformDbContext.MissionThemes.Where(theme=> theme.MissionThemeId== themeId).First();
+            missionTheme.DeletedAt = DateTime.Now;
+            _ciPlatformDbContext.Update(missionTheme);
+            _ciPlatformDbContext.SaveChanges();
+        }
+
+        MissionTheme IAdminRepository.FindTheme(long themeId)
+        {
+            return _ciPlatformDbContext.MissionThemes.Where(theme=> theme.MissionThemeId== themeId).First();
+        }
+
+        void IAdminRepository.EditTheme(MissionTheme theme)
+        {
+            _ciPlatformDbContext.Update(theme);
+            _ciPlatformDbContext.SaveChanges();
+        }
     }
 }

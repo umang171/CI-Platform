@@ -40,6 +40,10 @@ namespace CIPlatform.Repository.Repository.Interface
         public void ApproveStory(long storyId);
         public void RejectStory(long storyId);
         public AdminPageList<MissionTheme> GetThemes(string? searchText, int pageNumber, int pageSize);
+        public void AddTheme(MissionTheme theme);
+        public void DeleteTheme(long themeId);
+        public MissionTheme FindTheme(long themeId);
+        public void EditTheme(MissionTheme theme);
 
 
     }

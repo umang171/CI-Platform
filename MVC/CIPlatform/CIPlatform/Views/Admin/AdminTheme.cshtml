@@ -29,8 +29,9 @@
                                 <div class="modal-body">
                                     <h4>Are you sure you want to delete this item?</h4>
                                     <div class="d-flex justify-content-center align-items-center pt-4">
+                                        <input type="text" id="delete-theme-inp" hidden />
                                         <button class="me-1 border border-2 border-secondary bg-white rounded-5 px-4 p-2" data-bs-dismiss="modal">Cancel</button>
-                                        <button type="submit" class="ms-1 btn-orange bg-white rounded-5 px-4 p-2" data-bs-dismiss="modal">Delete</button>
+                                        <button  id="delete-theme-button" type="submit" class="ms-1 btn-orange bg-white rounded-5 px-4 p-2" data-bs-dismiss="modal">Delete</button>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -119,6 +120,43 @@
                 }
             }
             loadThemes();
+        });
+    }
+    
+    //========================================================================
+    //Delete Themes
+    //========================================================================
+    function deleteTheme(){
+        $(".delete-theme-btn").click(function(){
+            var delThemeId=this.id.slice(7);            
+            $("#delete-theme-inp").val(delThemeId);
+        });
+    }
+    $("#delete-theme-button").click(function(){
+        var themeId=$("#delete-theme-inp").val();   
+        $.ajax({
+                type: "POST",
+                url: "/Admin/DeleteTheme",
+                dataType: "html",
+                cache: false,
+                data: {themeId:themeId},
+                success: function (data) {
+                    alert("Theme is deleted");
+                    loadThemes();
+                },
+                error: function (xhr, status, error) {
+                    // Handle error
+                    console.log(error);
+                }
+            });
+    });
+    //========================================================================
+    //Edit Themes
+    //========================================================================
+    function editTheme(){
+        $(".edit-theme-btn").click(function(){
+            var themeId=this.id.slice(5);
+            window.location = "/Admin/EditTheme?themeId="+themeId;
         });
     }
 </script>

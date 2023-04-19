@@ -560,5 +560,51 @@ namespace CIPlatform.Controllers
             adminThemeModel.adminHeader = adminHeader;
             return View(adminThemeModel);
         }
+        [SessionHelper]
+        [HttpPost]
+        public IActionResult AddTheme(AdminThemeModel adminThemeModel)
+        {
+            if (ModelState.IsValid)
+            {
+                MissionTheme missionTheme = new MissionTheme();
+                missionTheme.Title = adminThemeModel.ThemeName;
+                _adminRepository.AddTheme(missionTheme);
+                return RedirectToAction("AdminTheme");
+            }
+            return View(adminThemeModel);
+        }
+        [SessionHelper]
+        public IActionResult DeleteTheme(long themeId)
+        {
+            _adminRepository.DeleteTheme(themeId);
+            return Ok();
+        }
+        [SessionHelper]
+        public IActionResult EditTheme(long themeId)
+        {
+            string adminSessionEmail = HttpContext.Session.GetString("useremail");
+            Admin admin = _adminRepository.findAdmin(adminSessionEmail);
+            AdminHeader adminHeader = new AdminHeader();
+            adminHeader.username = admin.FirstName + " " + admin.LastName;
+            AdminThemeModel adminThemeModel = new AdminThemeModel();
+            adminThemeModel.adminHeader = adminHeader;
+            MissionTheme missionTheme= _adminRepository.FindTheme(themeId);
+            adminThemeModel.ThemeName= missionTheme.Title;
+            adminThemeModel.ThemeId= missionTheme.MissionThemeId;
+            return View(adminThemeModel);
+        }
+        [SessionHelper]
+        [HttpPost]
+        public IActionResult EditTheme(AdminThemeModel adminThemeModel)
+        {
+            if (ModelState.IsValid)
+            {
+                MissionTheme missionTheme = _adminRepository.FindTheme(adminThemeModel.ThemeId);
+                missionTheme.Title = adminThemeModel.ThemeName;
+                _adminRepository.EditTheme(missionTheme);
+                return RedirectToAction("AdminTheme");
+            }
+            return View(adminThemeModel);
+        }
     }
 }
