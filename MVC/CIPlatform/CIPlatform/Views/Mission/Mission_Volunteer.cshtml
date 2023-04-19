@@ -105,7 +105,7 @@
     <div id="mission-content" class="container-fluid overflow-y-scroll p-0 volunteer-content">
         <div id="volunteer-top-info" class="d-flex flex-column flex-sm-row">
             <div id="volunteer-image-part" class="w-50">
-                <img id="preview-image" src="~/@Model.MediaPath/@Model.MediaName.ToString().Split(",")[0]@Model.MediaType"
+                <img id="preview-image" src="~/@Model.MediaPath.ToString().Split(",")[0]/@Model.MediaName.ToString().Split(",")[0]@Model.MediaType.ToString().Split(",")[0]"
                     class="w-100 volunteer-main-image" alt="" />
                 <!-- carousel -->
                 <div id="carouselExampleControls" class="carousel slide w-100" data-bs-ride="carousel">
@@ -113,13 +113,15 @@
                         <div class="carousel-item active h-100 w-100">
                             <div class="d-flex h-100 w-100">
                                 @{
+                                string[] mediaPaths = Model.MediaPath.ToString().Split(",");
                                 string[] mediaNames = Model.MediaName.ToString().Split(",");
+                                string[] mediaType = Model.MediaType.ToString().Split(",");
                                 int mediaLength = mediaNames.Length;
                             }
                             @for (int i = 0; i < mediaLength; i++)
                             {
                                 <div class="h-100 w-25">
-                                        <img src="~/@Model.MediaPath/@mediaNames[i]@Model.MediaType"
+                                        <img src="~/@mediaPaths[i]/@mediaNames[i]@mediaType[i]"
                                         class="carousel-images d-block w-100 h-100 p-1" alt="..." />
                                     </div>     
                                 @if ((i + 1) % 4 == 0 && i != 0 && (i + 1) != mediaLength)
@@ -345,14 +347,16 @@
                     else
                     {
                         string[] documentNames = Model.DocumentName.ToString().Split(",");
+                        string[] documentPaths = Model.DocumentPath.ToString().Split(",");
+                        string[] documentTypes= Model.DocumentType.ToString().Split(",");
                         int docuemntLength = documentNames.Length;
 
                         @for (int i = 0; i < docuemntLength; i++)
                         {
-                                <button class="border border-1 rounded-5 px-3 py-2 bg-white mx-2">
-                                    <a href="~/@Model.DocumentPath/@documentNames[i]@Model.DocumentType" target="_blank"
+                                <button class="border border-1 rounded-5 px-3 py-2 bg-white mx-2 m-1">
+                                    <a href="~/@documentPaths[i]/@documentNames[i]@documentTypes[i]" target="_blank"
                                 class="text-decoration-none text-dark">
-                                        <img src="~/images/doc.png" class="px-2" alt="">@documentNames[i]@Model.DocumentType
+                                        <img src="~/images/doc.png" class="px-2" alt="">@documentNames[i]@documentTypes[i]
                                     </a>
                                 </button>
                         }

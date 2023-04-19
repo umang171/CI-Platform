@@ -41,7 +41,7 @@
 
             <div id="card-parent" class="card-parent col-lg-4 col-md-6 col-sm-6 col-12 grid-item h-auto mb-4">
                 <div class="card">
-                    <img class="card-img-top w-100 card-img" src=~/@data.MediaPath/@data.MediaName.ToString().Split(",")[0]@data.MediaType alt="Card image cap" />
+                    <img class="card-img-top w-100 card-img" src=~/@data.MediaPath/@data.MediaName@data.MediaType alt="Card image cap" />
                     
                     <div id="mission-applied-@data.MissionId" class="mission-applied bg-success position-absolute text-white p-2 px-4 rounded-end-5">Applied</div>
                     <div id="card-image-content" class="d-flex flex-column justify-content-between  p-2">                       
@@ -184,7 +184,7 @@
             <div id="list-card-parent" class="card-parent-list col-12 d-flex p-0 mb-4 border shadow">
 
                 <div class="list-image-part position-relative">
-                    <img src=~/@data.MediaPath/@data.MediaName.ToString().Split(",")[0]@data.MediaType class="list-img" alt="" />
+                    <img src=~/@data.MediaPath/@data.MediaName@data.MediaType class="list-img" alt="" />
                     <h5 class="list-card-theme-title bg-white rounded-5 p-2">@data.ThemeTitle</h5>
                      <div id="lmission-applied-@data.MissionId" class="lmission-applied bg-success position-absolute text-white p-2 px-4 rounded-end-5 top-0">Applied</div>
                     <div id="list-card-image-content"

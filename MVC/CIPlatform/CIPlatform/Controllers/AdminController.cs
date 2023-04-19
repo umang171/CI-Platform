@@ -305,12 +305,12 @@ namespace CIPlatform.Controllers
         {
             if (missionMedias.Count() == 0)
                 ModelState.AddModelError("MissionMedia", "Please select Media");
+            if (adminMissionModel.StartDate == null)
+                ModelState.AddModelError("StartDate", "Start Date is required for time based mission");
+            if (adminMissionModel.EndDate == null)
+                ModelState.AddModelError("EndDate", "End Date is required for time based mission");
             if (adminMissionModel.MissionType == "time")
-            {
-                if (adminMissionModel.StartDate == null)
-                    ModelState.AddModelError("StartDate", "Start Date is required for time based mission");
-                if (adminMissionModel.EndDate == null)
-                    ModelState.AddModelError("EndDate", "End Date is required for time based mission");
+            {                
                 if (adminMissionModel.StartDate!= null && adminMissionModel.EndDate != null)
                 {
                     if (adminMissionModel.StartDate > adminMissionModel.EndDate)
@@ -345,12 +345,12 @@ namespace CIPlatform.Controllers
                 mission.EndDate = adminMissionModel.EndDate;
                 mission.CountryId=adminMissionModel.CountryId;
                 mission.CityId = adminMissionModel.CityId;
-                //mission.TotalSeats = adminMissionModel.TotalSeats;
+                mission.TotalSeats = adminMissionModel.TotalSeats;
                 mission.ThemeId=adminMissionModel.ThemeId;
                 mission.OrganizationName=adminMissionModel.OrganizationName;
                 mission.OrganizationDetail=adminMissionModel.OrganizationDetail;
                 mission.Availability=adminMissionModel.Availability;
-
+                mission.Status = true;
                 List<MissionSkill> missionSkills=new List<MissionSkill>();
                 foreach(var item in adminMissionModel.Skills.Split(",").SkipLast(1))
                 {
@@ -360,34 +360,39 @@ namespace CIPlatform.Controllers
                 }
 
                 GoalMission goalMission = new GoalMission();
-                goalMission.GoalValue =(int)adminMissionModel.GoalValue;
-                goalMission.GoalObjectiveText = adminMissionModel.GoalObjective;
+                if (adminMissionModel.MissionType != "time")
+                {
+                    goalMission.GoalValue = (int)adminMissionModel.GoalValue;
+                    goalMission.GoalObjectiveText = adminMissionModel.GoalObjective;
+                }
 
-                MissionMedium missionMedia=new MissionMedium();
+                List<MissionMedium> missionMedia =new List<MissionMedium>();
                 string wwwRootPath = _webHostEnvironment.WebRootPath;
                 foreach (IFormFile postedFile in missionMedias)
-                {                    
+                {        
+                    MissionMedium missionMedium = new MissionMedium();
                     string fileName = Guid.NewGuid().ToString();
-                    missionMedia.MediaName += fileName + ",";
+                    missionMedium.MediaName = fileName;
                     var uploads = Path.Combine(wwwRootPath, @"images\missions");
-                    missionMedia.MediaPath = @"images\missions";
+                    missionMedium.MediaPath= @"images\missions";
                     var extension = Path.GetExtension(postedFile.FileName);
-                    missionMedia.MediaType = extension;
-
+                    missionMedium.MediaType= extension;
+                    missionMedia.Add(missionMedium);
                     using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
                     {
                         postedFile.CopyTo(fileStreams);
                     }
                 }
-                MissionDocument missionDocument= new MissionDocument();
+                List<MissionDocument> missionDocument= new List<MissionDocument>();
                 foreach (IFormFile postedFile in missionDocuments)
                 {
+                    MissionDocument missionDoc= new MissionDocument();
                     string fileName = Guid.NewGuid().ToString();
-                    missionDocument.DocumentName += fileName + ",";
+                    missionDoc.DocumentName= fileName;
                     var uploads = Path.Combine(wwwRootPath, @"documents");
-                    missionDocument.DocumentPath = @"documents";
+                    missionDoc.DocumentPath = @"documents";
                     var extension = Path.GetExtension(postedFile.FileName);
-                    missionDocument.DocumentType = extension;
+                    missionDoc.DocumentType = extension;
 
                     using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
                     {
@@ -395,6 +400,7 @@ namespace CIPlatform.Controllers
                     }
                 }
                 _adminRepository.AddMission(mission,missionSkills,goalMission,missionMedia,missionDocument);
+                return RedirectToAction("AdminMission","Admin");
             }
             adminMissionModel.countryLists = _adminRepository.GetCountryLists();
             adminMissionModel.cityLists = _adminRepository.GetCityLists(adminMissionModel.CountryId);
