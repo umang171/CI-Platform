@@ -7,289 +7,279 @@
 }
 
 
-  <div id="main-header" class="d-flex flex-row">
+<div id="main-header" class="d-flex flex-row">
     <div id="menu-side-bar" class="position-absolute">
-      <div id="close-img" class="p-3 img-close">
-        <img src="~/images/cancel.png" alt="" />
-      </div>
-      <div id="menu-heading" class="d-flex justify-content-center align-items-center">
-        <a asp-action="Index" asp-controller="Story" class="side-menu-items text-decoration-none text-dark w-100 m-1 p-1 px-2">Stories</a>
-        <div class="side-menu-items dropdown w-100 m-1 p-1 px-2">
-          <button class="dropdown-toggle border-0 bg-white w-100 d-flex justify-content-between align-items-center"
-            type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Policy
-            <img src="~/images/drop-down.png" alt="" />
-          </button>
-          <ul class="dropdown-menu w-100">
-            <li><a class="dropdown-item" href="#">Volunteering</a></li>
-            <li><a class="dropdown-item" href="#">Sponsored</a></li>
-          </ul>
+        <div id="close-img" class="p-3 img-close">
+            <img src="~/images/cancel.png" alt="" />
         </div>
-      </div>
+        <div id="menu-heading" class="d-flex justify-content-center align-items-center">
+            <a asp-action="Index" asp-controller="Story" class="side-menu-items text-decoration-none text-dark w-100 m-1 p-1 px-2">Stories</a>
+            <div class="side-menu-items dropdown w-100 m-1 p-1 px-2">
+                <button class="dropdown-toggle border-0 bg-white w-100 d-flex justify-content-between align-items-center"
+                        type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Policy
+                    <img src="~/images/drop-down.png" alt="" />
+                </button>
+                <ul class="dropdown-menu w-100">
+                    <li><a class="dropdown-item" href="#">Volunteering</a></li>
+                    <li><a class="dropdown-item" href="#">Sponsored</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <div id="filter-side-bar" class="position-absolute img-close p-2">
-      <div id="filter-img-close" class="p-2 img-close">
-        <img src="~/images/cancel.png" alt="" />
-      </div>
-      <div id="side-search-nav" class="d-block d-flex flex-column">
-        <div class="row d-flex flex-column mx-0" id="side-filter-dropdowns">
-          <div class="filters col-3 p-0 m-1 w-100 filter-side-items">
-            <div class="dropdown w-100 h-100 p-0">
-              <button
-                class="w-100 h-100 dropdown-toggle border-0 bg-white d-flex justify-content-between align-items-center"
-                type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Country
-                <img src="~/images/drop-down.png" alt="" />
-              </button>
-              <ul class="dropdown-menu countryDropDownList">
-                                                             @* @foreach (var country in Model.countryList)
-                                                                          {
-                                                              <li class="p-1">
-                                                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                                                  @country.Name
-                                                  </a>
-                                                              </li>
-                                                                          }  *@                    
-                </ul>
-            </div>
-          </div>
-          <div class="filters col-3 py-5 m-1 w-100 filter-side-items">
-            <div class="dropdown w-100 h-100 p-0">
-              <button
-                class="w-100 h-100 dropdown-toggle border-0 bg-transparent d-flex justify-content-between align-items-center"
-                type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                City
-                <img src="~/images/drop-down.png" alt="" />
-              </button>
-              <ul class="dropdown-menu cityDropDownList">
-                                                 @*@foreach(var cities in Model.cityList){
-                                                        <li class="p-1">
-                                                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                                                  @cities.Name
-                                                  </a>
-                                                              </li>
-                                                                 }*@
-                    </ul>
-            </div>
-          </div>
-          <div class="filters col-3 py-5 m-1 w-100 filter-side-items">
-            <div class="dropdown w-100 h-100 p-0">
-              <button
-                class="w-100 h-100 dropdown-toggle border-0 bg-transparent d-flex justify-content-between align-items-center"
-                type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Theme
-                <img src="~/images/drop-down.png" alt="" />
-              </button>
-              <ul class="dropdown-menu themeDropDownList">
-                                                 @*@foreach(var theme in Model.themeList){
-                                                        <li class="p-1">
-                                                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                                                        @theme.Title  
-                                                        </a>
-                                                              </li>
-                                                                 }*@
-                    </ul>
-            </div>
-          </div>
-          <div class="filters col-3 py-5 m-1 w-100 filter-side-items">
-            <div class="dropdown w-100 h-100 p-0">
-              <button
-                class="w-100 h-100 dropdown-toggle border-0 bg-white d-flex justify-content-between align-items-center"
-                type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Skills
-                <img src="~/images/drop-down.png" alt="" />
-              </button>
-              <ul class="dropdown-menu skillDropDownList">
-                                                 @*@foreach(var skill in @Model.skillList){
-                                                        <li class="p-1">
-                                                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                                                        @skill.SkillName
-                                                        </a>
-                                                              </li>
-                                                                 }*@
-               </ul>
-            </div>
-          </div>
+        <div id="filter-img-close" class="p-2 img-close">
+            <img src="~/images/cancel.png" alt="" />
         </div>
-      </div>
+        <div id="side-search-nav" class="d-block d-flex flex-column">
+            <div class="row d-flex flex-column mx-0" id="side-filter-dropdowns">
+                <div class="filters col-3 p-0 m-1 w-100 filter-side-items">
+                    <div class="dropdown w-100 h-100 p-0">
+                        <button class="w-100 h-100 dropdown-toggle border-0 bg-white d-flex justify-content-between align-items-center"
+                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Country
+                            <img src="~/images/drop-down.png" alt="" />
+                        </button>
+                        <ul class="dropdown-menu countryDropDownList">
+                            @* @foreach (var country in Model.countryList)
+                                {
+                                <li class="p-1">
+                                <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
+                                @country.Name
+                                </a>
+                                </li>
+                                }  *@
+                        </ul>
+                    </div>
+                </div>
+                <div class="filters col-3 py-5 m-1 w-100 filter-side-items">
+                    <div class="dropdown w-100 h-100 p-0">
+                        <button class="w-100 h-100 dropdown-toggle border-0 bg-transparent d-flex justify-content-between align-items-center"
+                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            City
+                            <img src="~/images/drop-down.png" alt="" />
+                        </button>
+                        <ul class="dropdown-menu cityDropDownList">
+                            @*@foreach(var cities in Model.cityList){
+                                <li class="p-1">
+                                <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
+                                @cities.Name
+                                </a>
+                                </li>
+                                }*@
+                        </ul>
+                    </div>
+                </div>
+                <div class="filters col-3 py-5 m-1 w-100 filter-side-items">
+                    <div class="dropdown w-100 h-100 p-0">
+                        <button class="w-100 h-100 dropdown-toggle border-0 bg-transparent d-flex justify-content-between align-items-center"
+                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Theme
+                            <img src="~/images/drop-down.png" alt="" />
+                        </button>
+                        <ul class="dropdown-menu themeDropDownList">
+                            @*@foreach(var theme in Model.themeList){
+                                <li class="p-1">
+                                <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
+                                @theme.Title
+                                </a>
+                                </li>
+                                }*@
+                        </ul>
+                    </div>
+                </div>
+                <div class="filters col-3 py-5 m-1 w-100 filter-side-items">
+                    <div class="dropdown w-100 h-100 p-0">
+                        <button class="w-100 h-100 dropdown-toggle border-0 bg-white d-flex justify-content-between align-items-center"
+                                type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Skills
+                            <img src="~/images/drop-down.png" alt="" />
+                        </button>
+                        <ul class="dropdown-menu skillDropDownList">
+                            @*@foreach(var skill in @Model.skillList){
+                                <li class="p-1">
+                                <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
+                                @skill.SkillName
+                                </a>
+                                </li>
+                                }*@
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div id="main-container" class="w-100">
-      <header class="w-100 bg-white position-sticky z-2 border-bottom">
-        <div id="main-first-header" class="d-flex justify-content-between align-items-center mx-auto">
-          <div id="leftNavbar" class="d-flex align-items-center">
-            <div id="menuimg" class="d-flex d-block d-md-none justify-content-center align-items-center p-2 m-1 mx-3">
-              <img src="~/images/list.png" alt="" />
-            </div>
+        <header class="w-100 bg-white position-sticky z-2 border-bottom">
+            <div id="main-first-header" class="d-flex justify-content-between align-items-center mx-auto">
+                <div id="leftNavbar" class="d-flex align-items-center">
+                    <div id="menuimg" class="d-flex d-block d-md-none justify-content-center align-items-center p-2 m-1 mx-3">
+                        <img src="~/images/list.png" alt="" />
+                    </div>
 
-            <img src="~/images/logo.png" alt="" />
+                    <img src="~/images/logo.png" alt="" />
 
-            <div id="menu-heading" class="d-none d-md-flex justify-content-center align-items-center">
-              <a asp-action="Index" asp-controller="Story" class="text-decoration-none text-dark mx-3">Stories</a>
-              <div class="dropdown">
-                <button class="dropdown-toggle border-0 bg-white m-1" type="button" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  Policy
-                  <img src="~/images/drop-down.png" alt="" />
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li>
-                    <a class="dropdown-item" href="#">Another action</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+                    <div id="menu-heading" class="d-none d-md-flex justify-content-center align-items-center">
+                        <a asp-action="Index" asp-controller="Story" class="text-decoration-none text-dark mx-3">Stories</a>
+                        <div class="dropdown">
+                            <button class="dropdown-toggle border-0 bg-white m-1" type="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                Policy
+                                <img src="~/images/drop-down.png" alt="" />
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="#">Something else here</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-          <div id="rightNavbar" class="d-flex align-items-center">
-            <button id="search-button" class="p-1 mx-3 border-0 bg-white d-sm-none">
-              <img src="~/images/search.png" alt="" />
-            </button>
-            <a href=""><img id="user-profile-img" src="@Model.avtar" class="rounded-circle object-fit-cover"
-                alt="" /></a>
-            <div class="dropdown d-sm-block d-none">
-              <button class="dropdown-toggle border-0 bg-white m-1 user-btn" id="user-btn-@Model.userid" type="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                                                                @Model.username
-                <img src="~/images/drop-down.png" alt="" />
-              </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/Account/UserProfile">My Profile</a></li>
-                            <li><a class="dropdown-item" href="/Account/VolunteerTimesheet">Volunteering Timesheet</a></li> 
-                <li><a class="dropdown-item" href="/Mission/logout">Logout</a></li>             
-              </ul>
+                <div id="rightNavbar" class="d-flex align-items-center">
+                    <button id="search-button" class="p-1 mx-3 border-0 bg-white d-sm-none">
+                        <img src="~/images/search.png" alt="" />
+                    </button>
+                    <a href="">
+                        <img id="user-profile-img" src="@Model.avtar" class="rounded-circle object-fit-cover"
+                             alt="" />
+                    </a>
+                    <div class="dropdown d-sm-block d-none">
+                        <button class="dropdown-toggle border-0 bg-white m-1 user-btn" id="user-btn-@Model.userid" type="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                            @Model.username
+                            <img src="~/images/drop-down.png" alt="" />
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/Account/UserProfile">My Profile</a></li>
+                            <li><a class="dropdown-item" href="/Account/VolunteerTimesheet">Volunteering Timesheet</a></li>
+                            <li><a class="dropdown-item" href="/Mission/logout">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-          </div>
+        </header>
+
+        <div>
+            <div id="filter-mission-navbar" class="container-fluid border border-1 p-0 d-none d-sm-block position-static">
+                <div class="mx-auto row" id="main-second-header">
+                    <div id="search-nav" class="col-md-6 col-10 d-flex align-items-center">
+                        <input type="text" id="search-input" placeholder="Search mission..."
+                               class="border-0 rounded-5 bg-white p-3 ps-5" />
+                    </div>
+
+                    <div id="search-nav" class="col-md-6 col-2 p-md-0 d-md-block d-flex justify-content-end align-items-center">
+                        <button class="d-md-none border-0 bg-transparent" type="button" id="filter-button">
+                            <img src="~/images/filter.png" id="filter-image" alt="" />
+                        </button>
+                        <div class="row d-md-flex d-none mx-0" id="filter-dropdowns">
+                            <div class="filters col-3 p-0">
+                                <div class="dropdown w-100 h-100 p-0">
+                                    <button class="w-100 h-100 dropdown-toggle border-0 bg-white d-flex justify-content-between align-items-center"
+                                            type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Country
+                                        <img src="~/images/drop-down.png" alt="" />
+                                    </button>
+
+                                    <ul class="dropdown-menu countryDropDownList">
+                                        @* @foreach (var country in Model.countryList)
+                                            {
+                                            <li class="p-1">
+                                            <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
+                                            @country.Name
+                                            </a>
+                                            </li>
+                                            }*@
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="filters col-3 p-0">
+                                <div class="dropdown w-100 h-100 p-0">
+                                    <button class="w-100 h-100 dropdown-toggle border-0 bg-transparent d-flex justify-content-between align-items-center"
+                                            type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        City
+                                        <img src="~/images/drop-down.png" alt="" />
+                                    </button>
+                                    <ul class="dropdown-menu cityDropDownList">
+                                        @*@foreach(var cities in Model.cityList){
+                                            <li class="p-1">
+                                            <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
+                                            @cities.Name
+                                            </a>
+                                            </li>
+                                            }*@
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="filters col-3 p-0">
+                                <div class="dropdown w-100 h-100 p-0">
+                                    <button class="w-100 h-100 dropdown-toggle border-0 bg-transparent d-flex justify-content-between align-items-center"
+                                            type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Theme
+                                        <img src="~/images/drop-down.png" alt="" />
+                                    </button>
+                                    <ul class="dropdown-menu themeDropDownList">
+                                        @*@foreach(var theme in Model.themeList){
+                                            <li class="p-1">
+                                            <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
+                                            @theme.Title
+                                            </a>
+                                            </li>
+                                            }*@
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="filters col-3 p-0">
+                                <div class="dropdown w-100 h-100 p-0">
+                                    <button class="w-100 h-100 dropdown-toggle border-0 bg-white d-flex justify-content-between align-items-center"
+                                            type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Skills
+                                        <img src="~/images/drop-down.png" alt="" />
+                                    </button>
+                                    <ul class="dropdown-menu skillDropDownList">
+                                        @*@foreach(var skill in @Model.skillList){
+                                            <li class="p-1">
+                                            <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
+                                            @skill.SkillName
+                                            </a>
+                                            </li>
+                                            }*@
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </header>
-
-      <div>
-        <div id="filter-mission-navbar" class="container-fluid border border-1 p-0 d-none d-sm-block position-static">
-          <div class="mx-auto row" id="main-second-header">
-            <div id="search-nav" class="col-md-6 col-10 d-flex align-items-center">
-              <input type="text" id="search-input" placeholder="Search mission..."
-                class="border-0 rounded-5 bg-white p-3 ps-5" />
-            </div>
-
-            <div id="search-nav" class="col-md-6 col-2 p-md-0 d-md-block d-flex justify-content-end align-items-center">
-              <button class="d-md-none border-0 bg-transparent" type="button" id="filter-button">
-                <img src="~/images/filter.png" id="filter-image" alt="" />
-              </button>
-              <div class="row d-md-flex d-none mx-0" id="filter-dropdowns">
-                <div class="filters col-3 p-0">
-                  <div class="dropdown w-100 h-100 p-0">
-                    <button
-                      class="w-100 h-100 dropdown-toggle border-0 bg-white d-flex justify-content-between align-items-center"
-                      type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Country
-                      <img src="~/images/drop-down.png" alt="" />
-                    </button>
-
-                     <ul class="dropdown-menu countryDropDownList">
-                                                                                                 @* @foreach (var country in Model.countryList) 
-                                                                                                              {
-                                                                                                  <li class="p-1">
-                                                                                            <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                                                                                      @country.Name
-                                                                                      </a>
-                                                                                                  </li>
-                                                                                                              }*@                      
-                    </ul>
-                  </div>
-                </div>
-                <div class="filters col-3 p-0">
-                  <div class="dropdown w-100 h-100 p-0">
-                    <button
-                      class="w-100 h-100 dropdown-toggle border-0 bg-transparent d-flex justify-content-between align-items-center"
-                      type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      City
-                      <img src="~/images/drop-down.png" alt="" />
-                    </button>
-                    <ul class="dropdown-menu cityDropDownList">
-                                                                                                 @*@foreach(var cities in Model.cityList){
-                                                                                                        <li class="p-1">
-                                                                                                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                                                                                                  @cities.Name
-                                                                                                  </a>
-                                                                                                              </li>
-                                                                                                                 }*@
-                    </ul>
-                  </div>
-                </div>
-                <div class="filters col-3 p-0">
-                  <div class="dropdown w-100 h-100 p-0">
-                    <button
-                      class="w-100 h-100 dropdown-toggle border-0 bg-transparent d-flex justify-content-between align-items-center"
-                      type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Theme
-                      <img src="~/images/drop-down.png" alt="" />
-                    </button>
-                    <ul class="dropdown-menu themeDropDownList">
-                                                                                                 @*@foreach(var theme in Model.themeList){
-                                                                                                        <li class="p-1">
-                                                                                                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                                                                                                        @theme.Title  
-                                                                                                        </a>
-                                                                                                              </li>
-                                                                                                                 }*@
-                    </ul>
-                  </div>
-                </div>
-                <div class="filters col-3 p-0">
-                  <div class="dropdown w-100 h-100 p-0">
-                    <button
-                      class="w-100 h-100 dropdown-toggle border-0 bg-white d-flex justify-content-between align-items-center"
-                      type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Skills
-                      <img src="~/images/drop-down.png" alt="" />
-                    </button>
-                    <ul class="dropdown-menu skillDropDownList">
-                                                                                                 @*@foreach(var skill in @Model.skillList){
-                                                                                                        <li class="p-1">
-                                                                                                        <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                                                                                                        @skill.SkillName
-                                                                                                        </a>
-                                                                                                              </li>
-                                                                                                                 }*@
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
+</div>
 
 
-  <div id="mission-content" class="container-fluid overflow-y-scroll">
-   <!-- chips -->
+<div id="mission-content" class="container-fluid overflow-y-scroll">
+    <!-- chips -->
     <div class="home-chips border border-1 d-flex py-2 px-1 align-items-center flex-wrap">
-      <div class="chips d-flex flex-wrap mr-2">
-
-
-      </div>
-      <p class="no-filter-text">No filters applied</p>
-      <a class="close-chips" style="display:none;" href="#">Clear All</a>
+        <div class="chips d-flex flex-wrap mr-2">
+        </div>
+        <p class="no-filter-text">No filters applied</p>
+        <a class="close-chips" style="display:none;" href="#">Clear All</a>
     </div>
 
     <!-- mission heading -->
-
-
     <!-- mission cards -->
-<!-- Grid view -->
-<div id="mission-card-views">
-</div>
+    <!-- Grid view -->
+    <div id="mission-card-views">
+    </div>
 
-<partial name="_footer" />
+    <partial name="_footer" />
 
-@section JavaScript
-{
-   <script type="text/javascript" src="~/js/custom.js"></script>
-}
+    @section JavaScript
+    {
+    <script type="text/javascript" src="~/js/custom.js"></script>
+    }

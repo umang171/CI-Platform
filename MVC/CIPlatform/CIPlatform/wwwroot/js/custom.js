@@ -198,7 +198,7 @@ var ajaxRequest1 =
             var str = "";
             var countryDropDown = $(".countryDropDownList");
             for (var j = 0; j < data["data"].length; j++) {
-                str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country" value="' + data["data"][j].name + '"/> ' + data["data"][j].name + '</a></li>';
+                str += '<li class="p-1"><a class= "dropdown-item" id="' + data["data"][j].name + '" href = "#" > <input type="checkbox" name="country" id="c' + data["data"][j].name + '" value="' + data["data"][j].name + '"/> ' + data["data"][j].name + '</a></li>';
             }
             countryDropDown.append(str);
 
@@ -325,17 +325,20 @@ $(".close-chips").on("click", function (e) {
 
 function intializeChips() {
     $(".filters .dropdown-menu li a").on("click", function (e) {
-        console.log("chips call");
-        console.log($("#close-" + $(this).text().trim()));
-       
-        $(".home-chips .chips").append(
-            '<div class="chip" id="chip-' + $(this).text().trim() + '">' +
-            $(this).text() +
-            '<span class="closebtn" id="close-' + $(this).text().trim() + '" onclick="this.parentElement.style.display=\'none\'">&times;</span>'
-        );
-        $(".close-chips").show();
-        $(".no-filter-text").hide();
-        $(".close-chips").show();
+        console.log($("#c"+this.id));
+        if ($("#close-" + $(this).text().trim()).length == 0) {
+            $(".home-chips .chips").append(
+                '<div class="chip" id="chip-' + $(this).text().trim() + '">' +
+                $(this).text() +
+                '<span class="closebtn" id="close-' + $(this).text().trim() + '" onclick="this.parentElement.style.display=\'none\'">&times;</span>'
+            );
+            $(".close-chips").show();
+            $(".no-filter-text").hide();
+            $(".close-chips").show();
+        }
+        else {
+
+        }
 
         //========================
         //filters
