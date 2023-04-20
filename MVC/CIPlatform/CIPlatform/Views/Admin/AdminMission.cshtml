@@ -70,6 +70,7 @@
                     $('#admin-mission-table').html(data);
                     loadPagination();
                     deleteMission();
+                    editMission();
                 },
                 error: function (xhr, status, error) {
                     // Handle error
@@ -149,5 +150,15 @@
                 }
             });
     });
+     
+    //========================================================================
+    //Edit Missions
+    //========================================================================
+    function editMission(){
+        $(".edit-mission-btn").click(function(){
+            var missionId=this.id.slice(5);
+            window.location = "/Admin/EditMission?missionId="+missionId;
+        });
+    }
 </script>
 }

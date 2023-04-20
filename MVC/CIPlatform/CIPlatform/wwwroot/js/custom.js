@@ -326,6 +326,8 @@ $(".close-chips").on("click", function (e) {
 function intializeChips() {
     $(".filters .dropdown-menu li a").on("click", function (e) {
         console.log("chips call");
+        console.log($("#close-" + $(this).text().trim()));
+       
         $(".home-chips .chips").append(
             '<div class="chip" id="chip-' + $(this).text().trim() + '">' +
             $(this).text() +

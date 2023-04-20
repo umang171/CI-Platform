@@ -153,6 +153,8 @@ namespace CIPlatform.Repository.Repository
                 missionVolunteerViewModelObj.Rating = ! rdr.IsDBNull("Rating")?rdr.GetInt32("Rating"):0;
                 missionVolunteerViewModelObj.TotalVoulunteerRating = rdr.GetInt32("TotalVoulunteerRating");
                 missionVolunteerViewModelObj.Description = rdr.GetString("Description");
+                missionVolunteerViewModelObj.SeatsLeft = rdr.GetInt64("SeatsLeft");
+                missionVolunteerViewModelObj.AchievedGoal = rdr.IsDBNull("AchievedGoal")? 0 : rdr.GetInt32("AchievedGoal");
             }
             conn.Close();
             return missionVolunteerViewModelObj;
@@ -192,14 +194,14 @@ namespace CIPlatform.Repository.Repository
 
         IEnumerable<Mission> IMissionRepository.getRelatedMissions(string themeName,string cityName, int missionId)
         {
-            IEnumerable <Mission> cityRelatedMissions= _ciPlatformDbContext.Missions.Include(mission => mission.Country).ThenInclude(mission => mission.Cities).Include(mission => mission.Theme).Include(mission => mission.MissionSkills).Include(mission => mission.MissionMedia).Include(mission=>mission.GoalMissions).Include(mission=>mission.MissionRatings).Where(u=>u.MissionId!=missionId).Where(u => u.City.Name == cityName).Take(3);
+            IEnumerable <Mission> cityRelatedMissions= _ciPlatformDbContext.Missions.Include(mission => mission.Country).ThenInclude(mission => mission.Cities).Include(mission => mission.Theme).Include(mission => mission.MissionSkills).Include(mission=>mission.Timesheets).Include(mission=>mission.MissionApplications).Include(mission => mission.MissionMedia).Include(mission=>mission.GoalMissions).Include(mission=>mission.MissionRatings).Where(u=>u.MissionId!=missionId).Where(u => u.City.Name == cityName).Take(3);
 
             if(cityRelatedMissions.Count()==3)
             {
                 return cityRelatedMissions;
             }
             int remainingRelatedMissions = 3-cityRelatedMissions.Count();
-            IEnumerable<Mission> themeRelatedMissions=_ciPlatformDbContext.Missions.Include(mission => mission.Country).ThenInclude(mission => mission.Cities).Include(mission => mission.Theme).Include(mission=>mission.MissionSkills).Include(mission => mission.MissionMedia).Include(mission => mission.GoalMissions).Include(mission => mission.MissionRatings).Where(u => u.City.Name != cityName).Where(u => u.MissionId != missionId).Where(u =>u.Theme.Title == themeName).Take(remainingRelatedMissions);
+            IEnumerable<Mission> themeRelatedMissions=_ciPlatformDbContext.Missions.Include(mission => mission.Country).ThenInclude(mission => mission.Cities).Include(mission => mission.Theme).Include(mission=>mission.MissionSkills).Include(mission => mission.Timesheets).Include(mission => mission.MissionApplications).Include(mission => mission.MissionMedia).Include(mission => mission.GoalMissions).Include(mission => mission.MissionRatings).Where(u => u.City.Name != cityName).Where(u => u.MissionId != missionId).Where(u =>u.Theme.Title == themeName).Take(remainingRelatedMissions);
             IEnumerable<Mission> relatedMissions=cityRelatedMissions.Concat(themeRelatedMissions);
             return relatedMissions;
         }

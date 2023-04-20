@@ -179,7 +179,7 @@
                                 class="w-50 d-flex align-items-center justify-content-md-center p-1 px-lg-4 px-md-1">
                                 <img id="vounteer-seats-left-image" src="~/images/Seats-left.png" alt="" />
                                 <div class="d-flex flex-column p-2">
-                                    <p id="count" class="m-0 p-0">10</p>
+                                    <p id="count" class="m-0 p-0">@Model.SeatsLeft</p>
                                     <p id="vounteer-seats-left-text" class="m-0 p-0">
                                         Seats left
                                     </p>
@@ -204,11 +204,20 @@
                                     <img id="vounteer-achieved-image" src="~/images/achieved.png" alt="" />
                                     <div class="d-flex flex-column p-2">
                                         <div class="progress">
-                                            <div class="progress-bar w-75" role="progressbar" aria-valuenow="75"
+                                        @{
+                                            double achieved = 0;
+                                            int totalAchieved = 0;
+                                            if (@Model.AchievedGoal > 0)
+                                            {
+                                                totalAchieved = (int)@Model.AchievedGoal;
+                                                achieved= ((double)@Model.AchievedGoal * 100.0)/(double)@Model.GoalValue;
+                                            }
+                                        }
+                                            <div class="progress-bar" style="width:@totalAchieved%" role="progressbar" aria-valuenow="@achieved"
                                             aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                         <p id="vounteer-achieved-text" class="m-0 p-0">
-                                            8000 achieved
+                                            @achieved achieved
                                         </p>
                                     </div>
                                 </div>

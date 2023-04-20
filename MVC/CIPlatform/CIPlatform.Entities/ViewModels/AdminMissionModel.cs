@@ -38,7 +38,10 @@ namespace CIPlatform.Entities.ViewModels
         public string? MediaName { get; set; } = String.Empty;
         public string? MediaType { get; set; } = String.Empty;
         public string? MediaPath { get; set; } = String.Empty;
-        public string MissionDocuments { get; set; } = String.Empty;
+        public string? DocumentName { get; set; } = String.Empty;
+        public string? DocumentType { get; set; } = String.Empty;
+        public string? DocumentPath { get; set; } = String.Empty;
+        public string? MissionDocuments { get; set; } = String.Empty;
         public List<CountryList> countryLists { get; set; }= new List<CountryList>();
         public List<CityList> cityLists { get; set; }= new List<CityList>();
         public List<ThemeList> themeLists { get; set; }= new List<ThemeList>();

@@ -37,5 +37,8 @@ namespace CIPlatform.Entities.ViewModels
         public string Availability { get; set; } = string.Empty;
         public int ? Rating { get; set; }
         public int? TotalVoulunteerRating { get; set; }
+        public long? SeatsLeft { get; set; }
+        public int? AchievedGoal { get; set; }
+
     }
 }

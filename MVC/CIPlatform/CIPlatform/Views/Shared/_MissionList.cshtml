@@ -42,9 +42,9 @@
             <div id="card-parent" class="card-parent col-lg-4 col-md-6 col-sm-6 col-12 grid-item h-auto mb-4">
                 <div class="card">
                     <img class="card-img-top w-100 card-img" src=~/@data.MediaPath/@data.MediaName@data.MediaType alt="Card image cap" />
-                    
+
                     <div id="mission-applied-@data.MissionId" class="mission-applied bg-success position-absolute text-white p-2 px-4 rounded-end-5">Applied</div>
-                    <div id="card-image-content" class="d-flex flex-column justify-content-between  p-2">                       
+                    <div id="card-image-content" class="d-flex flex-column justify-content-between  p-2">
                         <div id="location-image" class="img-content p-2 rounded-5">
                             <img src="~/images/pin.png" alt="">
                             @data.CityName
@@ -120,7 +120,7 @@
                         <div id="remain-seats-cards" class=" w-50 d-flex align-items-center p-1 px-lg-4 px-md-1">
                             <img id="seats-left-image" src="~/images/Seats-left.png" alt="">
                             <div class="d-flex flex-column p-2 ">
-                                <p id="count" class="m-0 p-0 fs-5">10</p>
+                                <p id="count" class="m-0 p-0 fs-5">@data.SeatsLeft</p>
                                 <p id="seats-left-text" class="m-0 p-0">Seats left</p>
                             </div>
                         </div>
@@ -140,24 +140,33 @@
                                 <img id="vounteer-achieved-image" src="~/images/achieved.png" alt="" />
                                 <div class="d-flex flex-column p-2">
                                     <div class="progress">
-                                        <div class="progress-bar w-75" role="progressbar" aria-valuenow="75"
-                                            aria-valuemin="0" aria-valuemax="100"></div>
+                                        @{
+                                            double achieved = 0;
+                                            int totalAchieved = 0;
+                                            if (@data.AchievedGoal > 0)
+                                            {
+                                                totalAchieved = (int)data.AchievedGoal;
+                                                achieved = ((double)@data.AchievedGoal * 100.0) / (double)@data.GoalValue;
+                                            }
+                                        }
+                                        <div class="progress-bar" role="progressbar" style="width:@achieved%;" aria-valuenow="@achieved"
+                                     aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                     <p id="vounteer-achieved-text" class="m-0 p-0">
-                                        8000 achieved
+                                        @totalAchieved achieved
                                     </p>
                                 </div>
                             </div>
                         }
                     </div>
                     <div class="card-button-apply m-1 p-1 w-100 text-center">
-                        @if (data.EndDate > DateTime.Now || data.MissionType=="goal")
-                        {                         
-                        <a href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = data.MissionId }) ">
-                            <button id="apply-btn" class="apply-btn-@data.MissionId btn btn-outline-warning rounded-5 py-2 px-4 fs-5 ">
-                                Apply
-                                <img src="~/images/right-arrow.png" class="mx-1 ms-3" alt="">
-                            </button>
+                        @if (data.EndDate > DateTime.Now || data.MissionType == "goal")
+                        {
+                            <a href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = data.MissionId }) ">
+                                <button id="apply-btn" class="apply-btn-@data.MissionId btn btn-outline-warning rounded-5 py-2 px-4 fs-5 ">
+                                    Apply
+                                    <img src="~/images/right-arrow.png" class="mx-1 ms-3" alt="">
+                                </button>
                             </a>
                         }
                         else
@@ -186,7 +195,7 @@
                 <div class="list-image-part position-relative">
                     <img src=~/@data.MediaPath/@data.MediaName@data.MediaType class="list-img" alt="" />
                     <h5 class="list-card-theme-title bg-white rounded-5 p-2">@data.ThemeTitle</h5>
-                     <div id="lmission-applied-@data.MissionId" class="lmission-applied bg-success position-absolute text-white p-2 px-4 rounded-end-5 top-0">Applied</div>
+                    <div id="lmission-applied-@data.MissionId" class="lmission-applied bg-success position-absolute text-white p-2 px-4 rounded-end-5 top-0">Applied</div>
                     <div id="list-card-image-content"
                      class="h-100 d-flex flex-column position-absolute  p-2">
                         <div id="list-location-image" class="list-img-content p-2 rounded-5">
@@ -242,7 +251,7 @@
                                 </div>
                             </div>
                             <div class="list-card-button-apply m-1 p-1 w-100 ">
-                                 @if (data.EndDate > DateTime.Now || data.MissionType == "goal")
+                                @if (data.EndDate > DateTime.Now || data.MissionType == "goal")
                                 {
                                     <a href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = data.MissionId }) ">
                                         <button id="apply-btn" class="apply-btn-@data.MissionId btn btn-outline-warning rounded-5 py-2 px-4 fs-5 ">
@@ -286,36 +295,45 @@
                                 <div id="remain-seats-cards" class=" w-50 d-flex align-items-center p-1 px-lg-4 px-md-1">
                                     <img id="list-seats-left-image" src="~/images/Seats-left.png" alt="">
                                     <div class="d-flex flex-column p-2 ">
-                                        <p id="count" class="m-0 p-0 fs-5">10</p>
+                                        <p id="count" class="m-0 p-0 fs-5">@data.SeatsLeft</p>
                                         <p id="list-seats-left-text" class="m-0 p-0">Seats left</p>
                                     </div>
                                 </div>
 
-                                 @if (data.MissionType == "time")
-                        {
-                            <div id="deadline-info-card" class=" w-40 d-flex align-items-center p-1 px-md-1">
-                                <img id="deadline-image" src="~/images/deadline.png" alt="">
-                                <div class="d-flex flex-column p-2 ">
-                                    <p id="deadline-date" class="m-0 p-0 fs-6">@data.EndDate.ToString().Substring(0,10)</p>
-                                    <p id="deadline-text" class="m-0 p-0">Deadline</p>
-                                </div>
-                            </div>
-                        }
-                        else
-                        {
-                            <div id="deadline-info-card" class=" w-40 d-flex align-items-center p-1 px-lg-4 px-md-1">
-                                <img id="vounteer-achieved-image" src="~/images/achieved.png" alt="" />
-                                <div class="d-flex flex-column p-2">
-                                    <div class="progress">
-                                        <div class="progress-bar w-75" role="progressbar" aria-valuenow="75"
-                                            aria-valuemin="0" aria-valuemax="100"></div>
+                                @if (data.MissionType == "time")
+                                {
+                                    <div id="deadline-info-card" class=" w-40 d-flex align-items-center p-1 px-md-1">
+                                        <img id="deadline-image" src="~/images/deadline.png" alt="">
+                                        <div class="d-flex flex-column p-2 ">
+                                            <p id="deadline-date" class="m-0 p-0 fs-6">@data.EndDate.ToString().Substring(0,10)</p>
+                                            <p id="deadline-text" class="m-0 p-0">Deadline</p>
+                                        </div>
                                     </div>
-                                    <p id="vounteer-achieved-text" class="m-0 p-0">
-                                        8000 achieved
-                                    </p>
-                                </div>
-                            </div>
-                        }
+                                }
+                                else
+                                {
+                                    <div id="deadline-info-card" class=" w-40 d-flex align-items-center p-1 px-lg-4 px-md-1">
+                                        <img id="vounteer-achieved-image" src="~/images/achieved.png" alt="" />
+                                        <div class="d-flex flex-column p-2">
+                                            <div class="progress">
+                                                @{
+                                                    double achieved = 0;
+                                                    int totalAchieved = 0;
+                                                    if (@data.AchievedGoal > 0)
+                                                    {
+                                                        totalAchieved = (int)data.AchievedGoal;
+                                                        achieved = ((double)@data.AchievedGoal * 100.0) / (double)@data.GoalValue;
+                                                    }
+                                                }
+                                                <div class="progress-bar" style="width:@achieved%" role="progressbar" aria-valuenow="@achieved"
+                                             aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                            <p id="vounteer-achieved-text" class="m-0 p-0">
+                                                @totalAchieved achieved
+                                            </p>
+                                        </div>
+                                    </div>
+                                }
                             </div>
                         </div>
                     </div>
@@ -330,20 +348,21 @@
 <div id="pages-@Model.pageCount" class="Pagination Pagination-total my-3">
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center" id="pagination">
-           <li style="cursor:pointer;" class="page-item"><a class="page-link">&lt;</a></li>
+            <li style="cursor:pointer;" class="page-item"><a class="page-link">&lt;</a></li>
             @if (Model.pageCount <= 5)
-            {             
+            {
                 for (int i = 1; i <= Model.pageCount; i++)
                 {
                     <li class="page-item ">
                         <a class="page-link" href="">@i</a>
                     </li>
-                }   
+                }
             }
-            else{
+            else
+            {
                 int tmp = 1;
                 int i = 1;
-                while(tmp<4)
+                while (tmp < 4)
                 {
                     <li class="page-item ">
                         <a class="page-link" href="">@i</a>
@@ -355,8 +374,8 @@
                     <a class="page-link" href="" disabled>......</a>
                 </li>
                 tmp = 1;
-                i =(int)Model.pageCount - 1;
-                while(tmp<=2)
+                i = (int)Model.pageCount - 1;
+                while (tmp <= 2)
                 {
                     <li class="page-item ">
                         <a class="page-link" href="">@i</a>
@@ -365,7 +384,7 @@
                     tmp++;
                 }
             }
-           <li style="cursor:pointer;" class="page-item"><a class="page-link">&gt;</a></li>
+            <li style="cursor:pointer;" class="page-item"><a class="page-link">&gt;</a></li>
         </ul>
     </nav>
 </div>

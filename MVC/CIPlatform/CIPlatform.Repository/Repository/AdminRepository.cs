@@ -1,6 +1,7 @@
 ﻿using CIPlatform.Entities.DataModels;
 using CIPlatform.Entities.ViewModels;
 using CIPlatform.Repository.Repository.Interface;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -148,6 +149,134 @@ namespace CIPlatform.Repository.Repository
                 _ciPlatformDbContext.Add(missionDoc);
                 _ciPlatformDbContext.SaveChanges();
             }
+        }
+        void IAdminRepository.EditMission(Mission mission, List<MissionSkill> missionSkills, GoalMission goalMission, List<MissionMedium> missionMedia, List<MissionDocument> missionDocument)
+        {
+
+            _ciPlatformDbContext.Update(mission);
+            _ciPlatformDbContext.SaveChanges();
+
+            long missionId = mission.MissionId;
+            if (missionSkills.Count() > 0)
+            {
+                List<MissionSkill> removeSkills = _ciPlatformDbContext.MissionSkills.Where(skill => skill.MissionId == missionId).ToList();
+                foreach (MissionSkill skill in removeSkills)
+                {
+                    _ciPlatformDbContext.Remove(skill);
+                    _ciPlatformDbContext.SaveChanges();
+                }
+                foreach (MissionSkill skill in missionSkills)
+                {
+                    skill.MissionId = missionId;
+                    _ciPlatformDbContext.Add(skill);
+                    _ciPlatformDbContext.SaveChanges();
+                }
+            }
+
+            if (mission.MissionType != "time")
+            {
+                GoalMission removeGoalMission = _ciPlatformDbContext.GoalMissions.Where(skill => skill.MissionId == missionId).First();
+                _ciPlatformDbContext.Remove(removeGoalMission);
+                _ciPlatformDbContext.SaveChanges();
+
+                goalMission.MissionId = missionId;
+                _ciPlatformDbContext.Add(goalMission);
+                _ciPlatformDbContext.SaveChanges();
+
+            }
+
+            if (missionMedia.Count() > 0)
+            {
+                List<MissionMedium> removeMedia=_ciPlatformDbContext.MissionMedia.Where(media=>media.MissionId == missionId).ToList();
+                foreach (MissionMedium missionMedium in removeMedia)
+                {
+                    _ciPlatformDbContext.Remove(missionMedium);
+                    _ciPlatformDbContext.SaveChanges();
+                }
+                foreach (MissionMedium missionMedium in missionMedia)
+                {
+                    missionMedium.MissionId = missionId;
+                    _ciPlatformDbContext.Add(missionMedium);
+                    _ciPlatformDbContext.SaveChanges();
+                }
+            }
+            
+            if(missionDocument.Count() > 0)
+            {
+                List<MissionDocument> removeDocument=_ciPlatformDbContext.MissionDocuments.Where(document=>document.MissionId == missionId).ToList();
+                foreach (MissionDocument missionDoc in removeDocument)
+                {
+                    _ciPlatformDbContext.Remove(missionDoc);
+                    _ciPlatformDbContext.SaveChanges();
+                }
+                foreach (MissionDocument missionDoc in missionDocument)
+                {
+                    missionDoc.MissionId = missionId;
+                    _ciPlatformDbContext.Add(missionDoc);
+                    _ciPlatformDbContext.SaveChanges();
+                }
+            }
+        }
+
+        AdminMissionModel IAdminRepository.GetMissionDetails(long missionId)
+        {
+            AdminMissionModel adminMissionModel = new AdminMissionModel();
+            Mission mission = _ciPlatformDbContext.Missions.Where(mission => mission.MissionId == missionId).First();
+            adminMissionModel.MissionId = missionId;
+            adminMissionModel.MissionTitle = mission.Title;
+            adminMissionModel.ShortDescription = mission.ShortDescription;
+            adminMissionModel.Description = mission.Description;
+            adminMissionModel.MissionType = mission.MissionType;
+            adminMissionModel.StartDate = mission.StartDate;
+            adminMissionModel.EndDate = mission.EndDate;
+            adminMissionModel.CityId = mission.CityId;
+            adminMissionModel.CountryId = mission.CountryId;
+            adminMissionModel.TotalSeats = (long)mission.TotalSeats;
+            adminMissionModel.ThemeId = mission.ThemeId;
+            adminMissionModel.OrganizationDetail = mission.OrganizationDetail;
+            adminMissionModel.OrganizationName = mission.OrganizationName;
+            adminMissionModel.Availability = mission.Availability;
+
+            List<MissionSkill> missionSkills = _ciPlatformDbContext.MissionSkills.Where(skill => skill.MissionId == missionId).ToList();
+            string skills = "";
+            foreach (MissionSkill skill in missionSkills)
+            {
+                skills += skill.SkillId + ",";
+            }
+            adminMissionModel.Skills = skills;
+
+            if (mission.MissionType != "time")
+            {
+                GoalMission goalMission = _ciPlatformDbContext.GoalMissions.Where(mission => mission.MissionId == missionId).First();
+                adminMissionModel.GoalValue = goalMission.GoalValue;
+                adminMissionModel.GoalObjective = goalMission.GoalObjectiveText;
+            }
+
+            List<MissionMedium> missionMedia = _ciPlatformDbContext.MissionMedia.Where(mission => mission.MissionId == missionId).ToList();
+            string name = "", path = "", type = "";
+            foreach (MissionMedium media in missionMedia)
+            {
+                name += media.MediaName + ",";
+                path += media.MediaPath + ",";
+                type += media.MediaType + ",";
+            }
+            adminMissionModel.MediaName = name;
+            adminMissionModel.MediaPath = path;
+            adminMissionModel.MediaType = type;
+
+            List<MissionDocument> missionDocuments = _ciPlatformDbContext.MissionDocuments.Where(document => document.MissionId == missionId).ToList();
+            string docName = "", docPath = "", docType = "";
+            foreach (MissionDocument document in missionDocuments)
+            {
+                docName += document.DocumentName + ","; ;
+                docPath += document.DocumentPath + ","; ;
+                docType += document.DocumentType + ","; ;
+            }
+            adminMissionModel.DocumentName = docName;
+            adminMissionModel.DocumentType = docType;
+            adminMissionModel.DocumentPath = docPath;
+
+            return adminMissionModel;
         }
         AdminPageList<Banner> IAdminRepository.GetBanners(string? searchText, int pageNumber, int pageSize)
         {
@@ -356,6 +485,11 @@ namespace CIPlatform.Repository.Repository
                 SkillId = skill.SkillId,
                 SkillName = skill.SkillName,
             }).ToList();
+        }
+
+        Mission IAdminRepository.FindMissionById(long missionId)
+        {
+            return _ciPlatformDbContext.Missions.Where(mission => mission.MissionId == missionId).First();
         }
     }
 }

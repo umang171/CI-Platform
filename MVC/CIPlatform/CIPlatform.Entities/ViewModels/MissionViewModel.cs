@@ -25,5 +25,7 @@ namespace CIPlatform.Entities.ViewModels
         public string? ThemeTitle { get; set; } = string.Empty;
         public string CityName { get; set; } = string.Empty;
         public int? Rating { get; set; }
+        public long? SeatsLeft { get; set; }
+        public int? AchievedGoal { get; set; }
     }
 }

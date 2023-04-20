@@ -1,0 +1,380 @@
+﻿@model CIPlatform.Entities.ViewModels.AdminMissionModel
+@section Style{
+<link rel="stylesheet" href="/css/admin_style.css">
+}
+<div class="container-fluid">
+    <div class="row">
+        <partial name="_AdminNavigationbar" />
+        <div class="col-lg-10 col-md-12 min-vh-100">
+            <partial name="_AdminHeader" model="Model.adminHeader" />
+            <div class="admin-main-content p-sm-3 pb-0">
+                <div class="cms-add-form">
+                    <div class="cms-add-header p-sm-2 px-sm-3 border" style="background-color: #F8F9FC;">
+                        <h4>Add Mission</h4>
+                    </div>
+                    <form method="POST" enctype="multipart/form-data">
+                        <input asp-for="MissionId" value="@Model.MissionId" hidden/>
+                        <div class="border px-1 p-sm-3 ">
+                            <div class="py-2">
+                                <label for="" class="form-label">Mission Title</label>
+                                <input asp-for="MissionTitle" type="text" class="form-control">
+                                <span asp-validation-for="MissionTitle" class="text-danger"></span>
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">Mission Short Description</label>
+                                <input asp-for="ShortDescription" type="text" class="form-control">
+                                <span asp-validation-for="ShortDescription" class="text-danger"></span>
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">Description</label>
+                                <textarea asp-for="Description" id="" class="form-control" rows="3"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">Type</label>
+                                <select asp-for="MissionType" id="" class="form-select">
+                                    <option value="time">time</option>
+                                    <option value="goal">goal</option>
+                                </select>
+                            </div>
+
+                            <div class="py-2 d-flex">
+                                <div class="w-50 me-1">
+                                    <label for="" class="form-label">Start Date</label>
+                                    <input asp-for="StartDate" type="date" class="form-control">
+                                    <span asp-validation-for="StartDate" class="text-danger"></span>
+                                </div>
+                                <div class="w-50 ms-1">
+                                    <label for="" class="form-label">End Date</label>
+                                    <input asp-for="EndDate" type="date" class="form-control">
+                                    <span asp-validation-for="EndDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="py-2 d-flex">
+                                <div class="w-50 me-1">
+                                    <label for="" class="form-label">Goal Value</label>
+                                    <input asp-for="GoalValue" type="number" class="form-control">
+                                    <span asp-validation-for="GoalValue" class="text-danger"></span>
+                                </div>
+                                <div class="w-50 ms-1">
+                                    <label for="" class="form-label">Goal Objective</label>
+                                    <input asp-for="GoalObjective" type="text" class="form-control">
+                                    <span asp-validation-for="GoalObjective" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="py-2 d-flex">
+                                <div class="w-50 me-1">
+                                    <label for="" class="form-label">Country</label>
+                                    <select asp-for="CountryId" id="country-select" class="form-select">
+                                        @foreach (var item in Model.countryLists)
+                                        {
+                                            <option value="@item.CountryId">@item.CountryName</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="w-50 ms-1">
+                                    <label for="" class="form-label">City</label>
+                                    <select asp-for="CityId" id="city-select" class="form-select">
+                                        @foreach (var item in Model.cityLists)
+                                        {
+                                            <option value="@item.CityId">@item.CityName</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="py-2 d-flex">
+                                <div class="w-50 ms-1">
+                                    <label for="" class="form-label">Total seats</label>
+                                    <input asp-for=TotalSeats type="number" class="form-control">
+                                    <span asp-validation-for="TotalSeats" class="text-danger"></span>
+                                </div>
+                                <div class="w-50 ms-1">
+                                    <label for="" class="form-label">Mission Theme</label>
+                                    <select asp-for="ThemeId" id="" class="form-select">
+                                        @foreach (var item in Model.themeLists)
+                                        {
+                                            <option value="@item.ThemeId">@item.ThemeName</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">Required Skills</label>
+                                <button type="button" class="p-1 ms-2 px-4 rounded-5 btn-orange bg-white" data-bs-toggle="modal" data-bs-target="#skillModal">
+                                    Add Skill
+                                </button>
+                                <input asp-for="Skills" type="text" id="skill-input" value="@Model.Skills" hidden/>
+                                <textarea readonly id="skill-textarea" class="form-control" rows="5"></textarea>
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">Organization Name</label>
+                                <input asp-for="OrganizationName" type="text" class="form-control">
+                                <span asp-validation-for="OrganizationName" class="text-danger"></span>
+
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">Organization Detail</label>
+                                <textarea asp-for="OrganizationDetail" id="" class="form-control" rows="3"></textarea>
+                                <span asp-validation-for="OrganizationDetail" class="text-danger"></span>
+
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">Availability</label>
+                                <select asp-for="Availability" id="" class="form-select">
+                                    <option value="Daily">Daily</option>
+                                    <option value="Weekly">Weekly</option>
+                                    <option value="Monthly">Monthly</option>
+                                </select>
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">Mission Media</label>
+                                <input type="file" name="missionMedias" id="admin-mission-media" class="form-control" multiple>
+                                <span asp-validation-for="MissionMedia" class="text-danger"></span>
+                                <div class="border" id="preview-mission-media">
+                                    <input type="text" asp-for="MediaName" value="@Model.MediaName" hidden/>
+                                    <input type="text" asp-for="MediaPath" value="@Model.MediaPath" hidden/>
+                                    <input type="text" asp-for="MediaType" value="@Model.MediaType" hidden/>
+                                    @{
+                                        string[] mediaNames = Model.MediaName.Split(",").SkipLast(1).ToArray();
+                                        string[] mediaPaths= Model.MediaPath.Split(",").SkipLast(1).ToArray();
+                                        string[] mediaTypes = Model.MediaType.Split(",").SkipLast(1).ToArray();
+                                    }
+                                    @for (int i = 0; i< mediaNames.Length; i++)
+                                    {
+                                        <img src="/@mediaPaths[i]/@mediaNames[i]@mediaTypes[i]" style="height:100px;width:100px;margin:5px 8px;"/>
+                                    }
+                                </div>
+                            </div>
+                            <div class="py-2">
+                                <label for="" class="form-label">Mission Documents</label>
+                                <input type="file" name="missionDocuments" id="admin-mission-document" class="form-control" multiple>
+                                <span asp-validation-for="MissionDocuments" class="text-danger"></span>
+                                <p class="border p-2" id="preview-mission-document">
+                                    <input type="text" asp-for="DocumentName" value="@Model.DocumentName" hidden/>
+                                    <input type="text" asp-for="DocumentPath" value="@Model.DocumentPath" hidden/>
+                                    <input type="text" asp-for="DocumentType" value="@Model.DocumentType" hidden/>
+
+                                    @{
+                                        string[] docNames = Model.DocumentName.Split(",").SkipLast(1).ToArray();
+                                        string[] docTypes = Model.DocumentType.Split(",").SkipLast(1).ToArray();
+                                    }
+                                    @for (int i = 0; i< docNames.Length; i++)
+                                    {
+                                        <span>@docNames[i]@docTypes[i]</span><br/>
+                                     }
+                                </p>
+                            </div>
+
+                        </div>
+                        <div class="pt-3 d-flex justify-content-end align-items-center">
+                            <button id="mission-cancel-btn" class="me-1 border border-2 border-secondary bg-white rounded-5 px-4 p-2">Cancel</button>
+                            <input type="submit" class="ms-2 btn-orange bg-white rounded-5 px-4 p-2" value="Update">
+                        </div>
+                    </form>
+                    <div class="modal fade" id="skillModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" style="max-width: 70%;">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Add your skills</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="d-flex">
+                                        <div class="w-50 border border-1 border-secondary p-sm-3 subject-info-box-1">
+                                            <select multiple="multiple" id='lstBox1' class="form-control">
+                                                @foreach (var item in Model.skillLists)
+                                                {
+                                                    <option value="@item.SkillId">@item.SkillName</option>
+                                                }
+                                                @{
+                                                    List<long> userSkillId = new List<long>();
+                                                    List<string> userSkillNames = new List<string>();
+                                                    string[] arr = Model.Skills.Split(",").SkipLast(1).ToArray();
+                                                }
+                                                @foreach (var skill in Model.skillLists)
+                                                {
+                                                    if (!Array.Exists(arr, element => element == skill.SkillId.ToString()))
+                                                    {
+                                                        <option value="@skill.SkillId">@skill.SkillName</option>
+                                                    }
+                                                    else
+                                                    {
+                                                        userSkillId.Add(skill.SkillId);
+                                                        userSkillNames.Add(skill.SkillName);
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                        <div class="d-flex flex-column align-items-center justify-content-center">
+                                            <button id='btnRight' class="p-sm-3 bg-white">></button>
+                                            <button id='btnLeft' class="p-sm-3 bg-white"><</button>
+                                        </div>
+                                        <div class="w-50 border border-1 border-secondary d-flex flex-column p-sm-3 subject-info-box-2">
+                                            <select multiple="multiple" id='lstBox2' class="form-control">
+                                                @if (userSkillNames.Count() != 0)
+                                                {
+                                                    for (var i = 0; i < @userSkillId.Count(); i++)
+                                                    {
+                                                        <option value="@userSkillId[i]">@userSkillNames[i]</option>
+                                                    }
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn border border-1 border-secondary bg-white p-2 px-3 rounded-5" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" id="skill-save-btn" class="bg-white p-2 px-3 rounded-5 btn-orange" data-bs-dismiss="modal">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section JavaScript{
+<script src="https://cdn.tiny.cloud/1/pja9ajo1o39g0k8thqnh6v1mf71mykif09v83tqtjfhsnung/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script src="/js/admin_custom.js"></script>
+<script>
+     $("#admin-navigation-mission").addClass("admin-nav-active");
+            tinymce.init({
+          selector: 'textarea#default',
+          plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+          toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        });
+        $("#mission-cancel-btn").click(function(e){
+            e.preventDefault();
+            window.location = "/Admin/AdminMission";
+        });
+    // ==============================================================================
+    // Add skills
+    // ==============================================================================
+    (function () {
+        $("#btnRight").click(function (e) {
+          var selectedOpts = $("#lstBox1 option:selected");
+          if (selectedOpts.length == 0) {
+            alert("Nothing to move.");
+            e.preventDefault();
+            }
+
+          $("#lstBox2").append($(selectedOpts).clone());
+           $(selectedOpts).remove();
+          e.preventDefault();
+        });
+
+
+        $("#btnLeft").click(function (e) {
+          var selectedOpts = $("#lstBox2 option:selected");
+          if (selectedOpts.length == 0) {
+            alert("Nothing to move.");
+            e.preventDefault();
+          }
+          $("#lstBox1").append($(selectedOpts).clone());
+          $(selectedOpts).remove();
+          e.preventDefault();
+        });
+
+    })(jQuery);
+
+    var addedSkills = "";
+    var addedSkillId="";
+    $("#skill-save-btn").click(function (e) {
+        addedSkills = "";
+        addedSkillId="";
+        var selectedOpts = $("#lstBox2 option");
+        var options = $('#lstBox2 option');
+        var values = $.map(options, function (option) {
+            addedSkills += option.innerHTML + "\n";
+            addedSkillId += option.value + ",";
+        });
+        $("#skill-textarea").val(addedSkills);
+        $("#skill-input").val(addedSkillId);
+    });
+    addedSkills = "";
+    addedSkillId="";
+    var options = $('#lstBox2 option');
+
+    var values = $.map(options, function (option) {
+        addedSkills += option.innerHTML + "\n";
+        addedSkillId += option.value + ",";
+    });
+    $("#skill-textarea").val(addedSkills);
+    $("#skill-input").val(addedSkillId);
+    // ==============================================================================
+    // Add Media
+    // ==============================================================================
+    $(function() {
+        // Multiple images preview in browser
+        var imagesPreview = function(input, placeToInsertImagePreview) {
+
+            if (input.files) {
+                var filesAmount = input.files.length;
+                $("#preview-mission-media").html("");
+                for (i = 0; i < filesAmount; i++) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(event) {
+                        $($.parseHTML('<img>')).attr('src', event.target.result).css("height","100px").css("width","100px").css("margin","5px 8px").appendTo(placeToInsertImagePreview);
+                    }
+
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+
+        };
+
+        $('#admin-mission-media').on('change', function() {
+            imagesPreview(this, 'div#preview-mission-media');
+        });
+    });
+    // ==============================================================================
+    // Add Documents
+    // ==============================================================================
+    $(function() {
+        // Multiple images preview in browser
+        var documentPreview = function(input) {
+
+            if (input.files) {
+                var filesAmount = input.files.length;
+                var docNames=""
+                for (i = 0; i < filesAmount; i++) {
+                    docNames+=input.files[i].name+"</br>";
+                }
+                $("#preview-mission-document").html("");
+                $("#preview-mission-document").html(docNames);
+            }
+
+        };
+
+        $('#admin-mission-document').on('change', function() {
+            documentPreview(this);
+        });
+    });
+    // ==============================================================================
+    // Get Cities
+    // ==============================================================================
+    $("#country-select").on("change",function(e){
+        var countryId=this.value;
+         $.ajax({
+                type: "POST",
+                url: "/Admin/GetCities",
+                data: {countryId:countryId},
+                success: function (data) {
+                    var cities="";
+                    for(var i=0;i<data.length;i++){
+                        cities+='<option value="'+data[i].cityId+'">'+data[i].cityName+'</option>';
+                    }
+                    $("#city-select").html("");
+                    $("#city-select").html(cities);
+                },
+                error: function (xhr, status, error) {
+                    // Handle error
+                    console.log(error);
+                }
+            });
+    });
+</script>
+}
