@@ -246,7 +246,9 @@ var ajaxRequest3 =
             var str = "";
             var themeDropDown = $(".themeDropDownList");
             for (var j = 0; j < data["data"].length; j++) {
-                str += '<li class="p-1"><a class= "dropdown-item" id="' + data["data"][j] + '" href = "#" > <input type="checkbox" name="country" id="c' + data["data"][j] + '" value="' + data["data"][j] + '"/> ' + data["data"][j] + '</a></li>';
+                var tempName = data["data"][j];
+                tempName = tempName.replaceAll(" ", "");
+                str += '<li class="p-1"><a class= "dropdown-item" id="' + tempName.trim() + '"  href = "#" > <input type="checkbox" name="country" id="c' + tempName.trim() + '"  value="' + data["data"][j] + '"/> ' + data["data"][j] + '</a></li>';
             }
             themeDropDown.append(str);
 
@@ -272,7 +274,6 @@ var ajaxRequest4 =
             for (var j = 0; j < data["data"].length; j++) {
                 var tempName = data["data"][j].skillName;
                 tempName = tempName.replaceAll(" ", "");
-                console.log(tempName);
                 str += '<li class="p-1"><a class= "dropdown-item" id="' + tempName.trim() + '" href = "#" > <input type="checkbox" name="country"id="c' + tempName.trim() + '"  value="' + data["data"][j].skillName + '"/> ' + data["data"][j].skillName + '</a></li>';
             }
             skillDropDown.append(str);
@@ -290,6 +291,8 @@ var ajaxRequest4 =
 $.when(ajaxRequest1, ajaxRequest2, ajaxRequest3, ajaxRequest4).done(function () {
     intializeChips();
 });
+loadCityWithCountry();
+
 // ====================================================================
 // chips items
 // ====================================================================
@@ -327,8 +330,58 @@ $(".close-chips").on("click", function (e) {
 });
 
 function intializeChips() {
-    
+
     $(".filters .dropdown-menu li a").on("click", function (e) {
+        if ($("#c" + this.id).prop('checked') == false) {
+            var tempName = $(this).text().replaceAll(" ", "");
+            $(".home-chips .chips").append(
+                '<div class="chip" id="chip-' + tempName.trim() + '">' +
+                $(this).text() +
+                '<span class="closebtn" id="close-' + tempName.trim() + '" onclick="this.parentElement.style.display=\'none\'">&times;</span>'
+            );
+            //$("#close-" + $(this).text().trim())[0].parentElement.style.display = 'block';
+            $(".close-chips").show();
+            $(".no-filter-text").hide();
+            $(".close-chips").show();
+            $("#c" + this.id).prop('checked', true);
+        }
+        else {
+            var tempName = $(this).text().replaceAll(" ", "");
+            $("#close-" + tempName.trim()).parents('.chip').remove();
+            $("#c" + this.id).prop('checked', false);
+        }
+
+        //========================
+        //filters
+        //========================
+
+        //country filters
+        selectedCountries = "";
+        $.each($(".countryDropDownList li a input:checkbox:checked"), function () {
+            selectedCountries = selectedCountries.replace($(this).val() + ",", "");
+            selectedCountries += $(this).val() + ",";
+        });
+
+        //theme filters
+        selectedThemes = "";
+        $.each($(".themeDropDownList li a input:checkbox:checked"), function () {
+            selectedThemes = selectedThemes.replace($(this).val() + ",", "");
+            selectedThemes += $(this).val() + ",";
+        });
+
+        //theme filters
+        selectedSkills = "";
+        $.each($(".skillDropDownList li a input:checkbox:checked"), function () {
+            selectedSkills = selectedSkills.replace($(this).val() + ",", "");
+            selectedSkills += $(this).val() + ",";
+        });
+        closeChipBtn();
+        loadCityWithCountry();
+        loadCard();
+    });
+}
+function intializeChips2() {
+    $(".cityDropDownList li a").on("click", function (e) {
 
         if ($("#c" + this.id).prop('checked') == false) {
             var tempName = $(this).text().replaceAll(" ", "");
@@ -342,52 +395,35 @@ function intializeChips() {
             $(".no-filter-text").hide();
             $(".close-chips").show();
             $("#c" + this.id).prop('checked', true);
-            console.log("check");
-            console.log($("#c" + this.id));
-
         }
         else {
             var tempName = $(this).text().replaceAll(" ", "");
             $("#close-" + tempName.trim()).parents('.chip').remove();
-            console.log($("#c" + this.id));
             $("#c" + this.id).prop('checked', false);
-            console.log("uncheck");
-
         }
-
-        //========================
-        //filters
-        //========================
-
-        //country filters
-        selectedCountries = "";
-        $.each($(".countryDropDownList li a input:checkbox:checked"), function () {
-            selectedCountries += $(this).val() + ",";
-        });
 
         //city filters
         selectedCities = "";
         $.each($(".cityDropDownList li a input:checkbox:checked"), function () {
+            selectedCities = selectedCities.replace($(this).val() + ",", "");
             selectedCities += $(this).val() + ",";
         });
-
-        //theme filters
-        selectedThemes = "";
-        $.each($(".themeDropDownList li a input:checkbox:checked"), function () {
-            selectedThemes += $(this).val() + ",";
-        });
-
-        //theme filters
-        selectedSkills = "";
-        $.each($(".skillDropDownList li a input:checkbox:checked"), function () {
-            selectedSkills += $(this).val() + ",";
-        });
-        //loadCityWithCountry();
+        closeChipBtn();
+        loadCard();
+    });
+}
+function closeChipBtn() {
+    $(".closebtn").on("click", function () {
+        var closeId = "c" + this.id.slice(6);
+        $(".dropdown-item #" + closeId).prop("checked", false);
+        selectedCountries = selectedCountries.replace(this.id.slice(6)+",","");
+        selectedCities = selectedCities.replace(this.id.slice(6)+",","");
+        selectedThemes = selectedThemes.replace(this.id.slice(6)+",","");
+        selectedSkills = selectedSkills.replace(this.id.slice(6)+",","");
         loadCard();
     });
 }
 function loadCityWithCountry() {
-
     var ajaxCountry = $.ajax({
         type: "GET",
         url: "/Mission/GetCites",
@@ -396,10 +432,14 @@ function loadCityWithCountry() {
             var str = "";
             var cityDropDown = $(".cityDropDownList");
             for (var j = 0; j < data["data"].length; j++) {
-                str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country" value="' + data["data"][j].name + '"/> ' + data["data"][j].name + '</a></li>';
+                if (selectedCities.indexOf(data["data"][j].name) < 0) {
+                    str += '<li class="p-1"><a class= "dropdown-item" id="' + data["data"][j].name + '" href = "#" > <input type="checkbox" name="country" id="c' + data["data"][j].name + '" value="' + data["data"][j].name + '"/> ' + data["data"][j].name + '</a></li>';
+                }
+                else {
+                    str += '<li class="p-1"><a class= "dropdown-item" id="' + data["data"][j].name + '" href = "#" > <input type="checkbox" name="country" checked id="c' + data["data"][j].name + '" value="' + data["data"][j].name + '"/> ' + data["data"][j].name + '</a></li>';
+                }
             }
             $(".cityDropDownList").empty();
-
             cityDropDown.append(str);
 
         },
@@ -409,10 +449,10 @@ function loadCityWithCountry() {
         error: function (response) {
             alert("Something went Worng city");
         }
-
     });
+
     $.when(ajaxCountry).done(function () {
-        intializeChips();
+        intializeChips2();
     });
 }
 

@@ -8,6 +8,13 @@
 }
 <partial name="_header" model="Model.headerViewModel" />
 
+@if (TempData.ContainsKey("TimeError"))
+{
+    <script>
+        alert('@TempData["TimeError"]')
+    </script>
+    TempData.Remove("TimeError");
+}
 <div id="mission-content" class="container-fluid overflow-y-scroll p-0 volunteer-content">
     <div id="volunteering-timesheet-div" class="h-100 d-flex justify-content-center align-items-center flex-column">
         <h1 class="align-self-start fw-light">Volunteering Timesheet</h1>
@@ -142,6 +149,8 @@
     <br>
 </div>
 <partial name="_footer" />
+
+
 
 @section JavaScript{
 <script src="~/js/volunteering_timesheet.js"></script>

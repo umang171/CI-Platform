@@ -49,13 +49,14 @@ namespace CIPlatform.Repository.Repository
             User user = findUser((int?)userProfileModel.UserId);
             user.FirstName = userProfileModel.FirstName;
             user.LastName = userProfileModel.LastName;
-            user.Avatar = userProfileModel.Avatar != null ? userProfileModel.Avatar : user.Avatar;
+            user.Avatar = userProfileModel.Avatar != null? userProfileModel.Avatar : user.Avatar;
             user.EmployeeId = userProfileModel.EmployeeId;
             user.Title = userProfileModel.Title;
             user.Department = userProfileModel.Department;
             user.ProfileText = userProfileModel.ProfileText;
             user.WhyIVolunteer = userProfileModel.WhyIVolunteer;
             user.CountryId = userProfileModel.CountryId;
+            user.Title = userProfileModel.Title;
             user.CityId = userProfileModel.CityId;
             user.LinkedInUrl = userProfileModel.LinkedInUrl;
             _ciPlatformDbContext.Users.Update(user);
@@ -248,6 +249,11 @@ namespace CIPlatform.Repository.Repository
         List<Banner> IUserRepository.GetBannners()
         {
            return _ciPlatformDbContext.Banners.Where(banner=>banner.DeletedAt==null).OrderBy(banner=>banner.SortOrder).ToList();
+        }
+
+        Boolean IUserRepository.HasAlreadyEmployeeId(string employeeId)
+        {
+            return _ciPlatformDbContext.Users.Any(user => user.EmployeeId == employeeId);
         }
     }
 }

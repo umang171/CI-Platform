@@ -49,7 +49,7 @@ namespace CIPlatform.Entities.ViewModels
         public List<City> CityNames { get; set; }=new List<City>();
 
         public string? ProfileText { get; set; } = string.Empty;
-
+        [Url(ErrorMessage = "Please enter correct url")]
         public string? LinkedInUrl { get; set; } = string.Empty;
 
         public string? Title { get; set; } = string.Empty;

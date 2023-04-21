@@ -142,6 +142,11 @@
                     <div class="d-flex flex-column w-50 pe-2">
                         <label class="form-label" for="employeeid">Employee ID</label>
                         <input asp-for="EmployeeId" maxlength="16" class="form-control" type="text" placeholder="Enter your employee id" value="@Model.EmployeeId">
+                        @if (TempData.ContainsKey("errorEmp"))
+                        {
+                            <span class="text-danger">@TempData["errorEmp"]</span>
+                            TempData.Remove("errorEmp");
+                        }
                     </div>
                     <div class="d-flex flex-column w-50 pe-2">
                         <label class="form-label" for="manager">Manager</label>
@@ -204,6 +209,7 @@
                     <div class="d-flex flex-column w-50 pe-2">
                         <label class="form-label" for="">LinkedIn</label>
                         <input asp-for="LinkedInUrl" class="form-control" type="text" placeholder="Enter LinkedIn URL" value="@Model.LinkedInUrl">
+                        <span asp-validation-for="LinkedInUrl" class="text-danger"></span>
                     </div>
                 </div>
                 <h3 class="pt-5">MySkills</h3>
@@ -321,12 +327,12 @@
 @if (TempData.ContainsKey("error"))
 {
     <script>
-        alert("Password does not match")
+        alert('@TempData["error"]')
     </script>
     TempData.Remove("error");
 }
 @section JavaScript{
-  
+
 <script src="~/js/user-edit-profile.js"></script>
 
 }

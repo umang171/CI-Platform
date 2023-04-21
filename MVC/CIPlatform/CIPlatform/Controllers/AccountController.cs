@@ -26,7 +26,7 @@ namespace CIPlatform.Controllers
         }
         public IActionResult Login()
         {
-            List<Banner> banners=_userRepository.GetBannners();
+            List<Banner> banners = _userRepository.GetBannners();
             LoginModel loginModel = new LoginModel();
             loginModel.banners = banners;
             return View(loginModel);
@@ -63,7 +63,7 @@ namespace CIPlatform.Controllers
         public IActionResult ForgotPassword()
         {
             List<Banner> banners = _userRepository.GetBannners();
-            ForgotPasswordModel forgotPasswordModel= new ForgotPasswordModel();
+            ForgotPasswordModel forgotPasswordModel = new ForgotPasswordModel();
             forgotPasswordModel.banners = banners;
             return View(forgotPasswordModel);
         }
@@ -116,7 +116,7 @@ namespace CIPlatform.Controllers
         public IActionResult Register()
         {
             List<Banner> banners = _userRepository.GetBannners();
-            RegistrationModel register= new RegistrationModel();
+            RegistrationModel register = new RegistrationModel();
             register.banners = banners;
             return View(register);
         }
@@ -182,7 +182,7 @@ namespace CIPlatform.Controllers
             NewPasswordModel newPasswordModel = new NewPasswordModel();
             newPasswordModel.banners = banners;
             newPasswordModel.token = token;
-            
+
             return View(newPasswordModel);
 
 
@@ -266,21 +266,41 @@ namespace CIPlatform.Controllers
         {
             string userSessionEmailId = HttpContext.Session.GetString("useremail");
             User user = _userRepository.findUser(userSessionEmailId);
-            userProfileModel.UserId = user.UserId;
-            string wwwRootPath = _webHostEnvironment.WebRootPath;
-            if (file != null)
+            ModelState.Remove("OldPassword");
+            ModelState.Remove("NewPassword");
+            ModelState.Remove("ConfirmPassword");
+            if ((userProfileModel.EmployeeId!="") && (userProfileModel.EmployeeId != null) && (userProfileModel.EmployeeId != user.EmployeeId) && (_userRepository.HasAlreadyEmployeeId(userProfileModel.EmployeeId)))
             {
-                string fileName = Guid.NewGuid().ToString();
-                var uploads = Path.Combine(wwwRootPath, @"images\avatars");
-                var extension = Path.GetExtension(file.FileName);
-                using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
-                {
-                    file.CopyTo(fileStreams);
-                }
-                userProfileModel.Avatar = @"\images\avatars\" + fileName + extension;
+                TempData["errorEmp"] = "Employee Id is already there";
+                ModelState.AddModelError("EmployeeId", "Employee Id is already there");
             }
-            _userRepository.editUserProfile(userProfileModel);
-            return RedirectToAction("UserProfile", "Account");
+            if (ModelState.IsValid)
+            {
+                
+                userProfileModel.UserId = user.UserId;
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+                if (file != null)
+                {
+                    string fileName = Guid.NewGuid().ToString();
+                    var uploads = Path.Combine(wwwRootPath, @"images\avatars");
+                    var extension = Path.GetExtension(file.FileName);
+                    using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
+                    {
+                        file.CopyTo(fileStreams);
+                    }
+                    userProfileModel.Avatar = @"\images\avatars\" + fileName + extension;
+                }
+                else
+                {
+                       userProfileModel.Avatar = null;
+                }
+                _userRepository.editUserProfile(userProfileModel);
+                return RedirectToAction("UserProfile", "Account");
+            }
+            else
+            {
+                return RedirectToAction("UserProfile", "Account",userProfileModel);
+            }
         }
         [SessionHelper]
         [HttpPost]
@@ -295,7 +315,12 @@ namespace CIPlatform.Controllers
             }
             else
             {
-                if (userProfileModel.NewPassword.Equals(userProfileModel.ConfirmPassword))
+                if (userProfileModel.OldPassword.Equals(userProfileModel.NewPassword))
+                {
+                    ModelState.AddModelError("OldPassword", "Password does not match");
+                    TempData["Error"] = "You can not set old password as new password";
+                }
+                else if (userProfileModel.NewPassword.Equals(userProfileModel.ConfirmPassword))
                 {
                     user.Password = userProfileModel.NewPassword;
                     _userRepository.updatePassword(user);
@@ -330,6 +355,11 @@ namespace CIPlatform.Controllers
         }
         public IActionResult addVolunteerTimesheet(VolunteerTimesheetRecordModel volunteerTimesheetRecordModel)
         {
+            if(volunteerTimesheetRecordModel.Hour == "0" && volunteerTimesheetRecordModel.Minutes == "0")
+            {
+                TempData["TimeError"] = "Minutes and hour both can't be 0";
+                ModelState.AddModelError("Minutes", "Minutes and hour both can't be 0");
+            }
             if (ModelState.IsValid)
             {
 
@@ -343,16 +373,16 @@ namespace CIPlatform.Controllers
                 }
                 else
                 {
-                    string Time=volunteerTimesheetRecordModel.Hour+":"+volunteerTimesheetRecordModel.Minutes;
+                    string Time = volunteerTimesheetRecordModel.Hour + ":" + volunteerTimesheetRecordModel.Minutes;
                     timesheet.Time = TimeOnly.Parse(Time);
                 }
-                timesheet.Action = volunteerTimesheetRecordModel.Action == -1?null: volunteerTimesheetRecordModel.Action;
+                timesheet.Action = volunteerTimesheetRecordModel.Action == -1 ? null : volunteerTimesheetRecordModel.Action;
                 timesheet.Notes = volunteerTimesheetRecordModel.Notes;
                 timesheet.Status = "applied";
                 _userRepository.addVolunteerTimesheet(timesheet);
                 return Json(new { status = 1 });
             }
-            return Json(new {status=0});
+            return Json(new { status = 0 });
         }
         public IActionResult editVolunteerTimesheet(VolunteerTimesheetRecordModel volunteerTimesheetRecordModel)
         {
@@ -386,9 +416,9 @@ namespace CIPlatform.Controllers
         }
         public string GetDatesOfMission(int missionId)
         {
-            string dates=_userRepository.GetDatesOfMission(missionId);
+            string dates = _userRepository.GetDatesOfMission(missionId);
             return dates;
-        }        
+        }
         public IActionResult logout()
         {
             HttpContext.Session.Remove("useremail");
