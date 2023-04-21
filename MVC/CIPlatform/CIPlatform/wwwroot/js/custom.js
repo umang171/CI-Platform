@@ -221,7 +221,7 @@ var ajaxRequest2 =
             var str = "";
             var cityDropDown = $(".cityDropDownList");
             for (var j = 0; j < data["data"].length; j++) {
-                str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country" value="' + data["data"][j].name + '"/> ' + data["data"][j].name + '</a></li>';
+                str += '<li class="p-1"><a class= "dropdown-item" id="' + data["data"][j].name + '" href = "#" > <input type="checkbox" name="country" id="c' + data["data"][j].name + '" value="' + data["data"][j].name + '"/> ' + data["data"][j].name + '</a></li>';
             }
             $(".cityDropDownList").empty();
 
@@ -246,7 +246,7 @@ var ajaxRequest3 =
             var str = "";
             var themeDropDown = $(".themeDropDownList");
             for (var j = 0; j < data["data"].length; j++) {
-                str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country" value="' + data["data"][j] + '"/> ' + data["data"][j] + '</a></li>';
+                str += '<li class="p-1"><a class= "dropdown-item" id="' + data["data"][j] + '" href = "#" > <input type="checkbox" name="country" id="c' + data["data"][j] + '" value="' + data["data"][j] + '"/> ' + data["data"][j] + '</a></li>';
             }
             themeDropDown.append(str);
 
@@ -270,7 +270,10 @@ var ajaxRequest4 =
             var str = "";
             var skillDropDown = $(".skillDropDownList");
             for (var j = 0; j < data["data"].length; j++) {
-                str += '<li class="p-1"><a class= "dropdown-item" href = "#" > <input type="checkbox" name="country" value="' + data["data"][j].skillName + '"/> ' + data["data"][j].skillName + '</a></li>';
+                var tempName = data["data"][j].skillName;
+                tempName = tempName.replaceAll(" ", "");
+                console.log(tempName);
+                str += '<li class="p-1"><a class= "dropdown-item" id="' + tempName.trim() + '" href = "#" > <input type="checkbox" name="country"id="c' + tempName.trim() + '"  value="' + data["data"][j].skillName + '"/> ' + data["data"][j].skillName + '</a></li>';
             }
             skillDropDown.append(str);
 
@@ -324,19 +327,31 @@ $(".close-chips").on("click", function (e) {
 });
 
 function intializeChips() {
+    
     $(".filters .dropdown-menu li a").on("click", function (e) {
-        console.log($("#c"+this.id));
-        if ($("#close-" + $(this).text().trim()).length == 0) {
+
+        if ($("#c" + this.id).prop('checked') == false) {
+            var tempName = $(this).text().replaceAll(" ", "");
             $(".home-chips .chips").append(
-                '<div class="chip" id="chip-' + $(this).text().trim() + '">' +
+                '<div class="chip" id="chip-' + tempName.trim() + '">' +
                 $(this).text() +
-                '<span class="closebtn" id="close-' + $(this).text().trim() + '" onclick="this.parentElement.style.display=\'none\'">&times;</span>'
+                '<span class="closebtn" id="close-' + tempName.trim() + '" onclick="this.parentElement.style.display=\'none\'">&times;</span>'
             );
+            //$("#close-" + $(this).text().trim())[0].parentElement.style.display = 'block';
             $(".close-chips").show();
             $(".no-filter-text").hide();
             $(".close-chips").show();
+            $("#c" + this.id).prop('checked', true);
+            console.log("check");
+            console.log($("#c" + this.id));
+
         }
         else {
+            var tempName = $(this).text().replaceAll(" ", "");
+            $("#close-" + tempName.trim()).parents('.chip').remove();
+            console.log($("#c" + this.id));
+            $("#c" + this.id).prop('checked', false);
+            console.log("uncheck");
 
         }
 
@@ -438,7 +453,6 @@ function loadPagination() {
         
         if (!isNaN(paging)) {
             pagingNumber = parseInt(paging);
-            console.log(pagingNumber);
             loadCard(paging);
         }
         else {
@@ -447,7 +461,6 @@ function loadPagination() {
                     loadCard(--pagingNumber);
             }
             else if (paging == ">") {
-                console.log(pagingNumber)
                 if (pagingNumber != totalPages)
                     loadCard(++pagingNumber);
             }
