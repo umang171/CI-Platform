@@ -118,6 +118,9 @@ $("#hour-timesheet-submit-btn").on("click", function (e) {
                 data: { UserId: userId, MissionId: missionId, DateVolunteered: volunteerDate, Hour: volunteerHour, Minutes: volunteerMinutes, Notes: volunteerMessage, Action: -1 },
                 success: function (data) {
                     getVolunteerTimesheetHourBased();
+                    if (data["status"] == 2) {
+                        alert(data['errorMessage']);
+                    }                
                     if (data["status"] == 1) {
                         $('#hourTimesheetModal').modal('toggle');
                     }
@@ -143,6 +146,9 @@ $("#hour-timesheet-submit-btn").on("click", function (e) {
                 data: { TimesheetId: timesheetId, UserId: userId, MissionId: missionId, DateVolunteered: volunteerDate, Hour: volunteerHour, Minutes: volunteerMinutes, Notes: volunteerMessage,Action: -1 },
                 success: function (data) {
                     getVolunteerTimesheetHourBased();
+                    if (data["status"] == 2) {
+                        alert(data['errorMessage']);
+                    } 
                     if (data["status"] == 1) {
                         $('#hourTimesheetModal').modal('toggle');
                     }
@@ -163,13 +169,35 @@ $("#hour-timesheet-submit-btn").on("click", function (e) {
 //===============================================================================================================
 //Add goal timesheet
 //===============================================================================================================
+document.getElementById('volunteer-goal-timesheet-date').max = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split("T")[0];
 
+function getRemainingActions(missionId) {
+    var remain = 0;
+    $.ajax({
+        type: "POST",
+        url: '/Account/GetRemainingActions',
+        data: { missionId: missionId },
+        success: function (data) {
+            document.getElementById('volunteer-goal-timesheet-action').max =
+                data["count"];
+            remain = data["count"];
+            return remain;
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    });
+
+    return remain;
+}
 $("#goal-timesheet-submit-btn").on("click", function (e) {
     var userId = $(".user-btn")[0].id.slice(9)
     var missionId = $("#volunteer-timesheet-goal-mission").val();
     var volunteerDate = $("#volunteer-goal-timesheet-date").val();
     var volunteerAction = $("#volunteer-goal-timesheet-action").val();
     var volunteerMessage = $("#volunteer-goal-timesheet-message").val();
+    getRemainingActions(missionId);
     if ($(".timesheet-submit-btn")[1].value == "Submit") {
         $.ajax({
             type: "POST",
@@ -179,6 +207,9 @@ $("#goal-timesheet-submit-btn").on("click", function (e) {
                 getVolunteerTimesheetGoalBased();
                 if (data["status"] == 1) {
                     $('#goalTimesheetModal').modal('toggle');
+                }
+                if (data["status"] == 3) {
+                    alert(data["errorMessage"]);
                 }
             },
             error: function (xhr, status, error) {
@@ -197,6 +228,9 @@ $("#goal-timesheet-submit-btn").on("click", function (e) {
                 getVolunteerTimesheetGoalBased();
                 if (data["status"] == 1) {
                     $('#goalTimesheetModal').modal('toggle');
+                }
+                if (data["status"] == 3) {
+                    alert(data["errorMessage"]);
                 }
             },
             error: function (xhr, status, error) {
@@ -286,7 +320,7 @@ function deleteVolunteerTimesheet(timesheetId) {
         success: function (data) {
             getVolunteerTimesheetHourBased();
             getVolunteerTimesheetGoalBased();
-            //alert("Record successfully deleted");
+            alert("Record successfully deleted");
         },
         error: function (xhr, status, error) {
             // Handle error
@@ -307,7 +341,6 @@ function loadEditVolunteerBtnHour() {
 function loadEditVolunteerBtnGoal() {
     $(".edit-goal-data").on("click", function (e) {
         getEditVolunteerTimesheet(this.id.slice(5));
-        console.log
     });
 
 }

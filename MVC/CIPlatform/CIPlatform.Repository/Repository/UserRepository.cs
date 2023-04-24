@@ -255,5 +255,15 @@ namespace CIPlatform.Repository.Repository
         {
             return _ciPlatformDbContext.Users.Any(user => user.EmployeeId == employeeId);
         }
+
+        int IUserRepository.GetRemainingActions(long missionId)
+        {
+            var totalActions= _ciPlatformDbContext.Timesheets.Where(timesheet => timesheet.MissionId == missionId).Sum(timesheet => timesheet.Action);
+            int totalActions2 = totalActions == null ? 0 :(int)totalActions;
+            int totalGoals =_ciPlatformDbContext.GoalMissions.Where(mission => mission.MissionId == missionId).First().GoalValue;
+            
+            int remainActions = totalGoals - totalActions2;
+            return remainActions;
+        }
     }
 }

@@ -121,7 +121,7 @@
 
                                     </select>
                                     <label for="" class="form-label">Actions</label>
-                                    <input asp-for="volunteerTimesheetRecordModel.Action" id="volunteer-goal-timesheet-action" type="number" class="form-control" placeholder="Enter Actions" />
+                                    <input asp-for="volunteerTimesheetRecordModel.Action" id="volunteer-goal-timesheet-action" type="number" min="1" class="form-control" placeholder="Enter Actions" />
                                     <span asp-validation-for="volunteerTimesheetRecordModel.Action" class="text-danger"></span>
                                     <div>
                                         <label for="" class="form-label">Date Volunteered</label>

@@ -36,5 +36,6 @@ namespace CIPlatform.Repository.Repository.Interface
         public VolunteerTimesheetRecordModel getEditVolunteerTimesheet(int timesheetId);
         public List<Banner> GetBannners();
         public Boolean HasAlreadyEmployeeId(string empolyeeId);
+        public int GetRemainingActions(long missionId);
     }
 }

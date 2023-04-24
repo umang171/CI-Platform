@@ -355,10 +355,9 @@ namespace CIPlatform.Controllers
         }
         public IActionResult addVolunteerTimesheet(VolunteerTimesheetRecordModel volunteerTimesheetRecordModel)
         {
-            if(volunteerTimesheetRecordModel.Hour == "0" && volunteerTimesheetRecordModel.Minutes == "0")
+            if(volunteerTimesheetRecordModel.Hour == "0" && volunteerTimesheetRecordModel.Minutes == "0" && volunteerTimesheetRecordModel.Action==-1)
             {
-                TempData["TimeError"] = "Minutes and hour both can't be 0";
-                ModelState.AddModelError("Minutes", "Minutes and hour both can't be 0");
+                return Json(new { status = 2,errorMessage="Hour and Minutes both can't be 0" });
             }
             if (ModelState.IsValid)
             {
@@ -369,6 +368,11 @@ namespace CIPlatform.Controllers
                 timesheet.DateVolunteered = volunteerTimesheetRecordModel.DateVolunteered;
                 if ((volunteerTimesheetRecordModel.Hour == null || volunteerTimesheetRecordModel.Hour == "" || volunteerTimesheetRecordModel.Hour == "0") && (volunteerTimesheetRecordModel.Minutes == null || volunteerTimesheetRecordModel.Minutes == "" || volunteerTimesheetRecordModel.Minutes == "0"))
                 {
+                    long remainActions=_userRepository.GetRemainingActions(timesheet.MissionId);
+                    if (volunteerTimesheetRecordModel.Action > remainActions)
+                    {
+                        return Json(new { status = 3, errorMessage = "You can not add more actions than goal values" });
+                    }
                     timesheet.Time = null;
                 }
                 else
@@ -386,6 +390,18 @@ namespace CIPlatform.Controllers
         }
         public IActionResult editVolunteerTimesheet(VolunteerTimesheetRecordModel volunteerTimesheetRecordModel)
         {
+            if (volunteerTimesheetRecordModel.Hour == "0" && volunteerTimesheetRecordModel.Minutes == "0" && volunteerTimesheetRecordModel.Action == -1)
+            {
+                return Json(new { status = 2, errorMessage = "Hour and Minutes both can't be 0" });
+            }
+            if(volunteerTimesheetRecordModel.Action != -1)
+            {
+                long remainActions = _userRepository.GetRemainingActions(volunteerTimesheetRecordModel.MissionId);
+                if (volunteerTimesheetRecordModel.Action > remainActions)
+                {
+                    return Json(new { status = 3, errorMessage = "You can not add more actions than goal values" });
+                }
+            }
             if (ModelState.IsValid)
             {
                 _userRepository.editVolunteerTimesheet(volunteerTimesheetRecordModel);
@@ -418,6 +434,10 @@ namespace CIPlatform.Controllers
         {
             string dates = _userRepository.GetDatesOfMission(missionId);
             return dates;
+        }
+        public IActionResult GetRemainingActions(long missionId)
+        {
+            return Json(new { count=_userRepository.GetRemainingActions(missionId) });
         }
         public IActionResult logout()
         {
