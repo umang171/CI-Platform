@@ -211,3 +211,4 @@ E:\tatavasoft\ci\CI-Platform\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\Newtonso
 E:\tatavasoft\ci\CI-Platform\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
 D:\Projects\CI platform\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\Newtonsoft.Json.dll
 D:\Projects\CI platform\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+E:\tatavasoft\ci\CI-Platform\MVC\CIPlatform\CIPlatform\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

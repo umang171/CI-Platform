@@ -4,9 +4,11 @@ using CIPlatform.Repository.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Hosting;
 using CIPlatform.Helpers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CIPlatform.Controllers
 {
+    [Authorize(Roles = "user,admin")]
     public class StoryController : Controller
     {
 
@@ -26,7 +28,7 @@ namespace CIPlatform.Controllers
             _httpContextAccessor = httpContextAccessor;
             configuration = _configuration;
         }
-        [SessionHelper]
+        
         public IActionResult Index(int missionId)
         {
             string? userSessionEmailId = HttpContext.Session.GetString("useremail");
@@ -43,7 +45,7 @@ namespace CIPlatform.Controllers
             PaginationStory paginationStory=_storyRepository.getStories(pageNumber);
             return PartialView("_storyList", paginationStory);
         }
-        [SessionHelper]
+        
         public IActionResult ShareStory()
         {
             string? userSessionEmailId = HttpContext.Session.GetString("useremail");
@@ -56,7 +58,7 @@ namespace CIPlatform.Controllers
             shareStoryModel.missions = _missionRepository.getMissionsOfUser((int)userObj.UserId);
             return View(shareStoryModel);
         }
-        [SessionHelper]
+        
         [HttpPost]
         public IActionResult Upload(List<IFormFile> postedFiles)
         {
@@ -102,7 +104,7 @@ namespace CIPlatform.Controllers
         {
             _storyRepository.submitStories(storySaveModelObj);
         }
-        [SessionHelper]
+        
         public IActionResult StoryDetails(int? storyId)
         {
             string? userSessionEmailId = HttpContext.Session.GetString("useremail");
@@ -121,7 +123,7 @@ namespace CIPlatform.Controllers
             int total=_storyRepository.getTotalStoryViews((int)storyId);
             return Json(new {data=total});
         }
-        [SessionHelper]
+        
         public IActionResult recommendToCoworker( int storyId, string toUserEmail)
         {
             string? userSessionEmailId = HttpContext.Session.GetString("useremail");           

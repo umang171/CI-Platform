@@ -15,7 +15,6 @@ public partial class CIPlatformDbContext : DbContext
         : base(options)
     {
     }
-
     public virtual DbSet<MissionViewModel> MissionViewModel { get; set; }
     public virtual DbSet<StoryListingModel> StoryListingModel { get; set; }
     public virtual DbSet<Admin> Admins { get; set; }
@@ -75,6 +74,8 @@ public partial class CIPlatformDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.UseCollation("SQL_Latin1_General_CP1_CI_AS");
+
         modelBuilder.Entity<Admin>(entity =>
         {
             entity.HasKey(e => e.AdminId).HasName("PK_admin_id");
@@ -845,6 +846,10 @@ public partial class CIPlatformDbContext : DbContext
             entity.Property(e => e.ProfileText)
                 .HasColumnType("text")
                 .HasColumnName("profile_text");
+            entity.Property(e => e.Role)
+                .HasMaxLength(1)
+                .IsUnicode(false)
+                .HasColumnName("role");
             entity.Property(e => e.Status)
                 .HasDefaultValueSql("((1))")
                 .HasColumnName("status");

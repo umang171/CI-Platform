@@ -6,6 +6,9 @@ using CIPlatform.Entities.DataModels;
 using MailKit.Net.Smtp;
 using MimeKit;
 using CIPlatform.Helpers;
+using Microsoft.AspNetCore.Authorization;
+using CIPlatform.Auth;
+using CIPlatform.Entities.Auth;
 
 namespace CIPlatform.Controllers
 {
@@ -24,6 +27,7 @@ namespace CIPlatform.Controllers
             _webHostEnvironment = webHostEnvironment;
             _missionRepository = missionRepository;
         }
+        [AllowAnonymous]
         public IActionResult Login()
         {
             List<Banner> banners = _userRepository.GetBannners();
@@ -33,10 +37,11 @@ namespace CIPlatform.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Login(LoginModel obj)
+        [AllowAnonymous]
+        public IActionResult Login(LoginModel loginModelObj)
         {
-            string emailId = obj.EmailId;
-            string password = obj.Password;
+            string emailId = loginModelObj.EmailId;
+            string password = loginModelObj.Password;
             Boolean isValidEmail = _userRepository.validateEmail(emailId);
             if (!isValidEmail)
             {
@@ -53,7 +58,22 @@ namespace CIPlatform.Controllers
             if (ModelState.IsValid)
             {
                 HttpContext.Session.SetString("useremail", emailId);
-                return RedirectToAction("Index", "Mission");
+                User user=_userRepository.findUser(emailId);
+                SessionDetailsViewModel sessionDetailsViewModel = new SessionDetailsViewModel();
+                sessionDetailsViewModel.Email = user.Email;
+                sessionDetailsViewModel.Avatar = user.Avatar;
+                sessionDetailsViewModel.UserId = user.UserId;
+                sessionDetailsViewModel.FullName = user.FirstName + " " + user.LastName;
+                sessionDetailsViewModel.Role = user.Role;
+
+                var jwtSetting = configuration.GetSection(nameof(JwtSetting)).Get<JwtSetting>();
+                var token = JwtTokenHelper.GenerateToken(jwtSetting, sessionDetailsViewModel);
+                HttpContext.Session.SetString("useremail", loginModelObj.EmailId );
+                HttpContext.Session.SetString("Token", token);
+                if (user.Role == "user")
+                    return RedirectToAction("Index", "Mission");
+                if (user.Role == "admin")
+                    return RedirectToAction("Index", "Admin");
             }
             List<Banner> banners = _userRepository.GetBannners();
             LoginModel loginModel = new LoginModel();
@@ -100,7 +120,7 @@ namespace CIPlatform.Controllers
             }
             return View(forgotPasswordModel);
         }
-        [SessionHelper]
+        [Authorize(Roles="user,admin")]
         public IActionResult VolunteerTimesheet()
         {
             string userSessionEmailId = HttpContext.Session.GetString("useremail");
@@ -224,7 +244,7 @@ namespace CIPlatform.Controllers
             obj.banners = banners;
             return View(obj);
         }
-        [SessionHelper]
+        [Authorize(Roles="user,admin")]
         public IActionResult UserProfile()
         {
             string userSessionEmailId = HttpContext.Session.GetString("useremail");
@@ -260,7 +280,7 @@ namespace CIPlatform.Controllers
             List<UserSkill> userSkills = _userRepository.getSkillsOfUser(userId);
             return Json(new { data = userSkills });
         }
-        [SessionHelper]
+        [Authorize(Roles="user,admin")]
         [HttpPost]
         public IActionResult EditUserProfile(UserProfileModel userProfileModel, IFormFile? file)
         {
@@ -302,7 +322,7 @@ namespace CIPlatform.Controllers
                 return RedirectToAction("UserProfile", "Account",userProfileModel);
             }
         }
-        [SessionHelper]
+        [Authorize(Roles="user,admin")]
         [HttpPost]
         public IActionResult ChangePasswod(UserProfileModel userProfileModel)
         {
@@ -332,7 +352,7 @@ namespace CIPlatform.Controllers
             }
             return RedirectToAction("UserProfile", "Account");
         }
-        [SessionHelper]
+        [Authorize(Roles="user,admin")]
         public IActionResult Policy()
         {
             string userSessionEmailId = HttpContext.Session.GetString("useremail");
