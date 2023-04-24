@@ -16,5 +16,6 @@ namespace CIPlatform.Entities.ViewModels
         public IEnumerable<City> cityList { get; set; }=new List<City>();
         public IEnumerable<MissionTheme> themeList { get; set; }= new List<MissionTheme>();
         public IEnumerable<Skill> skillList{ get; set; }=new List<Skill>();
+        public List<CmsPage> cmsPages=new List<CmsPage>();
     }
 }

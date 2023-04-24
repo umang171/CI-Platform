@@ -13,5 +13,7 @@ namespace CIPlatform.Entities.ViewModels
         public string avtar { get; set; } = string.Empty;
         public Story story { get; set; }=new Story();
         public IEnumerable<User> users { get; set; }=new List<User>();
+        public List<CmsPage> cmsPages { get; set; } = new List<CmsPage>();
+
     }
 }

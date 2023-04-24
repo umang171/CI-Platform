@@ -5,17 +5,18 @@
             <img src="~/images/cancel.png" alt="" />
         </div>
         <div id="menu-heading" class="d-flex justify-content-center align-items-center">
-             <a asp-action="Index" asp-controller="Story" class="side-menu-items text-decoration-none text-dark w-100 m-1 p-1 px-2">Stories</a>
-             <div class="side-menu-items dropdown w-100 m-1 p-1 px-2">
+            <a asp-action="Index" asp-controller="Story" class="side-menu-items text-decoration-none text-dark w-100 m-1 p-1 px-2">Stories</a>
+            <div class="side-menu-items dropdown w-100 m-1 p-1 px-2">
                 <button class="dropdown-toggle border-0 bg-white w-100 d-flex justify-content-between align-items-center"
                         type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Policy
                     <img src="~/images/drop-down.png" alt="" />
                 </button>
                 <ul class="dropdown-menu w-100">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    @foreach (var item in Model.cmsPages)
+                    {
+                        <li><a class="dropdown-item" href="/Mission/CmsPageDetails?cmsId=@item.CmsPageId">@item.Title</a></li>
+                    }
                 </ul>
             </div>
         </div>
@@ -33,7 +34,7 @@
                     <img src="~/images/logo.png" alt="" />
 
                     <div id="menu-heading" class="d-none d-md-flex justify-content-center align-items-center">
-                            <a asp-action="Index" asp-controller="Story" class="text-decoration-none text-dark mx-3">Stories</a>
+                        <a asp-action="Index" asp-controller="Story" class="text-decoration-none text-dark mx-3">Stories</a>
                         <div class="dropdown">
                             <button class="dropdown-toggle border-0 bg-white m-1" type="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -41,13 +42,10 @@
                                 <img src="~/images/drop-down.png" alt="" />
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </li>
+                                @foreach (var item in Model.cmsPages)
+                                {
+                                    <li><a class="dropdown-item" href="/Mission/CmsPageDetails?cmsId=@item.CmsPageId">@item.Title</a></li>
+                                }
                             </ul>
                         </div>
                     </div>
@@ -65,10 +63,10 @@
                             <img src="~/images/drop-down.png" alt="" />
                         </button>
                         <ul class="dropdown-menu">
-                           <li><a class="dropdown-item" href="/Account/UserProfile">My Profile</a></li>
-                            <li><a class="dropdown-item" href="/Account/VolunteerTimesheet">Volunteering Timesheet</a></li> 
-                            <li><a class="dropdown-item" href="/Mission/logout">Logout</a></li> 
-                             </ul>
+                            <li><a class="dropdown-item" href="/Account/UserProfile">My Profile</a></li>
+                            <li><a class="dropdown-item" href="/Account/VolunteerTimesheet">Volunteering Timesheet</a></li>
+                            <li><a class="dropdown-item" href="/Mission/logout">Logout</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>

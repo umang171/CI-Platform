@@ -41,9 +41,10 @@
                         <img src="~/images/drop-down.png" alt="" />
                     </button>
                     <ul class="dropdown-menu w-100">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        @foreach (var item in Model.cmsPages)
+                        {
+                            <li><a class="dropdown-item" href="/Mission/CmsPageDetails?cmsId=@item.CmsPageId">@item.Title</a></li>
+                        }
                     </ul>
                 </div>
             </div>
@@ -69,13 +70,10 @@
                                     <img src="~/images/drop-down.png" alt="" />
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </li>
+                                    @foreach (var item in Model.cmsPages)
+                                    {
+                                        <li><a class="dropdown-item" href="/Mission/CmsPageDetails?cmsId=@item.CmsPageId">@item.Title</a></li>
+                                    }
                                 </ul>
                             </div>
                         </div>

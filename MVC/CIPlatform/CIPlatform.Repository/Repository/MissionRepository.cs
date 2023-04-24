@@ -292,5 +292,15 @@ namespace CIPlatform.Repository.Repository
             }
             return 0;
         }
+
+        List<CmsPage> IMissionRepository.GetCMSPages()
+        {
+            return _ciPlatformDbContext.CmsPages.Where(page => page.DeletedAt == null).ToList();
+        }
+
+        CmsPage IMissionRepository.GetCmsPageDetails(long cmsPageId)
+        {
+            return _ciPlatformDbContext.CmsPages.Where(page => page.CmsPageId== cmsPageId).First();
+        }
     }
 }

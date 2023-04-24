@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CIPlatform.Entities.DataModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,7 @@ namespace CIPlatform.Entities.ViewModels
         public string username { get; set; } = string.Empty;
         public string avtar{ get; set; } = string.Empty;
         public int missionId { get; set; }
+        public List<CmsPage> cmsPages { get; set; } = new List<CmsPage>();
+
     }
 }

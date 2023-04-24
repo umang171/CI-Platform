@@ -38,6 +38,7 @@ namespace CIPlatform.Controllers
             storyHomeModel.username = userObj.FirstName + " " + userObj.LastName;
             storyHomeModel.avtar=userObj.Avatar;
             storyHomeModel.missionId= missionId;
+            storyHomeModel.cmsPages = _missionRepository.GetCMSPages();
             return View(storyHomeModel);
         }
         public IActionResult getStories(int pageNumber)
@@ -55,6 +56,7 @@ namespace CIPlatform.Controllers
             shareStoryModel.username = userObj.FirstName + " " + userObj.LastName;
             shareStoryModel.avatar=userObj.Avatar;
             shareStoryModel.userId = userObj.UserId;
+            shareStoryModel.cmsPages = _missionRepository.GetCMSPages();
             shareStoryModel.missions = _missionRepository.getMissionsOfUser((int)userObj.UserId);
             return View(shareStoryModel);
         }
@@ -113,6 +115,7 @@ namespace CIPlatform.Controllers
             User userObj = _userRepository.findUser(userSessionEmailId);
             storyDetailsObj.username = userObj.FirstName + " " + userObj.LastName;
             storyDetailsObj.avtar = userObj.Avatar;
+            storyDetailsObj.cmsPages = _missionRepository.GetCMSPages();
             storyDetailsObj.story= _storyRepository.getStoryDetail((int)storyId);
             storyDetailsObj.users=_userRepository.getUsers();
             return View(storyDetailsObj);

@@ -13,5 +13,6 @@ namespace CIPlatform.Entities.ViewModels
         public string avatar { get; set; } = string.Empty;
         public long userId { get; set; }
         public List<MissionApplication> missions { get; set; }=new List<MissionApplication>();
+        public List<CmsPage> cmsPages { get; set; } = new List<CmsPage>();
     }
 }

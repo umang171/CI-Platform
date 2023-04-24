@@ -56,5 +56,6 @@ namespace CIPlatform.Entities.ViewModels
         public List<Skill> skills { get; set; } = new List<Skill> ();
         public List<UserSkill> userSkills { get; set; }=new List<UserSkill> ();
         public string userSkillNames { get; set; } = string.Empty;
+        public List<CmsPage> cmsPages { get; set; } = new List<CmsPage>();
     }
 }

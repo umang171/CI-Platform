@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace CIPlatform.Entities.ViewModels
 {
-    public class HeaderViewModel
+    public class CmsPageModel
     {
-        public long userid { get; set; }
-
         public string username { get; set; } = String.Empty;
         public string avtar { get; set; } = String.Empty;
-        public List<CmsPage> cmsPages { get; set; }=new List<CmsPage>();
+        public long userid { get; set; }
+        public List<CmsPage> cmsPages { get; set; } =new List<CmsPage>();
+        public CmsPage cmsPage { get; set; }=new CmsPage();
     }
 }

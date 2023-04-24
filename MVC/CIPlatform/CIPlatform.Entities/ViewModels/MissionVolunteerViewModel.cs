@@ -12,6 +12,7 @@ namespace CIPlatform.Entities.ViewModels
         public long MissionId { get; set; }
         public string username { get; set; } = string.Empty;
         public string avtar { get; set; } = string.Empty;
+        public List<CmsPage> cmsPages=new List<CmsPage>();
         public IEnumerable<User> users { get; set; }=new List<User>();
         public int userid{ get; set; }
         public string? Title { get; set; } = string.Empty;

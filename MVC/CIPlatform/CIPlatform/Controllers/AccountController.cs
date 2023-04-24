@@ -129,6 +129,7 @@ namespace CIPlatform.Controllers
             volunteerTimesheetViewModel.headerViewModel.username = user.FirstName + " " + user.LastName;
             volunteerTimesheetViewModel.headerViewModel.avtar = user.Avatar;
             volunteerTimesheetViewModel.headerViewModel.userid = user.UserId;
+            volunteerTimesheetViewModel.headerViewModel.cmsPages=_missionRepository.GetCMSPages();
             volunteerTimesheetViewModel.timeBasedMissions = _missionRepository.getTimeMissionsOfUser((int)user.UserId);
             volunteerTimesheetViewModel.goalBasedMissions = _missionRepository.getGoalMissionsOfUser((int)user.UserId);
             return View(volunteerTimesheetViewModel);
@@ -268,6 +269,7 @@ namespace CIPlatform.Controllers
             userProfileModelObj.LinkedInUrl = user.LinkedInUrl;
             userProfileModelObj.skills = _userRepository.getSkillNames();
             userProfileModelObj.userSkills = user.UserSkills.ToList();
+            userProfileModelObj.cmsPages = _missionRepository.GetCMSPages();
             return View(userProfileModelObj);
         }
         public IActionResult getCityNames(int countryId)

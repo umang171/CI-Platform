@@ -33,6 +33,7 @@ namespace CIPlatform.Controllers
             missionHomeModel.username = userObj.FirstName+" "+userObj.LastName;
             missionHomeModel.userid=userObj.UserId;
             missionHomeModel.avtar=userObj.Avatar;
+            missionHomeModel.cmsPages = _missionRepository.GetCMSPages();
             return View(missionHomeModel);
         }
         public IActionResult Mission_Volunteer(int? missionId)
@@ -45,6 +46,7 @@ namespace CIPlatform.Controllers
             missionVolunteerViewModelObj.username = userObj.FirstName + " " + userObj.LastName;
             missionVolunteerViewModelObj.userid= (int)userObj.UserId;
             missionVolunteerViewModelObj.avtar=userObj.Avatar;
+            missionVolunteerViewModelObj.cmsPages = _missionRepository.GetCMSPages();
             missionVolunteerViewModelObj.users = _userRepository.getUsers();
             return View(missionVolunteerViewModelObj);
         }
@@ -171,6 +173,19 @@ namespace CIPlatform.Controllers
         public IActionResult getRatingOfUser(int userId,int missionId)
         {            
             return Json(new { rating = _missionRepository.getRatingOfUserForMission(userId, missionId) });
+        }
+        public IActionResult CmsPageDetails(long cmsId)
+        {
+            CmsPageModel cmsPageModel = new CmsPageModel();
+            string userSessionEmailId = HttpContext.Session.GetString("useremail");
+            User userObj = _userRepository.findUser(userSessionEmailId);
+            cmsPageModel.username = userObj.FirstName + " " + userObj.LastName;
+            cmsPageModel.userid = (int)userObj.UserId;
+            cmsPageModel.avtar = userObj.Avatar;
+            cmsPageModel.cmsPages = _missionRepository.GetCMSPages();
+            cmsPageModel.cmsPage= _missionRepository.GetCmsPageDetails(cmsId);
+
+            return View(cmsPageModel);
         }
     }
 }

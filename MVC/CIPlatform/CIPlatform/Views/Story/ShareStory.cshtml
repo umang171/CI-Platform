@@ -1,6 +1,6 @@
 ﻿@model CIPlatform.Entities.ViewModels.ShareStoryModel
- @section Style{
-<link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+@section Style{
+    <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
  }
 <div id="main-header" class="d-flex flex-row">
     <div id="menu-side-bar" class="position-absolute">
@@ -16,9 +16,10 @@
                     <img src="~/images/drop-down.png" alt="" />
                 </button>
                 <ul class="dropdown-menu w-100">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    @foreach (var item in Model.cmsPages)
+                    {
+                        <li><a class="dropdown-item" href="/Mission/CmsPageDetails?cmsId=@item.CmsPageId">@item.Title</a></li>
+                    }
                 </ul>
             </div>
         </div>
@@ -44,13 +45,10 @@
                                 <img src="~/images/drop-down.png" alt="" />
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </li>
+                                @foreach (var item in Model.cmsPages)
+                                {
+                                    <li><a class="dropdown-item" href="/Mission/CmsPageDetails?cmsId=@item.CmsPageId">@item.Title</a></li>
+                                }
                             </ul>
                         </div>
                     </div>
@@ -69,7 +67,7 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/Account/UserProfile">My Profile</a></li>
-                            <li><a class="dropdown-item" href="/Account/VolunteerTimesheet">Volunteering Timesheet</a></li> 
+                            <li><a class="dropdown-item" href="/Account/VolunteerTimesheet">Volunteering Timesheet</a></li>
                             <li><a class="dropdown-item" href="/Mission/logout">Logout</a></li>
                         </ul>
                     </div>
@@ -132,7 +130,6 @@
                 <span class="fs-5 fw-lighter">Drag and drop pictures here</span>
             </div>
             <div id="uploadedFiles" class="p-2 d-flex flex-wrap">
-                
             </div>
             <input type="button" id="btnUpload" value="Upload" />
         </div>
@@ -144,7 +141,8 @@
             </div>
             <div class="w-25 d-flex justify-content-end">
                 <a id="preview-link" class="text-decoration-none" target="_blank" href="@Url.Action("StoryDetails", "Story", new { storyId =1 }) ">
-                <button id="story-preview-btn" class="rounded-5 bg-white px-4 p-2" disabled>Preview</button></a>
+                    <button id="story-preview-btn" class="rounded-5 bg-white px-4 p-2" disabled>Preview</button>
+                </a>
                 <button id="story-save-btn" class="orange-btn rounded-5 bg-white px-4 p-2 ms-1">Save</button>
                 <button id="story-submit-btn" class="orange-btn rounded-5 bg-white px-4 p-2 ms-1">Submit</button>
             </div>
@@ -156,9 +154,9 @@
 <partial name="_footer" />
 
 @section JavaScript{
-<script src="https://cdn.tiny.cloud/1/pja9ajo1o39g0k8thqnh6v1mf71mykif09v83tqtjfhsnung/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
-<script src="~/js/filedrop.js"></script>
-<script src="~/js/share_story.js"></script>
+    <script src="https://cdn.tiny.cloud/1/pja9ajo1o39g0k8thqnh6v1mf71mykif09v83tqtjfhsnung/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <script src="~/js/filedrop.js"></script>
+    <script src="~/js/share_story.js"></script>
 
 }

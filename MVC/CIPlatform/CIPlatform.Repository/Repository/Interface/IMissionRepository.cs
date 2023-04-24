@@ -35,6 +35,8 @@ namespace CIPlatform.Repository.Repository.Interface
         public void addToApplication(int missionId,int userId);
         public IEnumerable<MissionApplication> getRecentVolunteers(int missionId);
         public string getAppliedMissionOfUser(int userId,int missionId);
-        public int getRatingOfUserForMission(int userId,int missionId); 
+        public int getRatingOfUserForMission(int userId,int missionId);
+        public List<CmsPage> GetCMSPages();
+        public CmsPage GetCmsPageDetails(long cmsPageId);
     }
 }
