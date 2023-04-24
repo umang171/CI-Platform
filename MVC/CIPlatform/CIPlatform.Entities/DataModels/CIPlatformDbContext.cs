@@ -15,6 +15,7 @@ public partial class CIPlatformDbContext : DbContext
         : base(options)
     {
     }
+
     public virtual DbSet<MissionViewModel> MissionViewModel { get; set; }
     public virtual DbSet<StoryListingModel> StoryListingModel { get; set; }
     public virtual DbSet<Admin> Admins { get; set; }
@@ -26,6 +27,8 @@ public partial class CIPlatformDbContext : DbContext
     public virtual DbSet<CmsPage> CmsPages { get; set; }
 
     public virtual DbSet<Comment> Comments { get; set; }
+
+    public virtual DbSet<Contact> Contacts { get; set; }
 
     public virtual DbSet<Country> Countries { get; set; }
 
@@ -222,6 +225,30 @@ public partial class CIPlatformDbContext : DbContext
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__comment__user_id__32AB8735");
+        });
+
+        modelBuilder.Entity<Contact>(entity =>
+        {
+            entity.HasKey(e => e.ContactId).HasName("PK_contact_us");
+
+            entity.ToTable("contact");
+
+            entity.Property(e => e.ContactId).HasColumnName("contact_id");
+            entity.Property(e => e.Email)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("email");
+            entity.Property(e => e.Message)
+                .HasColumnType("text")
+                .HasColumnName("message");
+            entity.Property(e => e.Name)
+                .HasMaxLength(250)
+                .IsUnicode(false)
+                .HasColumnName("name");
+            entity.Property(e => e.Subject)
+                .HasMaxLength(255)
+                .IsUnicode(false)
+                .HasColumnName("subject");
         });
 
         modelBuilder.Entity<Country>(entity =>
@@ -847,7 +874,7 @@ public partial class CIPlatformDbContext : DbContext
                 .HasColumnType("text")
                 .HasColumnName("profile_text");
             entity.Property(e => e.Role)
-                .HasMaxLength(1)
+                .HasMaxLength(15)
                 .IsUnicode(false)
                 .HasColumnName("role");
             entity.Property(e => e.Status)

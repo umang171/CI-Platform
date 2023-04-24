@@ -371,7 +371,7 @@ namespace CIPlatform.Controllers
 
             MailHelper mailHelper = new MailHelper(configuration);
             ViewBag.sendMail = mailHelper.Send("gohelumang12@gmail.com", welcomeMessage + "</br>" + contactMessage, contactSubject);
-
+            _userRepository.AddContactRecord(contactName, contactEmail, contactSubject, contactMessage);
 
             return RedirectToAction("UserProfile", "Account");
         }

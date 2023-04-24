@@ -265,5 +265,16 @@ namespace CIPlatform.Repository.Repository
             int remainActions = totalGoals - totalActions2;
             return remainActions;
         }
+
+        void IUserRepository.AddContactRecord(string contactName, string contactEmail, string contactSubject, string contactMessage)
+        {
+            Contact contact = new Contact();
+            contact.Name= contactName;
+            contact.Email= contactEmail;
+            contact.Subject= contactSubject;
+            contact.Message= contactMessage;
+            _ciPlatformDbContext.Add(contact);
+            _ciPlatformDbContext.SaveChanges();
+        }
     }
 }
