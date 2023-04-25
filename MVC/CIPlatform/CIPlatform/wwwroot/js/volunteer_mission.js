@@ -396,7 +396,8 @@ $("#send-email-btn").on("click", function (e) {
             url: '/Mission/recommendToCoworker',
             data: { fromUserId: userId, missinoId: missionId, toUserEmail: userEmail },
             success: function (data) {
-
+                alert("Mail has sent successfully");
+                console.log("success");
             },
             error: function (xhr, status, error) {
                 // Handle error

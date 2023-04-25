@@ -116,6 +116,7 @@ namespace CIPlatform.Controllers
                 string path = "<a href=\"" + " https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/Account/NewPassword?token=" + uuid + " \"  style=\"font-weight:500;color:blue;\" > Reset Password </a>";
                 MailHelper mailHelper = new MailHelper(configuration);
                 ViewBag.sendMail = mailHelper.Send(obj.EmailId, welcomeMessage + path);
+                TempData["success"] = "Link to change password is sent to your email";
                 return View(forgotPasswordModel);
             }
             return View(forgotPasswordModel);
@@ -165,7 +166,9 @@ namespace CIPlatform.Controllers
                 user.Email = obj.EmailId;
                 user.Password = obj.Password;
                 user.Avatar = "/images/user1.png";
+                user.Role = "user";
                 _userRepository.addUser(user);
+                TempData["success"] = "Registered successfully";
                 return RedirectToAction("Login");
             }
             List<Banner> banners = _userRepository.GetBannners();
@@ -205,8 +208,6 @@ namespace CIPlatform.Controllers
             newPasswordModel.token = token;
 
             return View(newPasswordModel);
-
-
         }
 
         [HttpPost]
@@ -229,6 +230,7 @@ namespace CIPlatform.Controllers
                         userObj.Password = obj.NewPassword;
                         _userRepository.updatePassword(userObj);
                         _userRepository.removeResetPasswordToekn(resetObj);
+                        TempData["success"] = "Password changed successfully";
                         return RedirectToAction("Login");
                     }
                     else

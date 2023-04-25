@@ -119,6 +119,40 @@ namespace CIPlatform.Repository.Repository
             mission.DeletedAt = DateTime.Now;
             _ciPlatformDbContext.Update(mission);
             _ciPlatformDbContext.SaveChanges();
+
+
+            List<MissionSkill> removeSkills = _ciPlatformDbContext.MissionSkills.Where(skill => skill.MissionId == missionId).ToList();
+            foreach (MissionSkill skill in removeSkills)
+            {
+                skill.DeletedAt = DateTime.Now;
+                _ciPlatformDbContext.Update(skill);
+                _ciPlatformDbContext.SaveChanges();
+            }
+
+            if (mission.MissionType != "time")
+            {
+                GoalMission removeGoalMission = _ciPlatformDbContext.GoalMissions.Where(skill => skill.MissionId == missionId).First();
+                removeGoalMission.DeletedAt = DateTime.Now;
+                _ciPlatformDbContext.Update(removeGoalMission);
+                _ciPlatformDbContext.SaveChanges();
+
+            }
+
+            List<MissionMedium> removeMedia = _ciPlatformDbContext.MissionMedia.Where(media => media.MissionId == missionId).ToList();
+            foreach (MissionMedium missionMedium in removeMedia)
+            {
+                missionMedium.DeletedAt = DateTime.Now;
+                _ciPlatformDbContext.Update(missionMedium);
+                _ciPlatformDbContext.SaveChanges();
+            }
+
+            List<MissionDocument> removeDocument = _ciPlatformDbContext.MissionDocuments.Where(document => document.MissionId == missionId).ToList();
+            foreach (MissionDocument missionDoc in removeDocument)
+            {
+                missionDoc.DeletedAt = DateTime.Now;
+                _ciPlatformDbContext.Update(missionDoc);
+                _ciPlatformDbContext.SaveChanges();
+            }
         }
         void IAdminRepository.AddMission(Mission mission, List<MissionSkill> missionSkills, GoalMission goalMission, List<MissionMedium> missionMedia, List<MissionDocument> missionDocument)
         {
@@ -152,7 +186,6 @@ namespace CIPlatform.Repository.Repository
         }
         void IAdminRepository.EditMission(Mission mission, List<MissionSkill> missionSkills, GoalMission goalMission, List<MissionMedium> missionMedia, List<MissionDocument> missionDocument)
         {
-
             _ciPlatformDbContext.Update(mission);
             _ciPlatformDbContext.SaveChanges();
 
@@ -187,7 +220,7 @@ namespace CIPlatform.Repository.Repository
 
             if (missionMedia.Count() > 0)
             {
-                List<MissionMedium> removeMedia=_ciPlatformDbContext.MissionMedia.Where(media=>media.MissionId == missionId).ToList();
+                List<MissionMedium> removeMedia = _ciPlatformDbContext.MissionMedia.Where(media => media.MissionId == missionId).ToList();
                 foreach (MissionMedium missionMedium in removeMedia)
                 {
                     _ciPlatformDbContext.Remove(missionMedium);
@@ -200,10 +233,10 @@ namespace CIPlatform.Repository.Repository
                     _ciPlatformDbContext.SaveChanges();
                 }
             }
-            
-            if(missionDocument.Count() > 0)
+
+            if (missionDocument.Count() > 0)
             {
-                List<MissionDocument> removeDocument=_ciPlatformDbContext.MissionDocuments.Where(document=>document.MissionId == missionId).ToList();
+                List<MissionDocument> removeDocument = _ciPlatformDbContext.MissionDocuments.Where(document => document.MissionId == missionId).ToList();
                 foreach (MissionDocument missionDoc in removeDocument)
                 {
                     _ciPlatformDbContext.Remove(missionDoc);

@@ -201,10 +201,17 @@ namespace CIPlatform.Repository.Repository
             {
                 return cityRelatedMissions;
             }
+            string countryName = _ciPlatformDbContext.Cities.Include(city => city.Country).Where(city => city.Name == cityName).First().Country.Name;
             int remainingRelatedMissions = 3-cityRelatedMissions.Count();
-            IEnumerable<Mission> themeRelatedMissions=_ciPlatformDbContext.Missions.Include(mission => mission.Country).ThenInclude(mission => mission.Cities).Include(mission => mission.Theme).Include(mission=>mission.MissionSkills).Include(mission => mission.Timesheets).Include(mission => mission.MissionApplications).Include(mission => mission.MissionMedia).Include(mission => mission.GoalMissions).Include(mission => mission.MissionRatings).Where(u => u.City.Name != cityName).Where(u => u.MissionId != missionId).Where(u =>u.Theme.Title == themeName).Take(remainingRelatedMissions);
-            IEnumerable<Mission> relatedMissions=cityRelatedMissions.Concat(themeRelatedMissions);
-            return relatedMissions;
+            IEnumerable<Mission> countryRelatedMissions=_ciPlatformDbContext.Missions.Include(mission => mission.Country).ThenInclude(mission => mission.Cities).Include(mission => mission.Theme).Include(mission=>mission.MissionSkills).Include(mission => mission.Timesheets).Include(mission => mission.MissionApplications).Include(mission => mission.MissionMedia).Include(mission => mission.GoalMissions).Include(mission => mission.MissionRatings).Where(u => u.City.Name != cityName).Where(u => u.MissionId != missionId).Where(u =>u.Country.Name== countryName).Take(remainingRelatedMissions);
+            IEnumerable<Mission> relatedMissions=cityRelatedMissions.Concat(countryRelatedMissions);
+            if(relatedMissions.Count()==3)
+                return relatedMissions;
+
+            remainingRelatedMissions = 3 - relatedMissions.Count();
+            IEnumerable<Mission> themeRelatedMissions = _ciPlatformDbContext.Missions.Include(mission => mission.Country).ThenInclude(mission => mission.Cities).Include(mission => mission.Theme).Include(mission => mission.MissionSkills).Include(mission => mission.Timesheets).Include(mission => mission.MissionApplications).Include(mission => mission.MissionMedia).Include(mission => mission.GoalMissions).Include(mission => mission.MissionRatings).Where(u => u.Country.Name != countryName).Where(u => u.MissionId != missionId).Where(u => u.Theme.Title == themeName).Take(remainingRelatedMissions);
+            IEnumerable<Mission> finalRelatedMissions = relatedMissions.Concat(themeRelatedMissions);
+            return finalRelatedMissions;
         }
 
         void IMissionRepository.addComment(int userId, int missionId, string comment)

@@ -14,7 +14,7 @@
                 <option value="DateDESC">Date Descending</option>
                 <option value="SeatASC">Total Seats Ascending</option>
                 <option value="SeatDESC">Total Seats Descending</option>
-                <option value="DateDESC">Deadline</option>
+                <option value="Deadline">Deadline</option>
             </select>
         </div>
         <button id="grid-view-btn" class="bg-transparent me-3 border-0">
@@ -47,6 +47,11 @@
                     <img class="card-img-top w-100 card-img" src=~/@data.MediaPath/@data.MediaName@data.MediaType alt="Card image cap" />
 
                     <div id="mission-applied-@data.MissionId" class="mission-applied bg-success position-absolute text-white p-2 px-4 rounded-end-5">Applied</div>
+
+                    @if (!(data.EndDate > DateTime.Now || data.MissionType == "goal"))
+                    {
+                        <div id="mission-closed-@data.MissionId" class="bg-danger position-absolute text-white p-2 px-4 rounded-end-5">Closed</div>
+                    }
                     <div id="card-image-content" class="d-flex flex-column justify-content-between  p-2">
                         <div id="location-image" class="img-content p-2 rounded-5">
                             <img src="~/images/pin.png" alt="">
@@ -174,9 +179,12 @@
                         }
                         else
                         {
-                            <button id="close-btn" class="btn btn-outline-secondary rounded-5 py-2 px-4 fs-5 disabled">
-                                Closed
-                            </button>
+                            <a href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = data.MissionId }) ">
+                                <button id="apply-btn" class="apply-btn-@data.MissionId btn btn-outline-warning rounded-5 py-2 px-4 fs-5 ">
+                                    View Details
+                                    <img src="~/images/right-arrow.png" class="mx-1 ms-3" alt="">
+                                </button>
+                            </a>
                         }
                     </div>
                 </div>
@@ -199,6 +207,11 @@
                     <img src=~/@data.MediaPath/@data.MediaName@data.MediaType class="list-img" alt="" />
                     <h5 class="list-card-theme-title bg-white rounded-5 p-2">@data.ThemeTitle</h5>
                     <div id="lmission-applied-@data.MissionId" class="lmission-applied bg-success position-absolute text-white p-2 px-4 rounded-end-5 top-0">Applied</div>
+
+                    @if (!(data.EndDate > DateTime.Now || data.MissionType == "goal"))
+                    {
+                        <div id="lmission-closed-@data.MissionId" class="bg-danger position-absolute text-white p-2 px-4 rounded-end-5 top-0">Closed</div>
+                    }
                     <div id="list-card-image-content"
                      class="h-100 d-flex flex-column position-absolute  p-2">
                         <div id="list-location-image" class="list-img-content p-2 rounded-5">
@@ -265,9 +278,12 @@
                                 }
                                 else
                                 {
-                                    <button id="close-btn" class="btn btn-outline-secondary rounded-5 py-2 px-4 fs-5 disabled">
-                                        Closed
-                                    </button>
+                                    <a href="@Url.Action("Mission_Volunteer", "Mission", new { missionId = data.MissionId }) ">
+                                        <button id="apply-btn" class="apply-btn-@data.MissionId btn btn-outline-warning rounded-5 py-2 px-4 fs-5 ">
+                                            View Details
+                                            <img src="~/images/right-arrow.png" class="mx-1 ms-3" alt="">
+                                        </button>
+                                    </a>
                                 }
                             </div>
 

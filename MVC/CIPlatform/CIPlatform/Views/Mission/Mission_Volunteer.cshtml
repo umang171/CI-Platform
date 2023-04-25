@@ -318,10 +318,20 @@
                     </div>
                 </div>
                 <div id="favourite-mission-@Model.MissionId" class="volunteer-button-apply m-md-1 p-md-1 w-100">
-                    <button id="volunteer-apply-btn" class="btn rounded-5 py-2 px-4 fs-5">
+                    
+                    @if (Model.EndDate > DateTime.Now || Model.MissionType == "goal")
+                                {
+                                    <button id="volunteer-apply-btn" class="btn rounded-5 py-2 px-4 fs-5">
                         Apply Now
                         <img src="~/images/right-arrow.png" class="mx-1 ms-3" alt="" />
                     </button>
+                                }
+                                else
+                                {
+                                     <button id="close-btn" class="btn btn-outline-secondary rounded-5 py-2 px-4 fs-5 disabled">
+                                        Closed
+                                    </button>
+                                }
                 </div>
             </div>
         </div>
@@ -398,15 +408,13 @@
 
                 <div id="Comments" class="tabcontent">
                     <form class="mt-3" action="">
-                        <textarea id="comment" class="w-100 rounded-2 p-1" placeholder="Enter your comments.." rows="4"
+                        <textarea id="comment" maxlength="600" class="w-100 rounded-2 p-1" placeholder="Enter your comments.." rows="4"
                             name="" id="mission-comment"></textarea>
                         <button id="mission-comment-btn" class="orange-btn py-2 px-4 my-2 rounded-5 bg-transparent">
                             Post comment
                         </button>
                     </form>
                     <div id="volunteer-comments-div" class=" p-2 ">
-
-
 
                     </div>
                 </div>

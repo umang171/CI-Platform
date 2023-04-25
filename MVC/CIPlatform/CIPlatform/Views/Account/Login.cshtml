@@ -4,29 +4,34 @@
     ViewData["Title"] = "Home Page";
 }
 
-    <div class="container-fluid">
-        <div class="row">
-            <partial name="_AccountCarousel" model="Model.banners"/>
-            <div id="logincontent" class="col-md-4 col-sm-12 logincontent">
-                <form asp-action="Login" asp-controller="Account">
-                    <label asp-for="EmailId">Email Address</label>
-                    <input asp-for="EmailId" type="text" id="loginemail" placeholder="shichan@nohara.com">
-                    <span asp-validation-for="EmailId" class="text-danger"></span>
+<div class="container-fluid">
+    <div class="row">
+        <partial name="_AccountCarousel" model="Model.banners" />
+        <div id="logincontent" class="col-md-4 col-sm-12 logincontent">
+            <form asp-action="Login" asp-controller="Account">
+                <label asp-for="EmailId">Email Address</label>
+                <input asp-for="EmailId" type="text" id="loginemail" placeholder="shichan@nohara.com">
+                <span asp-validation-for="EmailId" class="text-danger"></span>
 
-                    <label asp-for="Password">Password</label>
-                    <input asp-for="Password" type="Password" id="loginpass" placeholder="**********">
-                    <span asp-validation-for="Password" class="text-danger"></span>
+                <label asp-for="Password">Password</label>
+                <input asp-for="Password" type="Password" id="loginpass" placeholder="**********">
+                <span asp-validation-for="Password" class="text-danger"></span>
 
 
-                    <input type="submit" value="Login">
-                    <a asp-action="ForgotPassword">Lost your password?</a>
-                    <p>Don’t have an account?<a asp-action="Register"> Create an account</a></p>
-                </form>
-                <div id="loginpolicy">
-                    <p>Privacy Policy</p>
-                </div>
+                <input type="submit" value="Login">
+                <a asp-action="ForgotPassword">Lost your password?</a>
+                <p>Don’t have an account?<a asp-action="Register"> Create an account</a></p>
+            </form>
+            <div id="loginpolicy">
+                <p>Privacy Policy</p>
             </div>
         </div>
     </div>
-
- 
+</div>
+@if (TempData.ContainsKey("success"))
+{
+    <script>
+        alert("@TempData["success"]");
+    </script>
+    TempData.Remove("success");
+}
