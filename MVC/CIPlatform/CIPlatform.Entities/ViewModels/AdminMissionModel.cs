@@ -42,6 +42,7 @@ namespace CIPlatform.Entities.ViewModels
         public string? DocumentType { get; set; } = String.Empty;
         public string? DocumentPath { get; set; } = String.Empty;
         public string? MissionDocuments { get; set; } = String.Empty;
+        public string Status { get; set; } = string.Empty;
         public List<CountryList> countryLists { get; set; }= new List<CountryList>();
         public List<CityList> cityLists { get; set; }= new List<CityList>();
         public List<ThemeList> themeLists { get; set; }= new List<ThemeList>();

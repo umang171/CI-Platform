@@ -137,7 +137,13 @@
                                 <span asp-validation-for="MissionDocuments" class="text-danger"></span>
                                 <p class="border" id="preview-mission-document"></p>
                             </div>
-
+                            <div class="py-2">
+                                <label for="" class="form-label">Status</label>
+                                <select asp-for="Status" id="" class="form-select">
+                                    <option value="true">Active</option>
+                                    <option value="false">Inactive</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="pt-3 d-flex justify-content-end align-items-center">
                             <button id="mission-cancel-btn" class="me-1 border border-2 border-secondary bg-white rounded-5 px-4 p-2">Cancel</button>

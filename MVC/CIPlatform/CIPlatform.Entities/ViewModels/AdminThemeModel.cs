@@ -13,5 +13,6 @@ namespace CIPlatform.Entities.ViewModels
         [Required]
         public string ThemeName { get; set; }=String.Empty;
         public long ThemeId{ get; set; }
+        public string Status { get; set; } = string.Empty;
     }
 }

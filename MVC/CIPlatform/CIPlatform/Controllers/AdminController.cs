@@ -86,6 +86,7 @@ namespace CIPlatform.Controllers
                 user.Department = adminUserAddModel.Department;
                 user.ProfileText = adminUserAddModel.MyProfile;
                 user.WhyIVolunteer = adminUserAddModel.WhyIVolunteer;
+                user.Status = Boolean.Parse(adminUserAddModel.Status);
                 _userRepository.addUser(user);
                 return RedirectToAction("Index", "Admin");
             }
@@ -113,6 +114,7 @@ namespace CIPlatform.Controllers
             adminUserAddModel.WhyIVolunteer = user.WhyIVolunteer;
             adminUserAddModel.UserId = user.UserId;
             adminUserAddModel.Profile = user.Avatar;
+            adminUserAddModel.Status = user.Status.ToString();
             return View(adminUserAddModel);
         }
         [HttpPost]
@@ -146,6 +148,7 @@ namespace CIPlatform.Controllers
                 user.Department = adminUserAddModel.Department;
                 user.ProfileText = adminUserAddModel.MyProfile;
                 user.WhyIVolunteer = adminUserAddModel.WhyIVolunteer;
+                user.Status= Boolean.Parse(adminUserAddModel.Status);
                 _adminRepository.editUser(user);
                 return RedirectToAction("Index", "Admin");
             }
@@ -352,6 +355,8 @@ namespace CIPlatform.Controllers
                 mission.OrganizationName=adminMissionModel.OrganizationName;
                 mission.OrganizationDetail=adminMissionModel.OrganizationDetail;
                 mission.Availability=adminMissionModel.Availability;
+                mission.Status = Boolean.Parse(adminMissionModel.Status);
+
                 mission.Status = true;
                 List<MissionSkill> missionSkills=new List<MissionSkill>();
                 foreach(var item in adminMissionModel.Skills.Split(",").SkipLast(1))
@@ -488,7 +493,8 @@ namespace CIPlatform.Controllers
                 mission.OrganizationName = adminMissionModel.OrganizationName;
                 mission.OrganizationDetail = adminMissionModel.OrganizationDetail;
                 mission.Availability = adminMissionModel.Availability;
-                mission.Status = true;
+                mission.Status = Boolean.Parse(adminMissionModel.Status);
+
                 List<MissionSkill> missionSkills = new List<MissionSkill>();
                 foreach (var item in adminMissionModel.Skills.Split(",").SkipLast(1))
                 {
@@ -695,6 +701,7 @@ namespace CIPlatform.Controllers
             {
                 Skill skill = new Skill();
                 skill.SkillName = adminSkillModel.SkillName;
+                skill.Status = Byte.Parse(adminSkillModel.Status);
                 _adminRepository.AddSkill(skill);
                 return RedirectToAction("AdminSkill");
             }
@@ -712,6 +719,7 @@ namespace CIPlatform.Controllers
             Skill skill = _adminRepository.FindSkill(skillId);
             adminSkillModel.SkillName = skill.SkillName;
             adminSkillModel.SkillId = skill.SkillId;
+            adminSkillModel.Status = skill.Status.ToString();
             return View(adminSkillModel);
         }
         
@@ -722,6 +730,7 @@ namespace CIPlatform.Controllers
             {
                 Skill skill = _adminRepository.FindSkill(adminSkillModel.SkillId);
                 skill.SkillName = adminSkillModel.SkillName;
+                skill.Status = Byte.Parse(adminSkillModel.Status);
                 _adminRepository.EditSkill(skill);
                 return RedirectToAction("AdminSkill");
             }
@@ -819,6 +828,7 @@ namespace CIPlatform.Controllers
             {
                 MissionTheme missionTheme = new MissionTheme();
                 missionTheme.Title = adminThemeModel.ThemeName;
+                missionTheme.Status = Boolean.Parse(adminThemeModel.Status);
                 _adminRepository.AddTheme(missionTheme);
                 return RedirectToAction("AdminTheme");
             }
@@ -842,6 +852,7 @@ namespace CIPlatform.Controllers
             MissionTheme missionTheme = _adminRepository.FindTheme(themeId);
             adminThemeModel.ThemeName = missionTheme.Title;
             adminThemeModel.ThemeId = missionTheme.MissionThemeId;
+            adminThemeModel.Status = missionTheme.Status.ToString();
             return View(adminThemeModel);
         }
         
@@ -852,6 +863,7 @@ namespace CIPlatform.Controllers
             {
                 MissionTheme missionTheme = _adminRepository.FindTheme(adminThemeModel.ThemeId);
                 missionTheme.Title = adminThemeModel.ThemeName;
+                missionTheme.Status = Boolean.Parse(adminThemeModel.Status);
                 _adminRepository.EditTheme(missionTheme);
                 return RedirectToAction("AdminTheme");
             }

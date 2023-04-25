@@ -133,7 +133,7 @@ $("#send-email-btn").on("click", function (e) {
             url: '/Story/recommendToCoworker',
             data: { storyId: storyid, toUserEmail: userEmail },
             success: function (data) {
-                console.log("success");
+                alert("Email has been sent successfully");
             },
             error: function (xhr, status, error) {
                 // Handle error

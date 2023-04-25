@@ -98,7 +98,7 @@
             <div class="share-story-content-mission col-12 col-md-4 p-0 pe-2 ">
                 <div class="d-flex flex-column">
                     <label class="py-1" for="">My Story title</label>
-                    <input type="text" class="p-1 share-story-inputs" id="story-title" placeholder="Enter story title" />
+                    <input type="text" required maxlength="255" class="p-1 share-story-inputs" id="story-title" placeholder="Enter story title" />
                 </div>
             </div>
             <div class="share-story-content-mission col-12 col-md-4 p-0 pe-2">
@@ -118,7 +118,7 @@
             <label for="">
                 Enter Video URL
             </label>
-            <textarea id="video-url-textarea" class="w-100 p-1" style="overflow-y:hidden;" rows="1" placeholder="Enter video url"></textarea>
+            <textarea required maxlength="40000" id="video-url-textarea" class="w-100 p-1" style="overflow-y:hidden;" rows="1" placeholder="Enter video url"></textarea>
         </div>
 
         <div id="share-story-content-upload-photos" class="pt-2">
@@ -150,8 +150,11 @@
     </div>
 </div>
 
-
-<partial name="_footer" />
+<footer class="container-fluid border-top">
+    <div class="py-4 mx-auto">
+        <a style="text-decoration: none;color: gray;" asp-action="Policy" asp-controller="Account">Privacy Policy</a>
+    </div>
+</footer>
 
 @section JavaScript{
     <script src="https://cdn.tiny.cloud/1/pja9ajo1o39g0k8thqnh6v1mf71mykif09v83tqtjfhsnung/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>

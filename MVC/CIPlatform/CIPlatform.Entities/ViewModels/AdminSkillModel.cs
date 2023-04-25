@@ -13,5 +13,6 @@ namespace CIPlatform.Entities.ViewModels
         [Required(ErrorMessage = "Please Enter Skill Name")]
         public string SkillName { get; set; } = string.Empty;
         public long SkillId{ get; set; }
+        public string Status { get; set; } = string.Empty;
     }
 }

@@ -40,5 +40,7 @@ namespace CIPlatform.Entities.ViewModels
         public string WhyIVolunteer { get; set; } = string.Empty;
         public string Profile { get; set; } = string.Empty;
         public long UserId { get; set; }
+        public string Status { get; set; } = string.Empty;
+
     }
 }

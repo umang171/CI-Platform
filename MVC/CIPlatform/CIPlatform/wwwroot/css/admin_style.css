@@ -29,6 +29,9 @@
 .admin-status-active {
     color: #14C506;
 }
+.admin-status-inactive {
+    color: red;
+}
 
 .admin-navigation {
     color: white;

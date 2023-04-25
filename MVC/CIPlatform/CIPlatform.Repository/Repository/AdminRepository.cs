@@ -69,9 +69,9 @@ namespace CIPlatform.Repository.Repository
         {
             IEnumerable<CmsPage> cmsPages;
             if (searchText == null)
-                cmsPages = _ciPlatformDbContext.CmsPages.Where(page => page.DeletedAt == null && page.Status == true);
+                cmsPages = _ciPlatformDbContext.CmsPages.Where(page => page.DeletedAt == null);
             else
-                cmsPages = _ciPlatformDbContext.CmsPages.Where(page => page.DeletedAt == null && page.Status == true).Where(page => page.Title.Contains(searchText));
+                cmsPages = _ciPlatformDbContext.CmsPages.Where(page => page.DeletedAt == null).Where(page => page.Title.Contains(searchText));
             var totalCounts = cmsPages.Count();
             var records = cmsPages.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
             return new AdminPageList<CmsPage>(records, totalCounts);
@@ -106,9 +106,9 @@ namespace CIPlatform.Repository.Repository
         {
             IEnumerable<Mission> missions;
             if (searchText == null)
-                missions = _ciPlatformDbContext.Missions.Where(mission => mission.DeletedAt == null && mission.Status == true);
+                missions = _ciPlatformDbContext.Missions.Where(mission => mission.DeletedAt == null);
             else
-                missions = _ciPlatformDbContext.Missions.Where(mission => mission.DeletedAt == null && mission.Status == true).Where(mission => mission.Title.Contains(searchText));
+                missions = _ciPlatformDbContext.Missions.Where(mission => mission.DeletedAt == null).Where(mission => mission.Title.Contains(searchText));
             var totalCounts = missions.Count();
             var records = missions.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
             return new AdminPageList<Mission>(records, totalCounts);
@@ -269,7 +269,7 @@ namespace CIPlatform.Repository.Repository
             adminMissionModel.OrganizationDetail = mission.OrganizationDetail;
             adminMissionModel.OrganizationName = mission.OrganizationName;
             adminMissionModel.Availability = mission.Availability;
-
+            adminMissionModel.Status = mission.Status.ToString();
             List<MissionSkill> missionSkills = _ciPlatformDbContext.MissionSkills.Where(skill => skill.MissionId == missionId).ToList();
             string skills = "";
             foreach (MissionSkill skill in missionSkills)

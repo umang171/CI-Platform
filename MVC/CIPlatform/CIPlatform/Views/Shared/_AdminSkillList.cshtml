@@ -4,24 +4,37 @@
     <thead>
         <tr class="p-1 fs-5" style="background-color: #F8F9FC;">
             <th>Skill Name</th>
+            <th>Status</th>
             <th>Action</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.Records)
         {
-        <tr class="p-1 fs-6">
-                    <td>@item.SkillName</td>
-                    <td>
-                        <div class="d-flex justify-content-start align-items-center w-100">
-                            <svg id="edit-@item.SkillId" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi text-orange bi-pencil-square edit-skill-btn" style="cursor:pointer;" viewBox="0 0 16 16">
-                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-                            </svg>
-                            <img id="delete-@item.SkillId" style="cursor:pointer;height:20px" class="ms-3 delete-skill-btn" src="/images/bin.png" alt="" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                        </div>
+            <tr class="p-1 fs-6">
+                <td>@item.SkillName</td>
+                @if (item.Status == 1)
+                {
+                    <td class="admin-status-active">
+                        Active
                     </td>
-                </tr>
+                }
+                else
+                {
+                    <td class="admin-status-inactive">
+                        Inactive
+                    </td>
+                }
+                <td>
+                    <div class="d-flex justify-content-start align-items-center w-100">
+                        <svg id="edit-@item.SkillId" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi text-orange bi-pencil-square edit-skill-btn" style="cursor:pointer;" viewBox="0 0 16 16">
+                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                        </svg>
+                        <img id="delete-@item.SkillId" style="cursor:pointer;height:20px" class="ms-3 delete-skill-btn" src="/images/bin.png" alt="" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                    </div>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
@@ -38,9 +51,9 @@
 
                 @for (int i = 1; i <= pageCount; i++)
                 {
-                            <li class="page-item ">
-                                <a class="page-link" href="">@i</a>
-                            </li>
+                    <li class="page-item ">
+                        <a class="page-link" href="">@i</a>
+                    </li>
                 }
                 <li style="cursor:pointer;" class="page-item"><a class="page-link">&gt;</a></li>
                 <li style="cursor:pointer;" class="page-item"><a class="page-link">&gt;&gt;</a></li>

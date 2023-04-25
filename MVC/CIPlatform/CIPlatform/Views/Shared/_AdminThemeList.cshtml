@@ -4,6 +4,7 @@
     <thead>
         <tr class="p-1 fs-5" style="background-color: #F8F9FC;">
             <th>Theme Title</th>
+            <th>Status</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -12,6 +13,18 @@
         {
             <tr class="p-1 fs-6">
                 <td>@item.Title</td>
+                @if (item.Status == true)
+                {
+                    <td class="admin-status-active">
+                        Active
+                    </td>
+                }
+                else
+                {
+                    <td class="admin-status-inactive">
+                        Inactive
+                    </td>
+                }
                 <td>
                     <div class="d-flex justify-content-start align-items-center w-100">
                         <svg id="edit-@item.MissionThemeId" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi text-orange bi-pencil-square edit-theme-btn" style="cursor:pointer;" viewBox="0 0 16 16">
