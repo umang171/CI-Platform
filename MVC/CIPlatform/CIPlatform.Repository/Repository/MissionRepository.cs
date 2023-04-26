@@ -120,8 +120,8 @@ namespace CIPlatform.Repository.Repository
             SqlConnection conn = new SqlConnection();
 
             SqlDataReader rdr = null;
-            //conn = new SqlConnection("Server=PCTR29\\SQL2017;User Id=sa;Password=tatva123;Database=CI;Trusted_Connection=true;TrustServerCertificate=true;");
-            conn = new SqlConnection("SERVER=localhost\\SQLEXPRESS;Database=CI;Trusted_Connection=true;TrustServerCertificate=true;");
+            conn = new SqlConnection("Server=PCTR29\\SQL2017;User Id=sa;Password=tatva123;Database=CI;Trusted_Connection=true;TrustServerCertificate=true;");
+            //conn = new SqlConnection("SERVER=localhost\\SQLEXPRESS;Database=CI;Trusted_Connection=true;TrustServerCertificate=true;");
             conn.Open();
             SqlCommand cmd = new SqlCommand("sp_get_mission_data_from_id", conn);
             // 2. set the command object so it knows to execute a stored procedure

@@ -111,8 +111,6 @@ $(function () {
 //=================================================================================================
 
 $("#story-save-btn").on("click", function (e) {
-    $("#story-preview-btn").addClass("orange-btn");
-    $("#story-preview-btn").prop('disabled',false);
     var userId = $(".user-btn")[0].id.slice(9);
     var missionId = $("#sort-dropdown").val();
     var storyTitle = $("#story-title").val();
@@ -120,14 +118,31 @@ $("#story-save-btn").on("click", function (e) {
     var storyVideoUrl = $("#video-url-textarea").val();
     storyDescription = tinyMCE.activeEditor.getContent();
 
-    //console.log("Mission title:", missionTitle);
-    //console.log("Story title:", storyTitle);
-    //console.log("Story published date:", storyPublishedDate);
-    //console.log("Story description:", storyDescription);
-    //console.log("Story video url:", storyVideoUrl);
-    //console.log("Story images:", storyFileNames);
-    //console.log("User id:", userId);
+    if (missionId == "Select") {
+        alert("Please Enter select Mission");
+        return;
+    }
+    if (storyTitle == "") {
+        alert("Please Enter story Title");
+        return;
+    }
+    if (storyPublishedDate == "") {
+        alert("Please Enter Date");
+        return;
+    }
+    if (storyDescription == "") {
+        alert("Please Enter story description");
+        return;
+    }
+    if (storyFileNames == "") {
+        alert("Please select images for story");
+        return;
+    }
 
+    if (storyFileNames.split(",").length>=21) {
+        alert("Do not select more than 20 images");
+        return;
+    }
     $.ajax({
         type: "POST",
         url: '/Story/saveStory',
@@ -136,6 +151,9 @@ $("#story-save-btn").on("click", function (e) {
             var storyId = data["storyId"];
             console.log(storyId);
             $("#preview-link").attr('href', '/Story/StoryDetails?storyId=' + storyId);
+            alert("Story Saved,Now you can preview it!")
+            $("#story-preview-btn").addClass("orange-btn");
+            $("#story-preview-btn").prop('disabled', false);
         },
         error: function (xhr, status, error) {
             // Handle error
@@ -155,15 +173,30 @@ $("#story-submit-btn").on("click", function (e) {
     var storyPublishedDate = $("#story-publish-date").val();
     var storyVideoUrl = $("#video-url-textarea").val();
     storyDescription = tinyMCE.activeEditor.getContent();
-
-    //console.log("Mission title:", missionTitle);
-    //console.log("Story title:", storyTitle);
-    //console.log("Story published date:", storyPublishedDate);
-    //console.log("Story description:", storyDescription);
-    //console.log("Story video url:", storyVideoUrl);
-    //console.log("Story images:", storyFileNames);
-    //console.log("User id:", userId);
-
+    if (missionId == "Select") {
+        alert("Please Enter select Mission");
+        return;
+    }
+    if (storyTitle == "") {
+        alert("Please Enter story Title");
+        return;
+    }
+    if (storyPublishedDate == "") {
+        alert("Please Enter Date");
+        return;
+    }
+    if (storyDescription == "") {
+        alert("Please Enter story description");
+        return;
+    }
+    if (storyFileNames == "") {
+        alert("Please select images for story");
+        return;
+    }
+    if (storyFileNames.split(",").length >= 21) {
+        alert("Do not select more than 20 images");
+        return;
+    }
     $.ajax({
         type: "POST",
         url: '/Story/submitStory',
