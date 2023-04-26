@@ -73,10 +73,10 @@ namespace CIPlatform.Controllers
         }
         
         [HttpPost]
-        public IActionResult getMissionsFromSP(string countryNames, string cityNames, string themeNames, string skillNames, string searchText, string sortValue,int pageNumber)
+        public IActionResult getMissionsFromSP(string countryNames, string cityNames, string themeNames, string skillNames, string searchText, string sortValue,int pageNumber,int userId)
         {
             // make explicit SQL Parameter
-            PaginationMission pagination =_missionRepository.getMissionsFromSP(countryNames, cityNames,themeNames,skillNames,searchText,sortValue, pageNumber) ;
+            PaginationMission pagination =_missionRepository.getMissionsFromSP(countryNames, cityNames,themeNames,skillNames,searchText,sortValue, pageNumber,userId) ;
            
             return PartialView("_MissionList", pagination);
         }

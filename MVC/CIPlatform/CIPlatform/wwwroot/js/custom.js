@@ -163,6 +163,7 @@ var selectedSkills = "";
 var searchText = "";
 var sortMissionFilterVal = "";
 function loadCard(paging) {
+    var userId = $("#rightNavbar .user-btn")[0].id.slice(9,);
     if (!paging)
         paging = 1;
     $.ajax({
@@ -171,7 +172,7 @@ function loadCard(paging) {
         url: "/Mission/getMissionsFromSP",
         dataType: "html",
         cache: false,
-        data: { countryNames: selectedCountries, cityNames: selectedCities, themeNames: selectedThemes, skillNames: selectedSkills, searchText: searchText, sortValue: sortMissionFilterVal, pageNumber: paging },
+        data: { countryNames: selectedCountries, cityNames: selectedCities, themeNames: selectedThemes, skillNames: selectedSkills, searchText: searchText, sortValue: sortMissionFilterVal, pageNumber: paging, userId:userId },
         success: function (data) {
             $("#mission-card-views").html("");
             $('#mission-card-views').html(data);

@@ -324,8 +324,8 @@
 
                     reader.onload = function(event) {
                         $($.parseHTML('<img>')).attr('src', event.target.result).css("height","100px").css("width","100px").css("margin","5px 8px").appendTo(placeToInsertImagePreview);
+                        //$('div#preview-mission-media').append('<div><span id="img-' + event.target.result + '" class = "close-img" style = "position: absolute;cursor:pointer;transform: translate(76px,0px);background-color: black;color:white;padding: 0px 3px;border: 1px solid;" > X</span ><img src="' + event.target.result + '" class="px-2" style="height:100px;width:100px;" /></div >');
                     }
-
                     reader.readAsDataURL(input.files[i]);
                 }
             }
