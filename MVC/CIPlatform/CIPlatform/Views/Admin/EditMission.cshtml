@@ -13,7 +13,7 @@
                         <h4>Add Mission</h4>
                     </div>
                     <form method="POST" enctype="multipart/form-data">
-                        <input asp-for="MissionId" value="@Model.MissionId" hidden/>
+                        <input asp-for="MissionId" value="@Model.MissionId" hidden />
                         <div class="border px-1 p-sm-3 ">
                             <div class="py-2">
                                 <label for="" class="form-label">Mission Title</label>
@@ -103,7 +103,7 @@
                                 <button type="button" class="p-1 ms-2 px-4 rounded-5 btn-orange bg-white" data-bs-toggle="modal" data-bs-target="#skillModal">
                                     Add Skill
                                 </button>
-                                <input asp-for="Skills" type="text" id="skill-input" value="@Model.Skills" hidden/>
+                                <input asp-for="Skills" type="text" id="skill-input" value="@Model.Skills" hidden />
                                 <textarea readonly id="skill-textarea" class="form-control" rows="5"></textarea>
                             </div>
                             <div class="py-2">
@@ -130,18 +130,22 @@
                                 <label for="" class="form-label">Mission Media</label>
                                 <input type="file" accept="image/jpg, image/jpeg, image/png" name="missionMedias" id="admin-mission-media" class="form-control" multiple>
                                 <span asp-validation-for="MissionMedia" class="text-danger"></span>
-                                <div class="border" id="preview-mission-media">
-                                    <input type="text" asp-for="MediaName" value="@Model.MediaName" hidden/>
-                                    <input type="text" asp-for="MediaPath" value="@Model.MediaPath" hidden/>
-                                    <input type="text" asp-for="MediaType" value="@Model.MediaType" hidden/>
+                                <div class="border d-flex" id="preview-mission-media">
+                                    <input id="mediaName" type="text" asp-for="MediaName" value="@Model.MediaName" hidden />
+                                    <input id="mediaPath" type="text" asp-for="MediaPath" value="@Model.MediaPath" hidden />
+                                    <input id="mediaType" type="text" asp-for="MediaType" value="@Model.MediaType" hidden />
                                     @{
                                         string[] mediaNames = Model.MediaName.Split(",").SkipLast(1).ToArray();
-                                        string[] mediaPaths= Model.MediaPath.Split(",").SkipLast(1).ToArray();
+                                        string[] mediaPaths = Model.MediaPath.Split(",").SkipLast(1).ToArray();
                                         string[] mediaTypes = Model.MediaType.Split(",").SkipLast(1).ToArray();
                                     }
-                                    @for (int i = 0; i< mediaNames.Length; i++)
+                                    @for (int i = 0; i < mediaNames.Length; i++)
                                     {
-                                        <img src="/@mediaPaths[i]/@mediaNames[i]@mediaTypes[i]" style="height:100px;width:100px;margin:5px 8px;"/>
+                                        <div>
+                                            <span id="img-/@mediaPaths[i]/@mediaNames[i]@mediaTypes[i]" class="close-img"style="position: absolute;cursor:pointer;transform: translate(76px,0px);background-color:black;color:white;padding: 0px 3px;border: 1px solid;"> X</span>
+                                            <img src="/@mediaPaths[i]/@mediaNames[i]@mediaTypes[i]" class="px-2" style="height:100px;width:100px;" />
+                                        </div>
+                                       
                                     }
                                 </div>
                             </div>
@@ -150,18 +154,20 @@
                                 <input type="file" name="missionDocuments" id="admin-mission-document" class="form-control" multiple>
                                 <span asp-validation-for="MissionDocuments" class="text-danger"></span>
                                 <p class="border p-2" id="preview-mission-document">
-                                    <input type="text" asp-for="DocumentName" value="@Model.DocumentName" hidden/>
-                                    <input type="text" asp-for="DocumentPath" value="@Model.DocumentPath" hidden/>
-                                    <input type="text" asp-for="DocumentType" value="@Model.DocumentType" hidden/>
+                                    <input type="text" asp-for="DocumentName" value="@Model.DocumentName" hidden />
+                                    <input type="text" asp-for="DocumentPath" value="@Model.DocumentPath" hidden />
+                                    <input type="text" asp-for="DocumentType" value="@Model.DocumentType" hidden />
 
                                     @{
                                         string[] docNames = Model.DocumentName.Split(",").SkipLast(1).ToArray();
                                         string[] docTypes = Model.DocumentType.Split(",").SkipLast(1).ToArray();
                                     }
-                                    @for (int i = 0; i< docNames.Length; i++)
+                                    @for (int i = 0; i < docNames.Length; i++)
                                     {
-                                        <span>@docNames[i]@docTypes[i]</span><br/>
-                                     }
+                                        <span>@docNames[i]@docTypes[i]</span>
+
+                                        <br />
+                                    }
                                 </p>
                             </div>
                             <div class="py-2">
@@ -312,19 +318,24 @@
     // ==============================================================================
     // Add Media
     // ==============================================================================
+    var removeMediaNames="";
     $(function() {
         // Multiple images preview in browser
         var imagesPreview = function(input, placeToInsertImagePreview) {
 
             if (input.files) {
                 var filesAmount = input.files.length;
-                $("#preview-mission-media").html("");
+                //$("#preview-mission-media").html("");
                 for (i = 0; i < filesAmount; i++) {
                     var reader = new FileReader();
 
                     reader.onload = function(event) {
-                        $($.parseHTML('<img>')).attr('src', event.target.result).css("height","100px").css("width","100px").css("margin","5px 8px").appendTo(placeToInsertImagePreview);
-                        //$('div#preview-mission-media').append('<div><span id="img-' + event.target.result + '" class = "close-img" style = "position: absolute;cursor:pointer;transform: translate(76px,0px);background-color: black;color:white;padding: 0px 3px;border: 1px solid;" > X</span ><img src="' + event.target.result + '" class="px-2" style="height:100px;width:100px;" /></div >');
+                        //$($.parseHTML('<img>')).attr('src', event.target.result).css("height","100px").css("width","100px").css("margin","5px 8px").appendTo(placeToInsertImagePreview);
+                        $('div#preview-mission-media').append('<div><span id="img-' + event.target.result + '" class = "close-img" style = "position: absolute;cursor:pointer;transform: translate(76px,0px);background-color: black;color:white;padding: 0px 3px;border: 1px solid;" > X</span ><img src="' + event.target.result + '" class="px-2" style="height:100px;width:100px;" /></div >');
+                        $(".close-img").on("click", function (e) {
+                            removeFile = this.id.slice(4) + ",";
+                            this.parentElement.style.display = 'none';
+                        });
                     }
                     reader.readAsDataURL(input.files[i]);
                 }
@@ -335,6 +346,23 @@
         $('#admin-mission-media').on('change', function() {
             imagesPreview(this, 'div#preview-mission-media');
         });
+
+    });
+    $(".close-img").on("click", function (e) {
+        var removeFile = this.id.slice(4) + ",";
+        var removeTmpFile=removeFile.split(".")[0].split("/")[2];
+        var arr=$("#mediaName").val().split(",");
+        var removeIdx=arr.indexOf(removeTmpFile);
+        var value=$("#mediaName").val().replace(removeTmpFile+",","");
+        $("#mediaName").val(value);
+        var pathArr=$("#mediaPath").val().split(",");
+        var typeArr=$("#mediaType").val().split(",");
+        pathArr.splice(removeIdx,1);
+        typeArr.splice(removeIdx,1);
+        $("#mediaPath").val(pathArr.join(","));
+        $("#mediaType").val(typeArr.join(","));
+        //console.log($("#mediaType").val());
+        this.parentElement.style.display = 'none';
     });
     // ==============================================================================
     // Add Documents
@@ -342,7 +370,6 @@
     $(function() {
         // Multiple images preview in browser
         var documentPreview = function(input) {
-
             if (input.files) {
                 var filesAmount = input.files.length;
                 var docNames=""
@@ -352,9 +379,7 @@
                 $("#preview-mission-document").html("");
                 $("#preview-mission-document").html(docNames);
             }
-
         };
-
         $('#admin-mission-document').on('change', function() {
             documentPreview(this);
         });

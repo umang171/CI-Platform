@@ -435,7 +435,7 @@ namespace CIPlatform.Controllers
             AdminMissionModel adminMissionModel = _adminRepository.GetMissionDetails(missionId);
             adminMissionModel.adminHeader = adminHeader;
             adminMissionModel.countryLists = _adminRepository.GetCountryLists();
-            adminMissionModel.cityLists = _adminRepository.GetCityLists(adminMissionModel.countryLists.ElementAt(0).CountryId);
+            adminMissionModel.cityLists = _adminRepository.GetCityLists(adminMissionModel.CountryId);
             adminMissionModel.themeLists = _adminRepository.GetThemeLists();
             adminMissionModel.skillLists = _adminRepository.GetSkillLists();
             return View(adminMissionModel);
@@ -512,6 +512,18 @@ namespace CIPlatform.Controllers
 
                 List<MissionMedium> missionMedia = new List<MissionMedium>();
                 string wwwRootPath = _webHostEnvironment.WebRootPath;
+
+                string[] mediaNames = adminMissionModel.MediaName.Split(",").SkipLast(1).ToArray();
+                string[] mediaPaths = adminMissionModel.MediaPath.Split(",").SkipLast(1).ToArray();
+                string[] mediaTypes = adminMissionModel.MediaType.Split(",").SkipLast(1).ToArray();
+                for (int i = 0; i < mediaNames.Length; i++)
+                {
+                    MissionMedium missionMedium = new MissionMedium();
+                    missionMedium.MediaName = mediaNames[i];
+                    missionMedium.MediaPath = mediaPaths[i];
+                    missionMedium.MediaType = mediaTypes[i];
+                    missionMedia.Add(missionMedium);
+                }
                 foreach (IFormFile postedFile in missionMedias)
                 {
                     MissionMedium missionMedium = new MissionMedium();
@@ -527,6 +539,7 @@ namespace CIPlatform.Controllers
                         postedFile.CopyTo(fileStreams);
                     }
                 }
+
                 List<MissionDocument> missionDocument = new List<MissionDocument>();
                 foreach (IFormFile postedFile in missionDocuments)
                 {
