@@ -65,7 +65,7 @@
                             </div>
                             <div class="py-2">
                                 <label for="" class="form-label">User Avtar</label>
-                                <input type="file" name="Avatar" id="admin-user-avatar" class="form-control">
+                                <input type="file" accept="image/jpg, image/jpeg, image/png" name="Avatar" id="admin-user-avatar" class="form-control">
                                 <div class="border" id="preview-user-avatar">
                                     <img src="@Model.Profile" style="height:200px;width:200px" />
                                     <input asp-for="Profile" value="@Model.Profile" type="text" hidden>
