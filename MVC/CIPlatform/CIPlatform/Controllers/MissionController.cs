@@ -174,6 +174,10 @@ namespace CIPlatform.Controllers
         {            
             return Json(new { rating = _missionRepository.getRatingOfUserForMission(userId, missionId) });
         }
+        public IActionResult GetCityCountryOfUser(long userId)
+        {
+            return Json(new { data = _userRepository.GetCityCountryOfUser(userId) });
+        }
         public IActionResult CmsPageDetails(long cmsId)
         {
             CmsPageModel cmsPageModel = new CmsPageModel();

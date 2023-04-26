@@ -37,6 +37,7 @@ namespace CIPlatform.Repository.Repository.Interface
         public List<Banner> GetBannners();
         public Boolean HasAlreadyEmployeeId(string empolyeeId);
         public int GetRemainingActions(long missionId);
+        public string GetCityCountryOfUser(long userId);
         public void AddContactRecord(string contactName, string contactEmail, string contactSubject, string contactMessage);
     }
 }

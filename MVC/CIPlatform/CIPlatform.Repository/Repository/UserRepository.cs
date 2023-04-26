@@ -276,5 +276,17 @@ namespace CIPlatform.Repository.Repository
             _ciPlatformDbContext.Add(contact);
             _ciPlatformDbContext.SaveChanges();
         }
+
+        string IUserRepository.GetCityCountryOfUser(long userId)
+        {
+            if (_ciPlatformDbContext.Users.Where(user => user.UserId == userId).First().CountryId == null)
+            {
+                return "NO";
+            }
+            string city=_ciPlatformDbContext.Users.Include(user=>user.City).Where(user=>user.UserId==userId).First().City.Name;
+            string country=_ciPlatformDbContext.Users.Include(user=>user.Country).Where(user=>user.UserId==userId).First().Country.Name;
+            
+            return city + "," + country;
+        }
     }
 }

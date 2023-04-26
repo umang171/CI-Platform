@@ -291,8 +291,38 @@ var ajaxRequest4 =
 
 $.when(ajaxRequest1, ajaxRequest2, ajaxRequest3, ajaxRequest4).done(function () {
     intializeChips();
+    selectedCityCountryOfUser();
 });
 loadCityWithCountry();
+// ====================================================================
+// Default selected country and city of user
+// ====================================================================
+function selectedCityCountryOfUser() {
+    var userId = $("#rightNavbar .user-btn")[0].id.slice(9,);
+    $.ajax({
+        type: "Get",
+        url: '/Mission/GetCityCountryOfUser',
+        data: { userId: userId},
+        success: function (data) {
+            if (data["data"] != "NO") {
+                var city = data["data"].split(",")[0];
+                var country = data["data"].split(",")[1];
+                $("#" + country).trigger('click');
+                $("#" + country + " #c" + country).prop('checked', true);
+                $("#c" + country).prop('checked', true);
+                $("#"+city).trigger('click');
+                $("#"+city+" #c"+city).prop('checked', true);
+                $("#c"+city).prop('checked', true);
+            }
+        },
+        error: function (xhr, status, error) {
+            // Handle error
+            console.log(error);
+        }
+    });
+
+    
+}
 
 // ====================================================================
 // chips items
