@@ -19,7 +19,7 @@ namespace CIPlatform.Repository.Repository.Interface
         public IEnumerable<MissionTheme> getThemes();
         public IEnumerable<Skill> getSkills();
 
-        public PaginationMission getMissionsFromSP(string countryNames, string cityNames, string themeNames, string skillNames, string searchText, string sortValue,int pageNumber,int userId);
+        public PaginationMission getMissionsFromSP(string countryNames, string cityNames, string themeNames, string skillNames, string searchText, string sortValue, string exploreValue, int pageNumber,int userId);
 
         public void addFavouriteMission(FavouriteMission favouriteMissionObj);
         public void removeFavouriteMission(FavouriteMission favouriteMissionObj);

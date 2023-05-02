@@ -70,6 +70,10 @@ namespace CIPlatform.Controllers
                 var token = JwtTokenHelper.GenerateToken(jwtSetting, sessionDetailsViewModel);
                 HttpContext.Session.SetString("useremail", loginModelObj.EmailId );
                 HttpContext.Session.SetString("Token", token);
+                if (user.CityId == null)
+                {
+                    return RedirectToAction("UserProfile", "Account");
+                }
                 if (user.Role == "user")
                     return RedirectToAction("Index", "Mission");
                 if (user.Role == "admin")
@@ -319,7 +323,7 @@ namespace CIPlatform.Controllers
                        userProfileModel.Avatar = null;
                 }
                 _userRepository.editUserProfile(userProfileModel);
-                return RedirectToAction("UserProfile", "Account");
+                return RedirectToAction("Index", "Mission");
             }
             else
             {

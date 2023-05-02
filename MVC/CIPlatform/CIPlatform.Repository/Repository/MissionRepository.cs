@@ -22,7 +22,7 @@ namespace CIPlatform.Repository.Repository
 
         List<Mission> IMissionRepository.getMissions()
         {
-            return _ciPlatformDbContext.Missions.ToList();
+            return _ciPlatformDbContext.Missions.Where(mission=>mission.DeletedAt==null && mission.Status==true).ToList();
         }
         IEnumerable<City> IMissionRepository.getCities(string country)
         {            
@@ -48,7 +48,7 @@ namespace CIPlatform.Repository.Repository
         {
 
             List<Skill> skills =_ciPlatformDbContext.Skills.ToList();
-            List<Skill> originalskills=_ciPlatformDbContext.Skills.ToList();
+            List<Skill> originalskills=_ciPlatformDbContext.Skills.Where(skill => skill.DeletedAt == null && skill.Status == 1).ToList();
             foreach (Skill skill in skills)
             {
 
@@ -65,7 +65,7 @@ namespace CIPlatform.Repository.Repository
         IEnumerable<MissionTheme> IMissionRepository.getThemes()
         {
             List<MissionTheme> themes=_ciPlatformDbContext.MissionThemes.ToList();
-            List<MissionTheme> originalThemes=_ciPlatformDbContext.MissionThemes.ToList();
+            List<MissionTheme> originalThemes=_ciPlatformDbContext.MissionThemes.Where(theme => theme.DeletedAt == null && theme.Status == true).ToList();
             foreach(MissionTheme theme in themes)
             {
                 List<Mission> mission = _ciPlatformDbContext.Missions.Where(u => u.Theme.Title== theme.Title).ToList();
@@ -81,13 +81,13 @@ namespace CIPlatform.Repository.Repository
         
 
 
-        public PaginationMission getMissionsFromSP(string countryNames, string cityNames, string themeNames, string skillNames, string searchText, string sortValue, int pageNumber, int userId)
+        public PaginationMission getMissionsFromSP(string countryNames, string cityNames, string themeNames, string skillNames, string searchText, string sortValue, string exploreValue, int pageNumber, int userId)
         {
             // make explicit SQL Parameter
             var output = new SqlParameter("@TotalCount", SqlDbType.BigInt) { Direction = ParameterDirection.Output };
             var output1 = new SqlParameter("@MissionCount", SqlDbType.BigInt) { Direction = ParameterDirection.Output };
             PaginationMission pagination = new PaginationMission();
-            List<MissionViewModel> test = _ciPlatformDbContext.MissionViewModel.FromSqlInterpolated($"exec sp_get_mission_data @countryNames = {countryNames}, @cityNames = {cityNames}, @themeNames = {themeNames}, @skillNames = {skillNames}, @searchText = {searchText}, @sortValue = {sortValue}, @pageNumber = {pageNumber}, @userId = {userId}, @TotalCount = {output} out,@MissionCount={output1} out").ToList();
+            List<MissionViewModel> test = _ciPlatformDbContext.MissionViewModel.FromSqlInterpolated($"exec sp_get_mission_data @countryNames = {countryNames}, @cityNames = {cityNames}, @themeNames = {themeNames}, @skillNames = {skillNames}, @searchText = {searchText}, @sortValue = {sortValue},@exploreValue={exploreValue}, @pageNumber = {pageNumber}, @userId = {userId}, @TotalCount = {output} out,@MissionCount={output1} out").ToList();
             pagination.missions = test;
             pagination.pageSize = 9;
             pagination.pageCount = long.Parse(output.Value.ToString());
@@ -195,7 +195,7 @@ namespace CIPlatform.Repository.Repository
 
         IEnumerable<Mission> IMissionRepository.getRelatedMissions(string themeName,string cityName, int missionId)
         {
-            IEnumerable <Mission> cityRelatedMissions= _ciPlatformDbContext.Missions.Include(mission => mission.Country).Include(mission => mission.City).Include(mission => mission.Theme).Include(mission => mission.MissionSkills).Include(mission=>mission.Timesheets).Include(mission=>mission.MissionApplications).Include(mission => mission.MissionMedia).Include(mission=>mission.GoalMissions).Include(mission=>mission.MissionRatings).Where(u=>u.MissionId!=missionId).Where(u => u.City.Name == cityName).Take(3);
+            IEnumerable <Mission> cityRelatedMissions= _ciPlatformDbContext.Missions.Include(mission => mission.Country).Include(mission => mission.City).Include(mission => mission.Theme).Include(mission => mission.MissionSkills).Include(mission=>mission.Timesheets).Include(mission=>mission.MissionApplications).Include(mission => mission.MissionMedia).Include(mission=>mission.GoalMissions).Include(mission=>mission.MissionRatings).Where(u=>u.MissionId!=missionId).Where(u => u.City.Name == cityName).Where(mission => mission.DeletedAt == null && mission.Status == true).Take(3);
 
             if(cityRelatedMissions.Count()==3)
             {
@@ -203,13 +203,13 @@ namespace CIPlatform.Repository.Repository
             }
             string countryName = _ciPlatformDbContext.Cities.Include(city => city.Country).Where(city => city.Name == cityName).First().Country.Name;
             int remainingRelatedMissions = 3-cityRelatedMissions.Count();
-            IEnumerable<Mission> countryRelatedMissions=_ciPlatformDbContext.Missions.Include(mission => mission.Country).Include(mission => mission.City).Include(mission => mission.Theme).Include(mission=>mission.MissionSkills).Include(mission => mission.Timesheets).Include(mission => mission.MissionApplications).Include(mission => mission.MissionMedia).Include(mission => mission.GoalMissions).Include(mission => mission.MissionRatings).Where(u => u.City.Name != cityName).Where(u => u.MissionId != missionId).Where(u =>u.Country.Name== countryName).Take(remainingRelatedMissions);
+            IEnumerable<Mission> countryRelatedMissions=_ciPlatformDbContext.Missions.Include(mission => mission.Country).Include(mission => mission.City).Include(mission => mission.Theme).Include(mission=>mission.MissionSkills).Include(mission => mission.Timesheets).Include(mission => mission.MissionApplications).Include(mission => mission.MissionMedia).Include(mission => mission.GoalMissions).Include(mission => mission.MissionRatings).Where(u => u.City.Name != cityName).Where(u => u.MissionId != missionId).Where(u =>u.Country.Name== countryName).Where(mission => mission.DeletedAt == null && mission.Status == true).Take(remainingRelatedMissions);
             IEnumerable<Mission> relatedMissions=cityRelatedMissions.Concat(countryRelatedMissions);
             if(relatedMissions.Count()==3)
                 return relatedMissions;
 
             remainingRelatedMissions = 3 - relatedMissions.Count();
-            IEnumerable<Mission> themeRelatedMissions = _ciPlatformDbContext.Missions.Include(mission => mission.Country).Include(mission => mission.City).Include(mission => mission.Theme).Include(mission => mission.MissionSkills).Include(mission => mission.Timesheets).Include(mission => mission.MissionApplications).Include(mission => mission.MissionMedia).Include(mission => mission.GoalMissions).Include(mission => mission.MissionRatings).Where(u => u.Country.Name != countryName).Where(u => u.MissionId != missionId).Where(u => u.Theme.Title == themeName).Take(remainingRelatedMissions);
+            IEnumerable<Mission> themeRelatedMissions = _ciPlatformDbContext.Missions.Include(mission => mission.Country).Include(mission => mission.City).Include(mission => mission.Theme).Include(mission => mission.MissionSkills).Include(mission => mission.Timesheets).Include(mission => mission.MissionApplications).Include(mission => mission.MissionMedia).Include(mission => mission.GoalMissions).Include(mission => mission.MissionRatings).Where(u => u.Country.Name != countryName).Where(u => u.MissionId != missionId).Where(u => u.Theme.Title == themeName).Where(mission => mission.DeletedAt == null && mission.Status == true).Take(remainingRelatedMissions);
             IEnumerable<Mission> finalRelatedMissions = relatedMissions.Concat(themeRelatedMissions);
             return finalRelatedMissions;
         }
@@ -267,7 +267,7 @@ namespace CIPlatform.Repository.Repository
 
         IEnumerable<MissionApplication> IMissionRepository.getRecentVolunteers(int missionId)
         {
-            return _ciPlatformDbContext.MissionApplications.Include(u => u.User).Where(u => u.MissionId == missionId && u.ApprovalStatus == "applied").Take(9);
+            return _ciPlatformDbContext.MissionApplications.Include(u => u.User).Where(u => u.MissionId == missionId && u.ApprovalStatus == "applied" && u.User.DeletedAt==null && u.User.Status==true).Take(9);
         }
 
         List<MissionApplication> IMissionRepository.getMissionsOfUser(int userId)
@@ -302,7 +302,7 @@ namespace CIPlatform.Repository.Repository
 
         List<CmsPage> IMissionRepository.GetCMSPages()
         {
-            return _ciPlatformDbContext.CmsPages.Where(page => page.DeletedAt == null).ToList();
+            return _ciPlatformDbContext.CmsPages.Where(page => page.DeletedAt == null && page.Status==true).ToList();
         }
 
         CmsPage IMissionRepository.GetCmsPageDetails(long cmsPageId)

@@ -19,7 +19,7 @@ namespace CIPlatform.Repository.Repository
         }
         public IEnumerable<User> getUsers()
         {
-            var Users = _ciPlatformDbContext.Users;
+            var Users = _ciPlatformDbContext.Users.Where(user=>user.DeletedAt==null && user.Status==true);
             return Users;
         }
 
@@ -134,7 +134,7 @@ namespace CIPlatform.Repository.Repository
 
         List<Skill> IUserRepository.getSkillNames()
         {
-            return _ciPlatformDbContext.Skills.ToList();
+            return _ciPlatformDbContext.Skills.Where(skill=>skill.DeletedAt==null && skill.Status==1).ToList();
         }
 
         void IUserRepository.removeResetPasswordToekn(ResetPassword obj)
@@ -151,12 +151,12 @@ namespace CIPlatform.Repository.Repository
 
         bool IUserRepository.validateEmail(string email)
         {
-            return _ciPlatformDbContext.Users.Any(user => user.Email == email && user.DeletedAt==null);
+            return _ciPlatformDbContext.Users.Any(user => user.Email == email && user.DeletedAt==null && user.Status==true);
         }
 
         bool IUserRepository.validateUser(string email, string password)
         {
-            return _ciPlatformDbContext.Users.Any(u => u.Password == password && u.Email == email);
+            return _ciPlatformDbContext.Users.Any(user => user.Password == password && user.Email == email && user.DeletedAt == null && user.Status == true);
         }
 
         List<City> IUserRepository.getCityNames(int countryId)

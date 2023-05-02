@@ -58,6 +58,10 @@ namespace CIPlatform.Controllers
             {
                 ModelState.AddModelError("EmailId", "Email already registred");
             }
+            if (_userRepository.HasAlreadyEmployeeId(adminUserAddModel.EmployeeId))
+            {
+                ModelState.AddModelError("EmployeeId", "Employee Id is already there");
+            }
             if (ModelState.IsValid)
             {
                 User user = new User();
@@ -881,6 +885,12 @@ namespace CIPlatform.Controllers
                 return RedirectToAction("AdminTheme");
             }
             return View(adminThemeModel);
+        }
+        public IActionResult logout()
+        {
+            HttpContext.Session.Remove("useremail");
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login", "Account");
         }
     }
 }

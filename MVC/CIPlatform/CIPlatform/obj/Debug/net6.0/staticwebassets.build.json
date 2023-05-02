@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4/TSliKLNgy+ej0bdrGUKgUA3rkVbt513hnh+Zr0JIo=",
+  "Hash": "DWOFpUM/aTPvlJDgugUw7Z9PcGJxqtcsSlzqZpOCuNM=",
   "Source": "CIPlatform",
   "BasePath": "_content/CIPlatform",
   "Mode": "Default",
@@ -219,6 +219,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\documents\\35b74a5f-cfad-4a69-b28e-90e570354fcc.pdf"
+    },
+    {
+      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\documents\\3c7e4881-25f4-4418-a803-9c7859fa143e.pdf",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "documents/3c7e4881-25f4-4418-a803-9c7859fa143e.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\documents\\3c7e4881-25f4-4418-a803-9c7859fa143e.pdf"
     },
     {
       "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\documents\\42fb4da8-1767-4940-9387-e90f9e4edd64.pdf",
@@ -491,6 +508,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\documents\\e52b8125-3ba7-44d2-aae2-cb22ff0c7cd8.pdf"
+    },
+    {
+      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\documents\\e561786f-8139-4a12-a053-e8499ea1a1b2.pdf",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "documents/e561786f-8139-4a12-a053-e8499ea1a1b2.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\documents\\e561786f-8139-4a12-a053-e8499ea1a1b2.pdf"
     },
     {
       "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\documents\\e7f3f8d2-6d05-49b2-95ef-124e30d8d5d1.pdf",
@@ -1052,6 +1086,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\avatars\\ac31a1c0-62e3-4137-bc83-43356f2b3878.png"
+    },
+    {
+      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\avatars\\af3e328c-36ca-47d9-b0be-445f42cd6e8f.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "images/avatars/af3e328c-36ca-47d9-b0be-445f42cd6e8f.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\avatars\\af3e328c-36ca-47d9-b0be-445f42cd6e8f.png"
     },
     {
       "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\avatars\\b083842b-9254-407d-b30d-98d4acc8affe.png",
@@ -2754,6 +2805,23 @@
       "OriginalItemSpec": "wwwroot\\images\\missions\\5cc42140-d9ac-4c0c-a5b5-333f856fc142.png"
     },
     {
+      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\missions\\6329fc61-08f3-42dc-ae34-c184b9dd9847.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "images/missions/6329fc61-08f3-42dc-ae34-c184b9dd9847.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\missions\\6329fc61-08f3-42dc-ae34-c184b9dd9847.png"
+    },
+    {
       "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\missions\\63791c60-586f-4de6-b894-23505747bb63.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
@@ -2973,6 +3041,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\missions\\9e6f1457-0867-416c-a108-549f84d3198d.png"
+    },
+    {
+      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\missions\\9f4ed097-fb8d-4977-b636-2f493711e831.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "images/missions/9f4ed097-fb8d-4977-b636-2f493711e831.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\missions\\9f4ed097-fb8d-4977-b636-2f493711e831.png"
     },
     {
       "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\missions\\a19bb82a-c085-4dfb-aaec-bd06da9e3cd3.png",
@@ -3264,6 +3349,23 @@
       "OriginalItemSpec": "wwwroot\\images\\missions\\d5f4ce05-08b7-43ec-815e-0df40e116486.png"
     },
     {
+      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\missions\\d6c0f990-699e-4e95-982e-dbf80fdd3e86.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "images/missions/d6c0f990-699e-4e95-982e-dbf80fdd3e86.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\missions\\d6c0f990-699e-4e95-982e-dbf80fdd3e86.png"
+    },
+    {
       "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\missions\\dcd6a86c-f3f9-4ca2-93b0-3dff5e973cf2.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
@@ -3313,6 +3415,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\missions\\dfce3b94-0204-4a42-912c-6dac0cb3de53.png"
+    },
+    {
+      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\missions\\e01ae80f-6ac6-49d8-86c4-bca4855c59d9.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "images/missions/e01ae80f-6ac6-49d8-86c4-bca4855c59d9.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\missions\\e01ae80f-6ac6-49d8-86c4-bca4855c59d9.png"
     },
     {
       "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\missions\\e0f8bd1e-931f-4ba8-9565-52bccceb60c2.png",
@@ -4148,6 +4267,23 @@
       "OriginalItemSpec": "wwwroot\\images\\uploads\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1202304078.png"
     },
     {
+      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\uploads\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-12023042710018.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "images/uploads/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-12023042710018.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\uploads\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-12023042710018.png"
+    },
+    {
       "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\uploads\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png",
       "SourceId": "CIPlatform",
       "SourceType": "Discovered",
@@ -4163,6 +4299,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\uploads\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png"
+    },
+    {
+      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\uploads\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity2023042710018.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "images/uploads/CSR-initiative-stands-for-Coffee--and-Farmer-Equity2023042710018.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\uploads\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity2023042710018.png"
     },
     {
       "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\uploads\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2202304186.png",
@@ -4197,6 +4350,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\uploads\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2202304266.png"
+    },
+    {
+      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\uploads\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-22023042710018.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "images/uploads/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-22023042710018.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\uploads\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-22023042710018.png"
     },
     {
       "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\uploads\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png",
@@ -4248,6 +4418,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\uploads\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3202304266.png"
+    },
+    {
+      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\uploads\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-32023042710018.png",
+      "SourceId": "CIPlatform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
+      "BasePath": "_content/CIPlatform",
+      "RelativePath": "images/uploads/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-32023042710018.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\uploads\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-32023042710018.png"
     },
     {
       "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\uploads\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png",
@@ -4503,23 +4690,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\uploads\\Grow-Trees-On-the-path-to-environment-sustainability.png"
-    },
-    {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\uploads\\Grow-Trees-On-the-path-to-environment-sustainability-1 - Copy202304266.png",
-      "SourceId": "CIPlatform",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
-      "BasePath": "_content/CIPlatform",
-      "RelativePath": "images/uploads/Grow-Trees-On-the-path-to-environment-sustainability-1 - Copy202304266.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\uploads\\Grow-Trees-On-the-path-to-environment-sustainability-1 - Copy202304266.png"
     },
     {
       "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\uploads\\Grow-Trees-On-the-path-to-environment-sustainability-1202303308.png",
@@ -4843,23 +5013,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\uploads\\img1.png"
-    },
-    {
-      "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\uploads\\img11 - Copy202304266.png",
-      "SourceId": "CIPlatform",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\",
-      "BasePath": "_content/CIPlatform",
-      "RelativePath": "images/uploads/img11 - Copy202304266.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\uploads\\img11 - Copy202304266.png"
     },
     {
       "Identity": "D:\\Projects\\CI platform\\MVC\\CIPlatform\\CIPlatform\\wwwroot\\images\\uploads\\img11.png",

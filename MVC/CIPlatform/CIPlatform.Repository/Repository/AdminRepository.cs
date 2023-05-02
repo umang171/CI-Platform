@@ -24,7 +24,7 @@ namespace CIPlatform.Repository.Repository
 
         bool IAdminRepository.validateUser(string email, string password)
         {
-            return _ciPlatformDbContext.Admins.Any(admin => admin.Password == password && admin.Email == email);
+            return _ciPlatformDbContext.Admins.Any(admin => admin.Password == password && admin.Email == email && admin.DeletedAt==null);
         }
         AdminPageList<User> IAdminRepository.getUsers(string? searchText, int pageNumber, int pageSize)
         {
@@ -505,7 +505,7 @@ namespace CIPlatform.Repository.Repository
 
         List<ThemeList> IAdminRepository.GetThemeLists()
         {
-            return _ciPlatformDbContext.MissionThemes.Where(theme => theme.DeletedAt == null).Select(theme => new ThemeList
+            return _ciPlatformDbContext.MissionThemes.Where(theme => theme.DeletedAt == null && theme.Status==true).Select(theme => new ThemeList
             {
                 ThemeId = theme.MissionThemeId,
                 ThemeName = theme.Title
@@ -513,7 +513,7 @@ namespace CIPlatform.Repository.Repository
         }
         List<SkillList> IAdminRepository.GetSkillLists()
         {
-            return _ciPlatformDbContext.Skills.Where(skill => skill.DeletedAt == null).Select(skill => new SkillList
+            return _ciPlatformDbContext.Skills.Where(skill => skill.DeletedAt == null && skill.Status==1).Select(skill => new SkillList
             {
                 SkillId = skill.SkillId,
                 SkillName = skill.SkillName,

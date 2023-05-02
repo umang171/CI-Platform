@@ -162,6 +162,7 @@ var selectedThemes = "";
 var selectedSkills = "";
 var searchText = "";
 var sortMissionFilterVal = "";
+var exploreMissionFilterVal = "";
 function loadCard(paging) {
     var userId = $("#rightNavbar .user-btn")[0].id.slice(9,);
     if (!paging)
@@ -172,7 +173,7 @@ function loadCard(paging) {
         url: "/Mission/getMissionsFromSP",
         dataType: "html",
         cache: false,
-        data: { countryNames: selectedCountries, cityNames: selectedCities, themeNames: selectedThemes, skillNames: selectedSkills, searchText: searchText, sortValue: sortMissionFilterVal, pageNumber: paging, userId:userId },
+        data: { countryNames: selectedCountries, cityNames: selectedCities, themeNames: selectedThemes, skillNames: selectedSkills, searchText: searchText, sortValue: sortMissionFilterVal, exploreValue: exploreMissionFilterVal, pageNumber: paging, userId:userId },
         success: function (data) {
             $("#mission-card-views").html("");
             $('#mission-card-views').html(data);
@@ -182,6 +183,7 @@ function loadCard(paging) {
             loadPagination();
             getAppliedMissions();
             sortMissionFilter();
+            exploreMissionFilter();
         },
         error: function (xhr, status, error) {
             // Handle error
@@ -494,6 +496,16 @@ function loadCityWithCountry() {
 function sortMissionFilter() {
     $("#sort-dropdown").change(function () {
         sortMissionFilterVal = $("#sort-dropdown").find(":selected").val();
+        loadCard();
+    });
+}
+// ====================================================================
+// explore filter
+// ====================================================================
+
+function exploreMissionFilter() {
+    $("#explore-dropdown").change(function () {
+        exploreMissionFilterVal = $("#explore-dropdown").find(":selected").val();
         loadCard();
     });
 }

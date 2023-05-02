@@ -1,7 +1,7 @@
 ﻿@model CIPlatform.Entities.ViewModels.MissionHomeModel
 
 @*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+    For more i-moz-text-size-adjustation on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
@@ -124,6 +124,7 @@
                     <img src="~/images/logo.png" alt="" />
 
                     <div id="menu-heading" class="d-none d-md-flex justify-content-center align-items-center">
+
                         <a asp-action="Index" asp-controller="Story" class="text-decoration-none text-dark mx-3">Stories</a>
                         <div class="dropdown">
                             <button class="dropdown-toggle border-0 bg-white m-1" type="button" data-bs-toggle="dropdown"
@@ -138,6 +139,15 @@
                                 }
                             </ul>
                         </div>
+                        <div id="dropdown-explore" class="ms-3">
+                            <select name="explore" id="explore-dropdown" class="border-0">
+                                <option value="Explore">Explore</option>
+                                <option value="TopTheme">Top Themes</option>
+                                <option value="MostRanked">Most Ranked</option>
+                                <option value="TopFavourite">Top Favourite</option>
+                                <option value="Random">Random</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
@@ -145,10 +155,25 @@
                     <button id="search-button" class="p-1 mx-3 border-0 bg-white d-sm-none">
                         <img src="~/images/search.png" alt="" />
                     </button>
-                    <a href="">
-                        <img id="user-profile-img" src="@Model.avtar" class="rounded-circle object-fit-cover"
-                             alt="" />
-                    </a>
+                    <div class="dropdown">
+                        <button id="notification-button" class="dropdown-toggle p-1 mx-3 border-0 bg-white"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="btn btn-warning rounded-circle p-1 m-0 position-absolute" style="background-color:#F88634;color:white;top:-5px;right:15px;font-size:10px;">1</span>
+                            <img src="~/images/bell.png" alt="" />
+                        </button>
+                        <ul class="dropdown-menu" style="width:300px;">
+                            <li class="border border-0 border-bottom-1 p-2 d-flex justify-content-between align-items-center">
+                                <button class="bg-white border-0"><img src="~/images/settings.png" /></button>
+                                <span>Notification</span>
+                                <button class="bg-white border-0">Clear All</button>
+                            </li>
+                            <li><a class="dropdown-item" href="/Account/VolunteerTimesheet">Volunteering Timesheet</a></li>
+                            <li><a class="dropdown-item" href="/Mission/logout">Logout</a></li>
+                        </ul>
+                    </div>
+                        <a href="">
+                            <img id="user-profile-img" src="@Model.avtar" class="rounded-circle object-fit-cover"
+                                 alt="" />
+                        </a>
                     <div class="dropdown d-sm-block d-none">
                         <button class="dropdown-toggle border-0 bg-white m-1 user-btn" id="user-btn-@Model.userid" type="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
