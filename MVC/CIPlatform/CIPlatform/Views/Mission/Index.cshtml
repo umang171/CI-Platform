@@ -5,7 +5,14 @@
 *@
 @{
 }
-
+@section Style{
+    <style>
+    .notification-setting-check{
+        accent-color:#F88634;
+        color:white;
+    }
+    </style>
+}
 
 <div id="main-header" class="d-flex flex-row">
     <div id="menu-side-bar" class="position-absolute">
@@ -20,7 +27,7 @@
                     Policy
                     <img src="~/images/drop-down.png" alt="" />
                 </button>
-                <ul class="dropdown-menu w-100">
+color     <ul class="dropdown-menu w-100">
                     @foreach (var item in Model.cmsPages)
                     {
                         <li><a class="dropdown-item" href="/Mission/CmsPageDetails?cmsId=@item.CmsPageId">@item.Title</a></li>
@@ -156,13 +163,13 @@
                         <img src="~/images/search.png" alt="" />
                     </button>
                     <div class="dropdown">
-                        <button id="notification-button" class="dropdown-toggle p-1 mx-3 border-0 bg-white"  type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button id="notification-button" class="dropdown-toggle p-1 mx-3 border-0 bg-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="btn btn-warning rounded-circle p-1 m-0 position-absolute" style="background-color:#F88634;color:white;top:-5px;right:15px;font-size:10px;">1</span>
                             <img src="~/images/bell.png" alt="" />
                         </button>
                         <ul class="dropdown-menu" style="width:300px;">
                             <li class="border border-0 border-bottom-1 p-2 d-flex justify-content-between align-items-center">
-                                <button class="bg-white border-0"><img src="~/images/settings.png" /></button>
+                                <button class="bg-white border-0" data-bs-toggle="modal" data-bs-target="#navigation-setting-modal"><img src="~/images/settings.png" /></button>
                                 <span>Notification</span>
                                 <button class="bg-white border-0">Clear All</button>
                             </li>
@@ -170,10 +177,10 @@
                             <li><a class="dropdown-item" href="/Mission/logout">Logout</a></li>
                         </ul>
                     </div>
-                        <a href="">
-                            <img id="user-profile-img" src="@Model.avtar" class="rounded-circle object-fit-cover"
-                                 alt="" />
-                        </a>
+                    <a href="">
+                        <img id="user-profile-img" src="@Model.avtar" class="rounded-circle object-fit-cover"
+                             alt="" />
+                    </a>
                     <div class="dropdown d-sm-block d-none">
                         <button class="dropdown-toggle border-0 bg-white m-1 user-btn" id="user-btn-@Model.userid" type="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
@@ -300,7 +307,49 @@
     <!-- Grid view -->
     <div id="mission-card-views">
     </div>
-
+    <!-- Button trigger modal -->
+    <!-- Modal -->
+    <div class="modal fade" id="navigation-setting-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="margin: 5vh 0vw 0vh 52vw;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title w-100 text-center" id="exampleModalLabel">Notification Settings</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p style="background-color:lightgray" class="w-100 p-1">Get notification for</p>
+                    <div class="d-flex justify-content-between">
+                        <span>Recommended Mission</span>
+                        <input class="notification-setting-check" type="checkbox" id="recommend-notification"/>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>My Stories</span>
+                        <input class="notification-setting-check" type="checkbox" id="story-notification"/>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>New missions</span>
+                        <input class="notification-setting-check" type="checkbox" id="newmission-notification"/>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>Recommended story</span>
+                        <input class="notification-setting-check" type="checkbox" id="recommend-story-notification"/>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>Mission application</span>
+                        <input class="notification-setting-check" type="checkbox" id="mission-application-notification"/>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span>Receive Notification by email</span>
+                        <input class="notification-setting-check" type="checkbox" id="receive-email-notification"/>
+                    </div>                    
+                </div>
+                <div class="modal-footer justify-content-center">
+                        <button class="me-1 orange-btn  bg-white rounded-5 px-4 p-2" data-bs-dismiss="modal">Save</button>
+                        <button type="submit" class="ms-1 bg-white rounded-5 px-4 p-2" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <partial name="_footer" />
 
     @section JavaScript

@@ -657,3 +657,22 @@ function getAppliedMissions() {
         });
     });
 }
+
+//=======================================================================================
+//Notification Settings
+//=======================================================================================
+var dropdownLinks = document.querySelectorAll("#notification-setting-btn");
+
+// Add a click event listener to each link
+dropdownLinks.forEach(function (link) {
+    link.addEventListener("click", function (event) {
+        // Prevent the default action of the link (redirecting to the href)
+        event.preventDefault();
+
+        // Do something else here (e.g. update the page with the link's data)
+    });
+});
+$("#notification-setting-btn").on("click",function (e) {
+    e.preventDefault();
+    console.log("click");
+});
