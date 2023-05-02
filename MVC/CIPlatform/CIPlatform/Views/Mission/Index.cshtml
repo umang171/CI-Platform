@@ -6,12 +6,16 @@
 @{
 }
 @section Style{
-    <style>
-    .notification-setting-check{
-        accent-color:#F88634;
-        color:white;
+<style>
+    .notification-setting-check, .notification-status {
+        accent-color: #F88634;
+        color: white;
     }
-    </style>
+    .notification-status {
+        accent-color: #F88634;
+        clip-path: circle(46% at 50% 50%);
+    }
+</style>
 }
 
 <div id="main-header" class="d-flex flex-row">
@@ -27,7 +31,7 @@
                     Policy
                     <img src="~/images/drop-down.png" alt="" />
                 </button>
-color     <ul class="dropdown-menu w-100">
+                color     <ul class="dropdown-menu w-100">
                     @foreach (var item in Model.cmsPages)
                     {
                         <li><a class="dropdown-item" href="/Mission/CmsPageDetails?cmsId=@item.CmsPageId">@item.Title</a></li>
@@ -167,14 +171,47 @@ color     <ul class="dropdown-menu w-100">
                             <span class="btn btn-warning rounded-circle p-1 m-0 position-absolute" style="background-color:#F88634;color:white;top:-5px;right:15px;font-size:10px;">1</span>
                             <img src="~/images/bell.png" alt="" />
                         </button>
-                        <ul class="dropdown-menu" style="width:300px;">
-                            <li class="border border-0 border-bottom-1 p-2 d-flex justify-content-between align-items-center">
+                        <ul class="dropdown-menu" style="width:380px;">
+                            <li class="p-2 d-flex justify-content-between align-items-center">
                                 <button class="bg-white border-0" data-bs-toggle="modal" data-bs-target="#navigation-setting-modal"><img src="~/images/settings.png" /></button>
                                 <span>Notification</span>
                                 <button class="bg-white border-0">Clear All</button>
                             </li>
-                            <li><a class="dropdown-item" href="/Account/VolunteerTimesheet">Volunteering Timesheet</a></li>
-                            <li><a class="dropdown-item" href="/Mission/logout">Logout</a></li>
+                            <li class="p-2 border border-1 d-flex justify-content-between align-items-center">
+                                <div>
+                                    <img style="height:30px;width:30px" src="~/images/add.png" />
+                                    <span>New Mission-Plantation and aforrestation</span>
+                                </div>
+                                <input class="notification-status" type="checkbox" id="id" checked/>
+                            </li>
+                            <li class="p-2 border border-1 d-flex justify-content-between align-items-center">
+                                <div>
+                                    <img style="height:30px;width:30px" src="~/images/add.png" />
+                                    <span>New Mission-Plantation and aforrestation</span>
+                                </div>
+                                <input class="notification-status" type="checkbox" id="id" checked/>
+                            </li>
+                            <li class="p-2 border border-1 d-flex justify-content-between align-items-center">
+                                <div>
+                                    <img style="height:30px;width:30px" src="~/images/add.png" />
+                                    <span>New Mission-Plantation and aforrestation</span>
+                                </div>
+                                <input class="notification-status" type="checkbox" id="id" checked/>
+                            </li>
+                            <li class="p-2 border border-1 d-flex justify-content-between align-items-center">
+                                <div>
+                                    <img style="height:30px;width:30px" src="~/images/add.png" />
+                                    <span>New Mission-Plantation and aforrestation</span>
+                                </div>
+                                <input class="notification-status" type="checkbox" id="id" checked/>
+                            </li>
+                            <li class="p-2 border border-1 d-flex justify-content-between align-items-center">
+                                <div>
+                                    <img style="height:30px;width:30px" src="~/images/add.png" />
+                                    <span>New Mission-Plantation and aforrestation</span>
+                                </div>
+                                <input class="notification-status" type="checkbox" id="id" checked/>
+                            </li>
                         </ul>
                     </div>
                     <a href="">
@@ -320,32 +357,32 @@ color     <ul class="dropdown-menu w-100">
                     <p style="background-color:lightgray" class="w-100 p-1">Get notification for</p>
                     <div class="d-flex justify-content-between">
                         <span>Recommended Mission</span>
-                        <input class="notification-setting-check" type="checkbox" id="recommend-notification"/>
+                        <input class="notification-setting-check" type="checkbox" id="recommend-notification" />
                     </div>
                     <div class="d-flex justify-content-between">
                         <span>My Stories</span>
-                        <input class="notification-setting-check" type="checkbox" id="story-notification"/>
+                        <input class="notification-setting-check" type="checkbox" id="story-notification" />
                     </div>
                     <div class="d-flex justify-content-between">
                         <span>New missions</span>
-                        <input class="notification-setting-check" type="checkbox" id="newmission-notification"/>
+                        <input class="notification-setting-check" type="checkbox" id="newmission-notification" />
                     </div>
                     <div class="d-flex justify-content-between">
                         <span>Recommended story</span>
-                        <input class="notification-setting-check" type="checkbox" id="recommend-story-notification"/>
+                        <input class="notification-setting-check" type="checkbox" id="recommend-story-notification" />
                     </div>
                     <div class="d-flex justify-content-between">
                         <span>Mission application</span>
-                        <input class="notification-setting-check" type="checkbox" id="mission-application-notification"/>
+                        <input class="notification-setting-check" type="checkbox" id="mission-application-notification" />
                     </div>
                     <div class="d-flex justify-content-between">
                         <span>Receive Notification by email</span>
-                        <input class="notification-setting-check" type="checkbox" id="receive-email-notification"/>
-                    </div>                    
+                        <input class="notification-setting-check" type="checkbox" id="receive-email-notification" />
+                    </div>
                 </div>
                 <div class="modal-footer justify-content-center">
-                        <button class="me-1 orange-btn  bg-white rounded-5 px-4 p-2" data-bs-dismiss="modal">Save</button>
-                        <button type="submit" class="ms-1 bg-white rounded-5 px-4 p-2" data-bs-dismiss="modal">Cancel</button>
+                    <button class="me-1 orange-btn  bg-white rounded-5 px-4 p-2" data-bs-dismiss="modal">Save</button>
+                    <button type="submit" class="ms-1 bg-white rounded-5 px-4 p-2" data-bs-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </div>
