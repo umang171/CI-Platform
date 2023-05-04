@@ -310,6 +310,14 @@ namespace CIPlatform.Repository.Repository
             return _ciPlatformDbContext.CmsPages.Where(page => page.CmsPageId== cmsPageId).First();
         }
 
+        MissionApplication IMissionRepository.GetMissionApplication(int missionApplicationId)
+        {
+            return _ciPlatformDbContext.MissionApplications.Where(mission => mission.MissionApplicationId == missionApplicationId).First();
+        }
+        Mission IMissionRepository.GetMission(int missionId)
+        {
+            return _ciPlatformDbContext.Missions.Where(mission => mission.MissionId == missionId).First();
+        }
         void IMissionRepository.addNotification(Notification notification)
         {
             _ciPlatformDbContext.Add(notification);

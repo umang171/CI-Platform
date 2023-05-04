@@ -145,6 +145,17 @@ namespace CIPlatform.Controllers
             string welcomeMessage = "Welcome to CI platform, <br/> You are recommended to watch below story </br>";
             string path = "<a href=\"" + " https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/Story/StoryDetails?storyId=" + storyId + " \"   style=\"font-weight:500;color:blue;\" > Recommended to watch story </a>";
 
+            Notification notification = new Notification();
+            notification.NotificationMessage = fromUserObj.FirstName + "-Recommended this Story-" + _storyRepository.getStoryDetail(storyId).Title;
+            notification.NotificationType = "RecommendedStory";
+            notification.Status = true;
+            notification.MessageId = storyId;
+            notification.UserId = (int)userObj.UserId;
+            notification.FromUserId = fromUserId;
+            notification.NotificationImage = fromUserObj.Avatar;
+            notification.CreatedAt = DateTime.Now;
+            _missionRepository.addNotification(notification);
+
             MailHelper mailHelper = new MailHelper(configuration);
             ViewBag.sendMail = mailHelper.Send(toUserEmail, welcomeMessage + path,"Recommeded to watch story");
 

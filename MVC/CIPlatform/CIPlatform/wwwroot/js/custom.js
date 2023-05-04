@@ -687,15 +687,34 @@ function getNotifications() {
                 var flags = false;
                 for (var i = 0; i < response.length; i++) {
                     var notificationDate = new Date(response[i].createdAt.slice(0, 10));
-                    console.log(response[i].status);
                     if (yesterdayDate < notificationDate) {
                         notificationStr += '<li class="p-2 border border-1 d-flex justify-content-between align-items-center">' +
                             '<div class="d-flex">';
+                        notificationStr += '<img style="border-radius:50%;height:45px;width:34px" src="' + response[i].notificationImage + '" />';
                         if (response[i].notificationType == "RecommendedMission") {
-                            notificationStr += '<img style="border-radius:50%;height:45px;width:34px" src="' + response[i].notificationImage + '" />';
+                            notificationStr += '<a href="/Mission/Mission_Volunteer?missionId=' + response[i].messageId + '" class="link-style-none px-1">' + response[i].notificationMessage + '</a>' +
+                                '</div>';
                         }
-                        notificationStr += '<span class="px-1">' + response[i].notificationMessage + '</span>' +
-                            '</div>';
+                        else if (response[i].notificationType == "RecommendedStory") {
+                            notificationStr += '<a href="/Story/StoryDetails?storyId=' + response[i].messageId + '" class="link-style-none px-1">' + response[i].notificationMessage + '</a>' +
+                                '</div>';
+                        }
+                        else if (response[i].notificationType == "StoryApproved") {
+                            notificationStr += '<a href="/Story/StoryDetails?storyId=' + response[i].messageId + '" class="link-style-none px-1">' + response[i].notificationMessage + '</a>' +
+                                '</div>';
+                        }
+                        else if (response[i].notificationType == "StoryDeclined") {
+                            notificationStr += '<span class="link-style-none px-1">' + response[i].notificationMessage + '</span>' +
+                                '</div>';
+                        }
+                        else if (response[i].notificationType == "MissionApplicationApproved") {
+                            notificationStr += '<span class="link-style-none px-1">' + response[i].notificationMessage + '</span>' +
+                                '</div>';
+                        }
+                        else if (response[i].notificationType == "MissionApplicationDeclined") {
+                            notificationStr += '<span class="link-style-none px-1">' + response[i].notificationMessage + '</span>' +
+                                '</div>';
+                        }
                         if (response[i].status) {
                             notificationCount++;
                             notificationStr += '<input class="notification-checkbox notification-status" type="checkbox" id="' + response[i].notificationId + '"  checked />';
@@ -710,11 +729,28 @@ function getNotifications() {
                         oldNotificationStr += '<li class="p-2 border border-1 d-flex justify-content-between align-items-center">' +
                             '<div class="d-flex">';
                         console.log(response[i].notificationType);
-                        if (response[i].notificationType == "RecommendedMission") {
                             oldNotificationStr += '<img style="border-radius:50%;height:45px;width:34px" src="' + response[i].notificationImage + '" />';
+                        if (response[i].notificationType == "RecommendedMission") {
+                            oldNotificationStr += '<a href="/Mission/Mission_Volunteer?missionId=' + response[i].messageId + '" class="link-style-none px-1">' + response[i].notificationMessage + '</a>' + '</div>';
                         }
-                        oldNotificationStr += '<span class="px-1">' + response[i].notificationMessage + '</span>' +
-                            '</div>';
+                        else if (response[i].notificationType == "RecommendedStory") {
+                            oldNotificationStr += '<a href="/Story/StoryDetails?storyId=' + response[i].messageId + '" class="link-style-none px-1">' + response[i].notificationMessage + '</a>' + '</div>';
+                        }
+                        else if (response[i].notificationType == "StoryApproved") {
+                            oldNotificationStr += '<a href="/Story/StoryDetails?storyId=' + response[i].messageId + '" class="link-style-none px-1">' + response[i].notificationMessage + '</a>' + '</div>';
+                        }
+                        else if (response[i].notificationType == "StoryDeclined") {
+                            oldNotificationStr += '<span class="link-style-none px-1">' + response[i].notificationMessage + '</span>' +
+                                '</div>';
+                        }
+                        else if (response[i].notificationType == "MissionApplicationApproved") {
+                            oldNotificationStr += '<span class="link-style-none px-1">' + response[i].notificationMessage + '</span>' +
+                                '</div>';
+                        }
+                        else if (response[i].notificationType == "MissionApplicationDeclined") {
+                            oldNotificationStr += '<span class="link-style-none px-1">' + response[i].notificationMessage + '</span>' +
+                                '</div>';
+                        }
                         if (response[i].status) {
                             notificationCount++;
                             oldNotificationStr += '<input class="notification-checkbox notification-status" type="checkbox" id="' + response[i].notificationId + '"  checked />';
@@ -776,7 +812,7 @@ function changeStatusNotification() {
         e.preventDefault();
         $("#notification-button").trigger("click");
 
-        var notificationId=this.id;
+        var notificationId = this.id;
         $.ajax({
             type: "get",
             url: '/Mission/changeStatusNotification',

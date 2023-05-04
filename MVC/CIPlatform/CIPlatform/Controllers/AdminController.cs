@@ -774,11 +774,35 @@ namespace CIPlatform.Controllers
         public IActionResult ApproveMissionApplication(long missionApplicationId)
         {
             _adminRepository.ApproveMissionApplication(missionApplicationId);
+            MissionApplication missionApplication = _missionRepository.GetMissionApplication((int)missionApplicationId);
+            Mission mission = _missionRepository.GetMission((int)missionApplication.MissionId);
+            Notification notification = new Notification();
+            notification.NotificationMessage = "Mission Appication Approved-" +mission.Title;
+            notification.NotificationType = "MissionApplicationApproved";
+            notification.Status = true;
+            notification.MessageId = -1;
+            notification.UserId = (int)missionApplication.UserId;
+            notification.FromUserId = -1;
+            notification.NotificationImage = @"/images/checked.png";
+            notification.CreatedAt = DateTime.Now;
+            _missionRepository.addNotification(notification);
             return Ok();
         }
         
         public IActionResult RejectMissionApplication(long missionApplicationId)
         {
+            MissionApplication missionApplication = _missionRepository.GetMissionApplication((int)missionApplicationId);
+            Mission mission = _missionRepository.GetMission((int)missionApplication.MissionId);
+            Notification notification = new Notification();
+            notification.NotificationMessage = "Mission Appication Declined-" + mission.Title;
+            notification.NotificationType = "MissionApplicationDeclined";
+            notification.Status = true;
+            notification.MessageId = -1;
+            notification.UserId = (int)missionApplication.UserId;
+            notification.FromUserId = -1;
+            notification.NotificationImage = @"/images/new-message.png";
+            notification.CreatedAt = DateTime.Now;
+            _missionRepository.addNotification(notification);
             _adminRepository.RejectMissionApplication(missionApplicationId);
             return Ok();
         }
@@ -802,10 +826,36 @@ namespace CIPlatform.Controllers
         public IActionResult ApproveStory(long storyId)
         {
             _adminRepository.ApproveStory(storyId);
+
+            Story story=_storyRepository.getStoryDetail((int)storyId);
+            Notification notification = new Notification();
+            notification.NotificationMessage = "Story Approved-" + story.Title;
+            notification.NotificationType = "StoryApproved";
+            notification.Status = true;
+            notification.MessageId = (int)storyId;
+            notification.UserId = (int)story.UserId;
+            notification.FromUserId = -1;
+            notification.NotificationImage = @"/images/checked.png";
+            notification.CreatedAt = DateTime.Now;
+            _missionRepository.addNotification(notification);
+
             return Ok();
         }
         public IActionResult RejectStory(long storyId)
         {
+
+            Story story = _storyRepository.getStoryDetail((int)storyId);
+            Notification notification = new Notification();
+            notification.NotificationMessage = "Story Declined-" + story.Title;
+            notification.NotificationType = "StoryDeclined";
+            notification.Status = true;
+            notification.MessageId = -1;
+            notification.UserId = (int)story.UserId;
+            notification.FromUserId = -1;
+            notification.NotificationImage = @"/images/new-message.png";
+            notification.CreatedAt = DateTime.Now;
+            _missionRepository.addNotification(notification);
+
             _adminRepository.RejectStory(storyId);
             return Ok();
         }
