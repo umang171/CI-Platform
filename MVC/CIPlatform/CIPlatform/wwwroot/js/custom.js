@@ -154,7 +154,7 @@ function toggleListGrid() {
 //==============================================================================
 $(document).ready(function () {
     loadCard();
-
+    getNotifications();
 });
 var selectedCountries = "";
 var selectedCities = "";
@@ -173,7 +173,7 @@ function loadCard(paging) {
         url: "/Mission/getMissionsFromSP",
         dataType: "html",
         cache: false,
-        data: { countryNames: selectedCountries, cityNames: selectedCities, themeNames: selectedThemes, skillNames: selectedSkills, searchText: searchText, sortValue: sortMissionFilterVal, exploreValue: exploreMissionFilterVal, pageNumber: paging, userId:userId },
+        data: { countryNames: selectedCountries, cityNames: selectedCities, themeNames: selectedThemes, skillNames: selectedSkills, searchText: searchText, sortValue: sortMissionFilterVal, exploreValue: exploreMissionFilterVal, pageNumber: paging, userId: userId },
         success: function (data) {
             $("#mission-card-views").html("");
             $('#mission-card-views').html(data);
@@ -304,7 +304,7 @@ function selectedCityCountryOfUser() {
     $.ajax({
         type: "Get",
         url: '/Mission/GetCityCountryOfUser',
-        data: { userId: userId},
+        data: { userId: userId },
         success: function (data) {
             if (data["data"] != "NO") {
                 var city = data["data"].split(",")[0];
@@ -312,9 +312,9 @@ function selectedCityCountryOfUser() {
                 $("#" + country).trigger('click');
                 $("#" + country + " #c" + country).prop('checked', true);
                 $("#c" + country).prop('checked', true);
-                $("#"+city).trigger('click');
-                $("#"+city+" #c"+city).prop('checked', true);
-                $("#c"+city).prop('checked', true);
+                $("#" + city).trigger('click');
+                $("#" + city + " #c" + city).prop('checked', true);
+                $("#c" + city).prop('checked', true);
             }
         },
         error: function (xhr, status, error) {
@@ -323,7 +323,7 @@ function selectedCityCountryOfUser() {
         }
     });
 
-    
+
 }
 
 // ====================================================================
@@ -449,10 +449,10 @@ function closeChipBtn() {
     $(".closebtn").on("click", function () {
         var closeId = "c" + this.id.slice(6);
         $(".dropdown-item #" + closeId).prop("checked", false);
-        selectedCountries = selectedCountries.replace(this.id.slice(6)+",","");
-        selectedCities = selectedCities.replace(this.id.slice(6)+",","");
-        selectedThemes = selectedThemes.replace(this.id.slice(6)+",","");
-        selectedSkills = selectedSkills.replace(this.id.slice(6)+",","");
+        selectedCountries = selectedCountries.replace(this.id.slice(6) + ",", "");
+        selectedCities = selectedCities.replace(this.id.slice(6) + ",", "");
+        selectedThemes = selectedThemes.replace(this.id.slice(6) + ",", "");
+        selectedSkills = selectedSkills.replace(this.id.slice(6) + ",", "");
         loadCard();
     });
 }
@@ -533,7 +533,7 @@ function loadPagination() {
     $("#pagination li a").on("click", function (e) {
         e.preventDefault();
         paging = $(this).text();
-        
+
         if (!isNaN(paging)) {
             pagingNumber = parseInt(paging);
             loadCard(paging);
@@ -635,9 +635,9 @@ function getAppliedMissions() {
         $.ajax({
             type: "post",
             url: '/Mission/getAppliedMissionOfUser',
-            data: { userid: userId,missionId:missionId },
+            data: { userid: userId, missionId: missionId },
             success: function (response) {
-                var status=response["status"];
+                var status = response["status"];
                 if (status == "applied") {
                     $("#" + divId).css("display", "block");
                     $("#l" + divId).css("display", "block");
@@ -659,20 +659,148 @@ function getAppliedMissions() {
 }
 
 //=======================================================================================
+//Notification
+//=======================================================================================
+function getNotifications() {
+
+    var userId = $("#rightNavbar .user-btn")[0].id.slice(9,);
+    $.ajax({
+        type: "get",
+        url: '/Mission/GetNotifications',
+        data: { userid: userId },
+        success: function (response) {
+            var yesterdayDate = new Date();
+            yesterdayDate.setDate(yesterdayDate.getDate() - 1);
+            var notificationCount = 0;
+
+            if (response.length == 0) {
+                var olderSpan = '<li style="background-color:lightgray" class="p-2 border border-1"><span>No notifications yet</span></li>';
+
+                $("#notification-count-span").css("display", "none");
+
+                $("#notification-dropdown").append(olderSpan);
+                return;
+            }
+            else {
+                var notificationStr = "";
+                var oldNotificationStr = "";
+                var flags = false;
+                for (var i = 0; i < response.length; i++) {
+                    var notificationDate = new Date(response[i].createdAt.slice(0, 10));
+                    console.log(response[i].status);
+                    if (yesterdayDate < notificationDate) {
+                        notificationStr += '<li class="p-2 border border-1 d-flex justify-content-between align-items-center">' +
+                            '<div class="d-flex">';
+                        if (response[i].notificationType == "RecommendedMission") {
+                            notificationStr += '<img style="border-radius:50%;height:45px;width:34px" src="' + response[i].notificationImage + '" />';
+                        }
+                        notificationStr += '<span class="px-1">' + response[i].notificationMessage + '</span>' +
+                            '</div>';
+                        if (response[i].status) {
+                            notificationCount++;
+                            notificationStr += '<input class="notification-checkbox notification-status" type="checkbox" id="' + response[i].notificationId + '"  checked />';
+                        }
+                        else {
+                            notificationStr += '<input class="notification-checkbox notification-status-inactive" type="checkbox" id="' + response[i].notificationId + '" checked />';
+                        }
+                        notificationStr += '</li>';
+                    }
+                    else {
+                        flags = true;
+                        oldNotificationStr += '<li class="p-2 border border-1 d-flex justify-content-between align-items-center">' +
+                            '<div class="d-flex">';
+                        console.log(response[i].notificationType);
+                        if (response[i].notificationType == "RecommendedMission") {
+                            oldNotificationStr += '<img style="border-radius:50%;height:45px;width:34px" src="' + response[i].notificationImage + '" />';
+                        }
+                        oldNotificationStr += '<span class="px-1">' + response[i].notificationMessage + '</span>' +
+                            '</div>';
+                        if (response[i].status) {
+                            notificationCount++;
+                            oldNotificationStr += '<input class="notification-checkbox notification-status" type="checkbox" id="' + response[i].notificationId + '"  checked />';
+                        }
+                        else {
+                            oldNotificationStr += '<input class="notification-checkbox notification-status-inactive" type="checkbox" id="' + response[i].notificationId + '"  checked />';
+                        }
+                        oldNotificationStr += '</li>';
+                    }
+                }
+                var olderSpan = '<li style="background-color:lightgray" class="p-2 border border-1"><span>Older</span></li>';
+                $("#notification-count-span").css("display", "block");
+                $("#notification-count-span").text(notificationCount);
+                $("#notification-dropdown").append(notificationStr);
+                if (flags) {
+                    $("#notification-dropdown").append(olderSpan);
+                    $("#notification-dropdown").append(oldNotificationStr);
+                }
+                changeStatusNotification();
+            }
+        },
+        error: function (xhr, status, error) {
+            console.log(error);
+        }
+    });
+}
+clearNotification();
+//Notification Clear
+function clearNotification() {
+    var userId = $("#rightNavbar .user-btn")[0].id.slice(9,);
+
+    $("#clear-notification-btn").on("click", function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: "get",
+            url: '/Mission/ClearNotifications',
+            data: { userid: userId },
+            success: function (response) {
+                const list = document.getElementById("notification-dropdown");
+                var childCount = list.childElementCount;
+                for (var i = 1; i < childCount; i++) {
+                    console.log(list);
+                    if (list.hasChildNodes()) {
+                        list.removeChild(list.children[1]);
+                    }
+                }
+                getNotifications();
+                $("#notification-button").trigger("click");
+            },
+            error: function (xhr, status, error) {
+                console.log(error);
+            }
+        });
+    });
+}
+function changeStatusNotification() {
+
+    $(".notification-checkbox").on("change", function (e) {
+        e.preventDefault();
+        $("#notification-button").trigger("click");
+
+        var notificationId=this.id;
+        $.ajax({
+            type: "get",
+            url: '/Mission/changeStatusNotification',
+            data: { notificationId: notificationId },
+            success: function (response) {
+                const list = document.getElementById("notification-dropdown");
+                var childCount = list.childElementCount;
+                for (var i = 1; i < childCount; i++) {
+                    console.log(list);
+                    if (list.hasChildNodes()) {
+                        list.removeChild(list.children[1]);
+                    }
+                }
+                getNotifications();
+                $("#notification-button").trigger("click");
+            },
+            error: function (xhr, status, error) {
+                console.log(error);
+            }
+        });
+    });
+
+}
+
+//=======================================================================================
 //Notification Settings
 //=======================================================================================
-var dropdownLinks = document.querySelectorAll("#notification-setting-btn");
-
-// Add a click event listener to each link
-dropdownLinks.forEach(function (link) {
-    link.addEventListener("click", function (event) {
-        // Prevent the default action of the link (redirecting to the href)
-        event.preventDefault();
-
-        // Do something else here (e.g. update the page with the link's data)
-    });
-});
-$("#notification-setting-btn").on("click",function (e) {
-    e.preventDefault();
-    console.log("click");
-});

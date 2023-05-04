@@ -38,5 +38,10 @@ namespace CIPlatform.Repository.Repository.Interface
         public int getRatingOfUserForMission(int userId,int missionId);
         public List<CmsPage> GetCMSPages();
         public CmsPage GetCmsPageDetails(long cmsPageId);
+        public void addNotification(Notification notification);
+        public List<Notification> GetNotifications(long userId);
+        public Notification GetNotification(long notificationId);
+        public void ClearNotifications(long userId);
+        public void changeStatusNotification(long notificationId);
     }
 }

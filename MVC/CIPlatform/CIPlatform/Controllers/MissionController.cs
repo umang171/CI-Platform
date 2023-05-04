@@ -139,7 +139,19 @@ namespace CIPlatform.Controllers
             {
                 return Json(new { data = "Email not found",status=0 });    
             }
+            User fromUser=_userRepository.findUser(fromUserId);
             _missionRepository.recommendToCoworker(fromUserId,(int)userObj.UserId, missinoId);
+            Notification notification=new Notification();            
+            notification.NotificationMessage = fromUser.FirstName+"-Recommended this mission-"+ _missionRepository.getMissionFromMissionId(missinoId).Title;
+            notification.NotificationType = "RecommendedMission";
+            notification.Status = true;
+            notification.MessageId = missinoId;
+            notification.UserId =(int)userObj.UserId;
+            notification.FromUserId = fromUserId;
+            notification.NotificationImage = fromUser.Avatar;
+            notification.CreatedAt=DateTime.Now;
+            _missionRepository.addNotification(notification);
+
             string welcomeMessage = "Welcome to CI platform, <br/> You are recommended to </br>";
             string path = "<a href=\"" + " https://" + _httpContextAccessor.HttpContext.Request.Host.Value + "/Mission/Mission_Volunteer?missionId="+missinoId + " \"   style=\"font-weight:500;color:blue;\" > Recommended mission </a>";
         
@@ -190,6 +202,21 @@ namespace CIPlatform.Controllers
             cmsPageModel.cmsPage= _missionRepository.GetCmsPageDetails(cmsId);
 
             return View(cmsPageModel);
+        }
+        public IActionResult GetNotifications(long userId)
+        {
+            List<Notification> notifications=_missionRepository.GetNotifications(userId);
+            return Json(notifications);
+        } 
+        public IActionResult ClearNotifications(long userId)
+        {
+           _missionRepository.ClearNotifications(userId);
+            return Ok();
+        }
+        public IActionResult changeStatusNotification(long notificationId)
+        {
+            _missionRepository.changeStatusNotification(notificationId);
+            return Ok();
         }
     }
 }

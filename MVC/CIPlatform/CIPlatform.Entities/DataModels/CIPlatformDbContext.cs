@@ -15,7 +15,6 @@ public partial class CIPlatformDbContext : DbContext
         : base(options)
     {
     }
-
     public virtual DbSet<MissionViewModel> MissionViewModel { get; set; }
     public virtual DbSet<StoryListingModel> StoryListingModel { get; set; }
     public virtual DbSet<Admin> Admins { get; set; }
@@ -52,6 +51,8 @@ public partial class CIPlatformDbContext : DbContext
 
     public virtual DbSet<MissionTheme> MissionThemes { get; set; }
 
+    public virtual DbSet<Notification> Notifications { get; set; }
+
     public virtual DbSet<PasswordReset> PasswordResets { get; set; }
 
     public virtual DbSet<ResetPassword> ResetPasswords { get; set; }
@@ -77,8 +78,6 @@ public partial class CIPlatformDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.UseCollation("SQL_Latin1_General_CP1_CI_AS");
-
         modelBuilder.Entity<Admin>(entity =>
         {
             entity.HasKey(e => e.AdminId).HasName("PK_admin_id");
@@ -229,8 +228,6 @@ public partial class CIPlatformDbContext : DbContext
 
         modelBuilder.Entity<Contact>(entity =>
         {
-            entity.HasKey(e => e.ContactId).HasName("PK_contact_us");
-
             entity.ToTable("contact");
 
             entity.Property(e => e.ContactId).HasColumnName("contact_id");
@@ -242,7 +239,7 @@ public partial class CIPlatformDbContext : DbContext
                 .HasColumnType("text")
                 .HasColumnName("message");
             entity.Property(e => e.Name)
-                .HasMaxLength(250)
+                .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("name");
             entity.Property(e => e.Subject)
@@ -628,6 +625,31 @@ public partial class CIPlatformDbContext : DbContext
             entity.Property(e => e.UpdatedAt).HasColumnName("updated_at");
         });
 
+        modelBuilder.Entity<Notification>(entity =>
+        {
+            entity.ToTable("notification");
+
+            entity.Property(e => e.NotificationId).HasColumnName("notification_id");
+            entity.Property(e => e.CreatedAt)
+                .HasColumnType("datetime")
+                .HasColumnName("created_at");
+            entity.Property(e => e.FromUserId).HasColumnName("from_user_id");
+            entity.Property(e => e.MessageId).HasColumnName("message_id");
+            entity.Property(e => e.NotificationImage)
+                .HasMaxLength(500)
+                .IsUnicode(false)
+                .HasColumnName("notification_image");
+            entity.Property(e => e.NotificationMessage)
+                .HasColumnType("text")
+                .HasColumnName("notification_message");
+            entity.Property(e => e.NotificationType)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("notification_type");
+            entity.Property(e => e.Status).HasColumnName("status");
+            entity.Property(e => e.UserId).HasColumnName("user_id");
+        });
+
         modelBuilder.Entity<PasswordReset>(entity =>
         {
             entity
@@ -874,7 +896,7 @@ public partial class CIPlatformDbContext : DbContext
                 .HasColumnType("text")
                 .HasColumnName("profile_text");
             entity.Property(e => e.Role)
-                .HasMaxLength(15)
+                .HasMaxLength(25)
                 .IsUnicode(false)
                 .HasColumnName("role");
             entity.Property(e => e.Status)

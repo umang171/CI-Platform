@@ -309,5 +309,46 @@ namespace CIPlatform.Repository.Repository
         {
             return _ciPlatformDbContext.CmsPages.Where(page => page.CmsPageId== cmsPageId).First();
         }
+
+        void IMissionRepository.addNotification(Notification notification)
+        {
+            _ciPlatformDbContext.Add(notification);
+            _ciPlatformDbContext.SaveChanges();
+        }
+
+        public List<Notification> GetNotifications(long userId)
+        {
+            return _ciPlatformDbContext.Notifications.Where(notification=>notification.UserId== userId).ToList();
+        }
+
+        void IMissionRepository.ClearNotifications(long userId)
+        {
+            List<Notification> notifications = GetNotifications(userId);
+            foreach (Notification notification in notifications)
+            {
+                _ciPlatformDbContext.Remove(notification);
+                _ciPlatformDbContext.SaveChanges();
+            }
+        }
+        public Notification GetNotification(long notificationId)
+        {
+            return _ciPlatformDbContext.Notifications.Where(notification => notification.NotificationId == notificationId).First();
+        }
+
+        void IMissionRepository.changeStatusNotification(long notificationId)
+        {
+            Notification notification = GetNotification(notificationId);
+            if ((bool)notification.Status)
+            {
+                notification.Status = false;
+            }
+            else
+            {
+                notification.Status = true;
+            }
+            _ciPlatformDbContext.Update(notification);
+            _ciPlatformDbContext.SaveChanges();
+        }
+
     }
 }

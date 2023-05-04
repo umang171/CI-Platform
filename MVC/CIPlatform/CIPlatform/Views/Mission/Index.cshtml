@@ -11,9 +11,27 @@
         accent-color: #F88634;
         color: white;
     }
+
+    .notification-status-inactive {
+        accent-color: lightgray;
+        clip-path: circle(46% at 50% 50%);
+    }
+
     .notification-status {
         accent-color: #F88634;
         clip-path: circle(46% at 50% 50%);
+    }
+
+    #notification-dropdown::-webkit-scrollbar {
+        display: none;
+    }
+
+    #notification-header-li {
+        position: sticky;
+        top: 0px;
+        left: 0px;
+        z-index: 5;
+        background: white;
     }
 </style>
 }
@@ -55,14 +73,6 @@
                             <img src="~/images/drop-down.png" alt="" />
                         </button>
                         <ul class="dropdown-menu countryDropDownList">
-                            @* @foreach (var country in Model.countryList)
-                                {
-                                <li class="p-1">
-                                <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                                @country.Name
-                                </a>
-                                </li>
-                                }  *@
                         </ul>
                     </div>
                 </div>
@@ -74,13 +84,6 @@
                             <img src="~/images/drop-down.png" alt="" />
                         </button>
                         <ul class="dropdown-menu cityDropDownList">
-                            @*@foreach(var cities in Model.cityList){
-                                <li class="p-1">
-                                <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                                @cities.Name
-                                </a>
-                                </li>
-                                }*@
                         </ul>
                     </div>
                 </div>
@@ -92,13 +95,6 @@
                             <img src="~/images/drop-down.png" alt="" />
                         </button>
                         <ul class="dropdown-menu themeDropDownList">
-                            @*@foreach(var theme in Model.themeList){
-                                <li class="p-1">
-                                <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                                @theme.Title
-                                </a>
-                                </li>
-                                }*@
                         </ul>
                     </div>
                 </div>
@@ -110,13 +106,6 @@
                             <img src="~/images/drop-down.png" alt="" />
                         </button>
                         <ul class="dropdown-menu skillDropDownList">
-                            @*@foreach(var skill in @Model.skillList){
-                                <li class="p-1">
-                                <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                                @skill.SkillName
-                                </a>
-                                </li>
-                                }*@
                         </ul>
                     </div>
                 </div>
@@ -168,50 +157,15 @@
                     </button>
                     <div class="dropdown">
                         <button id="notification-button" class="dropdown-toggle p-1 mx-3 border-0 bg-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class="btn btn-warning rounded-circle p-1 m-0 position-absolute" style="background-color:#F88634;color:white;top:-5px;right:15px;font-size:10px;">1</span>
+                            <span id="notification-count-span" class="btn btn-warning rounded-circle p-1 m-0 position-absolute" style="display:none;background-color:#F88634;color:white;top:-5px;right:15px;font-size:10px;">1</span>
                             <img src="~/images/bell.png" alt="" />
                         </button>
-                        <ul class="dropdown-menu" style="width:380px;">
-                            <li class="p-2 d-flex justify-content-between align-items-center">
+                        <ul id="notification-dropdown" class="dropdown-menu" style="width:380px;max-height: 335px;overflow-y: scroll;">
+                            <li id="notification-header-li" class="p-2 d-flex justify-content-between align-items-center">
                                 <button class="bg-white border-0" data-bs-toggle="modal" data-bs-target="#navigation-setting-modal"><img src="~/images/settings.png" /></button>
                                 <span>Notification</span>
-                                <button class="bg-white border-0">Clear All</button>
-                            </li>
-                            <li class="p-2 border border-1 d-flex justify-content-between align-items-center">
-                                <div>
-                                    <img style="height:30px;width:30px" src="~/images/add.png" />
-                                    <span>New Mission-Plantation and aforrestation</span>
-                                </div>
-                                <input class="notification-status" type="checkbox" id="id" checked/>
-                            </li>
-                            <li class="p-2 border border-1 d-flex justify-content-between align-items-center">
-                                <div>
-                                    <img style="height:30px;width:30px" src="~/images/add.png" />
-                                    <span>New Mission-Plantation and aforrestation</span>
-                                </div>
-                                <input class="notification-status" type="checkbox" id="id" checked/>
-                            </li>
-                            <li class="p-2 border border-1 d-flex justify-content-between align-items-center">
-                                <div>
-                                    <img style="height:30px;width:30px" src="~/images/add.png" />
-                                    <span>New Mission-Plantation and aforrestation</span>
-                                </div>
-                                <input class="notification-status" type="checkbox" id="id" checked/>
-                            </li>
-                            <li class="p-2 border border-1 d-flex justify-content-between align-items-center">
-                                <div>
-                                    <img style="height:30px;width:30px" src="~/images/add.png" />
-                                    <span>New Mission-Plantation and aforrestation</span>
-                                </div>
-                                <input class="notification-status" type="checkbox" id="id" checked/>
-                            </li>
-                            <li class="p-2 border border-1 d-flex justify-content-between align-items-center">
-                                <div>
-                                    <img style="height:30px;width:30px" src="~/images/add.png" />
-                                    <span>New Mission-Plantation and aforrestation</span>
-                                </div>
-                                <input class="notification-status" type="checkbox" id="id" checked/>
-                            </li>
+                                <button  id="clear-notification-btn" class="bg-white border-0">Clear All</button>
+                            </li>                            
                         </ul>
                     </div>
                     <a href="">
@@ -275,13 +229,7 @@
                                         <img src="~/images/drop-down.png" alt="" />
                                     </button>
                                     <ul class="dropdown-menu cityDropDownList">
-                                        @*@foreach(var cities in Model.cityList){
-                                            <li class="p-1">
-                                            <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                                            @cities.Name
-                                            </a>
-                                            </li>
-                                            }*@
+                                       
                                     </ul>
                                 </div>
                             </div>
@@ -293,13 +241,7 @@
                                         <img src="~/images/drop-down.png" alt="" />
                                     </button>
                                     <ul class="dropdown-menu themeDropDownList">
-                                        @*@foreach(var theme in Model.themeList){
-                                            <li class="p-1">
-                                            <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                                            @theme.Title
-                                            </a>
-                                            </li>
-                                            }*@
+                                        
                                     </ul>
                                 </div>
                             </div>
@@ -311,13 +253,7 @@
                                         <img src="~/images/drop-down.png" alt="" />
                                     </button>
                                     <ul class="dropdown-menu skillDropDownList">
-                                        @*@foreach(var skill in @Model.skillList){
-                                            <li class="p-1">
-                                            <a class="dropdown-item" href="#"><input type="checkbox" name="country" id="" />
-                                            @skill.SkillName
-                                            </a>
-                                            </li>
-                                            }*@
+                                       
                                     </ul>
                                 </div>
                             </div>
