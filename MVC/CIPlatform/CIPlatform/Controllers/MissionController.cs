@@ -203,9 +203,9 @@ namespace CIPlatform.Controllers
 
             return View(cmsPageModel);
         }
-        public IActionResult GetNotifications(long userId)
+        public IActionResult GetNotifications(long userId,string selectedNotificatinSettings)
         {
-            List<Notification> notifications=_missionRepository.GetNotifications(userId);
+            List<Notification> notifications=_missionRepository.GetNotifications(userId, selectedNotificatinSettings);
             return Json(notifications);
         } 
         public IActionResult ClearNotifications(long userId)

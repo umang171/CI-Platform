@@ -324,14 +324,20 @@ namespace CIPlatform.Repository.Repository
             _ciPlatformDbContext.SaveChanges();
         }
 
-        public List<Notification> GetNotifications(long userId)
+        public List<Notification> GetNotifications(long userId,string selectedNotificatinSettings)
         {
-            return _ciPlatformDbContext.Notifications.Where(notification=>notification.UserId== userId).OrderByDescending(notification=>notification.CreatedAt).ToList();
+            if (selectedNotificatinSettings is null || selectedNotificatinSettings == "")
+            {
+                return _ciPlatformDbContext.Notifications.Where(notification => notification.UserId == userId).OrderByDescending(notification => notification.CreatedAt).ToList();
+            }
+            string[] notificationTypes = selectedNotificatinSettings.Split(",").SkipLast(1).ToArray();
+            return _ciPlatformDbContext.Notifications.Where(notification => notification.UserId == userId && notificationTypes.Contains(notification.NotificationType)).OrderByDescending(notification => notification.CreatedAt).ToList();
+
         }
 
         void IMissionRepository.ClearNotifications(long userId)
         {
-            List<Notification> notifications = GetNotifications(userId);
+            List<Notification> notifications = GetNotifications(userId,"");
             foreach (Notification notification in notifications)
             {
                 _ciPlatformDbContext.Remove(notification);

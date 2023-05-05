@@ -661,13 +661,31 @@ function getAppliedMissions() {
 //=======================================================================================
 //Notification
 //=======================================================================================
+var selectedNotificatinSettings = "";
+$("#save-notification-btn").on("click", function () {
+    selectedNotificatinSettings = "";
+
+    $.each($(".notification-setting-check:checked"), function () {
+        selectedNotificatinSettings += this.id + ",";
+        console.log(this.id);
+    });
+    const list = document.getElementById("notification-dropdown");
+    var childCount = list.childElementCount;
+    for (var i = 1; i < childCount; i++) {
+        if (list.hasChildNodes()) {
+            list.removeChild(list.children[1]);
+        }
+    }
+    getNotifications();
+    $("#notification-button").trigger("click");
+});
 function getNotifications() {
-    console.log($(""))
+
     var userId = $("#rightNavbar .user-btn")[0].id.slice(9,);
     $.ajax({
         type: "get",
         url: '/Mission/GetNotifications',
-        data: { userid: userId },
+        data: { userid: userId, selectedNotificatinSettings: selectedNotificatinSettings },
         success: function (response) {
             var yesterdayDate = new Date();
             yesterdayDate.setDate(yesterdayDate.getDate() - 1);
@@ -732,7 +750,7 @@ function getNotifications() {
                         flags = true;
                         oldNotificationStr += '<li class="p-2 border border-1 d-flex justify-content-between align-items-center">' +
                             '<div class="d-flex">';
-                            oldNotificationStr += '<img style="border-radius:50%;height:45px;width:34px" src="' + response[i].notificationImage + '" />';
+                        oldNotificationStr += '<img style="border-radius:50%;height:45px;width:34px" src="' + response[i].notificationImage + '" />';
                         if (response[i].notificationType == "RecommendedMission") {
                             oldNotificationStr += '<a href="/Mission/Mission_Volunteer?missionId=' + response[i].messageId + '" class="link-style-none px-1">' + response[i].notificationMessage + '</a>' + '</div>';
                         }
