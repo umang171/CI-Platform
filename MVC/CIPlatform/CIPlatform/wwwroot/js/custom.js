@@ -662,7 +662,7 @@ function getAppliedMissions() {
 //Notification
 //=======================================================================================
 function getNotifications() {
-
+    console.log($(""))
     var userId = $("#rightNavbar .user-btn")[0].id.slice(9,);
     $.ajax({
         type: "get",
@@ -826,7 +826,6 @@ function changeStatusNotification() {
                 const list = document.getElementById("notification-dropdown");
                 var childCount = list.childElementCount;
                 for (var i = 1; i < childCount; i++) {
-                    console.log(list);
                     if (list.hasChildNodes()) {
                         list.removeChild(list.children[1]);
                     }
