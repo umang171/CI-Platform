@@ -360,6 +360,7 @@ namespace CIPlatform.Controllers
                 mission.OrganizationDetail=adminMissionModel.OrganizationDetail;
                 mission.Availability=adminMissionModel.Availability;
                 mission.Status = Boolean.Parse(adminMissionModel.Status);
+                
 
                 mission.Status = true;
                 List<MissionSkill> missionSkills=new List<MissionSkill>();
@@ -410,7 +411,22 @@ namespace CIPlatform.Controllers
                         postedFile.CopyTo(fileStreams);
                     }
                 }
-                _adminRepository.AddMission(mission,missionSkills,goalMission,missionMedia,missionDocument);
+                int missionId=_adminRepository.AddMission(mission,missionSkills,goalMission,missionMedia,missionDocument);
+                List<User> usersWithSkillAvailability = _userRepository.GetUserWithSkillAvailability(missionSkills);
+
+                foreach(User user in usersWithSkillAvailability)
+                {
+                    Notification notification = new Notification();
+                    notification.NotificationMessage = "New Mission Added-" + mission.Title;
+                    notification.NotificationType = "MissionAdded";
+                    notification.Status = true;
+                    notification.MessageId = missionId;
+                    notification.UserId = (int)user.UserId;
+                    notification.FromUserId = -1;
+                    notification.NotificationImage = @"/images/add.png";
+                    notification.CreatedAt = DateTime.Now;
+                    _missionRepository.addNotification(notification);
+                }
                 return RedirectToAction("AdminMission","Admin");
             }
             adminMissionModel.countryLists = _adminRepository.GetCountryLists();

@@ -288,5 +288,16 @@ namespace CIPlatform.Repository.Repository
             
             return city + "," + country;
         }
+
+        List<User> IUserRepository.GetUserWithSkillAvailability(List<MissionSkill> missionSkills)
+        {
+            List<User> users = new List<User>();
+            foreach(MissionSkill skill in missionSkills)
+            {
+                List<User> userWithSkill = _ciPlatformDbContext.Users.Include(user=>user.UserSkills).Where(users => users.UserSkills.Any(usersk=>usersk.SkillId==skill.SkillId)).ToList();
+                users=users.Union(userWithSkill).ToList();
+            }
+            return users;
+        }
     }
 }

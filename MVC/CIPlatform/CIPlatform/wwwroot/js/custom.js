@@ -715,6 +715,10 @@ function getNotifications() {
                             notificationStr += '<span class="link-style-none px-1">' + response[i].notificationMessage + '</span>' +
                                 '</div>';
                         }
+                        else if (response[i].notificationType == "MissionAdded") {
+                            notificationStr += '<a href="/Mission/Mission_Volunteer?missionId=' + response[i].messageId + '" class="link-style-none px-1">' + response[i].notificationMessage + '</a>' +
+                                '</div>';
+                        }
                         if (response[i].status) {
                             notificationCount++;
                             notificationStr += '<input class="notification-checkbox notification-status" type="checkbox" id="' + response[i].notificationId + '"  checked />';
@@ -728,7 +732,6 @@ function getNotifications() {
                         flags = true;
                         oldNotificationStr += '<li class="p-2 border border-1 d-flex justify-content-between align-items-center">' +
                             '<div class="d-flex">';
-                        console.log(response[i].notificationType);
                             oldNotificationStr += '<img style="border-radius:50%;height:45px;width:34px" src="' + response[i].notificationImage + '" />';
                         if (response[i].notificationType == "RecommendedMission") {
                             oldNotificationStr += '<a href="/Mission/Mission_Volunteer?missionId=' + response[i].messageId + '" class="link-style-none px-1">' + response[i].notificationMessage + '</a>' + '</div>';
@@ -750,6 +753,9 @@ function getNotifications() {
                         else if (response[i].notificationType == "MissionApplicationDeclined") {
                             oldNotificationStr += '<span class="link-style-none px-1">' + response[i].notificationMessage + '</span>' +
                                 '</div>';
+                        }
+                        else if (response[i].notificationType == "MissionAdded") {
+                            oldNotificationStr += '<a href="/Mission/Mission_Volunteer?missionId=' + response[i].messageId + '" class="link-style-none px-1">' + response[i].notificationMessage + '</a>' + '</div>';
                         }
                         if (response[i].status) {
                             notificationCount++;
@@ -792,7 +798,6 @@ function clearNotification() {
                 const list = document.getElementById("notification-dropdown");
                 var childCount = list.childElementCount;
                 for (var i = 1; i < childCount; i++) {
-                    console.log(list);
                     if (list.hasChildNodes()) {
                         list.removeChild(list.children[1]);
                     }

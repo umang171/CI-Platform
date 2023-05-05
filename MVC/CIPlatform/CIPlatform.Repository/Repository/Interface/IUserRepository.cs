@@ -38,6 +38,7 @@ namespace CIPlatform.Repository.Repository.Interface
         public Boolean HasAlreadyEmployeeId(string empolyeeId);
         public int GetRemainingActions(long missionId);
         public string GetCityCountryOfUser(long userId);
+        public List<User> GetUserWithSkillAvailability(List<MissionSkill> missionSkills);
         public void AddContactRecord(string contactName, string contactEmail, string contactSubject, string contactMessage);
     }
 }

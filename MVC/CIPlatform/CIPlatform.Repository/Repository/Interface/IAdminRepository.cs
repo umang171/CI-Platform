@@ -24,7 +24,7 @@ namespace CIPlatform.Repository.Repository.Interface
         public void editCMSPage(CmsPage cmsPage);
         public AdminPageList<Mission> getMissions(string? searchText, int pageNumber, int pageSize);
         public void DeleteMission(long missionId);
-        public void AddMission(Mission mission, List<MissionSkill> missionSkills, GoalMission goalMission, List<MissionMedium> missionMedia, List<MissionDocument> missionDocument);
+        public int AddMission(Mission mission, List<MissionSkill> missionSkills, GoalMission goalMission, List<MissionMedium> missionMedia, List<MissionDocument> missionDocument);
         public void EditMission(Mission mission, List<MissionSkill> missionSkills, GoalMission goalMission, List<MissionMedium> missionMedia, List<MissionDocument> missionDocument);
         public Mission FindMissionById(long missionId);
         public AdminMissionModel GetMissionDetails(long missionId);

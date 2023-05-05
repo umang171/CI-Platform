@@ -154,7 +154,7 @@ namespace CIPlatform.Repository.Repository
                 _ciPlatformDbContext.SaveChanges();
             }
         }
-        void IAdminRepository.AddMission(Mission mission, List<MissionSkill> missionSkills, GoalMission goalMission, List<MissionMedium> missionMedia, List<MissionDocument> missionDocument)
+        int IAdminRepository.AddMission(Mission mission, List<MissionSkill> missionSkills, GoalMission goalMission, List<MissionMedium> missionMedia, List<MissionDocument> missionDocument)
         {
             _ciPlatformDbContext.Add(mission);
             _ciPlatformDbContext.SaveChanges();
@@ -183,6 +183,7 @@ namespace CIPlatform.Repository.Repository
                 _ciPlatformDbContext.Add(missionDoc);
                 _ciPlatformDbContext.SaveChanges();
             }
+            return (int)missionId;
         }
         void IAdminRepository.EditMission(Mission mission, List<MissionSkill> missionSkills, GoalMission goalMission, List<MissionMedium> missionMedia, List<MissionDocument> missionDocument)
         {

@@ -326,7 +326,7 @@ namespace CIPlatform.Repository.Repository
 
         public List<Notification> GetNotifications(long userId)
         {
-            return _ciPlatformDbContext.Notifications.Where(notification=>notification.UserId== userId).ToList();
+            return _ciPlatformDbContext.Notifications.Where(notification=>notification.UserId== userId).OrderByDescending(notification=>notification.CreatedAt).ToList();
         }
 
         void IMissionRepository.ClearNotifications(long userId)
