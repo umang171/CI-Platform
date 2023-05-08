@@ -45,5 +45,8 @@ namespace CIPlatform.Repository.Repository.Interface
         public Notification GetNotification(long notificationId);
         public void ClearNotifications(long userId);
         public void changeStatusNotification(long notificationId);
+        public void AddNotificationSettings(NotificationSetting notificationSetting);
+        public void ChangeNotificationSettings(NotificationSetting notificationSetting);
+        public NotificationSetting GetNotificationSettings(long userId);
     }
 }

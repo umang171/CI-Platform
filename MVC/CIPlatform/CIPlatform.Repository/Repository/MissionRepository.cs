@@ -330,6 +330,8 @@ namespace CIPlatform.Repository.Repository
             {
                 return _ciPlatformDbContext.Notifications.Where(notification => notification.UserId == userId).OrderByDescending(notification => notification.CreatedAt).ToList();
             }
+            selectedNotificatinSettings = selectedNotificatinSettings.Replace("MissionApplicationApproved,", "MissionApplicationApproved,MissionApplicationDeclined,");
+            selectedNotificatinSettings = selectedNotificatinSettings.Replace("StoryApproved,", "StoryApproved,StoryDeclined,");
             string[] notificationTypes = selectedNotificatinSettings.Split(",").SkipLast(1).ToArray();
             return _ciPlatformDbContext.Notifications.Where(notification => notification.UserId == userId && notificationTypes.Contains(notification.NotificationType)).OrderByDescending(notification => notification.CreatedAt).ToList();
 
@@ -363,6 +365,35 @@ namespace CIPlatform.Repository.Repository
             _ciPlatformDbContext.Update(notification);
             _ciPlatformDbContext.SaveChanges();
         }
+               
+        public void AddNotificationSettings(NotificationSetting notificationSetting)
+        {            
+            _ciPlatformDbContext.Add(notificationSetting);
+            _ciPlatformDbContext.SaveChanges();
+        }
 
+        NotificationSetting IMissionRepository.GetNotificationSettings(long userId)
+        {
+            if (_ciPlatformDbContext.NotificationSettings.Any(notification => notification.UserId == userId))
+            {
+                return _ciPlatformDbContext.NotificationSettings.Where(notification => notification.UserId == userId).First();
+            }
+            NotificationSetting notificationSetting = new NotificationSetting();
+            notificationSetting.UserId = userId;
+            notificationSetting.RecommendedMission = true;
+            notificationSetting.StoryApproved = true;
+            notificationSetting.MissionAdded = true;
+            notificationSetting.MissionApplicationApproved = true;
+            notificationSetting.RecommendedStory= true;
+            notificationSetting.ReceiveEmailNotification = false;
+            AddNotificationSettings(notificationSetting);
+            return notificationSetting;
+        }
+
+        void IMissionRepository.ChangeNotificationSettings(NotificationSetting notificationSetting)
+        {
+            _ciPlatformDbContext.Update(notificationSetting);
+            _ciPlatformDbContext.SaveChanges();
+        }
     }
 }

@@ -154,7 +154,7 @@ function toggleListGrid() {
 //==============================================================================
 $(document).ready(function () {
     loadCard();
-    getNotifications();
+    getNotificationSettings();
 });
 var selectedCountries = "";
 var selectedCities = "";
@@ -659,34 +659,73 @@ function getAppliedMissions() {
 }
 
 //=======================================================================================
+//Notification Settings
+//=======================================================================================
+var selectedNotificationSettings = "";
+$("#save-notification-btn").on("click", function () {
+    var UserId = $("#rightNavbar .user-btn")[0].id.slice(9,);
+    var RecommendedMission=$("#RecommendedMission").prop("checked");
+    var StoryApproved=$("#StoryApproved").prop("checked");
+    var MissionAdded=$("#MissionAdded").prop("checked");
+    var RecommendedStory=$("#RecommendedStory").prop("checked");
+    var MissionApplicationApproved=$("#MissionApplicationApproved").prop("checked");
+    var ReceiveEmailNotification=$("#receive-email-notification").prop("checked");
+    $.ajax({
+        type: "get",
+        url: '/Mission/ChangeNotificationSettings',
+        data: { UserId: UserId, RecommendedMission: RecommendedMission, StoryApproved: StoryApproved, MissionAdded: MissionAdded, RecommendedStory: RecommendedStory, MissionApplicationApproved: MissionApplicationApproved, ReceiveEmailNotification: ReceiveEmailNotification },
+        success: function (response) {
+            getNotificationSettings();
+        },
+        error: function (xhr, status, error) {
+            console.log(error);
+        }
+    });   
+});
+function getNotificationSettings() {
+    selectedNotificationSettings = "";
+    var userId = $("#rightNavbar .user-btn")[0].id.slice(9,);
+    $.ajax({
+        type: "get",
+        url: '/Mission/GetNotificationSettings',
+        data: { userid: userId },
+        success: function (response) {
+            $("#RecommendedMission").prop("checked", response.recommendedMission);
+            $("#StoryApproved").prop("checked", response.storyApproved);
+            $("#MissionAdded").prop("checked", response.missionAdded);
+            $("#RecommendedStory").prop("checked", response.recommendedStory);
+            $("#MissionApplicationApproved").prop("checked", response.missionApplicationApproved);
+            $("#receive-email-notification").prop("checked", response.receiveEmailNotification);
+            $.each($(".notification-setting-check:checked"), function () {
+                selectedNotificationSettings += this.id + ",";
+            });
+            getNotifications();
+        },
+        error: function (xhr, status, error) {
+            console.log(error);
+        }
+    });
+}
+
+//=======================================================================================
 //Notification
 //=======================================================================================
-var selectedNotificatinSettings = "";
-$("#save-notification-btn").on("click", function () {
-    selectedNotificatinSettings = "";
 
-    $.each($(".notification-setting-check:checked"), function () {
-        selectedNotificatinSettings += this.id + ",";
-        console.log(this.id);
-    });
-    const list = document.getElementById("notification-dropdown");
-    var childCount = list.childElementCount;
-    for (var i = 1; i < childCount; i++) {
-        if (list.hasChildNodes()) {
-            list.removeChild(list.children[1]);
-        }
-    }
-    getNotifications();
-    $("#notification-button").trigger("click");
-});
 function getNotifications() {
 
     var userId = $("#rightNavbar .user-btn")[0].id.slice(9,);
     $.ajax({
         type: "get",
         url: '/Mission/GetNotifications',
-        data: { userid: userId, selectedNotificatinSettings: selectedNotificatinSettings },
+        data: { userid: userId, selectedNotificationSettings: selectedNotificationSettings },
         success: function (response) {
+            const list = document.getElementById("notification-dropdown");
+            var childCount = list.childElementCount;
+            for (var i = 1; i < childCount; i++) {
+                if (list.hasChildNodes()) {
+                    list.removeChild(list.children[1]);
+                }
+            }
             var yesterdayDate = new Date();
             yesterdayDate.setDate(yesterdayDate.getDate() - 1);
             var notificationCount = 0;
@@ -813,13 +852,7 @@ function clearNotification() {
             url: '/Mission/ClearNotifications',
             data: { userid: userId },
             success: function (response) {
-                const list = document.getElementById("notification-dropdown");
-                var childCount = list.childElementCount;
-                for (var i = 1; i < childCount; i++) {
-                    if (list.hasChildNodes()) {
-                        list.removeChild(list.children[1]);
-                    }
-                }
+                
                 getNotifications();
                 $("#notification-button").trigger("click");
             },
@@ -841,13 +874,7 @@ function changeStatusNotification() {
             url: '/Mission/changeStatusNotification',
             data: { notificationId: notificationId },
             success: function (response) {
-                const list = document.getElementById("notification-dropdown");
-                var childCount = list.childElementCount;
-                for (var i = 1; i < childCount; i++) {
-                    if (list.hasChildNodes()) {
-                        list.removeChild(list.children[1]);
-                    }
-                }
+                
                 getNotifications();
                 $("#notification-button").trigger("click");
             },
@@ -858,7 +885,3 @@ function changeStatusNotification() {
     });
 
 }
-
-//=======================================================================================
-//Notification Settings
-//=======================================================================================

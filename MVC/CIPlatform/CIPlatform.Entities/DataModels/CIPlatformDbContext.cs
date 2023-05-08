@@ -53,6 +53,8 @@ public partial class CIPlatformDbContext : DbContext
 
     public virtual DbSet<Notification> Notifications { get; set; }
 
+    public virtual DbSet<NotificationSetting> NotificationSettings { get; set; }
+
     public virtual DbSet<PasswordReset> PasswordResets { get; set; }
 
     public virtual DbSet<ResetPassword> ResetPasswords { get; set; }
@@ -648,6 +650,28 @@ public partial class CIPlatformDbContext : DbContext
                 .HasColumnName("notification_type");
             entity.Property(e => e.Status).HasColumnName("status");
             entity.Property(e => e.UserId).HasColumnName("user_id");
+        });
+
+        modelBuilder.Entity<NotificationSetting>(entity =>
+        {
+            entity.HasKey(e => e.UserId);
+
+            entity.ToTable("notification_setting");
+
+            entity.Property(e => e.UserId)
+                .ValueGeneratedNever()
+                .HasColumnName("user_id");
+            entity.Property(e => e.MissionAdded).HasColumnName("mission_added");
+            entity.Property(e => e.MissionApplicationApproved).HasColumnName("mission_application_approved");
+            entity.Property(e => e.ReceiveEmailNotification).HasColumnName("receive_email_notification");
+            entity.Property(e => e.RecommendedMission).HasColumnName("recommended_mission");
+            entity.Property(e => e.RecommendedStory).HasColumnName("recommended_story");
+            entity.Property(e => e.StoryApproved).HasColumnName("story_approved");
+
+            entity.HasOne(d => d.User).WithOne(p => p.NotificationSetting)
+                .HasForeignKey<NotificationSetting>(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_notification_setting_user");
         });
 
         modelBuilder.Entity<PasswordReset>(entity =>
