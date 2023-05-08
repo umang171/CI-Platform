@@ -48,5 +48,6 @@ namespace CIPlatform.Repository.Repository.Interface
         public void AddNotificationSettings(NotificationSetting notificationSetting);
         public void ChangeNotificationSettings(NotificationSetting notificationSetting);
         public NotificationSetting GetNotificationSettings(long userId);
+        public bool IsReceiveEmailCheck(long userId);
     }
 }

@@ -395,5 +395,14 @@ namespace CIPlatform.Repository.Repository
             _ciPlatformDbContext.Update(notificationSetting);
             _ciPlatformDbContext.SaveChanges();
         }
+
+        bool IMissionRepository.IsReceiveEmailCheck(long userId)
+        {
+            if (_ciPlatformDbContext.NotificationSettings.Any(notification => notification.UserId == userId))
+            {
+                return (bool)_ciPlatformDbContext.NotificationSettings.Where(notification => notification.UserId == userId).First().ReceiveEmailNotification;
+            }
+            return false;
+        }
     }
 }

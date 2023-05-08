@@ -13,17 +13,21 @@ namespace CIPlatform.Controllers
         private readonly IUserRepository _userRepository;
         private readonly IMissionRepository _missionRepository;
         private readonly IStoryRepository _storyRepository;
+        private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IAdminRepository _adminRepository;
         private readonly IWebHostEnvironment _webHostEnvironment;
-        public AdminController(IUserRepository userRepository, IMissionRepository missionRepository, IStoryRepository storyRepository, IAdminRepository adminRepository, IWebHostEnvironment webHostEnvironment)
+        private readonly IConfiguration configuration;
+        public AdminController(IUserRepository userRepository, IHttpContextAccessor httpContextAccessor, IMissionRepository missionRepository, IStoryRepository storyRepository, IAdminRepository adminRepository, IWebHostEnvironment webHostEnvironment, IConfiguration _configuration)
         {
             _userRepository = userRepository;
             _missionRepository = missionRepository;
             _storyRepository = storyRepository;
             _adminRepository = adminRepository;
+            _httpContextAccessor = httpContextAccessor;
             _webHostEnvironment = webHostEnvironment;
+            configuration = _configuration;
         }
-        
+
         public IActionResult Index()
         {
             string adminSessionEmail = HttpContext.Session.GetString("useremail");
@@ -39,7 +43,7 @@ namespace CIPlatform.Controllers
             AdminPageList<User> user = _adminRepository.getUsers(searchText, pageNumber, pageSize);
             return PartialView("_AdminUserList", user);
         }
-        
+
         public IActionResult AddUser()
         {
             string adminSessionEmail = HttpContext.Session.GetString("useremail");
@@ -50,7 +54,7 @@ namespace CIPlatform.Controllers
             adminUserAddModel.adminHeader = adminHeader;
             return View(adminUserAddModel);
         }
-        
+
         [HttpPost]
         public IActionResult AddUser(AdminUserAddModel adminUserAddModel, IFormFile? Avatar)
         {
@@ -96,7 +100,7 @@ namespace CIPlatform.Controllers
             }
             return View(adminUserAddModel);
         }
-        
+
         public IActionResult EditUser(int userId)
         {
             string adminSessionEmail = HttpContext.Session.GetString("useremail");
@@ -152,7 +156,7 @@ namespace CIPlatform.Controllers
                 user.Department = adminUserAddModel.Department;
                 user.ProfileText = adminUserAddModel.MyProfile;
                 user.WhyIVolunteer = adminUserAddModel.WhyIVolunteer;
-                user.Status= Boolean.Parse(adminUserAddModel.Status);
+                user.Status = Boolean.Parse(adminUserAddModel.Status);
                 _adminRepository.editUser(user);
                 return RedirectToAction("Index", "Admin");
             }
@@ -190,7 +194,7 @@ namespace CIPlatform.Controllers
             }
             return View();
         }
-        
+
         public IActionResult AdminCMSPage()
         {
             string adminSessionEmail = HttpContext.Session.GetString("useremail");
@@ -201,7 +205,7 @@ namespace CIPlatform.Controllers
             adminCMSModel.adminHeader = adminHeader;
             return View(adminCMSModel);
         }
-        
+
         public IActionResult GetCMSPages(string? searchText, int pageNumber, int pageSize)
         {
             AdminPageList<CmsPage> cmsPage = _adminRepository.getCmsPages(searchText, pageNumber, pageSize);
@@ -212,7 +216,7 @@ namespace CIPlatform.Controllers
             _adminRepository.deleteCmsPage(cmsPageId);
             return Ok();
         }
-        
+
         public IActionResult ADDCmsPage()
         {
             string adminSessionEmail = HttpContext.Session.GetString("useremail");
@@ -223,7 +227,7 @@ namespace CIPlatform.Controllers
             adminCMSModel.adminHeader = adminHeader;
             return View(adminCMSModel);
         }
-        
+
         [HttpPost]
         public IActionResult ADDCmsPage(AdminCMSModel adminCMSModel)
         {
@@ -241,7 +245,7 @@ namespace CIPlatform.Controllers
             }
             return View(adminCMSModel);
         }
-        
+
         public IActionResult EditCMSPage(long cmsPageId)
         {
             string adminSessionEmail = HttpContext.Session.GetString("useremail");
@@ -259,7 +263,7 @@ namespace CIPlatform.Controllers
             adminCMSModel.CMSPageId = cmsPageId;
             return View(adminCMSModel);
         }
-        
+
         [HttpPost]
         public IActionResult EditCMSPage(AdminCMSModel adminCMSModel)
         {
@@ -276,7 +280,7 @@ namespace CIPlatform.Controllers
             }
             return View(adminCMSModel);
         }
-        
+
         public IActionResult AdminMission()
         {
             string adminSessionEmail = HttpContext.Session.GetString("useremail");
@@ -287,13 +291,13 @@ namespace CIPlatform.Controllers
             adminMissionModel.adminHeader = adminHeader;
             return View(adminMissionModel);
         }
-        
+
         public IActionResult GetMissions(string? searchText, int pageNumber, int pageSize)
         {
             AdminPageList<Mission> mission = _adminRepository.getMissions(searchText, pageNumber, pageSize);
             return PartialView("_AdminMissionList", mission);
         }
-        
+
         public IActionResult AddMission()
         {
             string adminSessionEmail = HttpContext.Session.GetString("useremail");
@@ -303,12 +307,12 @@ namespace CIPlatform.Controllers
             AdminMissionModel adminMissionModel = new AdminMissionModel();
             adminMissionModel.adminHeader = adminHeader;
             adminMissionModel.countryLists = _adminRepository.GetCountryLists();
-            adminMissionModel.cityLists= _adminRepository.GetCityLists(adminMissionModel.countryLists.ElementAt(0).CountryId);
-            adminMissionModel.themeLists= _adminRepository.GetThemeLists();
-            adminMissionModel.skillLists= _adminRepository.GetSkillLists();
+            adminMissionModel.cityLists = _adminRepository.GetCityLists(adminMissionModel.countryLists.ElementAt(0).CountryId);
+            adminMissionModel.themeLists = _adminRepository.GetThemeLists();
+            adminMissionModel.skillLists = _adminRepository.GetSkillLists();
             return View(adminMissionModel);
         }
-        
+
         [HttpPost]
         public IActionResult AddMission(AdminMissionModel adminMissionModel, List<IFormFile> missionMedias, List<IFormFile> missionDocuments)
         {
@@ -319,8 +323,8 @@ namespace CIPlatform.Controllers
             if (adminMissionModel.EndDate == null)
                 ModelState.AddModelError("EndDate", "End Date is required");
             if (adminMissionModel.MissionType == "time")
-            {                
-                if (adminMissionModel.StartDate!= null && adminMissionModel.EndDate != null)
+            {
+                if (adminMissionModel.StartDate != null && adminMissionModel.EndDate != null)
                 {
                     if (adminMissionModel.StartDate > adminMissionModel.EndDate)
                     {
@@ -330,7 +334,7 @@ namespace CIPlatform.Controllers
             }
             else
             {
-                if (adminMissionModel.GoalValue == null || adminMissionModel.GoalValue<= 0)
+                if (adminMissionModel.GoalValue == null || adminMissionModel.GoalValue <= 0)
                 {
                     ModelState.AddModelError("GoalValue", "Goal value required for goal based mission");
                 }
@@ -345,29 +349,29 @@ namespace CIPlatform.Controllers
             }
             if (ModelState.IsValid)
             {
-                Mission mission=new Mission();
+                Mission mission = new Mission();
                 mission.Title = adminMissionModel.MissionTitle;
                 mission.ShortDescription = adminMissionModel.ShortDescription;
                 mission.Description = adminMissionModel.Description;
-                mission.MissionType=adminMissionModel.MissionType;
+                mission.MissionType = adminMissionModel.MissionType;
                 mission.StartDate = adminMissionModel.StartDate;
                 mission.EndDate = adminMissionModel.EndDate;
-                mission.CountryId=adminMissionModel.CountryId;
+                mission.CountryId = adminMissionModel.CountryId;
                 mission.CityId = adminMissionModel.CityId;
                 mission.TotalSeats = adminMissionModel.TotalSeats;
-                mission.ThemeId=adminMissionModel.ThemeId;
-                mission.OrganizationName=adminMissionModel.OrganizationName;
-                mission.OrganizationDetail=adminMissionModel.OrganizationDetail;
-                mission.Availability=adminMissionModel.Availability;
+                mission.ThemeId = adminMissionModel.ThemeId;
+                mission.OrganizationName = adminMissionModel.OrganizationName;
+                mission.OrganizationDetail = adminMissionModel.OrganizationDetail;
+                mission.Availability = adminMissionModel.Availability;
                 mission.Status = Boolean.Parse(adminMissionModel.Status);
-                
+
 
                 mission.Status = true;
-                List<MissionSkill> missionSkills=new List<MissionSkill>();
-                foreach(var item in adminMissionModel.Skills.Split(",").SkipLast(1))
+                List<MissionSkill> missionSkills = new List<MissionSkill>();
+                foreach (var item in adminMissionModel.Skills.Split(",").SkipLast(1))
                 {
-                    MissionSkill skill=new MissionSkill();
-                    skill.SkillId = Int32.Parse(item);                    
+                    MissionSkill skill = new MissionSkill();
+                    skill.SkillId = Int32.Parse(item);
                     missionSkills.Add(skill);
                 }
 
@@ -378,29 +382,29 @@ namespace CIPlatform.Controllers
                     goalMission.GoalObjectiveText = adminMissionModel.GoalObjective;
                 }
 
-                List<MissionMedium> missionMedia =new List<MissionMedium>();
+                List<MissionMedium> missionMedia = new List<MissionMedium>();
                 string wwwRootPath = _webHostEnvironment.WebRootPath;
                 foreach (IFormFile postedFile in missionMedias)
-                {        
+                {
                     MissionMedium missionMedium = new MissionMedium();
                     string fileName = Guid.NewGuid().ToString();
                     missionMedium.MediaName = fileName;
                     var uploads = Path.Combine(wwwRootPath, @"images\missions");
-                    missionMedium.MediaPath= @"images\missions";
+                    missionMedium.MediaPath = @"images\missions";
                     var extension = Path.GetExtension(postedFile.FileName);
-                    missionMedium.MediaType= extension;
+                    missionMedium.MediaType = extension;
                     missionMedia.Add(missionMedium);
                     using (var fileStreams = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
                     {
                         postedFile.CopyTo(fileStreams);
                     }
                 }
-                List<MissionDocument> missionDocument= new List<MissionDocument>();
+                List<MissionDocument> missionDocument = new List<MissionDocument>();
                 foreach (IFormFile postedFile in missionDocuments)
                 {
-                    MissionDocument missionDoc= new MissionDocument();
+                    MissionDocument missionDoc = new MissionDocument();
                     string fileName = Guid.NewGuid().ToString();
-                    missionDoc.DocumentName= fileName;
+                    missionDoc.DocumentName = fileName;
                     var uploads = Path.Combine(wwwRootPath, @"documents");
                     missionDoc.DocumentPath = @"documents";
                     var extension = Path.GetExtension(postedFile.FileName);
@@ -411,10 +415,10 @@ namespace CIPlatform.Controllers
                         postedFile.CopyTo(fileStreams);
                     }
                 }
-                int missionId=_adminRepository.AddMission(mission,missionSkills,goalMission,missionMedia,missionDocument);
+                int missionId = _adminRepository.AddMission(mission, missionSkills, goalMission, missionMedia, missionDocument);
                 List<User> usersWithSkillAvailability = _userRepository.GetUserWithSkillAvailability(missionSkills);
 
-                foreach(User user in usersWithSkillAvailability)
+                foreach (User user in usersWithSkillAvailability)
                 {
                     Notification notification = new Notification();
                     notification.NotificationMessage = "New Mission Added-" + mission.Title;
@@ -426,26 +430,37 @@ namespace CIPlatform.Controllers
                     notification.NotificationImage = @"/images/add.png";
                     notification.CreatedAt = DateTime.Now;
                     _missionRepository.addNotification(notification);
+
+                    if (_missionRepository.IsReceiveEmailCheck((long)notification.UserId))
+                    {
+                        string welcomeMessage = "Welcome to CI platform, <br/> New Mission Added:</br>";
+                        string path = "<a href = '/Mission/Mission_Volunteer?missionId=" + notification.MessageId + "' class='link-style-none px-1'>" + notification.NotificationMessage + "</a>";
+
+                        MailHelper mailHelper = new MailHelper(configuration);
+                        mailHelper.Send(_userRepository.findUser(notification.UserId).Email, welcomeMessage + path, "New Mission Added");
+                    }
+
+
                 }
-                return RedirectToAction("AdminMission","Admin");
+                return RedirectToAction("AdminMission", "Admin");
             }
             adminMissionModel.countryLists = _adminRepository.GetCountryLists();
             adminMissionModel.cityLists = _adminRepository.GetCityLists(adminMissionModel.CountryId);
-            adminMissionModel.themeLists= _adminRepository.GetThemeLists();
-            adminMissionModel.skillLists= _adminRepository.GetSkillLists();
+            adminMissionModel.themeLists = _adminRepository.GetThemeLists();
+            adminMissionModel.skillLists = _adminRepository.GetSkillLists();
             return View(adminMissionModel);
         }
         public IActionResult GetCities(long countryId)
         {
             return Json(_adminRepository.GetCityLists(countryId));
         }
-        
+
         public IActionResult DeleteMission(long missionId)
         {
             _adminRepository.DeleteMission(missionId);
             return Ok();
         }
-        
+
         public IActionResult EditMission(long missionId)
         {
             string adminSessionEmail = HttpContext.Session.GetString("useremail");
@@ -460,13 +475,13 @@ namespace CIPlatform.Controllers
             adminMissionModel.skillLists = _adminRepository.GetSkillLists();
             return View(adminMissionModel);
         }
-        
+
         [HttpPost]
         public IActionResult EditMission(AdminMissionModel adminMissionModel, List<IFormFile>? missionMedias, List<IFormFile>? missionDocuments)
         {
             if (missionMedias.Count() == 0 && adminMissionModel.MediaName == null)
                 ModelState.AddModelError("MissionMedia", "Please select Media");
-            if (missionDocuments.Count() == 0 && adminMissionModel.DocumentName== null)
+            if (missionDocuments.Count() == 0 && adminMissionModel.DocumentName == null)
                 ModelState.AddModelError("MissionDocument", "Please select Document");
             if (adminMissionModel.StartDate == null)
                 ModelState.AddModelError("StartDate", "Start Date is required");
@@ -585,7 +600,7 @@ namespace CIPlatform.Controllers
             adminMissionModel.skillLists = _adminRepository.GetSkillLists();
             return View(adminMissionModel);
         }
-        
+
         public IActionResult AdminBannerMgmt()
         {
             string adminSessionEmail = HttpContext.Session.GetString("useremail");
@@ -596,13 +611,13 @@ namespace CIPlatform.Controllers
             adminBannerModel.adminHeader = adminHeader;
             return View(adminBannerModel);
         }
-        
+
         public IActionResult GetBanners(string? searchText, int pageNumber, int pageSize)
         {
             AdminPageList<Banner> banners = _adminRepository.GetBanners(searchText, pageNumber, pageSize);
             return PartialView("_AdminBannerList", banners);
         }
-        
+
         public IActionResult AddBanner()
         {
             string adminSessionEmail = HttpContext.Session.GetString("useremail");
@@ -613,7 +628,7 @@ namespace CIPlatform.Controllers
             adminBannerModel.adminHeader = adminHeader;
             return View(adminBannerModel);
         }
-        
+
         [HttpPost]
         public IActionResult AddBanner(AdminBannerModel adminBannerModel, IFormFile Image)
         {
@@ -640,13 +655,13 @@ namespace CIPlatform.Controllers
             }
             return View(adminBannerModel);
         }
-        
+
         public IActionResult DeleteBanner(long bannerId)
         {
             _adminRepository.deleteBanner(bannerId);
             return Ok();
         }
-        
+
         public IActionResult EditBanner(long bannerId)
         {
             string adminSessionEmail = HttpContext.Session.GetString("useremail");
@@ -703,19 +718,19 @@ namespace CIPlatform.Controllers
             adminSkillModel.adminHeader = adminHeader;
             return View(adminSkillModel);
         }
-        
+
         public IActionResult GetSkills(string? searchText, int pageNumber, int pageSize)
         {
             AdminPageList<Skill> skills = _adminRepository.GetSkills(searchText, pageNumber, pageSize);
             return PartialView("_AdminSkillList", skills);
         }
-        
+
         public IActionResult DeleteSkill(long skillId)
         {
             _adminRepository.DeleteSkill(skillId);
             return Ok();
         }
-        
+
         public IActionResult AddSkill()
         {
             string adminSessionEmail = HttpContext.Session.GetString("useremail");
@@ -726,7 +741,7 @@ namespace CIPlatform.Controllers
             adminSkillModel.adminHeader = adminHeader;
             return View(adminSkillModel);
         }
-        
+
         [HttpPost]
         public IActionResult AddSkill(AdminSkillModel adminSkillModel)
         {
@@ -740,7 +755,7 @@ namespace CIPlatform.Controllers
             }
             return View(adminSkillModel);
         }
-        
+
         public IActionResult EditSkill(long skillId)
         {
             string adminSessionEmail = HttpContext.Session.GetString("useremail");
@@ -755,7 +770,7 @@ namespace CIPlatform.Controllers
             adminSkillModel.Status = skill.Status.ToString();
             return View(adminSkillModel);
         }
-        
+
         [HttpPost]
         public IActionResult EditSkill(AdminSkillModel adminSkillModel)
         {
@@ -769,7 +784,7 @@ namespace CIPlatform.Controllers
             }
             return View(adminSkillModel);
         }
-        
+
         public IActionResult AdminMissionApplication()
         {
             string adminSessionEmail = HttpContext.Session.GetString("useremail");
@@ -780,20 +795,20 @@ namespace CIPlatform.Controllers
             adminMissionApplicationModel.adminHeader = adminHeader;
             return View(adminMissionApplicationModel);
         }
-        
+
         public IActionResult GetMissionApplications(string? searchText, int pageNumber, int pageSize)
         {
             AdminPageList<AdminMissionApplicationListModel> missionApplications = _adminRepository.GetMissionApplications(searchText, pageNumber, pageSize);
             return PartialView("_AdminMissionApplicationList", missionApplications);
         }
-        
+
         public IActionResult ApproveMissionApplication(long missionApplicationId)
         {
             _adminRepository.ApproveMissionApplication(missionApplicationId);
             MissionApplication missionApplication = _missionRepository.GetMissionApplication((int)missionApplicationId);
             Mission mission = _missionRepository.GetMission((int)missionApplication.MissionId);
             Notification notification = new Notification();
-            notification.NotificationMessage = "Mission Appication Approved-" +mission.Title;
+            notification.NotificationMessage = "Mission Appication Approved-" + mission.Title;
             notification.NotificationType = "MissionApplicationApproved";
             notification.Status = true;
             notification.MessageId = -1;
@@ -802,9 +817,20 @@ namespace CIPlatform.Controllers
             notification.NotificationImage = @"/images/checked.png";
             notification.CreatedAt = DateTime.Now;
             _missionRepository.addNotification(notification);
+
+            if (_missionRepository.IsReceiveEmailCheck((long)notification.UserId))
+            {
+                string welcomeMessage = "Welcome to CI platform, <br/> Your mission application has been approved:</br>";
+                string path = "<a href = '/Mission/Mission_Volunteer?missionId=" + notification.MessageId + "' class='link-style-none px-1'>" + notification.NotificationMessage + "</a>";
+
+                MailHelper mailHelper = new MailHelper(configuration);
+                mailHelper.Send(_userRepository.findUser(notification.UserId).Email, welcomeMessage + path, "Mission Application approved");
+            }
+
+
             return Ok();
         }
-        
+
         public IActionResult RejectMissionApplication(long missionApplicationId)
         {
             MissionApplication missionApplication = _missionRepository.GetMissionApplication((int)missionApplicationId);
@@ -822,7 +848,7 @@ namespace CIPlatform.Controllers
             _adminRepository.RejectMissionApplication(missionApplicationId);
             return Ok();
         }
-        
+
         public IActionResult AdminStory()
         {
             string adminSessionEmail = HttpContext.Session.GetString("useremail");
@@ -833,7 +859,7 @@ namespace CIPlatform.Controllers
             adminStoryModel.adminHeader = adminHeader;
             return View(adminStoryModel);
         }
-        
+
         public IActionResult GetStories(string? searchText, int pageNumber, int pageSize)
         {
             AdminPageList<AdminStoryListModel> stories = _adminRepository.GetStories(searchText, pageNumber, pageSize);
@@ -843,7 +869,7 @@ namespace CIPlatform.Controllers
         {
             _adminRepository.ApproveStory(storyId);
 
-            Story story=_storyRepository.getStoryDetail((int)storyId);
+            Story story = _storyRepository.getStoryDetail((int)storyId);
             Notification notification = new Notification();
             notification.NotificationMessage = "Story Approved-" + story.Title;
             notification.NotificationType = "StoryApproved";
@@ -854,6 +880,16 @@ namespace CIPlatform.Controllers
             notification.NotificationImage = @"/images/checked.png";
             notification.CreatedAt = DateTime.Now;
             _missionRepository.addNotification(notification);
+
+            if (_missionRepository.IsReceiveEmailCheck((long)notification.UserId))
+            {
+                string welcomeMessage = "Welcome to CI platform, <br/> Your story has been approved:</br>";
+                string path = "<a href = '/Story/StoryDetails?storyId=" + notification.MessageId + "' class='link-style-none px-1'>" + notification.NotificationMessage + "</a>";
+
+                MailHelper mailHelper = new MailHelper(configuration);
+                mailHelper.Send(_userRepository.findUser(notification.UserId).Email, welcomeMessage + path, "Story approved");
+            }
+
 
             return Ok();
         }
@@ -885,13 +921,13 @@ namespace CIPlatform.Controllers
             adminThemeModel.adminHeader = adminHeader;
             return View(adminThemeModel);
         }
-        
+
         public IActionResult GetThemes(string? searchText, int pageNumber, int pageSize)
         {
             AdminPageList<MissionTheme> missionTheme = _adminRepository.GetThemes(searchText, pageNumber, pageSize);
             return PartialView("_AdminThemeList", missionTheme);
         }
-        
+
         public IActionResult AddTheme()
         {
             string adminSessionEmail = HttpContext.Session.GetString("useremail");
@@ -903,7 +939,7 @@ namespace CIPlatform.Controllers
             adminThemeModel.adminHeader = adminHeader;
             return View(adminThemeModel);
         }
-        
+
         [HttpPost]
         public IActionResult AddTheme(AdminThemeModel adminThemeModel)
         {
@@ -917,13 +953,13 @@ namespace CIPlatform.Controllers
             }
             return View(adminThemeModel);
         }
-        
+
         public IActionResult DeleteTheme(long themeId)
         {
             _adminRepository.DeleteTheme(themeId);
             return Ok();
         }
-        
+
         public IActionResult EditTheme(long themeId)
         {
             string adminSessionEmail = HttpContext.Session.GetString("useremail");
@@ -938,7 +974,7 @@ namespace CIPlatform.Controllers
             adminThemeModel.Status = missionTheme.Status.ToString();
             return View(adminThemeModel);
         }
-        
+
         [HttpPost]
         public IActionResult EditTheme(AdminThemeModel adminThemeModel)
         {

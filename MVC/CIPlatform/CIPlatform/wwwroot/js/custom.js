@@ -676,6 +676,7 @@ $("#save-notification-btn").on("click", function () {
         data: { UserId: UserId, RecommendedMission: RecommendedMission, StoryApproved: StoryApproved, MissionAdded: MissionAdded, RecommendedStory: RecommendedStory, MissionApplicationApproved: MissionApplicationApproved, ReceiveEmailNotification: ReceiveEmailNotification },
         success: function (response) {
             getNotificationSettings();
+            $("#notification-button").trigger("click");
         },
         error: function (xhr, status, error) {
             console.log(error);
