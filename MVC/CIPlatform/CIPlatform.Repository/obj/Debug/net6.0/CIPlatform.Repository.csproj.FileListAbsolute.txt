@@ -1,20 +1,3 @@
-D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\bin\Debug\net6.0\CIPlatform.Repository.deps.json
-D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\bin\Debug\net6.0\CIPlatform.Repository.runtimeconfig.json
-D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\bin\Debug\net6.0\CIPlatform.Repository.dll
-D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\bin\Debug\net6.0\ref\CIPlatform.Repository.dll
-D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\bin\Debug\net6.0\CIPlatform.Repository.pdb
-D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\bin\Debug\net6.0\CIPlatform.Entities.dll
-D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\bin\Debug\net6.0\CIPlatform.Entities.pdb
-D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.csproj.AssemblyReference.cache
-D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.GeneratedMSBuildEditorConfig.editorconfig
-D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.AssemblyInfoInputs.cache
-D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.AssemblyInfo.cs
-D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.csproj.CoreCompileInputs.cache
-D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.csproj.CopyComplete
-D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.dll
-D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\obj\Debug\net6.0\ref\CIPlatform.Repository.dll
-D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.pdb
-D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.genruntimeconfig.cache
 E:\tatavasoft\ci\CI-Platform\MVC\CIPlatform\CIPlatform.Repository\bin\Debug\net6.0\CIPlatform.Repository.deps.json
 E:\tatavasoft\ci\CI-Platform\MVC\CIPlatform\CIPlatform.Repository\bin\Debug\net6.0\CIPlatform.Repository.runtimeconfig.json
 E:\tatavasoft\ci\CI-Platform\MVC\CIPlatform\CIPlatform.Repository\bin\Debug\net6.0\CIPlatform.Repository.dll
@@ -32,3 +15,20 @@ E:\tatavasoft\ci\CI-Platform\MVC\CIPlatform\CIPlatform.Repository\obj\Debug\net6
 E:\tatavasoft\ci\CI-Platform\MVC\CIPlatform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.pdb
 E:\tatavasoft\ci\CI-Platform\MVC\CIPlatform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.genruntimeconfig.cache
 E:\tatavasoft\ci\CI-Platform\MVC\CIPlatform\CIPlatform.Repository\obj\Debug\net6.0\ref\CIPlatform.Repository.dll
+D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\bin\Debug\net6.0\CIPlatform.Repository.deps.json
+D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\bin\Debug\net6.0\CIPlatform.Repository.runtimeconfig.json
+D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\bin\Debug\net6.0\CIPlatform.Repository.dll
+D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\bin\Debug\net6.0\ref\CIPlatform.Repository.dll
+D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\bin\Debug\net6.0\CIPlatform.Repository.pdb
+D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\bin\Debug\net6.0\CIPlatform.Entities.dll
+D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\bin\Debug\net6.0\CIPlatform.Entities.pdb
+D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.csproj.AssemblyReference.cache
+D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.AssemblyInfoInputs.cache
+D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.AssemblyInfo.cs
+D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.csproj.CoreCompileInputs.cache
+D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.csproj.CopyComplete
+D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.dll
+D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\obj\Debug\net6.0\ref\CIPlatform.Repository.dll
+D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.pdb
+D:\Projects\CI platform\MVC\CIPlatform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.genruntimeconfig.cache

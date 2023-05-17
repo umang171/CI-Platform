@@ -3,6 +3,7 @@ using CIPlatform.Entities.ViewModels;
 using CIPlatform.Repository.Repository.Interface;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,9 +16,11 @@ namespace CIPlatform.Repository.Repository
     public class MissionRepository:IMissionRepository
     {
         private readonly CIPlatformDbContext _ciPlatformDbContext;
-        public MissionRepository(CIPlatformDbContext cIPlatformDbContext)
+        private readonly IConfiguration _configuration;
+        public MissionRepository(CIPlatformDbContext cIPlatformDbContext,IConfiguration configuration)
         {
             _ciPlatformDbContext = cIPlatformDbContext;
+            _configuration = configuration;
         }
 
         List<Mission> IMissionRepository.getMissions()
@@ -120,7 +123,10 @@ namespace CIPlatform.Repository.Repository
             SqlConnection conn = new SqlConnection();
 
             SqlDataReader rdr = null;
-            conn = new SqlConnection("Server=PCTR29\\SQL2017;User Id=sa;Password=tatva123;Database=CI;Trusted_Connection=true;TrustServerCertificate=true;");
+
+            string connectionString = _configuration.GetConnectionString("CIPlatform");
+            conn = new SqlConnection(connectionString);
+            //conn = new SqlConnection("Server=PCTR29\\SQL2017;User Id=sa;Password=tatva123;Database=CI;Trusted_Connection=true;TrustServerCertificate=true;");
             //conn = new SqlConnection("SERVER=localhost\\SQLEXPRESS;Database=CI;Trusted_Connection=true;TrustServerCertificate=true;");
             conn.Open();
             SqlCommand cmd = new SqlCommand("sp_get_mission_data_from_id", conn);
@@ -326,20 +332,26 @@ namespace CIPlatform.Repository.Repository
 
         public List<Notification> GetNotifications(long userId,string selectedNotificatinSettings)
         {
-            if (selectedNotificatinSettings is null || selectedNotificatinSettings == "")
+            //if (selectedNotificatinSettings is null || selectedNotificatinSettings == "")
+            //{
+            //    return _ciPlatformDbContext.Notifications.Where(notification => notification.UserId == userId).OrderByDescending(notification => notification.CreatedAt).ToList();
+            //}
+            //selectedNotificatinSettings = selectedNotificatinSettings.Replace("MissionApplicationApproved,", "MissionApplicationApproved,MissionApplicationDeclined,");
+            //selectedNotificatinSettings = selectedNotificatinSettings.Replace("StoryApproved,", "StoryApproved,StoryDeclined,");
+            //string[] notificationTypes = selectedNotificatinSettings.Split(",").SkipLast(1).ToArray();
+            //return _ciPlatformDbContext.Notifications.Where(notification => notification.UserId == userId && notificationTypes.Contains(notification.NotificationType)).OrderByDescending(notification => notification.CreatedAt).ToList();
+            if (selectedNotificatinSettings is not null)
             {
-                return _ciPlatformDbContext.Notifications.Where(notification => notification.UserId == userId).OrderByDescending(notification => notification.CreatedAt).ToList();
+                selectedNotificatinSettings = selectedNotificatinSettings.Replace("MissionApplicationApproved,", "MissionApplicationApproved,MissionApplicationDeclined,");
+                selectedNotificatinSettings = selectedNotificatinSettings.Replace("StoryApproved,", "StoryApproved,StoryDeclined,");
             }
-            selectedNotificatinSettings = selectedNotificatinSettings.Replace("MissionApplicationApproved,", "MissionApplicationApproved,MissionApplicationDeclined,");
-            selectedNotificatinSettings = selectedNotificatinSettings.Replace("StoryApproved,", "StoryApproved,StoryDeclined,");
-            string[] notificationTypes = selectedNotificatinSettings.Split(",").SkipLast(1).ToArray();
-            return _ciPlatformDbContext.Notifications.Where(notification => notification.UserId == userId && notificationTypes.Contains(notification.NotificationType)).OrderByDescending(notification => notification.CreatedAt).ToList();
-
+            List<Notification> notifications = _ciPlatformDbContext.Notifications.FromSqlInterpolated($"exec sp_get_notifications @userId={userId},@selectedNotificatinSettings={selectedNotificatinSettings}").ToList();
+            return notifications;
         }
 
         void IMissionRepository.ClearNotifications(long userId)
         {
-            List<Notification> notifications = GetNotifications(userId,"");
+            List<Notification> notifications = GetNotifications(userId,null);
             foreach (Notification notification in notifications)
             {
                 _ciPlatformDbContext.Remove(notification);
